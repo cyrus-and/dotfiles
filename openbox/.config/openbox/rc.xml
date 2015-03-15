@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- -*- compile-command: "killall -USR2 openbox" -*- -->
+<openbox_config xmlns="http://openbox.org/3.4/rc">
+  <!-- resistance -->
+  <resistance>
+    <strength>100</strength>
+    <screen_edge_strength>100</screen_edge_strength>
+  </resistance>
+  <!-- focus -->
+  <focus>
+    <focusNew>yes</focusNew>
+    <followMouse>yes</followMouse>
+    <focusDelay>50</focusDelay>
+    <focusLast>yes</focusLast>
+    <underMouse>no</underMouse>
+  </focus>
+  <!-- placement -->
+  <placement>
+    <policy>Smart</policy>
+    <center>yes</center>
+    <monitor>Active</monitor>
+    <primaryMonitor>1</primaryMonitor>
+  </placement>
+  <!-- theme -->
+  <theme>
+    <name>cYrus</name>
+    <titleLayout>L</titleLayout>
+    <keepBorder>no</keepBorder>
+    <animateIconify>no</animateIconify>
+    <font place="ActiveWindow"><name>Terminus</name><size>8</size><weight>normal</weight></font>
+    <font place="InactiveWindow"><name>Terminus</name><size>8</size><weight>normal</weight></font>
+    <font place="MenuHeader"><name>Terminus</name><size>12</size><weight>normal</weight></font>
+    <font place="MenuItem"><name>Terminus</name><size>10</size><weight>normal</weight></font>
+    <font place="OnScreenDisplay"><name>Terminus</name><size>12</size><weight>bold</weight></font>
+  </theme>
+  <!-- desktops -->
+  <desktops>
+    <number>5</number>
+    <firstdesk>1</firstdesk>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+    </names>
+    <popupTime>500</popupTime>
+  </desktops>
+  <!-- resize -->
+  <resize>
+    <drawContents>no</drawContents>
+    <popupShow>Nonpixel</popupShow>
+    <popupPosition>Center</popupPosition>
+  </resize>
+  <!-- margins -->
+  <margins>
+    <top>0</top>
+    <bottom>15</bottom>
+    <left>0</left>
+    <right>0</right>
+  </margins>
+  <!-- keyboard -->
+  <keyboard>
+    <!-- OB management -->
+    <keybind key="W-Escape"><action name="Reconfigure"/></keybind>
+    <!-- desktop switching -->
+    <keybind key="W-Left"><action name="GoToDesktop"><to>left</to><wrap>no</wrap></action></keybind>
+    <keybind key="W-Right"><action name="GoToDesktop"><to>right</to><wrap>no</wrap></action></keybind>
+    <keybind key="C-W-Left"><action name="SendToDesktop"><to>left</to><wrap>no</wrap></action></keybind>
+    <keybind key="C-W-Right"><action name="SendToDesktop"><to>right</to><wrap>no</wrap></action></keybind>
+    <!-- window switching -->
+    <keybind key="W-Tab"><action name="NextWindow"><dialog>yes</dialog><raise>yes</raise></action></keybind>
+    <!-- windows management -->
+    <keybind key="W-q"><action name="Close"/></keybind>
+    <keybind key="W-z"><action name="Iconify"/></keybind>
+    <keybind key="W-Up"><action name="Shade"/></keybind>
+    <keybind key="W-Down"><action name="Unshade"/></keybind>
+    <keybind key="W-Return">
+      <action name="If">
+        <maximized>yes</maximized>
+        <then><action name="Unmaximize"/><action name="SendToLayer"><layer>normal</layer></action><action name="Decorate"/><action name="Raise"/></then>
+        <else><action name="Maximize"/><action name="SendToLayer"><layer>bottom</layer></action><action name="Undecorate"/></else>
+      </action>
+    </keybind>
+    <keybind key="C-W-Return"><action name="ToggleFullscreen"/></keybind>
+    <!-- root terminal -->
+    <keybind key="W-backslash">
+      <action name="If">
+        <title>root-terminal</title>
+        <then><action name="Execute"><command>wmctrl -x -r root-terminal -b add,hidden</command></action></then>
+        <else><action name="Execute"><command>wmctrl -x -a root-terminal</command></action></else>
+      </action>
+    </keybind>
+    <!-- applications -->
+    <keybind key="W-k"><action name="Execute"><command>xkill</command></action></keybind>
+    <keybind key="W-x"><action name="Execute"><command>dmenu_run -b -p Run: -nb '#000000' -nf '#aaaaaa' -sb '#ff6000' -sf '#000000'</command></action></keybind>
+    <keybind key="W-w"><action name="Execute"><command>google-chrome</command></action></keybind>
+    <keybind key="W-BackSpace"><action name="Execute"><command>urxvt -sw -si</command></action></keybind>
+    <keybind key="W-Insert"><action name="Execute"><command>emacs</command></action></keybind>
+    <keybind key="W-Home"><action name="Execute"><command>thunar</command></action></keybind>
+    <keybind key="W-p"><action name="Execute"><command>pavucontrol</command></action></keybind>
+    <!-- mpd -->
+    <keybind key="XF86Mail"><action name="Execute"><command>mpc toggle</command></action></keybind>
+    <keybind key="XF86HomePage"><action name="Execute"><command>mpc prev</command></action></keybind>
+    <keybind key="XF86Search"><action name="Execute"><command>mpc next</command></action></keybind>
+    <keybind key="A-XF86HomePage"><action name="Execute"><command>mpc seek -0:0:5</command></action></keybind>
+    <keybind key="A-XF86Search"><action name="Execute"><command>mpc seek +0:0:5</command></action></keybind>
+  </keyboard>
+  <!-- mouse -->
+  <mouse>
+    <dragThreshold>0</dragThreshold>
+    <doubleClickTime>200</doubleClickTime>
+    <screenEdgeWarpTime>400</screenEdgeWarpTime>
+    <!-- client -->
+    <context name="Client">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Middle" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+    </context>
+    <!-- frame -->
+    <context name="Frame">
+      <mousebind button="W-Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="W-Left" action="Drag"><action name="Move"/></mousebind>
+      <mousebind button="W-Left" action="Click"><action name="ShowMenu"><menu>client-layer-menu</menu></action></mousebind>
+      <mousebind button="W-Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="W-Right" action="Drag"><action name="Resize"/></mousebind>
+      <mousebind button="W-Right" action="Click"><action name="ShowMenu"><menu>client-send-to-menu</menu></action></mousebind>
+      <mousebind button="W-Up" action="Click"><action name="PreviousWindow"><raise>yes</raise><dialog>yes</dialog></action></mousebind>
+      <mousebind button="W-Down" action="Click"><action name="NextWindow"><raise>yes</raise><dialog>yes</dialog></action></mousebind>
+      <mousebind button="C-W-Up" action="Click"><action name="SendToDesktop"><to>left</to><wrap>no</wrap></action></mousebind>
+      <mousebind button="C-W-Down" action="Click"><action name="SendToDesktop"><to>right</to><wrap>no</wrap></action></mousebind>
+    </context>
+    <!-- border -->
+    <context name="Top"><mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="Left" action="Drag"><action name="Resize"><edge>top</edge></action></mousebind></context>
+    <context name="Right"><mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="Left" action="Drag"><action name="Resize"><edge>right</edge></action></mousebind></context>
+    <context name="Bottom"><mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="Left" action="Drag"><action name="Resize"><edge>bottom</edge></action></mousebind></context>
+    <context name="Left"><mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="Left" action="Drag"><action name="Resize"><edge>left</edge></action></mousebind></context>
+    <context name="TRCorner"><mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="Left" action="Drag"><action name="Resize"/></mousebind></context>
+    <context name="BRCorner"><mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="Left" action="Drag"><action name="Resize"/></mousebind></context>
+    <context name="BLCorner"><mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="Left" action="Drag"><action name="Resize"/></mousebind></context>
+    <context name="TLCorner"><mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="Left" action="Drag"><action name="Resize"/></mousebind></context>
+    <!-- titlebar -->
+    <context name="Titlebar">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Left" action="Drag"><action name="Move"/></mousebind>
+      <mousebind button="Left" action="DoubleClick">
+        <action name="If">
+          <maximized>yes</maximized>
+          <then>
+            <action name="Unmaximize"/>
+            <action name="SendToLayer"><layer>normal</layer></action>
+            <action name="Decorate"/>
+            <action name="Raise"/>
+          </then>
+          <else>
+            <action name="Maximize"/>
+            <action name="SendToLayer"><layer>bottom</layer></action>
+            <action name="Undecorate"/>
+          </else>
+        </action>
+      </mousebind>
+      <mousebind button="Up" action="Click"><action name="Shade"/></mousebind>
+      <mousebind button="Down" action="Click"><action name="Unshade"/></mousebind>
+      <mousebind button="Right" action="Click"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Right" action="Click"><action name="Iconify"/></mousebind>
+      <mousebind button="Middle" action="Click"><action name="Close"/></mousebind>
+    </context>
+    <!-- desktop -->
+    <context name="Desktop">
+      <mousebind button="Up" action="Click"><action name="GoToDesktop"><to>left</to><wrap>no</wrap></action></mousebind>
+      <mousebind button="Down" action="Click"><action name="GoToDesktop"><to>right</to><wrap>no</wrap></action></mousebind>
+      <mousebind button="W-Up" action="Click"><action name="PreviousWindow"><raise>yes</raise><dialog>yes</dialog></action></mousebind>
+      <mousebind button="W-Down" action="Click"><action name="NextWindow"><raise>yes</raise><dialog>yes</dialog></action></mousebind>
+      <mousebind button="Right" action="Press"><action name="ShowMenu"><menu>root-menu</menu></action></mousebind>
+      <mousebind button="Left" action="Press"><action name="ShowMenu"><menu>client-list-combined-menu</menu></action></mousebind>
+    </context>
+  </mouse>
+  <!-- menu configuration file -->
+  <menu>
+    <file>menu.xml</file>
+    <middle>no</middle>
+    <submenuShowDelay>0</submenuShowDelay>
+    <submenuHideDelay>0</submenuHideDelay>
+    <applicationIcons>yes</applicationIcons>
+    <manageDesktops>no</manageDesktops>
+  </menu>
+  <!-- rules -->
+  <applications>
+    <application name="root-terminal">
+      <skip_pager>yes</skip_pager>
+      <skip_taskbar>yes</skip_taskbar>
+      <focus>no</focus>
+      <iconic>yes</iconic>
+      <fullscreen>yes</fullscreen>
+      <layer>above</layer>
+      <decor>no</decor>
+      <desktop>all</desktop>
+    </application>
+    <application name="Google-chrome">
+      <maximized>true</maximized>
+      <layer>below</layer>
+      <decor>no</decor>
+      <desktop>1</desktop>
+    </application>
+    <!-- <application name="trayer"> -->
+      <!-- <layer>below</layer> -->
+      <!-- <desktop>all</desktop> -->
+    <!-- </application> -->
+    <!-- [...]  -->
+  </applications>
+</openbox_config>

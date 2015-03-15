@@ -1,0 +1,6 @@
+tile_full_screen   = false
+#tile_window_width  = 800
+#tile_window_height = 800
+
+# tile_window_width  = 1920
+# tile_window_height = 1080

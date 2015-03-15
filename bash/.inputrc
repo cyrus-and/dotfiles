@@ -1,0 +1,29 @@
+"\ef": "for i in `` ; do $i ; done"
+"\ei": "sudo apt-get install "
+"\es": "apt-cache search "
+"\ep": "apt-cache show "
+"\ex": " | xargs -L 1 "
+"\eg": " | grep -i "
+"\el": " | less"
+"\en": " &> /dev/null"
+"\ez": "unzip -l "
+"\et": "git "
+
+"\eOd": backward-word
+"\eOc": forward-word
+"\eOD": backward-word # tmux
+"\eOC": forward-word  # tmux
+
+"\C-H":  backward-kill-word
+"\e[3^": kill-word
+
+"\eOa": history-search-backward
+"\eOb": history-search-forward
+"\eOA": history-search-backward # tmux
+"\eOB": history-search-forward  # tmux
+# "\e[A": history-search-backward # tmux
+# "\e[B": history-search-forward  # tmux
+
+"\e[11~":"\C-a\C-r\C-y" # reverse history search from current
+
+"\ev": "$(clipboard)"

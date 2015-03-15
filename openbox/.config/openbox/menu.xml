@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- -*- compile-command: "killall -USR2 openbox" -*- -->
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/ file:///usr/share/openbox/menu.xsd">
+  <!-- root -->
+  <menu id="root-menu" label="Openbox">
+    <!-- configuration -->
+    <item label="Reconfigure"><action name="Reconfigure"/></item>
+    <item label="Restart"><action name="Restart"/></item>
+    <separator/>
+    <!-- system -->
+    <item label="Logout"><action name="Exit"><prompt>yes</prompt></action></item>
+    <item label="Reboot"><action name="Execute"><prompt>Reboot?</prompt><command>sudo reboot</command></action></item>
+    <item label="Poweroff"><action name="Execute"><prompt>Poweroff?</prompt><command>sudo poweroff</command></action></item>
+  </menu>
+</openbox_menu>

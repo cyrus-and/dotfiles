@@ -1,0 +1,65 @@
+# -*- compile-command: "killall -USR2 openbox" -*-
+
+# no padding between client and border
+window.client.padding.width: 0
+
+# title bar vertical padding
+padding.height: 1
+
+# desktop switcher padding
+padding.width: 50
+
+# no bottom handler
+window.handle.width: 0
+
+# centerd window title
+window.label.text.justify: Center
+
+# window border
+window.active.border.color:   #444444
+window.inactive.border.color: #222222
+
+# window title colors
+window.active.label.text.color:   #ff6000
+window.inactive.label.text.color: #222222
+
+# client color
+window.active.client.color: #444444
+window.inactive.client.color: #222222
+
+# menu border color
+menu.border.color: #444444
+
+# only solid color menus
+menu.*.bg: solid flat
+
+# menu title style
+menu.title.text.color:   #ff6000
+menu.title.text.justify: Center
+
+# menu item style
+menu.items.bg.color:   #000000
+menu.items.text.color: #aaaaaa
+
+# menu active item style
+menu.items.active.bg.color: #ff6000
+
+# menu disabled item style
+menu.items.disabled.text.color: #222222
+
+# menu separator style
+menu.separator.padding.width:  0
+menu.separator.padding.height: 0
+menu.separator.color:          #444444
+
+# dialog labels
+osd.label.text.color: #aaaaaa
+
+# dialog buttons style
+window.active.button.*.image.color: #ff6000
+
+# desktop switcher style
+osd.border.color:       #444444
+osd.*.bg:               solid flat
+osd.hilight.bg.color:   #ff6000
+osd.unhilight.bg.color: #000000

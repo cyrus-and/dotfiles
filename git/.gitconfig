@@ -1,0 +1,29 @@
+[user]
+	name = Andrea Cardaci
+	email = cyrus.and@gmail.com
+[core]
+	editor = emacs -Q -nw
+[color]
+	ui = auto
+[alias]
+    g = grep -i -n
+    a = add
+    au = add -u
+    ap = add -p
+    c = commit
+    ca = commit --amend
+    d = diff
+    wd = diff --word-diff
+    dc = diff --cached
+    r = reset
+    l = log --branches --remotes --tags --graph --oneline --decorate
+    s = status
+    cp = commit --allow-empty-message -m ''
+    todos = grep -n TODO
+    rebase-all = "!\
+base=$(git rev-parse master@{1});\
+for branch in $(git branch --contains $base | grep -v '*'); do\
+    git rebase --onto master $base $branch;\
+done;\
+git checkout master\
+"

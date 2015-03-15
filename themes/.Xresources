@@ -1,0 +1,26 @@
+! -*- compile-command: "xrdb -load ~/.Xresources" -*- !
+! urxvt !
+Rxvt*depth:                             32
+Rxvt*background:                        rgba:0000/0000/0000/dddd
+Rxvt*foreground:                        #aaaaaa
+Rxvt*cursorColor:                       #aaaaaa
+Rxvt*scrollBar:                         false
+Rxvt*font:                              xft:Terminus:size=14:antialias=true
+Rxvt*geometry:                          80x30
+Rxvt*saveLines:                         65535
+Rxvt*colorBD:                           White
+Rxvt*colorUL:                           Green
+Rxvt*scrollTtyKeypress:                 True
+Rxvt*perl-ext-common:
+Rxvt*perl-ext:
+
+! emacs !
+! emacs.font:                             Terminus-14:antialias=false
+emacs.font:                             Monospace-12
+! zenburn
+emacs.background:                       #3F3F3F
+! solarized
+!emacs.background:                       #002b36
+emacs.menuBar:                          off
+emacs.toolBar:                          off
+emacs.verticalScrollBars:               off

@@ -1,0 +1,6 @@
+tile_full_screen   = true
+tile_window_width  = 0
+tile_window_height = 0
+autopickup_exceptions += > curse (armour|weapon|jewellery), confusion, noise, poison, uselessness
+force_more_message += wraps
+autofight_stop = 50
