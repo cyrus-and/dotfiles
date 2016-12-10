@@ -1,0 +1,172 @@
+# general
+set $mod Mod4
+set $second Shift
+
+floating_modifier $mod
+workspace_auto_back_and_forth yes
+#focus_on_window_activation focus  # TODO requires newer version
+hide_edge_borders both
+focus_follows_mouse no
+
+# appearance
+font pango:Terminus 8
+new_window pixel 5
+new_float pixel 5
+
+# session
+bindsym $mod+Escape exec --no-startup-id "case $(echo 'Poweroff\nReboot\nLogout' | rofi -dmenu -p 'action:') in Poweroff) sudo poweroff;; Reboot) sudo reboot;; Logout) i3-msg exit;; esac"
+
+# configuration
+bindsym $mod+$second+c reload
+bindsym $mod+$second+r restart
+
+# floating
+bindsym $mod+Return floating toggle
+bindsym $mod+$second+Return fullscreen
+
+# window management
+bindsym $mod+q kill
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+$second+Left move left
+bindsym $mod+$second+Down move down
+bindsym $mod+$second+Up move up
+bindsym $mod+$second+Right move right
+
+bindsym $mod+Mod1+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Mod1+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Mod1+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Mod1+Right resize grow width 10 px or 10 ppt
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+$second+h move left
+bindsym $mod+$second+j move down
+bindsym $mod+$second+k move up
+bindsym $mod+$second+l move right
+
+bindsym $mod+Mod1+h resize shrink width 10 px or 10 ppt
+bindsym $mod+Mod1+j resize grow height 10 px or 10 ppt
+bindsym $mod+Mod1+k resize shrink height 10 px or 10 ppt
+bindsym $mod+Mod1+l resize grow width 10 px or 10 ppt
+
+# layout
+bindsym $mod+p focus parent
+bindsym $mod+c focus child
+
+bindsym $mod+Control+Up split v
+bindsym $mod+Control+Down split v
+bindsym $mod+Control+Left split h
+bindsym $mod+Control+Right split h
+bindsym $mod+x layout toggle split
+
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+d layout default
+
+# workspaces
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
+
+set $1 one
+set $2 two
+set $3 three
+set $4 four
+set $5 five
+set $6 six
+set $7 seven
+set $8 eight
+set $9 nine
+set $0 zero
+
+set $aux :
+
+bindsym $mod+1 workspace 11:$aux$1
+bindsym $mod+2 workspace 12:$aux$2
+bindsym $mod+3 workspace 13:$aux$3
+bindsym $mod+4 workspace 14:$aux$4
+bindsym $mod+5 workspace 15:$aux$5
+bindsym $mod+6 workspace 16:$aux$6
+bindsym $mod+7 workspace 17:$aux$7
+bindsym $mod+8 workspace 18:$aux$8
+bindsym $mod+9 workspace 19:$aux$9
+bindsym $mod+0 workspace 10:$aux$0
+
+bindsym $mod+$second+Prior move container to workspace prev; workspace prev
+bindsym $mod+$second+Next move container to workspace next; workspace next
+
+# XXX BUG
+#bindsym --whole-window $mod+button4 move container to workspace prev; workspace prev
+
+bindsym $mod+$second+1 move container to workspace 11:$aux$1; workspace 11:$aux$1
+bindsym $mod+$second+2 move container to workspace 12:$aux$2; workspace 12:$aux$2
+bindsym $mod+$second+3 move container to workspace 13:$aux$3; workspace 13:$aux$3
+bindsym $mod+$second+4 move container to workspace 14:$aux$4; workspace 14:$aux$4
+bindsym $mod+$second+5 move container to workspace 15:$aux$5; workspace 15:$aux$5
+bindsym $mod+$second+6 move container to workspace 16:$aux$6; workspace 16:$aux$6
+bindsym $mod+$second+7 move container to workspace 17:$aux$7; workspace 17:$aux$7
+bindsym $mod+$second+8 move container to workspace 18:$aux$8; workspace 18:$aux$8
+bindsym $mod+$second+9 move container to workspace 19:$aux$9; workspace 19:$aux$9
+bindsym $mod+$second+0 move container to workspace 10:$aux$0; workspace 10:$aux$0
+
+# colors                border  backgr. text    indicator child_border
+client.focused          #000000 #111111 #ff6000 #111111   #ffffff
+client.focused_inactive #000000 #111111 #ffffff #111111   #ffffff
+client.unfocused        #000000 #111111 #cccccc #111111   #ffffff
+
+# menu
+bindsym $mod+space exec --no-startup-id rofi -modi run -show run
+bindsym $mod+Tab exec --no-startup-id rofi -modi window -show window
+
+# applications
+bindsym $mod+w exec --no-startup-id google-chrome
+bindsym $mod+BackSpace exec i3-sensible-terminal
+bindsym $mod+Insert exec emacs
+bindsym $mod+f exec thunar
+bindsym $mod+a exec pavucontrol
+
+# MPD
+bindsym XF86AudioPause exec --no-startup-id mpc toggle
+bindsym XF86AudioPrev exec --no-startup-id mpc prev
+bindsym XF86AudioNext exec --no-startup-id mpc next
+
+bindsym XF86HomePage exec --no-startup-id mpc prev
+bindsym XF86Mail exec --no-startup-id mpc toggle
+bindsym XF86Search exec --no-startup-id mpc next
+bindsym Mod1+XF86HomePage exec --no-startup-id mpc seek -0:0:5
+bindsym Mod1+XF86Search exec --no-startup-id mpc seek +0:0:5
+
+# status bar
+bar {
+    tray_output none
+    strip_workspace_numbers yes
+    status_command i3blocks
+
+    colors {
+        # colors           border  bg      fg
+        focused_workspace  #000000 #000000 #ff6000
+        inactive_workspace #000000 #000000 #cccccc
+        urgent_workspace   #ff6000 #ff6000 #000000
+    }
+}
+
+# application-related rules
+bindsym $mod+XF86Mail workspace 2:music
+bindsym $mod+backslash workspace 3:tmux
+bindsym $mod+less workspace 4:www
+assign [class="Deluge"] 1:torrent
+assign [class="URxvt" instance="music"] 2:music
+assign [class="URxvt" instance="tmux"] 3:tmux
+assign [class="Google-chrome"] 4:www
+
+# autostart
+exec --no-startup-id google-chrome
+exec while urxvt -name music -e ncmpc; do :; done
+exec while urxvt -name tmux -e sh -c 'tmux attach || tmux new-session'; do :; done

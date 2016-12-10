@@ -1,0 +1,58 @@
+! -*- compile-command: "xrdb -load ~/.Xresources" -*-
+
+! rofi
+rofi.bw: 5
+rofi.font: Terminus 8
+rofi.color-enabled: true
+
+!                  bg      fg      bgalt   hlbg    hlfg
+rofi.color-normal: #000000,#cccccc,#000000,#000000,#ff6000
+rofi.color-urgent: #ffffff,#ffffff,#ffffff,#ffffff,#ffffff
+rofi.color-active: #cccccc,#000000,#cccccc,#ff6000,#000000
+
+!                  bg      border
+rofi.color-window: #000000,#111111
+
+! urxvt
+Rxvt*termName: xterm-256color
+Rxvt*scrollBar: false
+Rxvt*font: xft:Terminus:size=14:antialias=false
+Rxvt*geometry: 80x30
+Rxvt*saveLines: 65535
+Rxvt*scrollTtyKeypress: true
+Rxvt*perl-ext-common:
+Rxvt*perl-ext:
+Rxvt*pastableTabs: false
+Rxvt*iso14755: false
+Rxvt*iso14755_52: false
+
+! generated: colors.html 0.4 - 0.8
+*color0: #666666
+*color1: #ff4200
+*color2: #00ff00
+*color3: #ffd100
+*color4: #0074ff
+*color5: #ff29ff
+*color6: #00ffff
+*color7: #cccccc
+*color8: #666666
+*color9: #ff4200
+*color10: #00ff00
+*color11: #ffd100
+*color12: #0074ff
+*color13: #ff29ff
+*color14: #00ffff
+*color15: #cccccc
+*background: #000000
+*foreground: #cccccc
+
+! for the manual
+*colorBD: #ffffff
+*colorUL: #00ff00
+
+! emacs (match GUI settings to avoid transitions)
+emacs.font: Terminus-14
+emacs.menuBar: off
+emacs.toolBar: off
+emacs.verticalScrollBars: off
+emacs.background: #000000

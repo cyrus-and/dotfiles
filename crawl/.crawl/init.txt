@@ -1,0 +1,57 @@
+##########
+# params #
+##########
+
+tile_force_overlay      = true
+show_more               = false
+tile_full_screen        = true
+tile_window_width       = 0
+tile_window_height      = 0
+flash_screen_message   += drains, warps, wielding .* of (distortion|draining)
+autofight_stop          = 75
+explore_auto_rest       = true
+autopickup_exceptions  += <immolation
+default_manual_training = true
+auto_eat_chunks         = true
+auto_sacrifice          = true
+confirm_butcher         = never
+
+##########
+# MACROS #
+##########
+
+macros += M \{32} o
+
+#############
+# SCRIPTING #
+#############
+
+include += skills.lua
+
+{
+    function ready()
+
+        local wizard = {
+            ['Shields']        = {cap = 4},
+            ['Spellcasting']   = {},
+            ['Conjurations']   = {},
+            ['Summonings']     = {cap = 4},
+            ['Translocations'] = {cap = 4},
+            ['Fire Magic']     = {focus = true},
+            ['Air Magic']      = {focus = true},
+            ['Poison Magic']   = {},
+            ['Earth Magic']    = {}}
+
+        local fighter = {
+            ['Fighting']       = {},
+            ['Long Blades']    = {},
+            ['Dodging']        = {focus = true},
+            ['Shields']        = {focus = true, cap = 4},
+            ['Stealth']        = {}}
+
+        profile('Naga', 'Wizard', wizard)
+        profile('Octopode', 'Wizard', wizard)
+        profile('Octopode', 'Fighter', fighter)
+
+    end
+}

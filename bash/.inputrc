@@ -1,0 +1,13 @@
+$include  /etc/inputrc
+
+# Ctrl-*
+"\eOa": history-search-backward
+"\eOb": history-search-forward
+
+# Ctrl-* (tmux)
+"\eOA": history-search-backward
+"\eOB": history-search-forward
+
+# Pag-* (macOS)
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward

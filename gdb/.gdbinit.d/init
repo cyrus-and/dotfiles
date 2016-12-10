@@ -1,0 +1,10 @@
+# requires: https://github.com/cyrus-and/gdb-dashboard
+
+# enable auto-load
+set auto-load safe-path /
+
+# GDB dashboard defaults
+dashboard -layout source assembly
+dashboard -style syntax_highlighting 'monokai'
+dashboard source -style context 20
+dashboard assembly -style context 5
