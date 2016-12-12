@@ -83,6 +83,9 @@
 ;; enable S-arrows window focus switch
 (windmove-default-keybindings)
 
+;; avoid `node_modules` folder in searches
+(add-to-list 'grep-find-ignored-directories "node_modules")
+
 ;; variables
 (custom-set-variables
  ;; file management
