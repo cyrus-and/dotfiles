@@ -134,7 +134,8 @@
      (topmost-intro-cont . 0)
      (arglist-intro . +)
      (arglist-close . 0)
-     (cpp-macro . 0)))
+     (cpp-macro . 0)
+     (innamespace . 0)))
 
  ;; backup
  '(backup-by-copying t)
