@@ -84,7 +84,8 @@
 (windmove-default-keybindings)
 
 ;; avoid `node_modules` folder in searches
-(add-to-list 'grep-find-ignored-directories "node_modules")
+(eval-after-load "grep"
+  '(add-to-list 'grep-find-ignored-directories "node_modules"))
 
 ;; variables
 (custom-set-variables
