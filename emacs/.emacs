@@ -201,11 +201,10 @@
 (add-hook 'compilation-mode-hook
           (lambda () (visual-line-mode 1)))
 
-;; 80 columns mark
-(add-hook 'c-mode-hook
+;; useful highlightings
+(add-hook 'prog-mode-hook
           (lambda ()
-            (highlight-regexp "TODO" (quote hi-red-b))
-            (highlight-regexp ".\\{81\\}" (quote hi-yellow))))
+            (highlight-regexp "TODO\\|XXX" (quote hi-red-b))))
 
 ;; flyspell the whole buffer on entering the mode
 (add-hook 'flyspell-mode-hook 'flyspell-buffer)
