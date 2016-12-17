@@ -167,6 +167,7 @@
     ";; F5         grep (*)\n"
     ";; F6         shell (*)\n"
     ";; F7         compile (*)\n"
+    ";; C-F7       recompile (*)\n"
     ";; F8         gdb (*)\n"
     ";; F9         package-list-packages (*)\n"
     ";; M-s h r    highlight-regexp\n"
@@ -230,13 +231,14 @@
 ;; avoid suspend-frame (use C-x C-z instead)
 (global-unset-key (kbd "C-z"))
 
-(global-set-key (kbd "C-<f5>") 'reload-buffer)
-
 (global-set-key (kbd "<f5>") 'rgrep)
 (global-set-key (kbd "<f6>") 'eshell)
 (global-set-key (kbd "<f7>") 'compile)
 (global-set-key (kbd "<f8>") 'gdb)
 (global-set-key (kbd "<f9>") 'package-list-packages)
+
+(global-set-key (kbd "C-<f5>") 'reload-buffer)
+(global-set-key (kbd "C-<f7>") 'recompile)
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
