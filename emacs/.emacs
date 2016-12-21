@@ -244,6 +244,8 @@
 
 (global-set-key (kbd "M-_") 'toggle-comment-current-line)
 
+(global-set-key (kbd "C-c o") 'ff-find-other-file)
+
 ;;;;;;;;;;;
 ;; MAGIT ;;
 ;;;;;;;;;;;
