@@ -161,6 +161,11 @@ bar {
 bindsym $mod+XF86Mail workspace 2:music
 bindsym $mod+backslash workspace 3:tmux
 bindsym $mod+less workspace 4:www
+
+bindsym $mod+$second+XF86Mail move container to workspace 2:music; workspace 2:music
+bindsym $mod+$second+backslash move container to workspace 3:tmux; workspace 3:tmux
+bindsym $mod+$second+less move container to workspace 4:www; workspace 4:www
+
 assign [class="Deluge"] 1:torrent
 assign [class="URxvt" instance="music"] 2:music
 assign [class="URxvt" instance="tmux"] 3:tmux
