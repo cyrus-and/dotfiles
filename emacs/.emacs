@@ -37,6 +37,7 @@
    magit
    markdown-mode
    php-mode
+   protobuf-mode
    yaml-mode
    ))
 
@@ -169,7 +170,7 @@
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 5))))
  '(package-selected-packages
    (quote
-    (cmake-mode yaml-mode solarized-theme rainbow-mode protobuf-mode popup php-mode markdown-mode magit json-mode js2-mode go-mode flatland-black-theme exec-path-from-shell base16-theme auctex)))
+    (protobuf-mode cmake-mode yaml-mode solarized-theme rainbow-mode popup php-mode markdown-mode magit json-mode js2-mode go-mode flatland-black-theme exec-path-from-shell base16-theme auctex)))
  '(require-final-newline (quote ask))
  '(ring-bell-function (quote ignore))
  '(safe-local-variable-values
