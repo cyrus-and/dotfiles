@@ -62,7 +62,7 @@
      '(fringe ((t (:background "color-16"))))
      '(linum ((t (:background "color-16"))))))
 
-;; fix font sizeo on macOS
+;; fix font size on macOS
 (if (eq system-type 'darwin)
     (custom-set-faces
      '(default ((t (:height 140))))))
