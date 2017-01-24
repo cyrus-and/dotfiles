@@ -1,11 +1,3 @@
-;;;;;;;;;;
-;; TODO ;;
-;;;;;;;;;;
-
-;; find a way to disable line truncation in the minibuffer ispell help
-
-;; linum causes vertical-border flickering
-
 ;;;;;;;;;;;;;;;;;;;;
 ;; PACKAGES SETUP ;;
 ;;;;;;;;;;;;;;;;;;;;
@@ -33,10 +25,12 @@
    exec-path-from-shell
    flatland-black-theme
    go-mode
+   js2-mode
    json-mode
    magit
    markdown-mode
    php-mode
+   protobuf-mode
    yaml-mode
    ))
 
@@ -92,6 +86,9 @@
 
 ;; variables
 (custom-set-variables
+ ;; don't care about the customization interface
+ '(custom-file "/dev/null")
+
  ;; file management
  '(vc-follow-symlinks t)
 
@@ -145,7 +142,7 @@
 
  ;; backup
  '(backup-by-copying t)
- '(backup-directory-alist '(("." . "~/.emacs_backups")))
+ '(backup-directory-alist '(("." . "~/.emacs-backups")))
 
  ;; add some common safe file/dir variables to avoid prompt
  '(safe-local-variable-values
