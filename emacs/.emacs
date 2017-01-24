@@ -31,6 +31,7 @@
    markdown-mode
    php-mode
    protobuf-mode
+   rainbow-mode
    yaml-mode
    ))
 
@@ -47,6 +48,7 @@
  '(mode-line-highlight ((t (:box nil :inverse-video t))))
  '(lazy-highlight ((t (:foreground "#000000"))))
  '(isearch ((t (:foreground "#000000" :background "#1278A8"))))
+ '(isearch-fail ((t (:background nil :inherit (hi-red-b)))))
  '(region ((t (:foreground "#77BBDD" :background "#1278A8"))))
  '(fringe ((t (:foreground "#323232" :background "#000000"))))
  '(vertical-border ((t (:foreground "#323232"))))
@@ -71,6 +73,12 @@
 ;; CUSTOMIZATIONS ;;
 ;;;;;;;;;;;;;;;;;;;;
 
+;; proper linum format
+(defadvice linum-update-window (around linum-dynamic activate)
+  (let* ((width (length (number-to-string (count-lines (point-min) (point-max)))))
+         (linum-format (format " %%0%dd" width)))
+    ad-do-it))
+
 ;; fix PATH on macOS
 (exec-path-from-shell-initialize)
 
@@ -86,8 +94,8 @@
 
 ;; variables
 (custom-set-variables
- ;; don't care about the customization interface
- '(custom-file "/dev/null")
+ ;; customization interface output to a separate file
+ '(custom-file "~/.emacs-customization")
 
  ;; file management
  '(vc-follow-symlinks t)
@@ -118,9 +126,6 @@
  '(mouse-wheel-progressive-speed nil)
  '(mac-right-option-modifier 'none)
  '(ring-bell-function 'ignore)
-
- ;; line number mode
- '(linum-format 'dynamic)
 
  ;; minibuffer history
  '(savehist-mode t)
