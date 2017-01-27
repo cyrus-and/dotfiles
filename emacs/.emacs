@@ -235,6 +235,12 @@
 ;; avoid suspend-frame (use C-x C-z instead)
 (global-unset-key (kbd "C-z"))
 
+;; disable keys to fix bad behaviors
+(global-unset-key (kbd "<deletechar>"))
+(global-unset-key (kbd "<home>"))
+(global-unset-key (kbd "<next>"))
+(global-unset-key (kbd "<prior>"))
+
 (global-set-key (kbd "<f5>") 'rgrep)
 (global-set-key (kbd "<f6>") 'eshell)
 (global-set-key (kbd "<f7>") 'recompile)
