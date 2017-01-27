@@ -127,6 +127,9 @@
  '(mac-right-option-modifier 'none)
  '(ring-bell-function 'ignore)
 
+ ;; *intuitive* scrolling
+ '(scroll-conservatively 101)
+
  ;; minibuffer history
  '(savehist-mode t)
  '(history-length t)
