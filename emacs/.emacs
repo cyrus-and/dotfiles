@@ -23,14 +23,14 @@
     "M-h        mark-paragraph"
     "M-s h r    highlight-regexp"
     "M-z        zap-to-char"
-    "M-|        shell-command-on-region"
+    "M-|        shell-command-on-region (replace with C-u)"
     ""
     "C-F5       reload-buffer"
     "F5         rgrep"
     "F6         shell"
     "F7         recompile-or-compile"
-    "F8         gdb"
-    "F9         package-list-packages"))
+    "F8         package-list-packages"))
+    "F12        magit-status"))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PACKAGES SETUP ;;
