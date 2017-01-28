@@ -1,3 +1,7 @@
+# environment
+export EDITOR='emacsclient -t'
+export GIT_EDITOR="$EDITOR"
+
 # history
 PROMPT_COMMAND='history -a'
 shopt -s histappend
@@ -35,6 +39,7 @@ fi
 # aliases
 alias grep='grep --color=auto'
 alias mydu='du -s * .[^.]* | sort -n'
+alias emacs='emacsclient -c'
 alias e='emacs -nw'
 alias l='ls -lArt'
 alias p='python'

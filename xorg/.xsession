@@ -7,6 +7,7 @@ feh --bg-center ~/.background &
 
 # non-GUI autostart
 LANG=en_US.UTF-8 ~/.dropbox-dist/dropboxd &
+emacs --daemon &
 
 # start WM
 exec i3

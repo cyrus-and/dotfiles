@@ -1,8 +1,6 @@
 [user]
     name = Andrea Cardaci
     email = cyrus.and@gmail.com
-[core]
-    editor = emacs -nw
 [color]
     ui = auto
 [alias]
