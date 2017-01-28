@@ -1,3 +1,37 @@
+;;;;;;;;;;;;;:;;
+;; CHEATSHEET ;;
+;;;;;;;;;;;;;;;;
+
+(defconst cheatsheet
+  '("% m        dired-mark-files-regexp"
+    "C-s C-w    isearch-yank-word-or-char"
+    "C-x -      shrink-window-if-larger-than-buffer"
+    "C-x C-;    comment-line"
+    "C-x C-SPC  pop-global-mark"
+    "C-x C-b    list-buffers"
+    "C-x C-q    wdired-change-to-wdired-mode"
+    "C-x SPC    rectangle-mark-mode"
+    "C-x d      dired"
+    "C-x n n    narrow-to-region"
+    "C-x n w    widen"
+    "C-x r SPC  point-to-register"
+    "C-x r j    jump-to-register"
+    "C-x w r    unhighlight-regexp"
+    "C-x z      repeat"
+    "M-S-/      dabbrev-expand"
+    "M-^        delete-indentation"
+    "M-h        mark-paragraph"
+    "M-s h r    highlight-regexp"
+    "M-z        zap-to-char"
+    "M-|        shell-command-on-region"
+    ""
+    "C-F5       reload-buffer"
+    "F5         rgrep"
+    "F6         shell"
+    "F7         recompile-or-compile"
+    "F8         gdb"
+    "F9         package-list-packages"))
+
 ;;;;;;;;;;;;;;;;;;;;
 ;; PACKAGES SETUP ;;
 ;;;;;;;;;;;;;;;;;;;;
@@ -19,8 +53,7 @@
    (unless (package-installed-p package)
      (package-install package)))
  ;; packages...
- '(
-   auctex
+ '(auctex
    cmake-mode
    exec-path-from-shell
    flatland-black-theme
@@ -32,8 +65,7 @@
    php-mode
    protobuf-mode
    rainbow-mode
-   yaml-mode
-   ))
+   yaml-mode))
 
 ;;;;;;;;;;;
 ;; THEME ;;
@@ -165,38 +197,7 @@
  ;; no startup screen, use scratch
  '(inhibit-startup-screen t)
  '(initial-scratch-message
-   (concat
-    ";; Cheatsheet:\n"
-    ";;\n"
-    ";; C-x C-q    wdired-change-to-wdired-mode\n"
-    ";; C-x d      dired (used to filter, e.g. C-x d *.c)\n"
-    ";; M-S-/      dabbrev-expand\n"
-    ";; C-x C-b    list-buffers\n"
-    ";; M-z        zap-to-char\n"
-    ";; C-s C-w    'isearch next word'\n"
-    ";; F5         grep (*)\n"
-    ";; F6         shell (*)\n"
-    ";; F7         compile (*)\n"
-    ";; C-F7       recompile (*)\n"
-    ";; F8         gdb (*)\n"
-    ";; F9         package-list-packages (*)\n"
-    ";; M-s h r    highlight-regexp\n"
-    ";; C-x w r    unhighlight-regexp\n"
-    ";; % m        dired-mark-files-regexp\n"
-    ";; M-^        delete-indentation\n"
-    ";; M-|        shell-command-on-region\n"
-    ";; C-x -      shrink-window-if-larger-than-buffer\n"
-    ";; C-x z      repeat\n"
-    ";; M-_        toggle-comment-current-line (*)\n"
-    ";; C-x n n    narrow-to-region\n"
-    ";; C-x n w    widen\n"
-    ";; M-h        mark-paragraph\n"
-    ";; C-x C-SPC  pop-global-mark\n"
-    ";; C-x r SPC  point-to-register\n"
-    ";; C-x r j    jump-to-register\n"
-    ";; C-x SPC    rectangle-mark-mode\n"
-    ";;\n"
-    ";; (*) custom\n")))
+   (mapconcat (lambda (l) (format ";; %s\n" l)) cheatsheet "")))
 
 ;;;;;;;;;;;
 ;; HOOKS ;;
@@ -224,6 +225,12 @@
 ;; FUNCTIONS ;;
 ;;;;;;;;;;;;;;;
 
+(defun recompile-or-compile ()
+  (interactive)
+  (if (fboundp 'recompile)
+      (recompile)
+    (call-interactively 'compile)))
+
 (defun reload-buffer ()
   (interactive)
   (revert-buffer t t))
@@ -232,6 +239,7 @@
   (interactive)
   (comment-or-uncomment-region (line-beginning-position)
                                (line-end-position))
+  (indent-according-to-mode)
   (next-line))
 
 ;;;;;;;;;;;;;;;
@@ -247,20 +255,15 @@
 (global-unset-key (kbd "<next>"))
 (global-unset-key (kbd "<prior>"))
 
-(global-set-key (kbd "<f5>") 'rgrep)
-(global-set-key (kbd "<f6>") 'eshell)
-(global-set-key (kbd "<f7>") 'recompile)
-(global-set-key (kbd "<f8>") 'gdb)
-(global-set-key (kbd "<f9>") 'package-list-packages)
-
-(global-set-key (kbd "C-<f5>") 'reload-buffer)
-(global-set-key (kbd "C-<f7>") 'compile)
-
+;; ibuffer override
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(global-set-key (kbd "M-_") 'toggle-comment-current-line)
-
-(global-set-key (kbd "C-c o") 'ff-find-other-file)
+;; common tools
+(global-set-key (kbd "C-<f5>") 'reload-buffer)
+(global-set-key (kbd "<f5>") 'rgrep)
+(global-set-key (kbd "<f6>") 'eshell)
+(global-set-key (kbd "<f7>") 'recompile-or-compile)
+(global-set-key (kbd "<f8>") 'package-list-packages)
 
 ;;;;;;;;;;;
 ;; MAGIT ;;
