@@ -75,8 +75,11 @@
 
 ;; proper linum format
 (defadvice linum-update-window (around linum-dynamic activate)
-  (let* ((width (length (number-to-string (count-lines (point-min) (point-max)))))
-         (linum-format (format " %%0%dd" width)))
+  (let* ((lines (count-lines (point-min) (point-max)))
+         (width (length (number-to-string lines)))
+         (base-format (format "%%0%dd" width))
+         (padding-format (if (display-graphic-p) " %s" "%s "))
+         (linum-format (format padding-format base-format)))
     ad-do-it))
 
 ;; fix PATH on macOS
