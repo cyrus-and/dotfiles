@@ -11,7 +11,7 @@
     "C-x C-b    list-buffers"
     "C-x C-q    wdired-change-to-wdired-mode"
     "C-x M-:    repeat-complex-command"
-    "C-x SPC    rectangle-mark-mode"ssds
+    "C-x SPC    rectangle-mark-mode"
     "C-x d      dired"
     "C-x n n    narrow-to-region"
     "C-x n w    widen"
