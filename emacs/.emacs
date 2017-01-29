@@ -236,13 +236,6 @@
   (interactive)
   (revert-buffer t t))
 
-(defun toggle-comment-current-line ()
-  (interactive)
-  (comment-or-uncomment-region (line-beginning-position)
-                               (line-end-position))
-  (indent-according-to-mode)
-  (next-line))
-
 ;;;;;;;;;;;;;;;
 ;; SHORTCUTS ;;
 ;;;;;;;;;;;;;;;
