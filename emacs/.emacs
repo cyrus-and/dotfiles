@@ -10,7 +10,8 @@
     "C-x C-SPC  pop-global-mark"
     "C-x C-b    list-buffers"
     "C-x C-q    wdired-change-to-wdired-mode"
-    "C-x SPC    rectangle-mark-mode"
+    "C-x M-:    repeat-complex-command"
+    "C-x SPC    rectangle-mark-mode"ssds
     "C-x d      dired"
     "C-x n n    narrow-to-region"
     "C-x n w    widen"
@@ -21,6 +22,7 @@
     "M-S-/      dabbrev-expand"
     "M-^        delete-indentation"
     "M-h        mark-paragraph"
+    "M-s h .    highlight-symbol-at-point"
     "M-s h r    highlight-regexp"
     "M-z        zap-to-char"
     "M-|        shell-command-on-region (replace with C-u)"
@@ -29,7 +31,7 @@
     "F5         rgrep"
     "F6         shell"
     "F7         recompile-or-compile"
-    "F8         package-list-packages"))
+    "F8         package-list-packages"
     "F12        magit-status"))
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -49,10 +51,7 @@
 
 ;; install custom packages the first time
 (mapc
- (lambda (package)
-   (unless (package-installed-p package)
-     (package-install package)))
- ;; packages...
+ 'package-install
  '(auctex
    cmake-mode
    exec-path-from-shell
@@ -75,28 +74,28 @@
 
 ;; custom theme tuning
 (custom-set-faces
- '(default ((t (:foreground "#EEEEEE"))))
- '(mode-line ((t (:background "#323232"))))
- '(mode-line-highlight ((t (:box nil :inverse-video t))))
- '(lazy-highlight ((t (:foreground "#000000"))))
- '(isearch ((t (:foreground "#000000" :background "#1278A8"))))
- '(isearch-fail ((t (:background nil :inherit (hi-red-b)))))
- '(region ((t (:foreground "#77BBDD" :background "#1278A8"))))
- '(fringe ((t (:foreground "#323232" :background "#000000"))))
- '(vertical-border ((t (:foreground "#323232"))))
- '(linum ((t (:background "#000000" :inherit (default)))))
+ '(default                      ((t (:foreground "#EEEEEE"))))
+ '(mode-line                    ((t (:background "#323232"))))
+ '(mode-line-highlight          ((t (:box nil :inverse-video t))))
+ '(lazy-highlight               ((t (:foreground "#000000"))))
+ '(isearch                      ((t (:foreground "#000000" :background "#1278A8"))))
+ '(isearch-fail                 ((t (:background nil :inherit (hi-red-b)))))
+ '(region                       ((t (:foreground "#77BBDD" :background "#1278A8"))))
+ '(fringe                       ((t (:foreground "#323232" :background "#000000"))))
+ '(vertical-border              ((t (:foreground "#323232"))))
+ '(linum                        ((t (:background "#000000" :inherit (default)))))
  '(font-lock-variable-name-face ((t (:foreground "#B8D977")))))
 
 ;; fix pure black background independently of what *black* is for the terminal
 (if (not (display-graphic-p))
     (custom-set-faces
-     '(default ((t (:background "color-16"))))
+     '(default        ((t (:background "color-16"))))
      '(lazy-highlight ((t (:foreground "color-16"))))
-     '(isearch ((t (:foreground "color-16"))))
-     '(fringe ((t (:background "color-16"))))
-     '(linum ((t (:background "color-16"))))))
+     '(isearch        ((t (:foreground "color-16"))))
+     '(fringe         ((t (:background "color-16"))))
+     '(linum          ((t (:background "color-16"))))))
 
-;; fix font size on macOS
+;; fix font size on macOS retina
 (if (eq system-type 'darwin)
     (custom-set-faces
      '(default ((t (:height 140))))))
@@ -189,15 +188,16 @@
 
  ;; add some common safe file/dir variables to avoid prompt
  '(safe-local-variable-values
-   (quote
-    ((ispell-silently-savep . t) ; auto-save personal dictionatu
+   '(;; auto-save personal dictionatu
+     (ispell-silently-savep . t)
+     ;; allows to define a personal local dictionary
      (eval setq ispell-personal-dictionary
-           (concat default-directory ".dictionary"))))) ; define personal dictionary
+           (concat default-directory ".dictionary"))))
 
  ;; no startup screen, use scratch
  '(inhibit-startup-screen t)
  '(initial-scratch-message
-   (mapconcat (lambda (l) (format ";; %s\n" l)) cheatsheet "")))
+   (mapconcat (lambda (line) (format ";; %s\n" line)) cheatsheet "")))
 
 ;;;;;;;;;;;
 ;; HOOKS ;;
@@ -216,7 +216,8 @@
 ;; useful highlightings
 (add-hook 'prog-mode-hook
           (lambda ()
-            (highlight-regexp "TODO\\|XXX" (quote hi-red-b))))
+            (highlight-regexp "TODO" 'hi-red-b)
+            (highlight-regexp "XXX" 'hi-red-b)))
 
 ;; flyspell the whole buffer on entering the mode
 (add-hook 'flyspell-mode-hook 'flyspell-buffer)
