@@ -58,6 +58,6 @@ emacs.verticalScrollBars: off
 emacs.background: #000000
 
 ! emacs (lucid widgets)
-emacs.*.font: Terminus-10
-emacs.*.foreground: #eeeeee
-emacs.*.background: #000000
+emacs.menu*.font: Terminus-10
+emacs.menu*.foreground: #eeeeee
+emacs.menu*.background: #000000
