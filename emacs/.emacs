@@ -254,6 +254,7 @@
 
 ;; common tools
 (global-set-key (kbd "C-<f5>") 'reload-buffer)
+(global-set-key (kbd "C-<f7>") 'compile)
 (global-set-key (kbd "<f5>") 'rgrep)
 (global-set-key (kbd "<f6>") 'eshell)
 (global-set-key (kbd "<f7>") 'recompile-or-compile)
