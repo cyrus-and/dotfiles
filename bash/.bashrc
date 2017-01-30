@@ -39,7 +39,7 @@ fi
 # aliases
 alias grep='grep --color=auto'
 alias mydu='du -s * .[^.]* | sort -n'
-alias emacs='emacsclient -c'
+alias emacs='emacsclient -c -a emacs'
 alias e='emacs -nw'
 alias l='ls -lArt'
 alias p='python'

@@ -128,6 +128,9 @@
 
 ;; variables
 (custom-set-variables
+ ;; call the garbage collector less often
+ '(gc-cons-threshold (expt 2 24)) ; 16MB
+
  ;; customization interface output to a separate file
  '(custom-file "~/.emacs-customization")
 
@@ -204,7 +207,7 @@
 ;;;;;;;;;;;
 
 ;; linum mode for file-backed buffers only
-(add-hook 'find-file-hook 'linum-mode)
+;; (add-hook 'find-file-hook 'linum-mode) ; linum is fucking slow!
 
 ;; delete trailing spaces on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
