@@ -75,11 +75,13 @@
 ;; custom theme tuning
 (custom-set-faces
  '(default                      ((t (:foreground "#EEEEEE"))))
+ '(error                        ((t (:foreground "red1" :weight bold))))
+ '(success                      ((t (:foreground "green1" :weight bold))))
  '(mode-line                    ((t (:background "#323232"))))
  '(mode-line-highlight          ((t (:box nil :inverse-video t))))
  '(lazy-highlight               ((t (:foreground "#000000"))))
  '(isearch                      ((t (:foreground "#000000" :background "#1278A8"))))
- '(isearch-fail                 ((t (:background nil :inherit (hi-red-b)))))
+ '(isearch-fail                 ((t (:background nil :inherit (error)))))
  '(region                       ((t (:foreground "#77BBDD" :background "#1278A8"))))
  '(fringe                       ((t (:foreground "#323232" :background "#000000"))))
  '(vertical-border              ((t (:foreground "#323232"))))
@@ -164,6 +166,7 @@
  '(mouse-wheel-progressive-speed nil)
  '(mac-right-option-modifier 'none)
  '(ring-bell-function 'ignore)
+ '(font-lock-maximum-decoration 2)
 
  ;; *intuitive* scrolling
  '(scroll-conservatively 101)
@@ -220,8 +223,10 @@
 ;; useful highlightings
 (add-hook 'prog-mode-hook
           (lambda ()
-            (highlight-regexp "TODO" 'hi-red-b)
-            (highlight-regexp "XXX" 'hi-red-b)))
+            (font-lock-add-keywords
+             nil
+             '(("\\<TODO\\>" 0 font-lock-warning-face t)
+               ("\\<XXX\\>" 0 font-lock-warning-face t)))))
 
 ;; flyspell the whole buffer on entering the mode
 (add-hook 'flyspell-mode-hook 'flyspell-buffer)
