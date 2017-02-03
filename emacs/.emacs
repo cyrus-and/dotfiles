@@ -106,6 +106,13 @@
 ;; CUSTOMIZATIONS ;;
 ;;;;;;;;;;;;;;;;;;;;
 
+;; cleaner rgrep output
+(defadvice rgrep (after delete-grep-header activate)
+  (save-excursion
+    (with-current-buffer grep-last-buffer
+      (goto-line 5)
+      (narrow-to-region (point) (point-max)))))
+
 ;; proper linum format
 (defadvice linum-update-window (around linum-dynamic activate)
   (let* ((lines (count-lines (point-min) (point-max)))
@@ -130,6 +137,9 @@
 
 ;; variables
 (custom-set-variables
+ ;; make fail at the first error
+ '(compile-command "make")
+
  ;; call the garbage collector less often
  '(gc-cons-threshold (expt 2 24)) ; 16MB
 
