@@ -154,7 +154,7 @@ bar {
         # colors           border  bg      fg
         focused_workspace  #000000 #000000 #ff6000
         inactive_workspace #000000 #000000 #cccccc
-        urgent_workspace   #ff6000 #ff6000 #000000
+        urgent_workspace   #ff6000 #ff6000 #010101  # XXX #000000 doesn't work...
     }
 }
 
