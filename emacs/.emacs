@@ -156,6 +156,7 @@
  '(column-number-mode t)
  '(show-paren-mode t)
  '(require-final-newline 'ask)
+ '(electric-pair-mode t)
 
  ;; dired listing options
  '(dired-listing-switches
