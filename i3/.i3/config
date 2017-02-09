@@ -132,7 +132,7 @@ bindsym $mod+Shift+Control+0 move workspace 20:$marker$1; workspace 20:$marker$1
 # FIXED WORKSPACES #
 ####################
 
-# hotkey exception: Control not used to switch to fixed workspaces
+# XXX hotkey exception: Control not used to switch to fixed workspaces
 
 # torrent client
 set $torrent_ws 1:torrent
@@ -143,15 +143,15 @@ set $music_ws 2:music
 assign [class="URxvt" instance="music"] $music_ws
 bindsym $mod+XF86Mail workspace $music_ws
 
-# tmux session
-set $tmux_ws 3:tmux
-assign [class="URxvt" instance="tmux"] $tmux_ws
-bindsym $mod+backslash workspace $tmux_ws
-
 # browser
 set $www_ws 3:www
 assign [class="Google-chrome"] $www_ws
 bindsym $mod+less workspace $www_ws
+
+# tmux session
+set $tmux_ws 4:tmux
+assign [class="URxvt" instance="tmux"] $tmux_ws
+bindsym $mod+backslash workspace $tmux_ws
 
 #########################
 # APPLICATION LAUNCHERS #
@@ -207,5 +207,3 @@ bar {
 exec --no-startup-id google-chrome
 exec while urxvt -name music -e ncmpc; do :; done
 exec while urxvt -name tmux -e sh -c 'tmux attach || tmux new-session'; do :; done
-
-################################################################################
