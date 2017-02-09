@@ -113,15 +113,6 @@
       (goto-line 5)
       (narrow-to-region (point) (point-max)))))
 
-;; proper linum format
-(defadvice linum-update-window (around linum-dynamic activate)
-  (let* ((lines (count-lines (point-min) (point-max)))
-         (width (length (number-to-string lines)))
-         (base-format (format "%%0%dd" width))
-         (padding-format (if (display-graphic-p) " %s" "%s "))
-         (linum-format (format padding-format base-format)))
-    ad-do-it))
-
 ;; fix PATH on macOS
 (exec-path-from-shell-initialize)
 
@@ -178,6 +169,7 @@
  '(mac-right-option-modifier 'none)
  '(ring-bell-function 'ignore)
  '(font-lock-maximum-decoration 2)
+ '(winner-mode t)
 
  ;; *intuitive* scrolling
  '(scroll-conservatively 101)
@@ -220,9 +212,6 @@
 ;;;;;;;;;;;
 ;; HOOKS ;;
 ;;;;;;;;;;;
-
-;; linum mode for file-backed buffers only
-;; (add-hook 'find-file-hook 'linum-mode) ; linum is fucking slow!
 
 ;; delete trailing spaces on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -297,6 +286,3 @@
 
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
-;; winner-mode
-(winner-mode 1)
