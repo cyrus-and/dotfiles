@@ -266,8 +266,9 @@
 ;; disable keys to fix bad behaviors
 (global-unset-key (kbd "<deletechar>"))
 (global-unset-key (kbd "<home>"))
-(global-unset-key (kbd "<next>"))
+(global-unset-key (kbd "<end>"))
 (global-unset-key (kbd "<prior>"))
+(global-unset-key (kbd "<next>"))
 
 ;; ibuffer override
 (global-set-key (kbd "C-x C-b") 'ibuffer)
