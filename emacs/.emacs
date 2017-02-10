@@ -133,7 +133,7 @@
  '(gc-cons-threshold (expt 2 24)) ; 16MB
 
  ;; customization interface output to a separate file
- '(custom-file "~/.emacs-customization")
+ '(custom-file "~/.emacs.d/customization")
 
  ;; file management
  '(vc-follow-symlinks t)
@@ -192,7 +192,7 @@
 
  ;; backup
  '(backup-by-copying t)
- '(backup-directory-alist '(("." . "~/.emacs-backups")))
+ '(backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
  ;; add some common safe file/dir variables to avoid prompt
  '(safe-local-variable-values
