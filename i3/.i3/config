@@ -27,7 +27,7 @@ bindsym $mod+Control+F5 restart
 # MENUS #
 #########
 
-# session
+# session (add `, NOPASSWD: /sbin/reboot, NOPASSWD: /sbin/poweroff` to `/etc/sudoers`)
 bindsym $mod+Escape exec --no-startup-id "case $(echo 'Poweroff\nReboot\nLogout' | rofi -dmenu -p 'action:') in Poweroff) sudo poweroff;; Reboot) sudo reboot;; Logout) i3-msg exit;; esac"
 
 # run
