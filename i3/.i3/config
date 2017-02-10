@@ -71,8 +71,8 @@ bindsym $mod+d layout default
 # split
 bindsym $mod+p focus parent
 bindsym $mod+c focus child
-bindsym $mod+Control+quotedbl split v
-bindsym $mod+Control+percent split h
+bindsym $mod+Shift+quotedbl split v
+bindsym $mod+Shift+percent split h
 bindsym $mod+x layout toggle split
 
 ##############
