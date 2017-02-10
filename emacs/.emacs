@@ -120,9 +120,13 @@
 ;; enable S-arrows window focus switch
 (windmove-default-keybindings)
 
-;; avoid `node_modules` folder in searches
+;; ignore `node_modules` folder in searches
 (eval-after-load "grep"
   '(add-to-list 'grep-find-ignored-directories "node_modules"))
+
+;; customization interface output to a separate file
+(setq custom-file "~/.emacs.d/customization")
+(load custom-file t)
 
 ;; variables
 (custom-set-variables
@@ -131,9 +135,6 @@
 
  ;; call the garbage collector less often
  '(gc-cons-threshold (expt 2 24)) ; 16MB
-
- ;; customization interface output to a separate file
- '(custom-file "~/.emacs.d/customization")
 
  ;; file management
  '(vc-follow-symlinks t)
