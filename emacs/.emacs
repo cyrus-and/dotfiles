@@ -38,33 +38,31 @@
 ;; PACKAGES SETUP ;;
 ;;;;;;;;;;;;;;;;;;;;
 
-;; initialize package system
+;; initialize the package system
 (package-initialize)
 
 ;; add additional repositories
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 
-;; refresh the package list the first time
+;; refresh the package list and install custom packages the first time
 (unless package-archive-contents
-  (package-refresh-contents))
-
-;; install custom packages the first time
-(mapc
- 'package-install
- '(auctex
-   cmake-mode
-   exec-path-from-shell
-   flatland-black-theme
-   go-mode
-   js2-mode
-   json-mode
-   magit
-   markdown-mode
-   php-mode
-   protobuf-mode
-   rainbow-mode
-   yaml-mode))
+  (package-refresh-contents)
+  (mapc
+   'package-install
+   '(auctex
+     cmake-mode
+     exec-path-from-shell
+     flatland-black-theme
+     go-mode
+     js2-mode
+     json-mode
+     magit
+     markdown-mode
+     php-mode
+     protobuf-mode
+     rainbow-mode
+     yaml-mode)))
 
 ;;;;;;;;;;;
 ;; THEME ;;
