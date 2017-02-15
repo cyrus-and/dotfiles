@@ -1,19 +1,27 @@
 ! -*- compile-command: "xrdb -load ~/.Xresources" -*-
 
-! rofi
+!!!!!!!!
+! rofi !
+!!!!!!!!
+
+! settings
 rofi.bw: 5
 rofi.font: Terminus 8
 rofi.color-enabled: true
 
-!                  bg      fg      bgalt   hlbg    hlfg
+! colors           bg      fg      bgalt   hlbg    hlfg
 rofi.color-normal: #000000,#cccccc,#000000,#000000,#ff6000
 rofi.color-urgent: #ffffff,#ffffff,#ffffff,#ffffff,#ffffff
 rofi.color-active: #cccccc,#000000,#cccccc,#ff6000,#000000
 
-!                  bg      border
+! colors           bg      border
 rofi.color-window: #000000,#111111
 
-! urxvt
+!!!!!!!!!
+! urxvt !
+!!!!!!!!!
+
+! settings
 Rxvt*termName: xterm-256color
 Rxvt*scrollBar: false
 Rxvt*font: xft:Terminus:size=14:antialias=false
@@ -27,7 +35,11 @@ Rxvt*pastableTabs: false
 Rxvt*iso14755: false
 Rxvt*iso14755_52: false
 
-! generated: colors.html 0.4 - 0.8
+! base colors
+*background: #000000
+*foreground: #cccccc
+
+! palette (from colors.html 0.4 - 0.8)
 *color0: #666666
 *color1: #ff4200
 *color2: #00ff00
@@ -44,21 +56,23 @@ Rxvt*iso14755_52: false
 *color13: #ff29ff
 *color14: #00ffff
 *color15: #cccccc
-*background: #000000
-*foreground: #cccccc
 
-! for the manual
+! font styles
 *colorBD: #ffffff
 *colorUL: #00ff00
 
-! emacs (match GUI settings to avoid transitions)
+!!!!!!!!!
+! emacs !
+!!!!!!!!!
+
+! GUI settings
 emacs.font: Terminus-14
 emacs.menuBar: off
 emacs.toolBar: off
 emacs.verticalScrollBars: off
 emacs.background: #000000
 
-! emacs (lucid widgets)
+! lucid widgets
 emacs.menu*.font: Terminus-10
 emacs.menu*.foreground: #eeeeee
 emacs.menu*.background: #000000
