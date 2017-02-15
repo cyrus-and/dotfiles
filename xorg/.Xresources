@@ -17,6 +17,7 @@ rofi.color-window: #000000,#111111
 Rxvt*termName: xterm-256color
 Rxvt*scrollBar: false
 Rxvt*font: xft:Terminus:size=14:antialias=false
+Rxvt*internalBorder: 7
 Rxvt*geometry: 80x30
 Rxvt*saveLines: 65535
 Rxvt*scrollTtyKeypress: true

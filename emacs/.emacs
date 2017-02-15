@@ -17,6 +17,7 @@
     "C-x n w    widen"
     "C-x r SPC  point-to-register"
     "C-x r j    jump-to-register"
+    "C-x r w    window-configuration-to-register"
     "C-x w r    unhighlight-regexp"
     "C-x z      repeat"
     "M-S-/      dabbrev-expand"
@@ -73,6 +74,7 @@
 ;; custom theme tuning
 (custom-set-faces
  '(default                      ((t (:foreground "#EEEEEE"))))
+ '(cursor                       ((t (:background "#FFFFFF"))))
  '(error                        ((t (:foreground "red1" :weight bold))))
  '(success                      ((t (:foreground "green1" :weight bold))))
  '(mode-line                    ((t (:background "#323232"))))
