@@ -176,9 +176,10 @@ bindsym Mod1+XF86Search exec --no-startup-id mpc seek +0:0:5
 ##########
 
 # colors                border  backgr. text    indic.  child_border
-client.focused          #000000 #111111 #ff6000 #111111 #111111
-client.focused_inactive #000000 #111111 #ffffff #111111 #111111
-client.unfocused        #000000 #111111 #cccccc #111111 #111111
+client.focused          #000000 #000000 #ff6000 #111111 #111111
+client.focused_inactive #000000 #000000 #ffffff #111111 #111111
+client.unfocused        #000000 #000000 #cccccc #111111 #111111
+client.urgent           #ff6000 #ff6000 #000000 #ff6000 #ff6000
 client.background       #000000
 
 #######
