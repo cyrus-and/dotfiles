@@ -74,5 +74,3 @@ emacs.background: #000000
 
 ! lucid widgets
 emacs.menu*.font: Terminus-10
-emacs.menu*.foreground: #eeeeee
-emacs.menu*.background: #000000

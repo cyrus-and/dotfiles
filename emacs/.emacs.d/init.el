@@ -69,38 +69,40 @@
 ;; THEME ;;
 ;;;;;;;;;;;
 
-(load-theme 'flatland-black t)
+(load-theme 'my t)
 
-;; custom theme tuning
-(custom-set-faces
- '(default                      ((t (:foreground "#EEEEEE"))))
- '(cursor                       ((t (:background "#FFFFFF"))))
- '(error                        ((t (:foreground "red1" :weight bold))))
- '(success                      ((t (:foreground "green1" :weight bold))))
- '(mode-line                    ((t (:background "#323232"))))
- '(mode-line-highlight          ((t (:box nil :inverse-video t))))
- '(lazy-highlight               ((t (:foreground "#000000"))))
- '(isearch                      ((t (:foreground "#000000" :background "#1278A8"))))
- '(isearch-fail                 ((t (:background nil :inherit (error)))))
- '(region                       ((t (:foreground "#77BBDD" :background "#1278A8"))))
- '(fringe                       ((t (:foreground "#323232" :background "#000000"))))
- '(vertical-border              ((t (:foreground "#323232"))))
- '(linum                        ((t (:background "#000000" :inherit (default)))))
- '(font-lock-variable-name-face ((t (:foreground "#B8D977")))))
+;; (load-theme 'flatland-black t)
 
-;; fix pure black background independently of what *black* is for the terminal
-(if (not (display-graphic-p))
-    (custom-set-faces
-     '(default        ((t (:background "color-16"))))
-     '(lazy-highlight ((t (:foreground "color-16"))))
-     '(isearch        ((t (:foreground "color-16"))))
-     '(fringe         ((t (:background "color-16"))))
-     '(linum          ((t (:background "color-16"))))))
+;; ;; custom theme tuning
+;; (custom-set-faces
+;;  '(default                      ((t (:foreground "#EEEEEE"))))
+;;  '(cursor                       ((t (:background "#FFFFFF"))))
+;;  '(error                        ((t (:foreground "red1" :weight bold))))
+;;  '(success                      ((t (:foreground "green1" :weight bold))))
+;;  '(mode-line                    ((t (:background "#323232"))))
+;;  '(mode-line-highlight          ((t (:box nil :inverse-video t))))
+;;  '(lazy-highlight               ((t (:foreground "#000000"))))
+;;  '(isearch                      ((t (:foreground "#000000" :background "#1278A8"))))
+;;  '(isearch-fail                 ((t (:background nil :inherit (error)))))
+;;  '(region                       ((t (:foreground "#77BBDD" :background "#1278A8"))))
+;;  '(fringe                       ((t (:foreground "#323232" :background "#000000"))))
+;;  '(vertical-border              ((t (:foreground "#323232"))))
+;;  '(linum                        ((t (:background "#000000" :inherit (default)))))
+;;  '(font-lock-variable-name-face ((t (:foreground "#B8D977")))))
 
-;; fix font size on macOS retina
-(if (eq system-type 'darwin)
-    (custom-set-faces
-     '(default ((t (:height 140))))))
+;; ;; fix pure black background independently of what *black* is for the terminal
+;; (if (not (display-graphic-p))
+;;     (custom-set-faces
+;;      '(default        ((t (:background "color-16"))))
+;;      '(lazy-highlight ((t (:foreground "color-16"))))
+;;      '(isearch        ((t (:foreground "color-16"))))
+;;      '(fringe         ((t (:background "color-16"))))
+;;      '(linum          ((t (:background "color-16"))))))
+
+;; ;; fix font size on macOS retina
+;; (if (eq system-type 'darwin)
+;;     (custom-set-faces
+;;      '(default ((t (:height 140))))))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; CUSTOMIZATIONS ;;
