@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;:;;
+;;;;;;;;;;;;;;;;
 ;; CHEATSHEET ;;
 ;;;;;;;;;;;;;;;;
 
@@ -157,11 +157,11 @@
 
  ;; UI related options
  '(disabled-command-function nil)
+ '(use-dialog-box nil)
+ '(tab-width 4)
  '(menu-bar-mode nil)
  '(tool-bar-mode nil)
  '(scroll-bar-mode nil)
- '(use-dialog-box nil)
- '(tab-width 4)
  '(blink-cursor-mode nil)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
