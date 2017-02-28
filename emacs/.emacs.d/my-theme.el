@@ -8,12 +8,14 @@
       (theme-bright     "#ffffff")
       (theme-faint      "#333333")
       (theme-dark       "#111111")
-      ;; emacs base colors
+
+      ;; emacs common colors
       (theme-red        "#ff4200")
       (theme-green      "#00ff00")
       (theme-yellow     "#ffd100")
       (theme-blue       "#0074ff")
       (theme-pink       "#ffbfef")
+
       ;; font lock palette
       (theme-palette-1  "#5F819D")
       (theme-palette-2  "#aaffaa")
