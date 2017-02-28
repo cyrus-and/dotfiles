@@ -80,7 +80,11 @@
    `(completions-common-part      ((t (:inherit (shadow)))))
    `(completions-first-difference ((t (:foreground ,theme-accent))))
 
-   ;; consistency fixes
+   ;; fix: compilation
    `(compilation-mode-line-exit ((t (:inherit (success)))))
    `(compilation-mode-line-run  ((t (:inherit (warning)))))
-   `(compilation-mode-line-fail ((t (:inherit (error)))))))
+   `(compilation-mode-line-fail ((t (:inherit (error)))))
+
+   ;; fix: show-paren
+   `(show-paren-match  ((t (:inherit (success) :inverse-video t))))
+   `(show-paren-mismatch  ((t (:inherit (error) :inverse-video t))))))
