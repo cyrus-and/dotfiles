@@ -2,7 +2,7 @@
 (provide-theme 'my)
 
 (let (;; theme base colors
-      (theme-background "#000000")
+      (theme-background "color-16") ; pure black even on terminals
       (theme-foreground "#eeeeee")
       (theme-accent     "#ff6000")
       (theme-bright     "#ffffff")
