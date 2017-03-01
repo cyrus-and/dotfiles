@@ -86,5 +86,5 @@
    `(compilation-mode-line-fail ((t (:inherit (error)))))
 
    ;; fix: show-paren
-   `(show-paren-match  ((t (:inherit (success) :inverse-video t))))
-   `(show-paren-mismatch  ((t (:inherit (error) :inverse-video t))))))
+   `(show-paren-match    ((t (:background ,theme-faint))))
+   `(show-paren-mismatch ((t (:inherit (error) :inverse-video t))))))
