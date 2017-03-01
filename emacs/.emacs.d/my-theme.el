@@ -1,26 +1,28 @@
 (deftheme my "Simple flat dark theme")
 (provide-theme 'my)
 
+;; palette adapted from https://terminal.sexy
+
 (let (;; theme base colors
       (theme-background "#000000")
-      (theme-foreground "#eeeeee")
+      (theme-foreground "#c5c8c6")
       (theme-accent     "#ff6000")
       (theme-bright     "#ffffff")
-      (theme-faint      "#333333")
-      (theme-dark       "#111111")
+      (theme-faint      "#373b41")
+      (theme-dark       "#111213")
 
       ;; emacs common colors
-      (theme-red        "#ff4200")
-      (theme-green      "#00ff00")
-      (theme-yellow     "#ffd100")
-      (theme-blue       "#0074ff")
-      (theme-pink       "#ffbfef")
+      (theme-red        "#cc6666")
+      (theme-green      "#b5bd68")
+      (theme-yellow     "#f0c674")
+      (theme-blue       "#81a2be")
+      (theme-pink       "#b294bb")
 
       ;; font lock palette
       (theme-palette-1  "#5F819D")
-      (theme-palette-2  "#aaffaa")
+      (theme-palette-2  "#f0c674")
       (theme-palette-3  "#A54242")
-      (theme-palette-4  "#666666")
+      (theme-palette-4  "#666d65")
       (theme-palette-5  "#DE935F")
       (theme-palette-6  "#85678F")
       (theme-palette-7  "#81A2BE")
