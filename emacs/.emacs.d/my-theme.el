@@ -19,13 +19,13 @@
       (theme-pink       "#b294bb")
 
       ;; font lock palette
-      (theme-palette-1  "#5F819D")
+      (theme-palette-1  "#5f819d")
       (theme-palette-2  "#f0c674")
-      (theme-palette-3  "#A54242")
+      (theme-palette-3  "#a54242")
       (theme-palette-4  "#666d65")
-      (theme-palette-5  "#DE935F")
-      (theme-palette-6  "#85678F")
-      (theme-palette-7  "#81A2BE")
+      (theme-palette-5  "#de935f")
+      (theme-palette-6  "#85678f")
+      (theme-palette-7  "#81a2be")
       (theme-palette-8  "#b5bd68"))
 
   (custom-theme-set-faces
