@@ -40,7 +40,7 @@ Rxvt*iso14755_52: false
 *foreground: #cccccc
 
 ! palette (from colors.html 0.4 - 0.8)
-*color0: #666666
+*color0: #000000
 *color1: #ff4200
 *color2: #00ff00
 *color3: #ffd100
@@ -55,7 +55,7 @@ Rxvt*iso14755_52: false
 *color12: #0074ff
 *color13: #ff29ff
 *color14: #00ffff
-*color15: #cccccc
+*color15: #ffffff
 
 ! font styles
 *colorBD: #ffffff
