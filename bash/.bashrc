@@ -39,8 +39,6 @@ fi
 # aliases
 alias grep='grep --color=auto'
 alias mydu='du -s * .[^.]* | sort -n'
-alias emacs='emacsclient -c -a emacs'
-alias e='emacs -nw'
 alias l='ls -lArt'
 alias p='python'
 alias gdb='gdb -q'
@@ -69,6 +67,7 @@ if [ "$OSTYPE" = 'darwin16' ]; then
 
     # aliases
     alias ls='ls -G'
+    alias e="$EDITOR"
 
     up() {
         brew update  &&\
@@ -102,6 +101,8 @@ if [ "$OSTYPE" = 'linux-gnu' ]; then
     alias dmesg='dmesg -w'
     alias xcopy='xclip -i -selection clipboard'
     alias xpaste='xclip -o -selection clipboard'
+    alias emacs='emacsclient -c -a emacs'
+    alias e='emacs -nw'
 
     up() {
         sudo apt-get update        &&\
