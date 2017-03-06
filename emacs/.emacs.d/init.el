@@ -33,7 +33,7 @@
     "F6         shell"
     "F7         recompile-or-compile"
     "F8         package-list-packages"
-    "F12        magit-status"))
+    "C-c C-g    magit-status"))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PACKAGES SETUP ;;
@@ -241,7 +241,7 @@
 ;;;;;;;;;;;
 
 ;; shortcut to main magit buffer
-(global-set-key (kbd "<f12>") 'magit-status)
+(global-set-key (kbd "C-c C-g") 'magit-status)
 
 ;; use magit for `git commit`
 (global-git-commit-mode)
