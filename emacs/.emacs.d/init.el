@@ -2,38 +2,37 @@
 ;; CHEATSHEET ;;
 ;;;;;;;;;;;;;;;;
 
-(defconst cheatsheet
-  '("% m        dired-mark-files-regexp"
-    "C-s C-w    isearch-yank-word-or-char"
-    "C-x -      shrink-window-if-larger-than-buffer"
-    "C-x C-;    comment-line"
-    "C-x C-SPC  pop-global-mark"
-    "C-x C-b    list-buffers"
-    "C-x C-q    wdired-change-to-wdired-mode"
-    "C-x M-:    repeat-complex-command"
-    "C-x SPC    rectangle-mark-mode"
-    "C-x d      dired"
-    "C-x n n    narrow-to-region"
-    "C-x n w    widen"
-    "C-x r SPC  point-to-register"
-    "C-x r j    jump-to-register"
-    "C-x r w    window-configuration-to-register"
-    "C-x w r    unhighlight-regexp"
-    "C-x z      repeat"
-    "M-S-/      dabbrev-expand"
-    "M-^        delete-indentation"
-    "M-h        mark-paragraph"
-    "M-s h .    highlight-symbol-at-point"
-    "M-s h r    highlight-regexp"
-    "M-z        zap-to-char"
-    "M-|        shell-command-on-region (replace with C-u)"
-    ""
-    "C-F5       reload-buffer"
-    "F5         rgrep"
-    "F6         shell"
-    "F7         recompile-or-compile"
-    "F8         package-list-packages"
-    "C-c C-g    magit-status"))
+;; % m        dired-mark-files-regexp
+;; C-s C-w    isearch-yank-word-or-char
+;; C-x -      shrink-window-if-larger-than-buffer
+;; C-x C-;    comment-line
+;; C-x C-SPC  pop-global-mark
+;; C-x C-b    list-buffers
+;; C-x C-q    wdired-change-to-wdired-mode
+;; C-x M-:    repeat-complex-command
+;; C-x SPC    rectangle-mark-mode
+;; C-x d      dired
+;; C-x n n    narrow-to-region
+;; C-x n w    widen
+;; C-x r SPC  point-to-register
+;; C-x r j    jump-to-register
+;; C-x r w    window-configuration-to-register
+;; C-x w r    unhighlight-regexp
+;; C-x z      repeat
+;; M-S-/      dabbrev-expand
+;; M-^        delete-indentation
+;; M-h        mark-paragraph
+;; M-s h .    highlight-symbol-at-point
+;; M-s h r    highlight-regexp
+;; M-z        zap-to-char
+;; M-|        shell-command-on-region (replace with C-u)
+
+;; C-F5       reload-buffer
+;; F5         rgrep
+;; F6         shell
+;; F7         recompile-or-compile
+;; F8         package-list-packages
+;; C-c C-g    magit-status
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PACKAGES SETUP ;;
@@ -172,8 +171,7 @@
 
  ;; no startup screen, use scratch
  '(inhibit-startup-screen t)
- '(initial-scratch-message
-   (mapconcat (lambda (line) (format ";; %s\n" line)) cheatsheet "")))
+ '(initial-scratch-message ""))
 
 ;;;;;;;;;;;
 ;; HOOKS ;;
