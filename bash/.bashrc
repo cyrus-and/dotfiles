@@ -40,7 +40,7 @@ fi
 alias grep='grep --color=auto'
 alias mydu='du -s * .[^.]* | sort -n'
 alias l='ls -lArt'
-alias p='python'
+alias p='python3'
 alias gdb='gdb -q'
 
 # helpers

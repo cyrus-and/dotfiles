@@ -5,6 +5,7 @@
 ;; % m        dired-mark-files-regexp
 ;; C-s C-w    isearch-yank-word-or-char
 ;; C-x -      shrink-window-if-larger-than-buffer
+;; C-x 8 RET  insert-char
 ;; C-x C-;    comment-line
 ;; C-x C-SPC  pop-global-mark
 ;; C-x C-b    list-buffers
