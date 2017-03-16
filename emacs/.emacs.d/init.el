@@ -113,7 +113,6 @@
  '(column-number-mode t)
  '(show-paren-mode t)
  '(require-final-newline 'ask)
- '(electric-pair-mode t)
 
  ;; dired listing options
  '(dired-listing-switches
@@ -244,6 +243,8 @@
 
 ;; use magit for `git commit`
 (global-git-commit-mode)
+
+(add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 
 ;;;;;;;;;;;;
 ;; OTHERS ;;
