@@ -11,8 +11,10 @@ HISTFILESIZE=-1
 HISTIGNORE='fg'
 
 # tty
-stty -ctlecho
-stty -ixon
+if [ -t 0 ]; then
+    stty -ctlecho
+    stty -ixon
+fi
 
 # prompt
 if [ "$TERM" != dumb ]; then
