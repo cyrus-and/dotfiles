@@ -1,0 +1,2 @@
+# sudo apt install gtk2-engines
+include "/usr/share/themes/Clearlooks/gtk-2.0/gtkrc"
