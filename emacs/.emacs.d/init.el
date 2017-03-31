@@ -107,7 +107,6 @@
  '(vc-follow-symlinks t)
 
  ;; editing
- '(ispell-dictionary "english")
  '(fill-column 80)
  '(truncate-lines t)
  '(column-number-mode t)
