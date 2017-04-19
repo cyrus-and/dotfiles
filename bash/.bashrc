@@ -90,13 +90,7 @@ fi
 if [ "$OSTYPE" = 'linux-gnu' ]; then
     # paths
     export GOPATH=$HOME/go/
-    export JAVA_HOME=/opt/jdk/
     export PATH=$PATH:$GOPATH/bin/
-    export PATH=$PATH:$JAVA_HOME/bin/
-    export PATH=$PATH:~/android-studio/bin/
-    export PATH=$PATH:~/Android/Sdk/tools/
-    export PATH=$PATH:~/Android/Sdk/platform-tools/
-    export PATH=$PATH:~/.cargo/bin
 
     # aliases
     alias ls='ls --color=auto'
