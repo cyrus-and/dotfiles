@@ -33,7 +33,7 @@
 ;; F6         shell
 ;; F7         recompile-or-compile
 ;; F8         package-list-packages
-;; C-c C-g    magit-status
+;; F12        magit-status
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; PACKAGES SETUP ;;
@@ -238,7 +238,7 @@
 ;;;;;;;;;;;
 
 ;; shortcut to main magit buffer
-(global-set-key (kbd "C-c C-g") 'magit-status)
+(global-set-key (kbd "<f12>") 'magit-status)
 
 ;; use magit for `git commit`
 (global-git-commit-mode)
@@ -251,3 +251,5 @@
 
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(custom-set-faces
+ '(js2-object-property ((t (:inherit font-lock-builtin-face)))))

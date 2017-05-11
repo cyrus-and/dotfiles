@@ -1,7 +1,3 @@
-# environment
-export EDITOR='emacsclient -t'
-export GIT_EDITOR="$EDITOR"
-
 # history
 PROMPT_COMMAND='history -a'
 shopt -s histappend
@@ -56,6 +52,10 @@ hack() {
 # OS-specific
 
 if [ "$OSTYPE" = 'darwin16' ]; then
+    # environment
+    export EDITOR='emacs -nw'
+    export GIT_EDITOR="$EDITOR"
+
     # brew PATH
     export PATH="/usr/local/sbin:$PATH"
 
@@ -88,6 +88,10 @@ if [ "$OSTYPE" = 'darwin16' ]; then
 fi
 
 if [ "$OSTYPE" = 'linux-gnu' ]; then
+    # environment
+    export EDITOR='emacsclient -t'
+    export GIT_EDITOR="$EDITOR"
+
     # paths
     export GOPATH=$HOME/go/
     export PATH=$PATH:$GOPATH/bin/
