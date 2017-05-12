@@ -59,14 +59,6 @@ if [ "$OSTYPE" = 'darwin16' ]; then
     # brew PATH
     export PATH="/usr/local/sbin:$PATH"
 
-    # GPG agent
-    gpg_agent_file="$HOME/.gpg-agent-info"
-    if ! killall -0 gpg-agent &>/dev/null; then
-        gpg-agent --daemon --write-env-file "$gpg_agent_file" >/dev/null
-    fi
-    . "$gpg_agent_file"
-    export GPG_AGENT_INFO
-
     # aliases
     alias ls='ls -G'
     alias e="$EDITOR"
