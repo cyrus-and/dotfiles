@@ -1,5 +1,7 @@
 $include  /etc/inputrc
 
+set show-all-if-ambiguous on
+
 # Ctrl-*
 "\eOa": history-search-backward
 "\eOb": history-search-forward
