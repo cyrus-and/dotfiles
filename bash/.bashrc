@@ -23,6 +23,7 @@ $(c '$(jobs | while read; do echo -n "·"; done)' '1;34')\
  \
 $(c '\h' '1;36')\
  \
+$(c '$([ "$SSH_CONNECTION" ] && echo "ssh " || echo "")' '35')\
 $(c '\w' '1;33')\
 $(c '$(__git_ps1)' '32')\
 \n\
