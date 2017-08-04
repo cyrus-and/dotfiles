@@ -45,9 +45,9 @@
    `(success        ((t (:foreground ,theme-green))))
 
    ;; mode line
-   `(mode-line           ((t (:foreground ,theme-bright :background ,theme-dark))))
-   `(mode-line-inactive  ((t (:inherit (mode-line) :foreground ,theme-faint))))
-   `(mode-line-highlight ((t (:inverse-video t))))
+   `(mode-line           ((t (:foreground ,theme-accent :background ,theme-dark :box (:line-width 5 :color ,theme-dark :style nil)))))
+   `(mode-line-inactive  ((t (:inherit (mode-line) :foreground ,theme-bright))))
+   `(mode-line-highlight ((t (:inverse-video t :box nil))))
 
    ;; font lock
    `(font-lock-function-name-face ((t (:foreground ,theme-palette-1))))

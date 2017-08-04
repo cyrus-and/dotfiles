@@ -55,6 +55,7 @@
      cmake-mode
      exec-path-from-shell
      go-mode
+     golden-ratio
      js2-mode
      json-mode
      magit
@@ -253,3 +254,6 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (custom-set-faces
  '(js2-object-property ((t (:inherit font-lock-builtin-face)))))
+
+;; golden-ratio
+(golden-ratio-mode 1)
