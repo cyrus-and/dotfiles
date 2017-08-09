@@ -257,3 +257,4 @@
 
 ;; golden-ratio
 (golden-ratio-mode 1)
+(global-set-key (kbd "C-c C-z") 'golden-ratio)
