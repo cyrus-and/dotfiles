@@ -24,8 +24,8 @@ rofi.color-window: #000000,#111111
 ! settings
 Rxvt*termName: xterm-256color
 Rxvt*scrollBar: false
-Rxvt*font: xft:Iosevka:size=12
-Rxvt*internalBorder: 0
+Rxvt*font: xft:Hack:size=12
+Rxvt*internalBorder: 6
 Rxvt*geometry: 80x30
 Rxvt*saveLines: 65535
 Rxvt*scrollTtyKeypress: true
@@ -66,7 +66,7 @@ Rxvt*iso14755_52: false
 !!!!!!!!!
 
 ! GUI settings
-emacs.font: Terminus-14
+emacs.font: Hack-12
 emacs.menuBar: off
 emacs.toolBar: off
 emacs.verticalScrollBars: off
