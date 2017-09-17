@@ -12,6 +12,7 @@
 ;; C-x C-q    wdired-change-to-wdired-mode
 ;; C-x M-:    repeat-complex-command
 ;; C-x SPC    rectangle-mark-mode
+;; C-x TAB    indent-rigidly
 ;; C-x d      dired
 ;; C-x n n    narrow-to-region
 ;; C-x n w    widen
@@ -100,6 +101,9 @@
 (custom-set-variables
  ;; make fail at the first error
  '(compile-command "make")
+
+ ;; use python 3 interpreter
+ '(python-shell-interpreter "python3")
 
  ;; call the garbage collector less often
  '(gc-cons-threshold (expt 2 24)) ; 16MB
@@ -260,3 +264,13 @@
 ;; golden-ratio
 (golden-ratio-mode 1)
 (global-set-key (kbd "C-c C-z") 'golden-ratio)
+
+;; web-mode
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+
+;; org-mode
+(add-hook 'org-mode-hook 'visual-line-mode)
+(custom-set-variables
+ '(org-replace-disputed-keys t) ; to use S-arrows
+ '(org-src-fontify-natively t)
+ '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
