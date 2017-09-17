@@ -93,6 +93,7 @@
 
    ;; third party: org-mode
    `(org-block    ((t (:inherit (font-lock-string-face)))))
+   `(org-code     ((t (:inherit (font-lock-string-face)))))
    `(org-verbatim ((t (:inherit (font-lock-string-face)))))
    `(org-level-1  ((t (:inherit (outline-1) :height 1.4))))
    `(org-level-2  ((t (:inherit (outline-2) :height 1.4))))
