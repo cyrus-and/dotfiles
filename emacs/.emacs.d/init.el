@@ -273,6 +273,7 @@
 (custom-set-variables
  '(org-replace-disputed-keys t) ; to use S-arrows
  '(org-startup-folded nil)
+ '(org-cycle-separator-lines 1)
  '(org-src-fontify-natively t)
  '(org-fontify-whole-heading-line t)
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
