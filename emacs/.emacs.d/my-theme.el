@@ -34,7 +34,7 @@
    ;; basic faces
    `(default        ((t (:foreground ,theme-foreground :background ,theme-background))))
    `(shadow         ((t (:foreground ,theme-faint))))
-   `(link           ((t (:foreground ,theme-accent :weight bold :underline (:color foreground-color :style line)))))
+   `(link           ((t (:foreground ,theme-accent :underline (:color foreground-color :style line)))))
    `(link-visited   ((t (:inherit (link) :weight normal))))
    `(highlight      ((t (:inherit (link) :inverse-video t :underline nil))))
    `(match          ((t (:foreground ,theme-background :background ,theme-accent))))
