@@ -96,6 +96,7 @@
    `(org-code      ((t (:inherit (font-lock-string-face)))))
    `(org-verbatim  ((t (:inherit (font-lock-string-face)))))
    `(org-meta-line ((t (:inherit (shadow) :height 0.5))))
+   `(org-ellipsis  ((t (:inherit (link)))))
    `(org-level-1   ((t (:inherit (outline-1 bold) :height 1.4 :inverse-video t))))
    `(org-level-2   ((t (:inherit (outline-2 bold) :height 1.4 :inverse-video t))))
    `(org-level-3   ((t (:inherit (outline-3 bold) :height 1.4 :inverse-video t))))
@@ -103,4 +104,12 @@
    `(org-level-5   ((t (:inherit (outline-5 bold) :height 1.4 :inverse-video t))))
    `(org-level-6   ((t (:inherit (outline-6 bold) :height 1.4 :inverse-video t))))
    `(org-level-7   ((t (:inherit (outline-7 bold) :height 1.4 :inverse-video t))))
-   `(org-level-8   ((t (:inherit (outline-8 bold) :height 1.4 :inverse-video t))))))
+   `(org-level-8   ((t (:inherit (outline-8 bold) :height 1.4 :inverse-video t)))))
+
+  (custom-theme-set-faces
+   'my
+
+   ;; third party: org-mode
+   `(org-src-fontify-natively t)
+   `(org-fontify-whole-heading-line t)
+   `(org-ellipsis 'org-ellipsis)))
