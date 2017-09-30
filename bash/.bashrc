@@ -8,8 +8,7 @@ HISTIGNORE='fg'
 
 # tty
 if [ -t 0 ]; then
-    stty -ctlecho
-    stty -ixon
+    stty -ctlecho -ixon
 fi
 
 # prompt
@@ -37,7 +36,6 @@ fi
 
 # aliases
 alias grep='grep --color=auto'
-alias mydu='du -s * .[^.]* | sort -n'
 alias l='ls -lArt'
 alias p='python3'
 alias gdb='gdb -q'
@@ -52,7 +50,7 @@ hack() {
 
 # OS-specific
 
-if [ "$OSTYPE" = 'darwin16' ]; then
+if [[ "$OSTYPE" =~ darwin* ]]; then
     # environment
     export EDITOR='emacs -nw'
     export GIT_EDITOR="$EDITOR"
@@ -72,9 +70,7 @@ if [ "$OSTYPE" = 'darwin16' ]; then
     }
 
     # completion
-    if [ -f $(brew --prefix)/etc/bash_completion ]; then
-        . $(brew --prefix)/etc/bash_completion
-    fi
+    . $(brew --prefix)/etc/bash_completion
 
     # BUG? -1 not working
     HISTSIZE=100000
@@ -84,10 +80,6 @@ if [ "$OSTYPE" = 'linux-gnu' ]; then
     # environment
     export EDITOR='emacsclient -t'
     export GIT_EDITOR="$EDITOR"
-
-    # paths
-    export GOPATH=$HOME/go/
-    export PATH=$PATH:$GOPATH/bin/
 
     # aliases
     alias ls='ls --color=auto'
