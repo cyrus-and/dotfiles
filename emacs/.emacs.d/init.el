@@ -3,7 +3,6 @@
 ;;;;;;;;;;;;;;;;
 
 ;; % m        dired-mark-files-regexp
-;; C-s C-w    isearch-yank-word-or-char
 ;; C-x -      shrink-window-if-larger-than-buffer
 ;; C-x 8 RET  insert-char
 ;; C-x C-;    comment-line
@@ -28,6 +27,7 @@
 ;; M-s h r    highlight-regexp
 ;; M-z        zap-to-char
 ;; M-|        shell-command-on-region (replace with C-u)
+;; C-s C-w    isearch-yank-word-or-char
 
 ;; C-F5       reload-buffer
 ;; F5         rgrep
@@ -139,6 +139,7 @@
  '(ring-bell-function 'ignore)
  '(font-lock-maximum-decoration 2)
  '(winner-mode t)
+ '(help-window-select t)
 
  ;; *intuitive* scrolling
  '(scroll-conservatively 101)
@@ -227,9 +228,6 @@
 (global-unset-key (kbd "<prior>"))
 (global-unset-key (kbd "<next>"))
 
-;; ibuffer override
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
 ;; common tools
 (global-set-key (kbd "C-<f5>") 'reload-buffer)
 (global-set-key (kbd "C-<f7>") 'compile)
@@ -237,6 +235,12 @@
 (global-set-key (kbd "<f6>") 'eshell)
 (global-set-key (kbd "<f7>") 'recompile-or-compile)
 (global-set-key (kbd "<f8>") 'package-list-packages)
+
+;;;;;;;;;;;;;
+;; ALIASES ;;
+;;;;;;;;;;;;;
+
+(defalias 'list-buffers 'ibuffer)
 
 ;;;;;;;;;;;
 ;; MAGIT ;;
@@ -247,7 +251,6 @@
 
 ;; use magit for `git commit`
 (global-git-commit-mode)
-
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 
 ;;;;;;;;;;;;
@@ -257,7 +260,6 @@
 ;; js2-mode
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-
 (custom-set-faces
  '(js2-object-property ((t (:inherit font-lock-builtin-face)))))
 
