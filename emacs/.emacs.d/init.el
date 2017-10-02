@@ -278,5 +278,4 @@
 (require 'zoom-mode "~/.emacs.d/zoom-mode.el")
 
 (custom-set-variables
- '(zoom-min-width 90)
  '(zoom-mode t))

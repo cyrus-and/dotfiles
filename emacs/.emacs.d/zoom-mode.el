@@ -1,10 +1,3 @@
-;; TODO defgroup?
-;; TODO aspell?
-
-(defcustom zoom-min-width 80
-  "Minimum focused window width in columns."
-  :group 'zoom)
-
 (defun zoom ()
   (interactive)
   ;; check if should actually re-layout
@@ -13,22 +6,21 @@
               (one-window-p))
     ;; temporarily disables this mode during resize to avoid infinite recursion
     (let ((zoom-mode nil)
-          ;; the height value is computed to be large enough to always impact
-          ;; the third window in a 3-split scenario; in this way windows are
-          ;; automatically balanced bu `window-resize`
-          (min-height (- (* 2 (ceiling (/ (frame-height) 3.0))) window-min-height)))
+          ;; values are computed to be large enough to always impact the third
+          ;; window in a 3-split scenario; in this way windows are automatically
+          ;; balanced bu `window-resize` (the 1 is to surpass such threshold)
+          (min-width (- (* 2 (ceiling (/ (frame-width) 3.0))) window-min-width -1))
+          (min-height (- (* 2 (ceiling (/ (frame-height) 3.0))) window-min-height -1)))
       ;; start from a balanced layout
       (balance-windows)
       ;; then resize the focused window
-      (window-resize nil (max (- zoom-min-width (window-total-width)) 0) t)
+      (window-resize nil (max (- min-width (window-total-width)) 0) t)
       (window-resize nil (max (- min-height (window-total-height)) 0) nil)
       ;; scroll al the way to the left border (if the window is wide enough to
       ;; contain it) otherwise scroll to center the point
-      ;; (scroll-right (window-hscroll))
-      ;; (if (> (current-column) (- (window-total-width) hscroll-margin))
-      ;;     (scroll-left (- (current-column) (/ (window-total-width) 2))))
-
-      )))
+      (scroll-right (window-hscroll))
+      (if (> (current-column) (- (window-total-width) hscroll-margin))
+          (scroll-left (- (current-column) (/ (window-total-width) 2)))))))
 
 (defun zoom--hook-handler (&rest ignore)
   (zoom))
@@ -41,7 +33,8 @@
 (defun zoom--disable ()
   (remove-hook 'window-configuration-change-hook 'zoom--hook-handler)
   (advice-remove 'select-window 'zoom--hook-handler)
-  (balance-windows))
+  (balance-windows)
+  )
 
 ;;;###autoload
 (define-minor-mode zoom-mode
