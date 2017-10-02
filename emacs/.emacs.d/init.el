@@ -56,7 +56,6 @@
      cmake-mode
      exec-path-from-shell
      go-mode
-     golden-ratio
      js2-mode
      json-mode
      magit
@@ -264,10 +263,6 @@
 (custom-set-faces
  '(js2-object-property ((t (:inherit font-lock-builtin-face)))))
 
-;; golden-ratio
-(golden-ratio-mode 1)
-(global-set-key (kbd "C-c C-z") 'golden-ratio)
-
 ;; web-mode
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 
@@ -278,3 +273,10 @@
  '(org-startup-folded nil)
  '(org-cycle-separator-lines 1)
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
+
+;; zoom-mode
+(require 'zoom-mode "~/.emacs.d/zoom-mode.el")
+
+(custom-set-variables
+ '(zoom-min-width 90)
+ '(zoom-mode t))
