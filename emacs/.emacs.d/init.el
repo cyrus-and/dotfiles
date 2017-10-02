@@ -143,6 +143,7 @@
 
  ;; *intuitive* scrolling
  '(scroll-conservatively 101)
+ '(hscroll-step 1)
 
  ;; minibuffer history
  '(savehist-mode t)
