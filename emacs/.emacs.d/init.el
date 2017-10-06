@@ -275,9 +275,7 @@
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
 
 ;; zoom-mode
-(require 'zoom-mode "~/.emacs.d/zoom-mode.el")
-
+(require 'zoom-mode "~/dev/zoom/zoom-mode.el")
 (custom-set-variables
  '(zoom-mode t)
- '(zoom-min-width 90)
- '(zoom-min-height 30))
+ '(zoom-size '(90 . 30)))
