@@ -275,7 +275,8 @@
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
 
 ;; zoom-mode
-(require 'zoom-mode "~/dev/zoom/zoom-mode.el")
+(require 'zoom "~/dev/zoom/zoom.el")
 (custom-set-variables
- '(zoom-mode t)
- '(zoom-size '(90 . 30)))
+ '(zoom-size '(90 . 30))
+ ;; '(zoom-size '(0.618 . 0.618))
+ '(zoom-mode t))
