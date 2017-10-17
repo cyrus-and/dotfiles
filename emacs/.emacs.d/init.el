@@ -92,12 +92,11 @@
 (eval-after-load "grep"
   '(add-to-list 'grep-find-ignored-directories "node_modules"))
 
-;; customization interface output to a separate file
-(setq custom-file "~/.emacs.d/customization")
-(load custom-file t)
-
 ;; variables
 (custom-set-variables
+ ;; make the customization interface output to a separate file
+ '(custom-file "~/.emacs.d/custom.el")
+
  ;; make fail at the first error
  '(compile-command "make")
 
@@ -277,6 +276,12 @@
 ;; zoom-mode
 (require 'zoom "~/dev/zoom/zoom.el")
 (custom-set-variables
- '(zoom-size '(90 . 30))
- ;; '(zoom-size '(0.618 . 0.618))
- '(zoom-mode t))
+ '(zoom-mode t)
+ '(zoom-size '(90 . 30)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ADDITIONAL INIT FILES ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(load custom-file t)
+(load "~/.emacs.d/scratchpad.el" t)
