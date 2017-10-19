@@ -271,13 +271,15 @@
  '(org-replace-disputed-keys t) ; to use S-arrows
  '(org-startup-folded nil)
  '(org-cycle-separator-lines 1)
+ '(org-fontify-whole-heading-line t)
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
 
 ;; zoom-mode
 (require 'zoom "~/dev/zoom/zoom.el")
 (custom-set-variables
  '(zoom-mode t)
- '(zoom-size '(90 . 30)))
+ '(zoom-size '(90 . 30))
+ '(temp-buffer-resize-mode t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADDITIONAL INIT FILES ;;
