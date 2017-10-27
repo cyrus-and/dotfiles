@@ -213,6 +213,10 @@
   (interactive)
   (revert-buffer t t))
 
+(defun yank-primary ()
+  (interactive)
+  (insert-for-yank (gui-get-primary-selection)))
+
 ;;;;;;;;;;;;;;;
 ;; SHORTCUTS ;;
 ;;;;;;;;;;;;;;;
@@ -234,6 +238,9 @@
 (global-set-key (kbd "<f6>") 'eshell)
 (global-set-key (kbd "<f7>") 'recompile-or-compile)
 (global-set-key (kbd "<f8>") 'package-list-packages)
+
+;; yank primary selection with keyboard
+(global-set-key (kbd "S-<insert>") 'yank-primary)
 
 ;;;;;;;;;;;;;
 ;; ALIASES ;;
