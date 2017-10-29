@@ -133,6 +133,7 @@
  '(indicate-empty-lines t)
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-wheel-progressive-speed nil)
+ '(mouse-yank-at-point t)
  '(mac-right-option-modifier 'none)
  '(ring-bell-function 'ignore)
  '(font-lock-maximum-decoration 2)
