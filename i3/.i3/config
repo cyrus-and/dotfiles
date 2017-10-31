@@ -80,8 +80,8 @@ bindsym $mod+x layout toggle split
 ##############
 
 # navigate
-bindsym $mod+Control+Left workspace prev
-bindsym $mod+Control+Right workspace next
+bindsym $mod+Prior workspace prev
+bindsym $mod+Next workspace next
 
 # move windows
 bindsym $mod+Shift+Control+Left move container to workspace prev; workspace prev

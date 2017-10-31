@@ -3,6 +3,7 @@
 ;;;;;;;;;;;;;;;;
 
 ;; % m        dired-mark-files-regexp
+;; C-s C-w    isearch-yank-word-or-char
 ;; C-x -      shrink-window-if-larger-than-buffer
 ;; C-x 8 RET  insert-char
 ;; C-x C-;    comment-line
@@ -20,6 +21,7 @@
 ;; C-x r w    window-configuration-to-register
 ;; C-x w r    unhighlight-regexp
 ;; C-x z      repeat
+;; M-?        xref-find-references
 ;; M-S-/      dabbrev-expand
 ;; M-^        delete-indentation
 ;; M-h        mark-paragraph
@@ -27,7 +29,6 @@
 ;; M-s h r    highlight-regexp
 ;; M-z        zap-to-char
 ;; M-|        shell-command-on-region (replace with C-u)
-;; C-s C-w    isearch-yank-word-or-char
 
 ;; C-F5       reload-buffer
 ;; F5         rgrep
