@@ -6,22 +6,22 @@ set auto-load safe-path /
 # prefer Intel assembly syntax
 set disassembly-flavor intel
 
-# GDB dashboard defaults
-dashboard -layout source assembly
-dashboard -style syntax_highlighting 'monokai'
-dashboard source -style context 20
-dashboard assembly -style context 5
-
 # useful auto-redraw hooks
 
 define hookpost-up
-dashboard
+  dashboard
 end
 
 define hookpost-down
-dashboard
+  dashboard
 end
 
 define hookpost-frame
-dashboard
+  dashboard
+end
+
+# save GDB dashboard configuation on exit
+
+define hook-quit
+  dashboard -configuration ~/.gdbinit.d/auto
 end
