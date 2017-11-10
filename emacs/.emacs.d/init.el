@@ -17,7 +17,8 @@
 ;; C-x n n    narrow-to-region
 ;; C-x n w    widen
 ;; C-x r SPC  point-to-register
-;; C-x r j    jump-to-register
+;; C-x r i    insert-register
+;; C-x r s    copy-to-register
 ;; C-x r w    window-configuration-to-register
 ;; C-x w r    unhighlight-regexp
 ;; C-x z      repeat
@@ -289,6 +290,10 @@
  '(zoom-mode t)
  '(zoom-size '(90 . 30))
  '(temp-buffer-resize-mode t))
+
+;; save-place-mode
+(custom-set-variables
+ '(save-place-mode t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADDITIONAL INIT FILES ;;
