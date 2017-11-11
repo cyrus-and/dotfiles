@@ -55,6 +55,7 @@
   (mapc
    'package-install
    '(auctex
+     avy
      cmake-mode
      exec-path-from-shell
      go-mode
@@ -295,7 +296,11 @@
 
 ;; window-numbering
 (custom-set-variables
- '(window-numbering t))
+ '(window-numbering-mode t))
+
+;; avy
+(defalias 'goto-line 'avy-goto-line)
+(global-set-key (kbd "C-ò") 'avy-goto-word-1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADDITIONAL INIT FILES ;;
