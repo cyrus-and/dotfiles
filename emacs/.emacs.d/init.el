@@ -65,6 +65,7 @@
      php-mode
      protobuf-mode
      rainbow-mode
+     window-numbering
      yaml-mode)))
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -86,9 +87,6 @@
 
 ;; use custom window separator character in nox mode
 (set-display-table-slot standard-display-table 'vertical-border #x2502)
-
-;; enable S-arrows window focus switch
-(windmove-default-keybindings)
 
 ;; ignore `node_modules` folder in searches
 (eval-after-load "grep"
@@ -294,6 +292,10 @@
 ;; save-place-mode
 (custom-set-variables
  '(save-place-mode t))
+
+;; window-numbering
+(custom-set-variables
+ '(window-numbering t))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADDITIONAL INIT FILES ;;
