@@ -227,11 +227,11 @@
 (global-unset-key (kbd "C-z"))
 
 ;; disable keys to fix bad behaviors
-(global-unset-key (kbd "<deletechar>"))
-(global-unset-key (kbd "<home>"))
-(global-unset-key (kbd "<end>"))
-(global-unset-key (kbd "<prior>"))
-(global-unset-key (kbd "<next>"))
+(dolist (key '("<deletechar>"
+               "<home>" "<end>" "<prior>" "<next>"
+               "<up>" "<down>" "<left>" "<right>"))
+  (dolist (mod '("" "C-" "M-" "C-M-"))
+    (global-unset-key (kbd (format "%s%s" mod key)))))
 
 ;; common tools
 (global-set-key (kbd "C-<f5>") 'reload-buffer)
