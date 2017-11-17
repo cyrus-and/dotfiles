@@ -119,4 +119,5 @@
    `(org-ellipsis 'org-ellipsis)
 
    ;; third party: org-mode
-   `(markdown-fontify-code-blocks-natively t)))
+   `(markdown-fontify-code-blocks-natively t)
+   `(markdown-enable-math t)))
