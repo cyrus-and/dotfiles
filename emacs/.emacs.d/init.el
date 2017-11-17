@@ -280,7 +280,6 @@
  '(org-replace-disputed-keys t) ; to use S-arrows
  '(org-startup-folded nil)
  '(org-cycle-separator-lines 1)
- '(org-fontify-whole-heading-line t)
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
 
 ;; zoom-mode
@@ -300,11 +299,12 @@
 
 ;; avy
 (defalias 'goto-line 'avy-goto-line)
-(global-set-key (kbd "C-ò") 'avy-goto-word-1)
+(global-set-key (kbd "C-ò") 'avy-goto-char-timer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADDITIONAL INIT FILES ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 (load custom-file t)
-(load "~/.emacs.d/scratchpad.el" t)
+(load "~/.emacs.d/lisp/scratchpad.el" t)
