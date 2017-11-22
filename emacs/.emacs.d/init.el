@@ -44,30 +44,29 @@
 
 ;; initialize the package system
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
 
 ;; add additional repositories
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 
-;; refresh the package list and install custom packages the first time
-(unless package-archive-contents
-  (package-refresh-contents)
-  (mapc
-   'package-install
-   '(auctex
-     avy
-     cmake-mode
-     exec-path-from-shell
-     go-mode
-     js2-mode
-     json-mode
-     magit
-     markdown-mode
-     php-mode
-     protobuf-mode
-     rainbow-mode
-     window-numbering
-     yaml-mode)))
+;; install packages
+(mapc
+ 'package-install
+ '(auctex
+   avy
+   cmake-mode
+   exec-path-from-shell
+   go-mode
+   js2-mode
+   json-mode
+   magit
+   markdown-mode
+   php-mode
+   rainbow-mode
+   window-numbering
+   yaml-mode))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; CUSTOMIZATIONS ;;
