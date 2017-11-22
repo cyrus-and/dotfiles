@@ -75,13 +75,6 @@
 ;; theme
 (load-theme 'my t)
 
-;; cleaner rgrep output
-(defadvice rgrep (after delete-grep-header activate)
-  (save-excursion
-    (with-current-buffer grep-last-buffer
-      (goto-line 5)
-      (narrow-to-region (point) (point-max)))))
-
 ;; fix PATH on macOS
 (exec-path-from-shell-initialize)
 
@@ -244,11 +237,19 @@
 ;; yank primary selection with keyboard
 (global-set-key (kbd "S-<insert>") 'yank-primary)
 
-;;;;;;;;;;;;;
-;; ALIASES ;;
-;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;; OVERRIDES ;;
+;;;;;;;;;;;;;;;
 
+;; list-buffer alternative
 (defalias 'list-buffers 'ibuffer)
+
+;; cleaner rgrep output
+(defadvice rgrep (after delete-grep-header activate)
+  (save-excursion
+    (with-current-buffer grep-last-buffer
+      (goto-line 5)
+      (narrow-to-region (point) (point-max)))))
 
 ;;;;;;;;;;;
 ;; MAGIT ;;
