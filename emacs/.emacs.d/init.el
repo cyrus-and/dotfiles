@@ -44,12 +44,14 @@
 
 ;; initialize the package system
 (package-initialize)
-(unless package-archive-contents
-  (package-refresh-contents))
 
 ;; add additional repositories
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
+
+;; refresh package list the first time
+(unless package-archive-contents
+  (package-refresh-contents))
 
 ;; install packages
 (mapc
