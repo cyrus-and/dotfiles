@@ -49,26 +49,25 @@
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 
-;; refresh package list the first time
-(unless package-archive-contents
-  (package-refresh-contents))
-
 ;; install packages
-(mapc
- 'package-install
- '(auctex
-   avy
-   cmake-mode
-   exec-path-from-shell
-   go-mode
-   js2-mode
-   json-mode
-   magit
-   markdown-mode
-   php-mode
-   rainbow-mode
-   window-numbering
-   yaml-mode))
+(let ((packages
+       '(auctex
+         avy
+         cmake-mode
+         edit-indirect
+         exec-path-from-shell
+         go-mode
+         js2-mode
+         json-mode
+         magit
+         markdown-mode
+         php-mode
+         rainbow-mode
+         window-numbering
+         yaml-mode)))
+  (when (member nil (mapcar 'package-installed-p packages))
+    (package-refresh-contents)
+    (mapc 'package-install packages)))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; CUSTOMIZATIONS ;;
