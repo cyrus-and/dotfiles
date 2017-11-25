@@ -32,6 +32,8 @@
 ;; M-|        shell-command-on-region (replace with C-u)
 
 ;; C-F5       reload-buffer
+;; F6         recompile-or-compile
+;; C-F6       compile
 ;; F12        magit-status
 
 ;;;;;;;;;;;
@@ -137,13 +139,24 @@
 ;; COMPILATION ;;
 ;;;;;;;;;;;;;;;;;
 
+(defun recompile-or-compile ()
+  "Recompile or prompt a new compilation."
+  (interactive)
+  (if (fboundp 'recompile)
+      (recompile)
+    (call-interactively 'compile)))
+
 (custom-set-variables
- ;; fail at the first error
  '(compile-command "make")
- '(compilation-scroll-output 'first-error))
+ '(compilation-scroll-output 'first-error)
+ '(compilation-always-kill t))
 
 ;; visual line mode for compilation
 (add-hook 'compilation-mode-hook 'visual-line-mode)
+
+;; compilation shortcuts
+(global-set-key (kbd "C-<f6>") 'compile)
+(global-set-key (kbd "<f6>") 'recompile-or-compile)
 
 ;;;;;;;;;;;;;;;;;;;
 ;; CUSTOMIZATION ;;
