@@ -34,7 +34,7 @@
 ;; C-F5       reload-buffer
 ;; F6         recompile-or-compile
 ;; C-F6       compile
-;; F12        magit-status
+;; F8         magit-status
 
 ;;;;;;;;;;;
 ;; THEME ;;
@@ -135,6 +135,19 @@
 
 (global-set-key (kbd "C-<f5>") 'force-revert-buffer)
 
+;;;;;;;;;;;;
+;; ESHELL ;;
+;;;;;;;;;;;;
+
+(custom-set-variables
+ '(eshell-prompt-regexp "^[$#] ")
+ '(eshell-prompt-function
+   (lambda ()
+     (concat (abbreviate-file-name (eshell/pwd))
+             "\n" (if (= (user-uid) 0) "#" "$") " "))))
+
+(global-set-key (kbd "<f6>") 'eshell)
+
 ;;;;;;;;;;;;;;;;;
 ;; COMPILATION ;;
 ;;;;;;;;;;;;;;;;;
@@ -154,9 +167,8 @@
 ;; visual line mode for compilation
 (add-hook 'compilation-mode-hook 'visual-line-mode)
 
-;; compilation shortcuts
-(global-set-key (kbd "C-<f6>") 'compile)
-(global-set-key (kbd "<f6>") 'recompile-or-compile)
+(global-set-key (kbd "C-<f7>") 'compile)
+(global-set-key (kbd "<f7>") 'recompile-or-compile)
 
 ;;;;;;;;;;;;;;;;;;;
 ;; CUSTOMIZATION ;;
@@ -318,7 +330,7 @@
 ;;;;;;;;;;;
 
 ;; shortcut to main magit buffer
-(global-set-key (kbd "<f12>") 'magit-status)
+(global-set-key (kbd "<f8>") 'magit-status)
 
 ;; use magit for `git commit` and enable spell checking
 (global-git-commit-mode)
