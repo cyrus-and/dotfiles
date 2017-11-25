@@ -140,6 +140,7 @@
 ;;;;;;;;;;;;
 
 (custom-set-variables
+ '(eshell-banner-message "")
  '(eshell-prompt-regexp "^[$#] ")
  '(eshell-prompt-function
    (lambda ()

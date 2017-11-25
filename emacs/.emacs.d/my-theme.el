@@ -92,13 +92,16 @@
    `(show-paren-match    ((t (:background ,theme-faint))))
    `(show-paren-mismatch ((t (:inherit (error) :inverse-video t))))
 
-   ;; third party: js2-mode
+   ;; fix: eshell
+   `(eshell-prompt ((t (:inherit minibuffer-prompt))))
+
+   ;; fix: js2-mode
    `(js2-object-property ((t (:inherit font-lock-builtin-face))))
 
-   ;; third party: markdown-mode
+   ;; fix: markdown-mode
    `(markdown-code-face ((t (:background ,theme-very-dark))))
 
-   ;; third party: org-mode
+   ;; fix: org-mode
    `(org-block     ((t (:inherit (font-lock-string-face)))))
    `(org-code      ((t (:inherit (font-lock-string-face)))))
    `(org-verbatim  ((t (:inherit (font-lock-string-face)))))
@@ -116,11 +119,11 @@
   (custom-theme-set-variables
    'my
 
-   ;; third party: org-mode
+   ;; org-mode
    `(org-src-fontify-natively t)
    `(org-fontify-whole-heading-line t)
    `(org-ellipsis 'org-ellipsis)
 
-   ;; third party: org-mode
+   ;; markdown-mode
    `(markdown-fontify-code-blocks-natively t)
    `(markdown-enable-math t)))
