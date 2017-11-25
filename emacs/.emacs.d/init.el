@@ -61,6 +61,7 @@
          json-mode
          magit
          markdown-mode
+         password-store
          php-mode
          rainbow-mode
          window-numbering
@@ -302,6 +303,18 @@
 ;; avy
 (defalias 'goto-line 'avy-goto-line)
 (global-set-key (kbd "C-ò") 'avy-goto-char-timer)
+
+;; erc
+(defun irc ()
+  (interactive)
+  (let* ((credentials (split-string (password-store-get "Freenode")))
+         (nick (nth 0 credentials))
+         (password (nth 1 credentials)))
+    (erc
+     :server "irc.freenode.net"
+     :port 6667
+     :nick nick
+     :password password)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADDITIONAL INIT FILES ;;
