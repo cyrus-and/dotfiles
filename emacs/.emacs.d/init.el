@@ -139,7 +139,8 @@
 
 (custom-set-variables
  ;; fail at the first error
- '(compile-command "make"))
+ '(compile-command "make")
+ '(compilation-scroll-output 'first-error))
 
 ;; visual line mode for compilation
 (add-hook 'compilation-mode-hook 'visual-line-mode)
