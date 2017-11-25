@@ -92,6 +92,9 @@
    `(show-paren-match    ((t (:background ,theme-faint))))
    `(show-paren-mismatch ((t (:inherit (error) :inverse-video t))))
 
+   ;; third party: js2-mode
+   `(js2-object-property ((t (:inherit font-lock-builtin-face))))
+
    ;; third party: markdown-mode
    `(markdown-code-face ((t (:background ,theme-very-dark))))
 
