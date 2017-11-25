@@ -45,8 +45,6 @@
 ;; initialize the package system
 (package-initialize)
 
-(some)
-
 ;; add additional repositories
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
@@ -67,7 +65,7 @@
          rainbow-mode
          window-numbering
          yaml-mode)))
-  (when (some 'null (mapcar 'package-installed-p packages))
+  (when (member nil (mapcar 'package-installed-p packages))
     (package-refresh-contents)
     (mapc 'package-install packages)))
 
