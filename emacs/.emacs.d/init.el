@@ -120,8 +120,8 @@
 ;; GUI ;;
 ;;;;;;;;;
 
-;; avoid suspend-frame (terminal cau use C-x C-z)
-(global-unset-key (kbd "C-z"))
+;; avoid suspend-frame in GUI mode
+(advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EASY REVERT BUFFER ;;
