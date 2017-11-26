@@ -94,6 +94,15 @@
 (custom-set-variables
  '(disable-bad-keys-mode t))
 
+;;;;;;;;;;;;;;;;;;;;
+;; CUSTOM MOTIONS ;;
+;;;;;;;;;;;;;;;;;;:;
+
+;; the default key bindings on an italian keyboard are crazy, plus due to
+;; ghosting not every keyboard is able to process such sequences
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+
 ;;;;;;;;;;;;
 ;; MAC OS ;;
 ;;;;;;;;;;;;
