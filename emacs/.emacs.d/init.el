@@ -104,7 +104,7 @@
   (exec-path-from-shell-initialize)
 
   (custom-set-variables
-   ;; allow to type fancy glyphs using the righ meta key
+   ;; allow to type fancy glyphs using the right meta key
    '(mac-right-option-modifier 'none)))
 
 ;; TODO set font size to 15
