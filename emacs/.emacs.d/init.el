@@ -120,9 +120,8 @@
 ;; GUI ;;
 ;;;;;;;;;
 
-;; avoid suspend-frame
-(when (display-graphic-p)
-  (global-unset-key (kbd "C-z")))
+;; avoid suspend-frame (terminal cau use C-x C-z)
+(global-unset-key (kbd "C-z"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; EASY REVERT BUFFER ;;
@@ -148,6 +147,13 @@
              "\n" (if (= (user-uid) 0) "#" "$") " "))))
 
 (global-set-key (kbd "<f6>") 'eshell)
+
+;;;;;;;;;;;
+;; WOMAN ;;
+;;;;;;;;;;;
+
+(custom-set-variables
+ '(woman-fill-frame t))
 
 ;;;;;;;;;;;;;;;;;
 ;; COMPILATION ;;

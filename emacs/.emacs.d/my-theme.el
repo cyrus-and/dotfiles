@@ -95,8 +95,15 @@
    ;; fix: eshell
    `(eshell-prompt ((t (:inherit minibuffer-prompt))))
 
+   ;; fix: woman
+   `(woman-bold ((t (:inherit bold :foreground ,theme-bright))))
+   `(woman-italic ((t (:inherit italic :foreground ,theme-green))))
+
    ;; fix: js2-mode
    `(js2-object-property ((t (:inherit font-lock-builtin-face))))
+
+   ;; fix: erc
+   `(erc-prompt-face ((t (:inherit minibuffer-prompt))))
 
    ;; fix: markdown-mode
    `(markdown-code-face ((t (:background ,theme-very-dark))))
