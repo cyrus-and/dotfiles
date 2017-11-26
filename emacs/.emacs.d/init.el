@@ -23,7 +23,7 @@
 ;; C-x w r    unhighlight-regexp
 ;; C-x z      repeat
 ;; M-?        xref-find-references
-;; M-S-/      dabbrev-expand
+;; M-/        dabbrev-expand
 ;; M-^        delete-indentation
 ;; M-h        mark-paragraph
 ;; M-s h .    highlight-symbol-at-point
@@ -31,10 +31,10 @@
 ;; M-z        zap-to-char
 ;; M-|        shell-command-on-region (replace with C-u)
 
-;; C-F5       reload-buffer
 ;; F6         recompile-or-compile
-;; C-F6       compile
 ;; F8         magit-status
+;; C-F5       reload-buffer
+;; C-F6       compile
 
 ;;;;;;;;;;;
 ;; THEME ;;
@@ -98,7 +98,7 @@
 ;; CUSTOM MOTIONS ;;
 ;;;;;;;;;;;;;;;;;;:;
 
-;; the default key bindings on an italian keyboard are crazy, plus due to
+;; the default key bindings with an italian keyboard are crazy, plus due to
 ;; ghosting not every keyboard is able to process such sequences
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
@@ -314,7 +314,7 @@
 
 (custom-set-variables
  ;; call the garbage collector less often
- '(gc-cons-threshold (expt 2 24))) ; 16MB
+ '(gc-cons-threshold (* 32 (expt 2 20)))) ; 32 MB
 
 ;;;;;;;;;;;;;;;;
 ;; FORMATTING ;;
