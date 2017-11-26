@@ -341,6 +341,9 @@
 ;; IBUFFER ;;
 ;;;;;;;;;;;;;
 
+(custom-set-variables
+ '(ibuffer-expert t))
+
 ;; list-buffer alternative
 (defalias 'list-buffers 'ibuffer)
 
