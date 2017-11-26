@@ -135,6 +135,24 @@
 (global-set-key (kbd "C-<f5>") 'force-revert-buffer)
 
 ;;;;;;;;;;;;
+;; ISPELL ;;
+;;;;;;;;;;;;
+
+(custom-set-variables
+ '(ispell-silently-savep t))
+
+;; allows to safely set a per-directory personal dictionary (.dir-locals.el),
+;; for example:
+;;
+;; ((nil . ((ispell-local-dictionary . "english")
+;;          (eval . (setq ispell-personal-dictionary
+;;                        (concat default-directory ".dictionary"))))))
+;;
+(add-to-list 'safe-local-eval-forms
+             '(setq ispell-personal-dictionary
+                    (concat default-directory ".dictionary")))
+
+;;;;;;;;;;;;
 ;; ESHELL ;;
 ;;;;;;;;;;;;
 
