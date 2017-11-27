@@ -45,7 +45,7 @@ Custom key bindings (list with ~C-c ?~):
 | ~C-c s~ | ~magit-status~          |
 | ~C-c t~ | ~shell-terminal~        |
 
-* Packages setup
+* Packages
 
 Initialize the package system:
 
@@ -70,6 +70,7 @@ Install packages:
          edit-indirect
          exec-path-from-shell
          go-mode
+         htmlize
          js2-mode
          json-mode
          magit
@@ -323,7 +324,7 @@ Automatic [[https://freenode.net/][Freenode]] connection:
      :password password)))
 #+END_SRC
 
-Credentials are fetched from [[https://www.passwordstore.org/][~pass~]] (a graphical pinentry for GPG must be available, e.g., ~pinentry-qt~ and ~pinentry-mac~).
+Credentials are fetched from [[https://www.passwordstore.org/][pass]] (a graphical pinentry for GPG must be available, e.g., ~pinentry-qt~ and ~pinentry-mac~).
 
 Add convenience shortcut:
 
