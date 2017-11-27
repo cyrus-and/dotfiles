@@ -1,48 +1,53 @@
 * Cheatsheet
 
-Common native keybindings:
+Common native key bindings:
 
-: % m        dired-mark-files-regexp
-: C-s C-w    isearch-yank-word-or-char
-: C-u C-SPC  pop-mark
-: C-x -      shrink-window-if-larger-than-buffer
-: C-x 8 RET  insert-char
-: C-x C-;    comment-line
-: C-x C-SPC  pop-global-mark
-: C-x C-b    list-buffers
-: C-x C-q    wdired-change-to-wdired-mode
-: C-x M-:    repeat-complex-command
-: C-x SPC    rectangle-mark-mode
-: C-x TAB    indent-rigidly
-: C-x d      dired
-: C-x n n    narrow-to-region
-: C-x n w    widen
-: C-x r SPC  point-to-register
-: C-x r i    insert-register
-: C-x r s    copy-to-register
-: C-x r w    window-configuration-to-register
-: C-x w r    unhighlight-regexp
-: C-x z      repeat
-: M-/        dabbrev-expand
-: M-?        xref-find-references
-: M-^        delete-indentation
-: M-h        mark-paragraph
-: M-s h .    highlight-symbol-at-point
-: M-s h r    highlight-regexp
-: M-z        zap-to-char
-: M-|        shell-command-on-region (replace with C-u)
+#+BEGIN_EXAMPLE
+% m        dired-mark-files-regexp
+C-s C-w    isearch-yank-word-or-char
+C-u C-SPC  pop-mark
+C-x -      shrink-window-if-larger-than-buffer
+C-x 8 RET  insert-char
+C-x C-;    comment-line
+C-x C-SPC  pop-global-mark
+C-x C-b    list-buffers
+C-x C-q    wdired-change-to-wdired-mode
+C-x M-:    repeat-complex-command
+C-x SPC    rectangle-mark-mode
+C-x TAB    indent-rigidly
+C-x d      dired
+C-x n n    narrow-to-region
+C-x n w    widen
+C-x r SPC  point-to-register
+C-x r i    insert-register
+C-x r s    copy-to-register
+C-x r w    window-configuration-to-register
+C-x w r    unhighlight-regexp
+C-x z      repeat
+M-/        dabbrev-expand
+M-?        xref-find-references
+M-^        delete-indentation
+M-h        mark-paragraph
+M-s h .    highlight-symbol-at-point
+M-s h r    highlight-regexp
+M-z        zap-to-char
+M-|        shell-command-on-region (replace with C-u)
+#+END_EXAMPLE
 
-Custom keybindings (list with ~C-c ?~):
+Custom key bindings (list with ~C-c ?~):
 
-: C-c C      compile
-: C-c R      force-revert-buffer
-: C-c c      recompile-or-compile
-: C-c e      eshell
-: C-c g      rgrep
-: C-c i      irc
-: C-c p      package-list-packages
-: C-c s      magit-status
-: C-c t      shell-terminal
+#+BEGIN_EXAMPLE
+C-c b  disable-bad-keys-mode
+C-c C  compile
+C-c R  force-revert-buffer
+C-c c  recompile-or-compile
+C-c e  eshell
+C-c g  rgrep
+C-c i  irc
+C-c p  package-list-packages
+C-c s  magit-status
+C-c t  shell-terminal
+#+END_EXAMPLE
 
 * Packages setup
 
@@ -161,7 +166,7 @@ Infinite minibuffer history:
 
 ** Mouse behavior
 
-More confortable mouse scrolling and yanking:
+More comfortable mouse scrolling and yanking:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
@@ -185,7 +190,7 @@ Replace the original shortcut:
 (global-set-key (kbd "S-<insert>") 'yank-primary)
 #+END_SRC
 
-** Performace
+** Performance
 
 Call the garbage collector less often:
 
@@ -307,7 +312,7 @@ This basically inhibit the "Save for Future Sessions" feature; saving the above 
 
 ** ERC
 
-Automatic Freenode connection:
+Automatic [[https://freenode.net/][Freenode]] connection:
 
 #+BEGIN_SRC emacs-lisp
 (defun irc ()
@@ -322,7 +327,7 @@ Automatic Freenode connection:
      :password password)))
 #+END_SRC
 
-Credentials are fetched from [[https://www.passwordstore.org/][~pass~]] (a graphical pinentry for GPG must be available).
+Credentials are fetched from [[https://www.passwordstore.org/][~pass~]] (a graphical pinentry for GPG must be available, e.g., ~pinentry-qt~ and ~pinentry-mac~).
 
 Add convenience shortcut:
 
@@ -362,11 +367,11 @@ Ignore Node.js folder in searches:
 Use a cleaner ~rgrep~ output by hiding the command:
 
 #+BEGIN_SRC emacs-lisp
-(defadvice rgrep (after delete-grep-header activate)
-  (save-excursion
-    (with-current-buffer grep-last-buffer
-      (goto-line 5)
-      (narrow-to-region (point) (point-max)))))
+(advice-add 'rgrep :after (lambda (&rest ignore)
+                            (save-excursion
+                              (with-current-buffer grep-last-buffer
+                                (goto-line 5) ; manually checked
+                                (narrow-to-region (point) (point-max))))))
 #+END_SRC
 
 Add convenience shortcut:
@@ -385,7 +390,7 @@ Associate ~web-mode~:
 
 ** IBuffer
 
-Do not anny with trivial confirmations:
+Do not annoy with trivial confirmations:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
@@ -449,6 +454,7 @@ Ensure spacing coherence:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
+ ;; '(org-src-tab-acts-natively t) ;; TODO check
  '(org-startup-folded nil)
  '(org-cycle-separator-lines 1)
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
@@ -555,6 +561,12 @@ This minor mode is a best-effort attempt to force the user to avoid keys located
             map))
 #+END_SRC
 
+Add convenience shortcut:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c b") 'disable-bad-keys-mode)
+#+END_SRC
+
 ** Easy ~revert-buffer~
 
 Revert the current buffer without confirmation:
@@ -603,4 +615,4 @@ Avoid suspend-frame in GUI mode:
 (advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
 #+END_SRC
 
-Note that the check must be perfomed /live/ becouse it should work even if the Emacs server is used.
+Note that the check must be performed /live/ because it should work even if the Emacs server is used.
