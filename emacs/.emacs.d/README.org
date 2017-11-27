@@ -2,52 +2,48 @@
 
 Common native key bindings:
 
-#+BEGIN_EXAMPLE
-% m        dired-mark-files-regexp
-C-s C-w    isearch-yank-word-or-char
-C-u C-SPC  pop-mark
-C-x -      shrink-window-if-larger-than-buffer
-C-x 8 RET  insert-char
-C-x C-;    comment-line
-C-x C-SPC  pop-global-mark
-C-x C-b    list-buffers
-C-x C-q    wdired-change-to-wdired-mode
-C-x M-:    repeat-complex-command
-C-x SPC    rectangle-mark-mode
-C-x TAB    indent-rigidly
-C-x d      dired
-C-x n n    narrow-to-region
-C-x n w    widen
-C-x r SPC  point-to-register
-C-x r i    insert-register
-C-x r s    copy-to-register
-C-x r w    window-configuration-to-register
-C-x w r    unhighlight-regexp
-C-x z      repeat
-M-/        dabbrev-expand
-M-?        xref-find-references
-M-^        delete-indentation
-M-h        mark-paragraph
-M-s h .    highlight-symbol-at-point
-M-s h r    highlight-regexp
-M-z        zap-to-char
-M-|        shell-command-on-region (replace with C-u)
-#+END_EXAMPLE
+| ~% m~       | ~dired-mark-files-regexp~                            |
+| ~C-s C-w~   | ~isearch-yank-word-or-char~                          |
+| ~C-u C-SPC~ | ~pop-mark~                                           |
+| ~C-x -~     | ~shrink-window-if-larger-than-buffer~                |
+| ~C-x 8 RET~ | ~insert-char~                                        |
+| ~C-x C-;~   | ~comment-line~                                       |
+| ~C-x C-SPC~ | ~pop-global-mark~                                    |
+| ~C-x C-b~   | ~list-buffers~                                       |
+| ~C-x C-q~   | ~wdired-change-to-wdired-mode~                       |
+| ~C-x M-:~   | ~repeat-complex-command~                             |
+| ~C-x SPC~   | ~rectangle-mark-mode~                                |
+| ~C-x TAB~   | ~indent-rigidly~                                     |
+| ~C-x d~     | ~dired~ (useful for applying filters, e.g., ~*.org~) |
+| ~C-x n n~   | ~narrow-to-region~                                   |
+| ~C-x n w~   | ~widen~                                              |
+| ~C-x r SPC~ | ~point-to-register~                                  |
+| ~C-x r i~   | ~insert-register~                                    |
+| ~C-x r s~   | ~copy-to-register~                                   |
+| ~C-x r w~   | ~window-configuration-to-register~                   |
+| ~C-x w r~   | ~unhighlight-regexp~                                 |
+| ~C-x z~     | ~repeat~                                             |
+| ~M-/~       | ~dabbrev-expand~                                     |
+| ~M-?~       | ~xref-find-references~                               |
+| ~M-^~       | ~delete-indentation~                                 |
+| ~M-h~       | ~mark-paragraph~                                     |
+| ~M-s h .~   | ~highlight-symbol-at-point~                          |
+| ~M-s h r~   | ~highlight-regexp~                                   |
+| ~M-z~       | ~zap-to-char~                                        |
+| ~M-¦~       | ~shell-command-on-region~ (replace with ~C-u~)       |
 
 Custom key bindings (list with ~C-c ?~):
 
-#+BEGIN_EXAMPLE
-C-c b  disable-bad-keys-mode
-C-c C  compile
-C-c R  force-revert-buffer
-C-c c  recompile-or-compile
-C-c e  eshell
-C-c g  rgrep
-C-c i  irc
-C-c p  package-list-packages
-C-c s  magit-status
-C-c t  shell-terminal
-#+END_EXAMPLE
+| ~C-c b~ | ~disable-bad-keys-mode~ |
+| ~C-c C~ | ~compile~               |
+| ~C-c R~ | ~force-revert-buffer~   |
+| ~C-c c~ | ~recompile-or-compile~  |
+| ~C-c e~ | ~eshell~                |
+| ~C-c g~ | ~rgrep~                 |
+| ~C-c i~ | ~irc~                   |
+| ~C-c p~ | ~package-list-packages~ |
+| ~C-c s~ | ~magit-status~          |
+| ~C-c t~ | ~shell-terminal~        |
 
 * Packages setup
 
