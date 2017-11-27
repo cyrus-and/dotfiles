@@ -31,10 +31,13 @@
 ;; M-z        zap-to-char
 ;; M-|        shell-command-on-region (replace with C-u)
 
-;; F6         recompile-or-compile
-;; F8         magit-status
-;; C-F5       reload-buffer
-;; C-F6       compile
+;; C-c C      compile
+;; C-c R      force-revert-buffer
+;; C-c c      recompile-or-compile
+;; C-c e      eshell
+;; C-c g      rgrep
+;; C-c i      irc
+;; C-c s      magit-status
 
 ;;;;;;;;;;;
 ;; THEME ;;
@@ -87,12 +90,9 @@
                            "<home>" "<end>" "<prior>" "<next>"
                            "<up>" "<down>" "<left>" "<right>"))
               (dolist (mod '("" "C-" "M-" "C-M-"))
-                (let ((keystroke (kbd (format "%s%s" mod key))))
+                (let ((keystroke (kbd (concat mod key))))
                   (define-key map keystroke 'ignore))))
             map))
-
-(custom-set-variables
- '(disable-bad-keys-mode t))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; CUSTOM MOTIONS ;;
@@ -141,7 +141,7 @@
   (interactive)
   (revert-buffer t t))
 
-(global-set-key (kbd "C-<f5>") 'force-revert-buffer)
+(global-set-key (kbd "C-c R") 'force-revert-buffer)
 
 ;;;;;;;;;;;;
 ;; ISPELL ;;
@@ -173,7 +173,7 @@
      (concat (abbreviate-file-name (eshell/pwd))
              "\n" (if (= (user-uid) 0) "#" "$") " "))))
 
-(global-set-key (kbd "<f6>") 'eshell)
+(global-set-key (kbd "C-c e") 'eshell)
 
 ;;;;;;;;;;;
 ;; WOMAN ;;
@@ -189,7 +189,7 @@
 (defun recompile-or-compile ()
   "Recompile or prompt a new compilation."
   (interactive)
-  (if (fboundp 'recompile)
+  (if (get-buffer "*compilation*")
       (recompile)
     (call-interactively 'compile)))
 
@@ -201,8 +201,8 @@
 ;; visual line mode for compilation
 (add-hook 'compilation-mode-hook 'visual-line-mode)
 
-(global-set-key (kbd "C-<f7>") 'compile)
-(global-set-key (kbd "<f7>") 'recompile-or-compile)
+(global-set-key (kbd "C-c c") 'recompile-or-compile)
+(global-set-key (kbd "C-c C") 'compile)
 
 ;;;;;;;;;;;;;;;;;;;
 ;; CUSTOMIZATION ;;
@@ -362,12 +362,13 @@
       (goto-line 5)
       (narrow-to-region (point) (point-max)))))
 
+(global-set-key (kbd "C-c g") 'rgrep)
+
 ;;;;;;;;;;;
 ;; MAGIT ;;
 ;;;;;;;;;;;
 
-;; shortcut to main magit buffer
-(global-set-key (kbd "<f8>") 'magit-status)
+(global-set-key (kbd "C-c s") 'magit-status)
 
 ;; use magit for `git commit` and enable spell checking
 (global-git-commit-mode)
@@ -452,3 +453,5 @@
      :port 6667
      :nick nick
      :password password)))
+
+(global-set-key (kbd "C-c i") 'irc)
