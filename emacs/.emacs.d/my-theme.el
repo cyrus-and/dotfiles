@@ -112,19 +112,20 @@
    `(markdown-code-face ((t (:background ,theme-very-dark))))
 
    ;; fix: org-mode
-   `(org-block     ((t (:inherit (font-lock-string-face)))))
-   `(org-code      ((t (:inherit (font-lock-string-face)))))
-   `(org-verbatim  ((t (:inherit (font-lock-string-face)))))
-   `(org-meta-line ((t (:inherit (shadow) :height 0.5))))
-   `(org-ellipsis  ((t (:inherit (link)))))
-   `(org-level-1   ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-2   ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-3   ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-4   ((t (:inherit (outline-4 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-5   ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-6   ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-7   ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-8   ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark)))))
+   `(org-block            ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
+   `(org-block-background ((t (:background ,theme-very-dark))))
+   `(org-code             ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
+   `(org-verbatim         ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
+   `(org-meta-line        ((t (:inherit (shadow) :height 0.5))))
+   `(org-ellipsis         ((t (:inherit (link)))))
+   `(org-level-1          ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-2          ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-3          ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-4          ((t (:inherit (outline-4 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-5          ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-6          ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-7          ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-8          ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark)))))
 
   (custom-theme-set-variables
    'my
