@@ -4,6 +4,7 @@
 
 ;; % m        dired-mark-files-regexp
 ;; C-s C-w    isearch-yank-word-or-char
+;; C-u C-SPC  pop-mark
 ;; C-x -      shrink-window-if-larger-than-buffer
 ;; C-x 8 RET  insert-char
 ;; C-x C-;    comment-line
@@ -22,8 +23,8 @@
 ;; C-x r w    window-configuration-to-register
 ;; C-x w r    unhighlight-regexp
 ;; C-x z      repeat
-;; M-?        xref-find-references
 ;; M-/        dabbrev-expand
+;; M-?        xref-find-references
 ;; M-^        delete-indentation
 ;; M-h        mark-paragraph
 ;; M-s h .    highlight-symbol-at-point
