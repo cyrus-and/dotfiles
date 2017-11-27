@@ -32,7 +32,7 @@ Common native keybindings:
 : M-z        zap-to-char
 : M-|        shell-command-on-region (replace with C-u)
 
-Custom keybindings:
+Custom keybindings (list with ~C-c ?~):
 
 : C-c C      compile
 : C-c R      force-revert-buffer
@@ -43,12 +43,6 @@ Custom keybindings:
 : C-c p      package-list-packages
 : C-c s      magit-status
 : C-c t      shell-terminal
-
-* Theme
-
-#+BEGIN_SRC emacs-lisp
-(load-theme 'my t)
-#+END_SRC
 
 * Packages setup
 
@@ -96,86 +90,15 @@ Add convenience shortcut:
 (global-set-key (kbd "C-c p") 'package-list-packages)
 #+END_SRC
 
-* Overrides and fixes
+* Theme
 
-** Custom paragraph motions
-
-The default key bindings with an Italian keyboard are crazy, plus due to ghosting not every keyboard is able to process such sequences:
+Personal custom theme:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
+(load-theme 'my t)
 #+END_SRC
 
-** Disable /bad/ keys
-
-This minor mode is a best-effort attempt to force the user to avoid keys located outside the main keyboard block.
-
-#+BEGIN_SRC emacs-lisp
-(define-minor-mode disable-bad-keys-mode
-  "Disable bad keys."
-  :init-value t
-  :keymap (let ((map (make-sparse-keymap)))
-            (dolist (key '("<deletechar>"
-                           "<home>" "<end>" "<prior>" "<next>"
-                           "<up>" "<down>" "<left>" "<right>"))
-              (dolist (mod '("" "C-" "M-" "C-M-"))
-                (let ((keystroke (kbd (concat mod key))))
-                  (define-key map keystroke 'ignore))))
-            map))
-#+END_SRC
-
-** Easy ~revert-buffer~
-
-Revert the current buffer without confirmation:
-
-#+BEGIN_SRC emacs-lisp
-(defun force-revert-buffer ()
-  "Revert buffer without confirmation."
-  (interactive)
-  (revert-buffer t t))
-#+END_SRC
-
-Add convenience shortcut:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c R") 'force-revert-buffer)
-#+END_SRC
-
-** System-specific setup/fixes
-
-*** macOS fixes
-
-Use the correct ~$PATH~ environment variable and use the right meta key natively so to allow to type fancy glyphs:
-
-#+BEGIN_SRC emacs-lisp
-(when (eq system-type 'darwin)
-  (exec-path-from-shell-initialize)
-  (custom-set-variables
-   '(mac-right-option-modifier 'none)))
-#+END_SRC
-
-**** TODO set font size to 15
-
-*** Terminal
-
-Use custom window separator character in terminal mode:
-
-#+BEGIN_SRC emacs-lisp
-(set-display-table-slot standard-display-table 'vertical-border #x2502)
-#+END_SRC
-
-*** GUI
-
-Avoid suspend-frame in GUI mode:
-
-#+BEGIN_SRC emacs-lisp
-(advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
-#+END_SRC
-
-Note that the check must be perfomed /live/ becouse it should work even if the Emacs server is used.
-
-* Base configuration
+* Base setup
 
 ** Backups
 
@@ -307,7 +230,7 @@ Scroll without jumps if the cursor moves out the window boundaries:
  '(vc-follow-symlinks t)
 #+END_SRC
 
-* Component configuration
+* Components
 
 ** avy
 
@@ -358,7 +281,9 @@ Add convenience shortcuts:
 (global-set-key (kbd "C-c C") 'compile)
 #+END_SRC
 
-** TODO Dired
+** Dired
+
+# TODO fix on macOS
 
 Group directories first on Linux:
 
@@ -600,3 +525,82 @@ Use a bigger target size and resize temp buffers anyway:
  '(zoom-size '(90 . 30))
  '(temp-buffer-resize-mode t))
 #+END_SRC
+
+* Overrides
+
+** Custom paragraph motions
+
+The default key bindings with an Italian keyboard are crazy, plus due to ghosting not every keyboard is able to process such sequences:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+#+END_SRC
+
+** Disable /bad/ keys
+
+This minor mode is a best-effort attempt to force the user to avoid keys located outside the main keyboard block.
+
+#+BEGIN_SRC emacs-lisp
+(define-minor-mode disable-bad-keys-mode
+  "Disable bad keys."
+  :init-value t
+  :keymap (let ((map (make-sparse-keymap)))
+            (dolist (key '("<deletechar>"
+                           "<home>" "<end>" "<prior>" "<next>"
+                           "<up>" "<down>" "<left>" "<right>"))
+              (dolist (mod '("" "C-" "M-" "C-M-"))
+                (let ((keystroke (kbd (concat mod key))))
+                  (define-key map keystroke 'ignore))))
+            map))
+#+END_SRC
+
+** Easy ~revert-buffer~
+
+Revert the current buffer without confirmation:
+
+#+BEGIN_SRC emacs-lisp
+(defun force-revert-buffer ()
+  "Revert buffer without confirmation."
+  (interactive)
+  (revert-buffer t t))
+#+END_SRC
+
+Add convenience shortcut:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c R") 'force-revert-buffer)
+#+END_SRC
+
+** Platform-specific setup/fixes
+
+*** macOS fixes
+
+Use the correct ~$PATH~ environment variable and use the right meta key natively so to allow to type fancy glyphs:
+
+#+BEGIN_SRC emacs-lisp
+(when (eq system-type 'darwin)
+  (exec-path-from-shell-initialize)
+  (custom-set-variables
+   '(mac-right-option-modifier 'none)))
+#+END_SRC
+
+# TODO set font size to 15
+
+*** Terminal
+
+Use custom window separator character in terminal mode:
+
+#+BEGIN_SRC emacs-lisp
+(set-display-table-slot standard-display-table 'vertical-border #x2502)
+#+END_SRC
+
+*** GUI
+
+Avoid suspend-frame in GUI mode:
+
+#+BEGIN_SRC emacs-lisp
+(advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
+#+END_SRC
+
+Note that the check must be perfomed /live/ becouse it should work even if the Emacs server is used.
