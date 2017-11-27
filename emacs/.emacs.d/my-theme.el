@@ -112,8 +112,7 @@
    `(markdown-code-face ((t (:background ,theme-very-dark))))
 
    ;; fix: org-mode
-   `(org-block            ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
-   `(org-block-background ((t (:background ,theme-very-dark))))
+   `(org-block            ((t (:background ,theme-very-dark))))
    `(org-code             ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
    `(org-verbatim         ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
    `(org-meta-line        ((t (:inherit (shadow) :height 0.5))))
@@ -131,6 +130,7 @@
    'my
 
    ;; org-mode
+   `(org-fontify-quote-and-verse-blocks t)
    `(org-src-fontify-natively t)
    `(org-fontify-whole-heading-line t)
    `(org-ellipsis 'org-ellipsis)
