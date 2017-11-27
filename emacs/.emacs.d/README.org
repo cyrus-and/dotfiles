@@ -450,11 +450,12 @@ Add convenience shortcut:
 
 ** Org-mode
 
-Ensure spacing coherence:
+Ensure spacing coherence and fix indentation:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
- ;; '(org-src-tab-acts-natively t) ;; TODO check
+ '(org-src-preserve-indentation t)
+ '(org-src-tab-acts-natively t)
  '(org-startup-folded nil)
  '(org-cycle-separator-lines 1)
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
