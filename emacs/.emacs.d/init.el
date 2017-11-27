@@ -38,6 +38,7 @@
 ;; C-c g      rgrep
 ;; C-c i      irc
 ;; C-c s      magit-status
+;; C-c t      shell-terminal
 
 ;;;;;;;;;;;
 ;; THEME ;;
@@ -174,6 +175,17 @@
              "\n" (if (= (user-uid) 0) "#" "$") " "))))
 
 (global-set-key (kbd "C-c e") 'eshell)
+
+;;;;;;;;;;
+;; TERM ;;
+;;;;;;;;;;
+
+(defun shell-terminal ()
+  "Run a shell terminal without prompt."
+  (interactive)
+  (term (getenv "SHELL")))
+
+(global-set-key (kbd "C-c t") 'shell-terminal)
 
 ;;;;;;;;;;;
 ;; WOMAN ;;

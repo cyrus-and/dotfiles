@@ -95,6 +95,9 @@
    ;; fix: eshell
    `(eshell-prompt ((t (:inherit minibuffer-prompt))))
 
+   ;; fix: term
+   `(term-color-black ((t (:foreground ,theme-faint :background ,theme-faint))))
+
    ;; fix: woman
    `(woman-bold ((t (:inherit bold :foreground ,theme-bright))))
    `(woman-italic ((t (:inherit italic :foreground ,theme-green))))
