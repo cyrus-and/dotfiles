@@ -226,9 +226,9 @@ Scroll without jumps if the cursor moves out the window boundaries:
  '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
- '(truncate-lines t))
+ '(truncate-lines t)
  '(use-dialog-box nil)
- '(vc-follow-symlinks t)
+ '(vc-follow-symlinks t))
 #+END_SRC
 
 * Components
