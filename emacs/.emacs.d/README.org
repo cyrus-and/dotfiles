@@ -229,8 +229,7 @@ Scroll without jumps if the cursor moves out the window boundaries:
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(truncate-lines t)
- '(use-dialog-box nil)
- '(vc-follow-symlinks t))
+ '(use-dialog-box nil))
 #+END_SRC
 
 * Components
@@ -286,15 +285,12 @@ Add convenience shortcuts:
 
 ** Dired
 
-# TODO fix on macOS
-
-Group directories first on Linux:
+Use the native Emacs Lisp ~ls~ program emulation and group directories first:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
- '(dired-listing-switches
-   (if (eq system-type 'darwin)
-       "-al" "-al --group-directories-first")))
+ '(ls-lisp-use-insert-directory-program nil)
+ '(ls-lisp-dirs-first t))
 #+END_SRC
 
 ** Easy customization interface
@@ -591,16 +587,29 @@ Add convenience shortcut:
 
 *** macOS fixes
 
-Use the correct ~$PATH~ environment variable and use the right meta key natively so to allow to type fancy glyphs:
-
 #+BEGIN_SRC emacs-lisp
 (when (eq system-type 'darwin)
-  (exec-path-from-shell-initialize)
-  (custom-set-variables
-   '(mac-right-option-modifier 'none)))
 #+END_SRC
 
-# TODO set font size to 15
+Use the correct ~$PATH~ environment variable:
+
+#+BEGIN_SRC emacs-lisp
+  (exec-path-from-shell-initialize)
+#+END_SRC
+
+Use the right meta key natively so to allow typing fancy glyphs:
+
+#+BEGIN_SRC emacs-lisp
+  (custom-set-variables
+   '(mac-right-option-modifier 'none))
+#+END_SRC
+
+Use a bigger font size to compensate the retina screen:
+
+#+BEGIN_SRC emacs-lisp
+  (custom-set-faces
+   '(default ((t (:height 150))))))
+#+END_SRC
 
 *** Terminal
 
