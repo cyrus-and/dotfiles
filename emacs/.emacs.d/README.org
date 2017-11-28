@@ -27,8 +27,11 @@ Common native key bindings:
 | ~M-?~       | ~xref-find-references~                               |
 | ~M-^~       | ~delete-indentation~                                 |
 | ~M-h~       | ~mark-paragraph~                                     |
+| ~M-g M-n~   | ~next-error~                                         |
+| ~M-g M-p~   | ~previous-error~                                     |
 | ~M-s h .~   | ~highlight-symbol-at-point~                          |
 | ~M-s h r~   | ~highlight-regexp~                                   |
+| ~M-s o      | ~occur~                                              |
 | ~M-z~       | ~zap-to-char~                                        |
 | ~M-¦~       | ~shell-command-on-region~ (replace with ~C-u~)       |
 
