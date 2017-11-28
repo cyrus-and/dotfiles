@@ -147,9 +147,9 @@ Useful keyword highlighting:
 
 #+BEGIN_SRC emacs-lisp
 (defun my/keywords-highlighting ()
-  (let* ((regexp "\\<TODO\\|XXX\\>")
+  (let* ((regexp "\\<TODO\\>\\|\\<XXX\\>")
          (match `((,regexp 0 font-lock-warning-face t))))
-    (font-lock-add-keywords nil match)))
+    (font-lock-add-keywords nil match t)))
 
 (add-hook 'text-mode-hook 'my/keywords-highlighting)
 (add-hook 'prog-mode-hook 'my/keywords-highlighting)
