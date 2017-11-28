@@ -143,12 +143,13 @@ Delete trailing spaces on save:
 Useful keyword highlighting:
 
 #+BEGIN_SRC emacs-lisp
-(add-hook 'prog-mode-hook
-          (lambda ()
-            (font-lock-add-keywords
-             nil
-             '(("\\<TODO\\>" 0 font-lock-warning-face t)
-               ("\\<XXX\\>" 0 font-lock-warning-face t)))))
+(defun my/keywords-highlighting ()
+  (let* ((regexp "\\<TODO\\|XXX\\>")
+         (match `((,regexp 0 font-lock-warning-face t))))
+    (font-lock-add-keywords nil match)))
+
+(add-hook 'text-mode-hook 'my/keywords-highlighting)
+(add-hook 'prog-mode-hook 'my/keywords-highlighting)
 #+END_SRC
 
 ** Minibuffer history
@@ -337,13 +338,15 @@ Add convenience shortcut:
 Nicer prompt for Eshell:
 
 #+BEGIN_SRC emacs-lisp
+(defun my/eshell-prompt-function ()
+  (format "%s\n%s "
+          (abbreviate-file-name (eshell/pwd))
+          (if (= (user-uid) 0) "#" "$")))
+
 (custom-set-variables
  '(eshell-banner-message "")
  '(eshell-prompt-regexp "^[$#] ")
- '(eshell-prompt-function
-   (lambda ()
-     (concat (abbreviate-file-name (eshell/pwd))
-             "\n" (if (= (user-uid) 0) "#" "$") " "))))
+ '(eshell-prompt-function 'my/eshell-prompt-function))
 #+END_SRC
 
 Add convenience shortcut:
@@ -364,11 +367,13 @@ Ignore Node.js folder in searches:
 Use a cleaner ~rgrep~ output by hiding the command:
 
 #+BEGIN_SRC emacs-lisp
-(advice-add 'rgrep :after (lambda (&rest ignore)
-                            (save-excursion
-                              (with-current-buffer grep-last-buffer
-                                (goto-line 5) ; manually checked
-                                (narrow-to-region (point) (point-max))))))
+(defun my/rgrep-fix (&rest ignore)
+  (save-excursion
+    (with-current-buffer grep-last-buffer
+      (goto-line 5) ; manually checked
+      (narrow-to-region (point) (point-max)))))
+
+(advice-add 'rgrep :after 'my/rgrep-fix)
 #+END_SRC
 
 Add convenience shortcut:
