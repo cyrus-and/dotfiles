@@ -31,7 +31,7 @@ Common native key bindings:
 | ~M-g M-p~   | ~previous-error~                                     |
 | ~M-s h .~   | ~highlight-symbol-at-point~                          |
 | ~M-s h r~   | ~highlight-regexp~                                   |
-| ~M-s o      | ~occur~                                              |
+| ~M-s o~     | ~occur~ (specify the context with ~C-u~)             |
 | ~M-z~       | ~zap-to-char~                                        |
 | ~M-¦~       | ~shell-command-on-region~ (replace with ~C-u~)       |
 
