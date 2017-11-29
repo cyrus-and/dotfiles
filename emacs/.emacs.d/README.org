@@ -358,6 +358,14 @@ Set the timestamp on the left and always visible:
  '(erc-timestamp-only-if-changed-flag nil))
 #+END_SRC
 
+Disable automatic point recentering so the prompt stays still (unless the window is resized):
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'erc-mode-hook
+          (lambda ()
+            (set (make-local-variable 'scroll-conservatively) 101)))
+#+END_SRC
+
 Automatic [[https://freenode.net/][Freenode]] connection:
 
 #+BEGIN_SRC emacs-lisp
