@@ -89,25 +89,25 @@
    `(compilation-mode-line-fail ((t (:inherit (error)))))
 
    ;; fix: show-paren
-   `(show-paren-match    ((t (:background ,theme-faint))))
+   `(show-paren-match    ((t (:foreground ,theme-faint :inverse-video t))))
    `(show-paren-mismatch ((t (:inherit (error) :inverse-video t))))
 
    ;; fix: eshell
-   `(eshell-prompt ((t (:inherit minibuffer-prompt))))
+   `(eshell-prompt ((t (:inherit (minibuffer-prompt)))))
 
    ;; fix: term
    `(term-color-black ((t (:foreground ,theme-faint :background ,theme-faint))))
 
    ;; fix: woman
-   `(woman-bold ((t (:inherit bold :foreground ,theme-bright))))
-   `(woman-italic ((t (:inherit italic :foreground ,theme-green))))
+   `(woman-bold ((t (:inherit (bold) :foreground ,theme-bright))))
+   `(woman-italic ((t (:inherit (italic) :foreground ,theme-green))))
 
    ;; fix: js2-mode
-   `(js2-object-property ((t (:inherit font-lock-builtin-face))))
+   `(js2-object-property ((t (:inherit (font-lock-builtin-face)))))
 
    ;; fix: erc
-   `(erc-prompt-face ((t (:inherit minibuffer-prompt))))
-   `(erc-timestamp-face ((t (:inherit shadow))))
+   `(erc-prompt-face ((t (:inherit (minibuffer-prompt)))))
+   `(erc-timestamp-face ((t (:inherit (shadow)))))
 
    ;; fix: markdown-mode
    `(markdown-code-face ((t (:background ,theme-very-dark))))
