@@ -107,6 +107,7 @@
 
    ;; fix: erc
    `(erc-prompt-face ((t (:inherit minibuffer-prompt))))
+   `(erc-timestamp-face ((t (:inherit shadow))))
 
    ;; fix: markdown-mode
    `(markdown-code-face ((t (:background ,theme-very-dark))))

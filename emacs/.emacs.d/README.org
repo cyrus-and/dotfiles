@@ -350,6 +350,14 @@ Enable visual indentation instead:
 (add-hook 'erc-mode-hook 'visual-line-mode)
 #+END_SRC
 
+Set the timestamp on the left and always visible:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(erc-timestamp-format "[%H:%M] ")
+ '(erc-timestamp-only-if-changed-flag nil))
+#+END_SRC
+
 Automatic [[https://freenode.net/][Freenode]] connection:
 
 #+BEGIN_SRC emacs-lisp
