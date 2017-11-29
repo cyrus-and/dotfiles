@@ -323,6 +323,33 @@ This basically inhibit the "Save for Future Sessions" feature; saving the above 
 
 ** ERC
 
+Disable hard fill:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(erc-modules '(completion
+                 autojoin
+                 button
+                 irccontrols
+                 list
+                 match
+                 menu
+                 move-to-prompt
+                 netsplit
+                 networks
+                 noncommands
+                 readonly
+                 ring
+                 stamp
+                 track)))
+#+END_SRC
+
+Enable visual indentation instead:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'erc-mode-hook 'visual-line-mode)
+#+END_SRC
+
 Automatic [[https://freenode.net/][Freenode]] connection:
 
 #+BEGIN_SRC emacs-lisp
