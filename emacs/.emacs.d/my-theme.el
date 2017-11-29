@@ -89,7 +89,7 @@
    `(compilation-mode-line-fail ((t (:inherit (error)))))
 
    ;; fix: show-paren
-   `(show-paren-match    ((t (:foreground ,theme-faint :inverse-video t))))
+   `(show-paren-match    ((t (:inherit (bold) :foreground ,theme-accent))))
    `(show-paren-mismatch ((t (:inherit (error) :inverse-video t))))
 
    ;; fix: eshell
