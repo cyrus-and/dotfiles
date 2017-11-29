@@ -292,12 +292,22 @@ Add convenience shortcuts:
 
 ** Dired
 
-Use the native Emacs Lisp ~ls~ program emulation and group directories first:
+Use the native Emacs Lisp ~ls~ program emulation:
+
+#+BEGIN_SRC emacs-lisp
+(require 'ls-lisp)
+
+(custom-set-variables
+ '(ls-lisp-use-insert-directory-program nil))
+#+END_SRC
+
+Group directories first and tune the displayed information:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
- '(ls-lisp-use-insert-directory-program nil)
- '(ls-lisp-dirs-first t))
+ '(ls-lisp-dirs-first t)
+ '(ls-lisp-use-localized-time-format t)
+ '(ls-lisp-verbosity '(uid gid)))
 #+END_SRC
 
 ** Easy customization interface
