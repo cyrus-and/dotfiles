@@ -367,6 +367,13 @@ Enable visual indentation instead:
 (add-hook 'erc-mode-hook 'visual-line-mode)
 #+END_SRC
 
+Make track mode less noisy:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(erc-track-exclude-types '("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE")))
+#+END_SRC
+
 Set the timestamp on the left and always visible:
 
 #+BEGIN_SRC emacs-lisp
