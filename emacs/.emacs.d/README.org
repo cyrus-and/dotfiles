@@ -367,13 +367,6 @@ Enable visual indentation instead:
 (add-hook 'erc-mode-hook 'visual-line-mode)
 #+END_SRC
 
-Avoid that a reconnection pop ups the ERC buffer:
-
-#+BEGIN_SRC emacs-lisp
-(custom-set-variables
- '(erc-join-buffer 'bury))
-#+END_SRC
-
 Set the timestamp on the left and always visible:
 
 #+BEGIN_SRC emacs-lisp
@@ -383,7 +376,7 @@ Set the timestamp on the left and always visible:
  '(erc-timestamp-only-if-changed-flag nil))
 #+END_SRC
 
-Disable automatic point recentering so the prompt stays still (unless the window is resized):
+Disable automatic point recentering so that the prompt stays still (see ~C-h v scroll-conservatively~ for the magic number):
 
 #+BEGIN_SRC emacs-lisp
 (add-hook 'erc-mode-hook
