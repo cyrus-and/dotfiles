@@ -69,6 +69,7 @@ Install packages:
 (let ((packages
        '(auctex
          avy
+         cmake-ide
          cmake-mode
          edit-indirect
          exec-path-from-shell
@@ -81,6 +82,7 @@ Install packages:
          password-store
          php-mode
          rainbow-mode
+         rtags
          web-mode
          window-numbering
          yaml-mode)))
@@ -288,6 +290,21 @@ Add convenience shortcuts:
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c c") 'recompile-or-compile)
 (global-set-key (kbd "C-c C") 'compile)
+#+END_SRC
+
+** C/C++ IDE
+
+This requires the [[https://github.com/Andersbakken/rtags][rtags]] external dependency and works out-of-the-box with CMake projects.
+
+#+BEGIN_SRC emacs-lisp
+(require 'rtags)
+(cmake-ide-setup)
+#+END_SRC
+
+It should be enough to just navigate a project to take advantage of ~rtags~. The following enables the standard ~rtags~ convenience shortcuts (prefix ~C-c r~):
+
+#+BEGIN_SRC emacs-lisp
+(rtags-enable-standard-keybindings)
 #+END_SRC
 
 ** Dired
