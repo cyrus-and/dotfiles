@@ -350,6 +350,13 @@ Enable visual indentation instead:
 (add-hook 'erc-mode-hook 'visual-line-mode)
 #+END_SRC
 
+Avoid that a reconnection pop ups the ERC buffer:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(erc-join-buffer 'bury))
+#+END_SRC
+
 Set the timestamp on the left and always visible:
 
 #+BEGIN_SRC emacs-lisp
