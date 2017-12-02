@@ -127,42 +127,6 @@ Never use tabs and fix the default C indentation:
      (innamespace . 0))))
 #+END_SRC
 
-*** Automatic whitespace management
-
-Define a local variable (default ~t~) which determines whether the ~before-save-hook~ should trim trailing whitespaces or not:
-
-#+BEGIN_SRC emacs-lisp
-(defvar my/delete-trailing-whitespace-on-save t
-  "If t calls `delete-trailing-whitespace' on `before-save-hook'.")
-
-(make-variable-buffer-local 'my/delete-trailing-whitespace-on-save)
-
-(defun my/before-save-hook ()
-  (when my/delete-trailing-whitespace-on-save
-    (delete-trailing-whitespace)))
-
-(add-hook 'before-save-hook 'my/before-save-hook)
-#+END_SRC
-
-Add a function to toggle the above variable:
-
-#+BEGIN_SRC emacs-lisp
-(defun my/toggle-delete-trailing-whitespace-on-save ()
-  "Toggle `my/delete-trailing-whitespace-on-save' interactively."
-  (interactive)
-  (let ((enabled (not my/delete-trailing-whitespace-on-save)))
-    (setq my/delete-trailing-whitespace-on-save enabled)
-    (when enabled
-      (set-buffer-modified-p t))
-    (message (format "delete-trailing-whitespace-on-save: %s" enabled))))
-#+END_SRC
-
-Add convenience shortcuts:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c d") 'my/toggle-delete-trailing-whitespace-on-save)
-#+END_SRC
-
 ** Keywords highlighting
 
 Useful keyword highlighting:
@@ -654,6 +618,30 @@ Use a bigger target size and resize temp buffers anyway:
 
 * Overrides
 
+** Automatic whitespace management
+
+Define a local minor mode that deletes trailing whitespaces on save if enabled:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/trim-whitespace--handler ()
+  "Delete trailing whitespaces if `my/trim-whitespace-mode' is enabled."
+  (when my/trim-whitespace-mode
+    (delete-trailing-whitespace)))
+
+(define-minor-mode my/trim-whitespace-mode
+  "Delete trailing whitespaces on save."
+  :init-value t
+  (my/trim-whitespace--handler))
+
+(add-hook 'before-save-hook 'my/trim-whitespace--handler)
+#+END_SRC
+
+Add convenience shortcut:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
+#+END_SRC
+
 ** Custom paragraph motions
 
 The default key bindings with an Italian keyboard are crazy, plus due to ghosting not every keyboard is able to process such sequences:
@@ -668,7 +656,7 @@ The default key bindings with an Italian keyboard are crazy, plus due to ghostin
 This minor mode is a best-effort attempt to force the user to avoid keys located outside the main keyboard block.
 
 #+BEGIN_SRC emacs-lisp
-(define-minor-mode disable-bad-keys-mode
+(define-minor-mode my/disable-bad-keys-mode
   "Disable bad keys."
   :init-value t
   :keymap (let ((map (make-sparse-keymap)))
@@ -684,7 +672,7 @@ This minor mode is a best-effort attempt to force the user to avoid keys located
 Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c b") 'disable-bad-keys-mode)
+(global-set-key (kbd "C-c b") 'my/disable-bad-keys-mode)
 #+END_SRC
 
 ** Easy ~revert-buffer~
