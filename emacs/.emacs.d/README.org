@@ -214,7 +214,7 @@ Scroll without jumps if the cursor moves out the window boundaries:
  '(hscroll-margin 0))
 #+END_SRC
 
-Note that setting ~scroll-conservatively~ to a large number yileds the same result but it also affects the point position after a /jump/, e.g., ~next-error~, ~iserach-forward~, etc.
+**Note:** setting ~scroll-conservatively~ to a large number yileds the same result but it also affects the point position after a /jump/, e.g., ~next-error~, ~iserach-forward~, etc.
 
 ** User interface settings
 
@@ -265,7 +265,8 @@ Make the compiling interaction less painful:
 (custom-set-variables
  '(compile-command "make")
  '(compilation-scroll-output 'first-error)
- '(compilation-always-kill t))
+ '(compilation-always-kill t)
+ '(compilation-disable-input t))
 #+END_SRC
 
 Ensure that the compilation messages are nicely readable:
@@ -712,4 +713,4 @@ Avoid suspend-frame in GUI mode:
 (advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
 #+END_SRC
 
-Note that the check must be performed /live/ because it should work even if the Emacs server is used.
+**Note:** the check must be performed /live/ because it should work even if the Emacs server is used.
