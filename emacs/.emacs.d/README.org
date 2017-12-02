@@ -201,7 +201,7 @@ More comfortable mouse scrolling and yanking:
 Allow to yank the primary selection with the keyboard:
 
 #+BEGIN_SRC emacs-lisp
-(defun yank-primary ()
+(defun my/yank-primary ()
   "Yank the primary selection (the one selected with the mouse)."
   (interactive)
   (insert-for-yank (gui-get-primary-selection)))
@@ -210,7 +210,7 @@ Allow to yank the primary selection with the keyboard:
 Replace the original shortcut:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "S-<insert>") 'yank-primary)
+(global-set-key (kbd "S-<insert>") 'my/yank-primary)
 #+END_SRC
 
 ** Performance
@@ -297,7 +297,7 @@ Ensure that the compilation messages are nicely readable:
 Add a recompilation helper:
 
 #+BEGIN_SRC emacs-lisp
-(defun smart-compile ()
+(defun my/smart-compile ()
   "Recompile or prompt a new compilation."
   (interactive)
   (if (local-variable-p 'compile-command)
@@ -310,7 +310,7 @@ Add a recompilation helper:
 Add convenience shortcuts:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c c") 'smart-compile)
+(global-set-key (kbd "C-c c") 'my/smart-compile)
 (global-set-key (kbd "C-c C") 'compile)
 #+END_SRC
 
@@ -416,7 +416,7 @@ Disable automatic point recentering so that the prompt stays still (see ~C-h v s
 Automatic [[https://freenode.net/][Freenode]] connection:
 
 #+BEGIN_SRC emacs-lisp
-(defun irc ()
+(defun my/irc ()
   (interactive)
   (let* ((credentials (split-string (password-store-get "Freenode")))
          (nick (nth 0 credentials))
@@ -433,7 +433,7 @@ Credentials are fetched from [[https://www.passwordstore.org/][pass]] (a graphic
 Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c i") 'irc)
+(global-set-key (kbd "C-c i") 'my/irc)
 #+END_SRC
 
 ** Eshell
@@ -593,7 +593,7 @@ Force Python 3 sessions:
 Shell terminal helper:
 
 #+BEGIN_SRC emacs-lisp
-(defun shell-terminal ()
+(defun my/shell-terminal ()
   "Run a shell terminal without prompt."
   (interactive)
   (term (getenv "SHELL")))
@@ -602,7 +602,7 @@ Shell terminal helper:
 Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c t") 'shell-terminal)
+(global-set-key (kbd "C-c t") 'my/shell-terminal)
 #+END_SRC
 
 ** window-numbering
@@ -692,7 +692,7 @@ Add convenience shortcut:
 Revert the current buffer without confirmation:
 
 #+BEGIN_SRC emacs-lisp
-(defun force-revert-buffer ()
+(defun my/force-revert-buffer ()
   "Revert buffer without confirmation."
   (interactive)
   (revert-buffer t t))
@@ -701,7 +701,7 @@ Revert the current buffer without confirmation:
 Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c R") 'force-revert-buffer)
+(global-set-key (kbd "C-c R") 'my/force-revert-buffer)
 #+END_SRC
 
 ** Platform-specific setup/fixes
