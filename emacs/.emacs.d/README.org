@@ -35,20 +35,7 @@ Common native key bindings:
 | ~M-z~       | ~zap-to-char~                                        |
 | ~M-¦~       | ~shell-command-on-region~ (replace with ~C-u~)       |
 
-Custom key bindings (list with ~C-c ?~):
-
-| ~C-c b~   | ~disable-bad-keys-mode~ |
-| ~C-c C~   | ~compile~               |
-| ~C-c R~   | ~force-revert-buffer~   |
-| ~C-c c~   | ~recompile-or-compile~  |
-| ~C-c e~   | ~eshell~                |
-| ~C-c g~   | ~rgrep~                 |
-| ~C-c i~   | ~irc~                   |
-| ~C-c p~   | ~package-list-packages~ |
-| ~C-c s~   | ~magit-status~          |
-| ~C-c t~   | ~shell-terminal~        |
-| ~C-c w r~ | ~winner-redo~           |
-| ~C-c w u~ | ~winner-undo~           |
+Custom key bindings can be listed with ~C-c ?~.
 
 * Packages
 
@@ -125,6 +112,7 @@ Never use tabs and fix the default C indentation:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
+ '(require-final-newline 'ask)
  '(fill-column 80)
  '(c-backslash-column 79)
  '(c-backslash-max-column 79)
@@ -139,10 +127,40 @@ Never use tabs and fix the default C indentation:
      (innamespace . 0))))
 #+END_SRC
 
-Delete trailing spaces on save:
+*** Automatic whitespace management
+
+Define a local variable (default ~t~) which determines whether the ~before-save-hook~ should trim trailing whitespaces or not:
 
 #+BEGIN_SRC emacs-lisp
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(defvar my/delete-trailing-whitespace-on-save t
+  "If t calls `delete-trailing-whitespace' on `before-save-hook'.")
+
+(make-variable-buffer-local 'my/delete-trailing-whitespace-on-save)
+
+(defun my/before-save-hook ()
+  (when my/delete-trailing-whitespace-on-save
+    (delete-trailing-whitespace)))
+
+(add-hook 'before-save-hook 'my/before-save-hook)
+#+END_SRC
+
+Add a function to toggle the above variable:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/toggle-delete-trailing-whitespace-on-save ()
+  "Toggle `my/delete-trailing-whitespace-on-save' interactively."
+  (interactive)
+  (let ((enabled (not my/delete-trailing-whitespace-on-save)))
+    (setq my/delete-trailing-whitespace-on-save enabled)
+    (when enabled
+      (set-buffer-modified-p t))
+    (message (format "delete-trailing-whitespace-on-save: %s" enabled))))
+#+END_SRC
+
+Add convenience shortcuts:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c d") 'my/toggle-delete-trailing-whitespace-on-save)
 #+END_SRC
 
 ** Keywords highlighting
@@ -233,7 +251,6 @@ Scroll without jumps if the cursor moves out the window boundaries:
  '(inhibit-startup-screen t)
  '(initial-scratch-message "")
  '(menu-bar-mode nil)
- '(require-final-newline 'ask)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
