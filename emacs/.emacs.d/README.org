@@ -37,16 +37,18 @@ Common native key bindings:
 
 Custom key bindings (list with ~C-c ?~):
 
-| ~C-c b~ | ~disable-bad-keys-mode~ |
-| ~C-c C~ | ~compile~               |
-| ~C-c R~ | ~force-revert-buffer~   |
-| ~C-c c~ | ~recompile-or-compile~  |
-| ~C-c e~ | ~eshell~                |
-| ~C-c g~ | ~rgrep~                 |
-| ~C-c i~ | ~irc~                   |
-| ~C-c p~ | ~package-list-packages~ |
-| ~C-c s~ | ~magit-status~          |
-| ~C-c t~ | ~shell-terminal~        |
+| ~C-c b~   | ~disable-bad-keys-mode~ |
+| ~C-c C~   | ~compile~               |
+| ~C-c R~   | ~force-revert-buffer~   |
+| ~C-c c~   | ~recompile-or-compile~  |
+| ~C-c e~   | ~eshell~                |
+| ~C-c g~   | ~rgrep~                 |
+| ~C-c i~   | ~irc~                   |
+| ~C-c p~   | ~package-list-packages~ |
+| ~C-c s~   | ~magit-status~          |
+| ~C-c t~   | ~shell-terminal~        |
+| ~C-c w r~ | ~winner-redo~           |
+| ~C-c w u~ | ~winner-undo~           |
 
 * Packages
 
@@ -591,6 +593,20 @@ Add convenience shortcut:
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(window-numbering-mode t))
+#+END_SRC
+
+** Winner
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(winner-mode t))
+#+END_SRC
+
+Replace convenience shortcuts:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c w u") 'winner-undo)
+(global-set-key (kbd "C-c w r") 'winner-redo)
 #+END_SRC
 
 ** WoMan
