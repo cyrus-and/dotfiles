@@ -75,7 +75,7 @@
    ;; others
    `(vertical-border              ((t (:foreground ,theme-dark))))
    `(cursor                       ((t (:background ,theme-bright))))
-   `(fringe                       ((t (:inherit (shadow)))))
+   `(fringe                       ((t (:foreground ,theme-dark))))
    `(minibuffer-prompt            ((t (:foreground ,theme-accent :weight bold))))
    `(region                       ((t (:foreground ,theme-accent :background ,theme-faint))))
    `(secondary-selection          ((t (:foreground ,theme-accent :background ,theme-dark))))
