@@ -278,18 +278,20 @@ Ensure that the compilation messages are nicely readable:
 Add a recompilation helper:
 
 #+BEGIN_SRC emacs-lisp
-(defun recompile-or-compile ()
+(defun smart-compile ()
   "Recompile or prompt a new compilation."
   (interactive)
-  (if (get-buffer "*compilation*")
-      (recompile)
-    (call-interactively 'compile)))
+  (if (local-variable-p 'compile-command)
+      (compile compile-command)
+    (if (get-buffer "*compilation*")
+        (recompile)
+      (call-interactively 'compile))))
 #+END_SRC
 
 Add convenience shortcuts:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c c") 'recompile-or-compile)
+(global-set-key (kbd "C-c c") 'smart-compile)
 (global-set-key (kbd "C-c C") 'compile)
 #+END_SRC
 
