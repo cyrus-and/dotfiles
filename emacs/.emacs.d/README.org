@@ -631,6 +631,7 @@ Define a local minor mode that deletes trailing whitespaces on save if enabled:
 (define-minor-mode my/trim-whitespace-mode
   "Delete trailing whitespaces on save."
   :init-value t
+  :lighter " W"
   (my/trim-whitespace--handler))
 
 (add-hook 'before-save-hook 'my/trim-whitespace--handler)
