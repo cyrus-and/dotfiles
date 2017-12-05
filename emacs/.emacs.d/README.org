@@ -258,6 +258,30 @@ Ensure that the compilation messages are nicely readable:
 (add-hook 'compilation-mode-hook 'visual-line-mode)
 #+END_SRC
 
+Automatically kill the compilation window on success after a short delay, but only if successful:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/compile-auto-quit (buffer status)
+  (let ((window (get-buffer-window buffer)))
+    (when (and my/compile-should-auto-quit
+               window (equal status "finished\n"))
+      (run-at-time 1 nil 'quit-window nil window))))
+
+(add-to-list 'compilation-finish-functions 'my/compile-auto-quit)
+#+END_SRC
+
+Inhibit the behavior if the compilation window is already present when the re/compilation is started:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/compile-before (&rest ignore)
+  (let* ((buffer (get-buffer "*compilation*"))
+         (window (get-buffer-window buffer)))
+    (setq my/compile-should-auto-quit (not (and buffer window)))))
+
+(advice-add 'compile :before 'my/compile-before)
+(advice-add 'recompile :before 'my/compile-before)
+#+END_SRC
+
 Add a recompilation helper:
 
 #+BEGIN_SRC emacs-lisp
