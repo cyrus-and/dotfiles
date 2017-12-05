@@ -290,10 +290,14 @@ Add a recompilation helper:
   (interactive)
   (if (local-variable-p 'compile-command)
       (compile compile-command)
-    (if (get-buffer "*compilation*")
-        (recompile)
-      (call-interactively 'compile))))
+    (let ((buffer (get-buffer "*compilation*")))
+      (if buffer
+          (with-current-buffer buffer
+            (recompile))
+        (call-interactively 'compile)))))
 #+END_SRC
+
+**Note:** a mere ~recompile~ will not work because it would use the ~compilation-command~ of the current buffer.
 
 Add convenience shortcuts:
 
