@@ -198,7 +198,7 @@ Scroll without jumps if the cursor moves out the window boundaries:
  '(hscroll-margin 0))
 #+END_SRC
 
-**Note:** setting ~scroll-conservatively~ to a large number yileds the same result but it also affects the point position after a /jump/, e.g., ~next-error~, ~iserach-forward~, etc.
+*Note:* setting ~scroll-conservatively~ to a large number yileds the same result but it also affects the point position after a /jump/, e.g., ~next-error~, ~iserach-forward~, etc.
 
 ** User interface settings
 
@@ -297,7 +297,7 @@ Add a recompilation helper:
         (call-interactively 'compile)))))
 #+END_SRC
 
-**Note:** a mere ~recompile~ will not work because it would use the ~compilation-command~ of the current buffer.
+*Note:* a mere ~recompile~ will not work because it would use the ~compilation-command~ of the current buffer.
 
 Add convenience shortcuts:
 
@@ -782,4 +782,4 @@ Avoid suspend-frame in GUI mode:
 (advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
 #+END_SRC
 
-**Note:** the check must be performed /live/ because it should work even if the Emacs server is used.
+*Note:* the check must be performed /live/ because it should work even if the Emacs server is used.
