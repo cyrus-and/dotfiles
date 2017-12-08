@@ -228,15 +228,18 @@ Scroll without jumps if the cursor moves out the window boundaries:
 
 ** auto-insert skeletons
 
-Create skeletons and silently auto-instert them in new files:
+Silently auto-instert skeletons in new files:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(auto-insert-mode t)
- '(auto-insert-query nil)
- '(auto-insert-alist '(("\\.c\\'" . my/c-source-skeleton)
-                       ("\\.cpp\\'" . my/c++-source-skeleton)
-                       ("\\.html\\'" . my/html-skeleton))))
+ '(auto-insert-query nil))
+#+END_SRC
+
+*** C
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-insert-alist '("\\.c\\'" . my/c-source-skeleton))
 
 (define-skeleton my/c-source-skeleton
   "C source skeleton"
@@ -250,6 +253,12 @@ Create skeletons and silently auto-instert them in new files:
   "    " _ "printf(\"Hello, world\\n\");\n"
   "    return EXIT_SUCCESS;\n"
   "}\n")
+#+END_SRC
+
+*** C++
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-insert-alist '("\\.cpp\\'" . my/c++-source-skeleton))
 
 (define-skeleton my/c++-source-skeleton
   "C++ source skeleton"
@@ -261,6 +270,12 @@ Create skeletons and silently auto-instert them in new files:
   "int main(int argc, char *argv[]) {\n"
   "    " _ "std::cout << \"Hello, world\" << std::endl;\n"
   "}\n")
+#+END_SRC
+
+*** HTML
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'auto-insert-alist '("\\.html\\'" . my/html-skeleton))
 
 (define-skeleton my/html-skeleton
   "HTML skeleton"
