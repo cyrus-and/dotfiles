@@ -177,15 +177,6 @@ Replace the original shortcut:
 (global-set-key (kbd "S-<insert>") 'my/yank-primary)
 #+END_SRC
 
-** Performance
-
-Call the garbage collector less often:
-
-#+BEGIN_SRC emacs-lisp
-(custom-set-variables
- '(gc-cons-threshold (* 32 (expt 2 20)))) ; 32 MB
-#+END_SRC
-
 ** Scrolling
 
 Scroll without jumps if the cursor moves out the window boundaries:
