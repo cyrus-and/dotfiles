@@ -226,6 +226,59 @@ Scroll without jumps if the cursor moves out the window boundaries:
 
 * Components
 
+** auto-insert skeletons
+
+Create skeletons and silently auto-instert them in new files:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(auto-insert-mode t)
+ '(auto-insert-query nil)
+ '(auto-insert-alist '(("\\.c\\'" . my/c-source-skeleton)
+                       ("\\.cpp\\'" . my/c++-source-skeleton)
+                       ("\\.html\\'" . my/html-skeleton))))
+
+(define-skeleton my/c-source-skeleton
+  "C source skeleton"
+  nil
+  "/* -*- compile-command: \"gcc -Wall -pedantic -g3 "
+  (buffer-name) " -o " (file-name-base) "\" -*- */\n"
+  "#include <stdio.h>\n"
+  "#include <stdlib.h>\n"
+  "\n"
+  "int main(int argc, char *argv[]) {\n"
+  "    " _ "printf(\"Hello, world\\n\");\n"
+  "    return EXIT_SUCCESS;\n"
+  "}\n")
+
+(define-skeleton my/c++-source-skeleton
+  "C++ source skeleton"
+  nil
+  "// -*- compile-command: \"g++ -Wall -pedantic -g3 "
+  (buffer-name) " -o " (file-name-base) "\" -*-\n"
+  "#include <iostream>\n"
+  "\n"
+  "int main(int argc, char *argv[]) {\n"
+  "    " _ "std::cout << \"Hello, world\" << std::endl;\n"
+  "}\n")
+
+(define-skeleton my/html-skeleton
+  "HTML skeleton"
+  nil
+"<!DOCTYPE html>\n"
+"<html lang=\"en\">\n"
+"    <head>\n"
+"        <meta charset=\"utf-8\">\n"
+"        <title></title>\n"
+"        <style></style>\n"
+"        <script></script>\n"
+"    </head>\n"
+"    <body>\n"
+"        " _ "Hello, world\n"
+"    </body>\n"
+"</html>\n")
+#+END_SRC
+
 ** avy
 
 Override ~goto-line~:
