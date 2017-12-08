@@ -265,18 +265,18 @@ Create skeletons and silently auto-instert them in new files:
 (define-skeleton my/html-skeleton
   "HTML skeleton"
   nil
-"<!DOCTYPE html>\n"
-"<html lang=\"en\">\n"
-"    <head>\n"
-"        <meta charset=\"utf-8\">\n"
-"        <title></title>\n"
-"        <style></style>\n"
-"        <script></script>\n"
-"    </head>\n"
-"    <body>\n"
-"        " _ "Hello, world\n"
-"    </body>\n"
-"</html>\n")
+  "<!DOCTYPE html>\n"
+  "<html lang=\"en\">\n"
+  "    <head>\n"
+  "        <meta charset=\"utf-8\">\n"
+  "        <title></title>\n"
+  "        <style></style>\n"
+  "        <script></script>\n"
+  "    </head>\n"
+  "    <body>\n"
+  "        " _ "Hello, world\n"
+  "    </body>\n"
+  "</html>\n")
 #+END_SRC
 
 ** avy
