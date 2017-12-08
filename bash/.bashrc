@@ -78,6 +78,7 @@ fi
 
 if [ "$OSTYPE" = 'linux-gnu' ]; then
     # environment
+    export ALTERNATE_EDITOR=''
     export EDITOR='emacsclient -t'
     export GIT_EDITOR="$EDITOR"
 
