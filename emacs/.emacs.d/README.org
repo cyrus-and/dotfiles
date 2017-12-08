@@ -228,10 +228,11 @@ Scroll without jumps if the cursor moves out the window boundaries:
 
 ** auto-insert skeletons
 
-Silently auto-instert skeletons in new files:
+Silently auto-instert skeletons in new files and mark them as modified:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
+ '(auto-insert t)
  '(auto-insert-mode t)
  '(auto-insert-query nil))
 #+END_SRC
@@ -263,7 +264,7 @@ Silently auto-instert skeletons in new files:
 (define-skeleton my/c++-source-skeleton
   "C++ source skeleton"
   nil
-  "// -*- compile-command: \"g++ -Wall -pedantic -g3 "
+  "// -*- compile-command: \"g++ -std=c++14 -Wall -pedantic -g3 "
   (buffer-name) " -o " (file-name-base) "\" -*-\n"
   "#include <iostream>\n"
   "\n"
@@ -356,6 +357,10 @@ Add a recompilation helper:
 (defun my/smart-compile ()
   "Recompile or prompt a new compilation."
   (interactive)
+  ;; reload safe variables silently
+  (let ((enable-local-variables :safe))
+    (hack-local-variables))
+  ;; smart compile
   (if (local-variable-p 'compile-command)
       (compile compile-command)
     (let ((buffer (get-buffer "*compilation*")))
