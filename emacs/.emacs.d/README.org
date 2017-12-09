@@ -1,3 +1,7 @@
+* Info
+
+At startup Emacs loads [[file:init.el][init.el]] which in turn tangles this file producing the main configuration file (~my-init.el~) and others, but ony if not yet present or obsolete.
+
 * Cheatsheet
 
 Common native key bindings:
