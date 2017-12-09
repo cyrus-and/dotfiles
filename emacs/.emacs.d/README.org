@@ -1,6 +1,6 @@
 * Info
 
-At startup Emacs loads [[file:init.el][init.el]] which in turn tangles this file producing the main configuration file (~my-init.el~) and others, but ony if not yet present or obsolete.
+At startup Emacs loads [[file:init.el][init.el]] which in turn tangles this file producing the main configuration file (~my-init.el~) and others, but only if not yet present or obsolete.
 
 * Cheatsheet
 
@@ -673,7 +673,7 @@ Useful keyword highlighting:
 
 ** Magit
 
-Use magit for external ~git commit~ and enable spell checking:
+Use Magit for external ~git commit~ and enable spell checking:
 
 #+BEGIN_SRC emacs-lisp
 (global-git-commit-mode)
@@ -752,6 +752,21 @@ Visual improvements:
  `(org-src-fontify-natively t)
  `(org-fontify-whole-heading-line t)
  `(org-ellipsis "\u2026"))
+#+END_SRC
+
+Configure the spell checker to ignore some Org regions:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/org-ispell ()
+  "Skip regions from spell checking."
+  (make-local-variable 'ispell-skip-region-alist)
+  (add-to-list 'ispell-skip-region-alist '("~" "~"))
+  (add-to-list 'ispell-skip-region-alist '("=" "="))
+  (add-to-list 'ispell-skip-region-alist '("^#\\+OPTIONS" "$"))
+  (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC" . "^#\\+END_SRC"))
+  (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_EXAMPLE" . "^#\\+END_EXAMPLE")))
+
+(add-hook 'org-mode-hook 'my/org-ispell)
 #+END_SRC
 
 Use visual indentation by default:
@@ -842,7 +857,7 @@ Scroll without jumps if the cursor moves out the window boundaries:
  '(hscroll-margin 0))
 #+END_SRC
 
-*Note:* setting ~scroll-conservatively~ to a large number yileds the same result but it also affects the point position after a /jump/, e.g., ~next-error~, ~iserach-forward~, etc.
+*Note:* setting ~scroll-conservatively~ to a large number yields the same result but it also affects the point position after a /jump/, e.g., ~next-error~, ~iserach-forward~, etc.
 
 ** Shell
 
@@ -856,7 +871,7 @@ Avoid showing the shell buffer output immediately for async commands and allow m
 
 ** Skeletons
 
-Silently auto-instert skeletons in new files and mark them as modified:
+Silently auto insert skeletons in new files and mark them as modified:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
