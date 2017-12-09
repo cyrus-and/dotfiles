@@ -135,7 +135,7 @@
    `(org-fontify-quote-and-verse-blocks t)
    `(org-src-fontify-natively t)
    `(org-fontify-whole-heading-line t)
-   `(org-ellipsis 'org-ellipsis)
+   `(org-ellipsis "\u2026")
 
    ;; markdown-mode
    `(markdown-fontify-code-blocks-natively t)
