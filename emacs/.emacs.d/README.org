@@ -88,7 +88,7 @@ Add convenience shortcut:
 
 * Theme
 
-Use a personal custom theme (find it [[file:my-theme.el][here]]):
+Use a personal custom [[file:my-theme.el][theme]]:
 
 #+BEGIN_SRC emacs-lisp
 (load-theme 'my t)
