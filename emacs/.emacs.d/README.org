@@ -221,7 +221,7 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(org-level-5          ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
    `(org-level-6          ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
    `(org-level-7          ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-8          ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark)))))
+   `(org-level-8          ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark))))))
 #+END_SRC
 
 * Configuration
