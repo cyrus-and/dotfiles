@@ -88,16 +88,22 @@ Add convenience shortcut:
 
 * Theme
 
-Introduce a personal custom theme:
+Load the below theme file:
 
 #+BEGIN_SRC emacs-lisp
-(deftheme my "Simple flat dark theme")
+(load-theme 'my t)
+#+END_SRC
+
+Introduce a personal custom theme:
+
+#+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/my-theme.el
+(deftheme my "Simple flat dark theme.")
 (provide-theme 'my)
 #+END_SRC
 
 The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/my-theme.el
 (let (;; theme base colors
       (theme-background "#000000")
       (theme-foreground "#c5c8c6")
@@ -761,6 +767,14 @@ Avoid suspend-frame in GUI mode:
 #+END_SRC
 
 *Note:* the check must be performed /live/ because it should work even if the Emacs server is used.
+
+On Linux set the GTK default background to match the theme background to prevent /white/ flashes:
+
+#+BEGIN_SRC text :tangle ~/.emacs.d/gtkrc
+style "default" {
+    bg[NORMAL] = {0, 0, 0}
+}
+#+END_SRC
 
 *** macOS fixes
 
