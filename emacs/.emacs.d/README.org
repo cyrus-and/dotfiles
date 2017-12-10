@@ -300,6 +300,21 @@ It should be enough to just navigate a project to take advantage of ~rtags~. The
 (rtags-enable-standard-keybindings)
 #+END_SRC
 
+** Calculator
+
+Run the calculator in the echo area:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(calculator-electric-mode t))
+#+END_SRC
+
+Add convenience shortcut:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c m") 'calculator)
+#+END_SRC
+
 ** Code indenting and formatting
 
 Never use tabs and fix the default C indentation:
