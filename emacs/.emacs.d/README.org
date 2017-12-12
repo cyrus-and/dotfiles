@@ -777,9 +777,9 @@ Configure the spell checker to ignore some Org regions:
   (make-local-variable 'ispell-skip-region-alist)
   (add-to-list 'ispell-skip-region-alist '("~" "~"))
   (add-to-list 'ispell-skip-region-alist '("=" "="))
-  (add-to-list 'ispell-skip-region-alist '("^#\\+OPTIONS" "$"))
-  (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC" . "^#\\+END_SRC"))
-  (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_EXAMPLE" . "^#\\+END_EXAMPLE")))
+  (add-to-list 'ispell-skip-region-alist '("^ *#\\+OPTIONS" "$"))
+  (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_SRC" . "^# *\\+END_SRC"))
+  (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_EXAMPLE" . "^ *#\\+END_EXAMPLE")))
 
 (add-hook 'org-mode-hook 'my/org-ispell)
 #+END_SRC
@@ -796,6 +796,7 @@ Go to the beginning of the buffer when the global visibility is changed:
 (advice-add 'org-global-cycle :before 'beginning-of-buffer)
 #+END_SRC
 
+**
 ** Platform-specific setup/fixes
 
 *** GUI
