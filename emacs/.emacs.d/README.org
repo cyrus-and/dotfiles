@@ -796,7 +796,6 @@ Go to the beginning of the buffer when the global visibility is changed:
 (advice-add 'org-global-cycle :before 'beginning-of-buffer)
 #+END_SRC
 
-**
 ** Platform-specific setup/fixes
 
 *** GUI
