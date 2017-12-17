@@ -775,10 +775,10 @@ Configure the spell checker to ignore some Org regions:
 (defun my/org-ispell ()
   "Skip regions from spell checking."
   (make-local-variable 'ispell-skip-region-alist)
-  (add-to-list 'ispell-skip-region-alist '("~" "~"))
-  (add-to-list 'ispell-skip-region-alist '("=" "="))
-  (add-to-list 'ispell-skip-region-alist '("^ *#\\+OPTIONS" "$"))
-  (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_SRC" . "^# *\\+END_SRC"))
+  (add-to-list 'ispell-skip-region-alist '("~" . "~"))
+  (add-to-list 'ispell-skip-region-alist '("=" . "="))
+  (add-to-list 'ispell-skip-region-alist '("^ *#\\+OPTIONS" . "$"))
+  (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_SRC" . "^ *#\\+END_SRC"))
   (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_EXAMPLE" . "^ *#\\+END_EXAMPLE")))
 
 (add-hook 'org-mode-hook 'my/org-ispell)
