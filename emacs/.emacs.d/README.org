@@ -204,34 +204,36 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(term-color-black ((t (:foreground ,theme-faint :background ,theme-faint))))
 
    ;; fix: woman
-   `(woman-bold ((t (:inherit (bold) :foreground ,theme-bright))))
+   `(woman-bold   ((t (:inherit (bold) :foreground ,theme-bright))))
    `(woman-italic ((t (:inherit (italic) :foreground ,theme-green))))
 
    ;; fix: js2-mode
    `(js2-object-property ((t (:inherit (font-lock-builtin-face)))))
 
    ;; fix: erc
-   `(erc-prompt-face ((t (:inherit (minibuffer-prompt)))))
+   `(erc-prompt-face    ((t (:inherit (minibuffer-prompt)))))
    `(erc-timestamp-face ((t (:inherit (shadow)))))
-   `(erc-notice-face ((t (:inherit (shadow bold)))))
+   `(erc-notice-face    ((t (:inherit (shadow bold)))))
 
    ;; fix: markdown-mode
    `(markdown-code-face ((t (:background ,theme-very-dark))))
 
    ;; fix: org-mode
-   `(org-block            ((t (:background ,theme-very-dark))))
-   `(org-code             ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
-   `(org-verbatim         ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
-   `(org-meta-line        ((t (:inherit (shadow) :height 0.5))))
-   `(org-ellipsis         ((t (:inherit (link)))))
-   `(org-level-1          ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-2          ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-3          ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-4          ((t (:inherit (outline-4 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-5          ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-6          ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-7          ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-8          ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark))))))
+   `(org-block                 ((t (:background ,theme-very-dark))))
+   `(org-code                  ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
+   `(org-verbatim              ((t (:inherit (font-lock-string-face) :background ,theme-very-dark))))
+   `(org-document-info-keyword ((t (:inherit (org-meta-line)))))
+   `(org-block-begin-line      ((t (:inherit (org-meta-line)))))
+   `(org-block-end-line        ((t (:inherit (org-meta-line)))))
+   `(org-ellipsis              ((t (:inherit (link)))))
+   `(org-level-1               ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-2               ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-3               ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-4               ((t (:inherit (outline-4 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-5               ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-6               ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-7               ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
+   `(org-level-8               ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark))))))
 #+END_SRC
 
 * Configuration
