@@ -654,7 +654,8 @@ Use ~ibuffer~ instead of ~list-buffer~:
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'safe-local-eval-forms
              '(setq ispell-personal-dictionary
-                    (concat default-directory ".dictionary")))
+                    (concat (locate-dominating-file default-directory ".dir-locals.el")
+                            ".dictionary")))
 #+END_SRC
 
 The above allows to safely set a per-directory personal dictionary (~.dir-locals.el~), for example:
@@ -662,7 +663,8 @@ The above allows to safely set a per-directory personal dictionary (~.dir-locals
 #+BEGIN_SRC emacs-lisp :tangle no
 ((nil . ((ispell-local-dictionary . "english")
          (eval . (setq ispell-personal-dictionary
-                       (concat default-directory ".dictionary"))))))
+                       (concat (locate-dominating-file default-directory ".dir-locals.el")
+                               ".dictionary"))))))
 #+END_SRC
 
 ** JavaScript
@@ -779,7 +781,9 @@ Configure the spell checker to ignore some Org regions:
   (make-local-variable 'ispell-skip-region-alist)
   (add-to-list 'ispell-skip-region-alist '("~" . "~"))
   (add-to-list 'ispell-skip-region-alist '("=" . "="))
-  (add-to-list 'ispell-skip-region-alist '("^ *#\\+OPTIONS" . "$"))
+  (add-to-list 'ispell-skip-region-alist '("\\[" . "\\]"))
+  (add-to-list 'ispell-skip-region-alist '("^ *#\\+OPTIONS:" . "$"))
+  (add-to-list 'ispell-skip-region-alist '("^ *#\\+.*LATEX[^:]*:" . "$"))
   (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_SRC" . "^ *#\\+END_SRC"))
   (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_EXAMPLE" . "^ *#\\+END_EXAMPLE")))
 
@@ -986,6 +990,7 @@ Add convenience shortcut:
  '(column-number-mode t)
  '(disabled-command-function nil)
  '(electric-pair-mode t)
+ '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
  '(font-lock-maximum-decoration 2)
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
