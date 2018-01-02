@@ -64,6 +64,7 @@ Install packages:
          avy
          cmake-ide
          cmake-mode
+         dockerfile-mode
          edit-indirect
          exec-path-from-shell
          go-mode
@@ -767,10 +768,11 @@ Visual improvements:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
- `(org-fontify-quote-and-verse-blocks t)
- `(org-src-fontify-natively t)
- `(org-fontify-whole-heading-line t)
- `(org-ellipsis "\u2026"))
+ '(org-highlight-latex-and-related '(latex))
+ '(org-fontify-quote-and-verse-blocks t)
+ '(org-src-fontify-natively t)
+ '(org-fontify-whole-heading-line t)
+ '(org-ellipsis "\u2026"))
 #+END_SRC
 
 Configure the spell checker to ignore some Org regions:
@@ -783,7 +785,7 @@ Configure the spell checker to ignore some Org regions:
   (add-to-list 'ispell-skip-region-alist '("=" . "="))
   (add-to-list 'ispell-skip-region-alist '("\\[" . "\\]"))
   (add-to-list 'ispell-skip-region-alist '("^ *#\\+OPTIONS:" . "$"))
-  (add-to-list 'ispell-skip-region-alist '("^ *#\\+.*LATEX[^:]*:" . "$"))
+  (add-to-list 'ispell-skip-region-alist '("^ *#\\+ATTR_" . "$"))
   (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_SRC" . "^ *#\\+END_SRC"))
   (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_EXAMPLE" . "^ *#\\+END_EXAMPLE")))
 
