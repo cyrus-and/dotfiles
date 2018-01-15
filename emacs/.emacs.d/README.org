@@ -445,7 +445,7 @@ This minor mode is a best-effort attempt to force the user to avoid keys located
 #+BEGIN_SRC emacs-lisp
 (define-minor-mode my/disable-bad-keys-mode
   "Disable bad keys."
-  :init-value t
+  :init-value nil
   :keymap (let ((map (make-sparse-keymap)))
             (dolist (key '("<deletechar>"
                            "<home>" "<end>" "<prior>" "<next>"
