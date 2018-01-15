@@ -6,6 +6,9 @@ set auto-load safe-path /
 # prefer Intel assembly syntax
 set disassembly-flavor intel
 
+# automatically set pending breakpoints
+set breakpoint pending on
+
 # useful auto-redraw hooks
 
 define hookpost-up
