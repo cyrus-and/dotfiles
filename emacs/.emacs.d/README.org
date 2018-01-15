@@ -299,7 +299,7 @@ This requires the [[https://github.com/Andersbakken/rtags][rtags]] external depe
 
 It should be enough to just navigate a project to take advantage of ~rtags~. The following enables the standard ~rtags~ convenience shortcuts (prefix ~C-c r~):
 
-#+BEGIN_SRC emacs-lisp :tabgle no
+#+BEGIN_SRC emacs-lisp :tangle no
 (rtags-enable-standard-keybindings)
 #+END_SRC
 
