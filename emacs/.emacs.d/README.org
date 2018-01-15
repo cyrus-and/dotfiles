@@ -418,6 +418,8 @@ The default key bindings with an Italian keyboard are crazy, plus due to ghostin
 (global-set-key (kbd "M-n") 'forward-paragraph)
 #+END_SRC
 
+*Note:* ~<C-up>~ and ~<C-down>~ can be used instead.
+
 ** Dired
 
 Use the native Emacs Lisp ~ls~ program emulation:
