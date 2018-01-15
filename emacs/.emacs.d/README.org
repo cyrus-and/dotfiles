@@ -62,7 +62,7 @@ Install packages:
 (let ((packages
        '(auctex
          avy
-         cmake-ide
+         ;; cmake-ide
          cmake-mode
          dockerfile-mode
          edit-indirect
@@ -76,7 +76,7 @@ Install packages:
          password-store
          php-mode
          rainbow-mode
-         rtags
+         ;; rtags
          web-mode
          window-numbering
          yaml-mode)))
@@ -288,18 +288,18 @@ Put all the backups in a single place without touching the original file:
  '(backup-directory-alist '(("." . "~/.emacs.d/backups"))))
 #+END_SRC
 
-** C/C++ IDE
+** TODO C/C++ IDE
 
 This requires the [[https://github.com/Andersbakken/rtags][rtags]] external dependency and works out-of-the-box with CMake projects.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (require 'rtags)
 (cmake-ide-setup)
 #+END_SRC
 
 It should be enough to just navigate a project to take advantage of ~rtags~. The following enables the standard ~rtags~ convenience shortcuts (prefix ~C-c r~):
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tabgle no
 (rtags-enable-standard-keybindings)
 #+END_SRC
 
