@@ -492,6 +492,25 @@ Add convenience shortcut:
 (global-set-key (kbd "C-c R") 'my/force-revert-buffer)
 #+END_SRC
 
+** Electric pairs
+
+Do not pair when at the beginning/end of a symbol or when the next char is the same:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/electric-pair-inhibit-predicate (char)
+  (or
+   (not (eq (save-excursion
+              (left-char)
+              (looking-back "\\>" nil))
+            (looking-at "\\<")))
+   (eq (char-after) char)
+))
+
+(custom-set-variables
+ '(electric-pair-mode t)
+ '(electric-pair-inhibit-predicate 'my/electric-pair-inhibit-predicate))
+#+END_SRC
+
 ** ERC
 
 Disable hard fill:
@@ -993,8 +1012,6 @@ Add convenience shortcut:
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(disabled-command-function nil)
- '(electric-pair-mode t)
- '(electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
  '(font-lock-maximum-decoration 2)
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
