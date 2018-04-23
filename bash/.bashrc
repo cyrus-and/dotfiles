@@ -57,6 +57,7 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
 
     # brew PATH
     export PATH="/usr/local/sbin:$PATH"
+    export PATH="/usr/local/opt/curl/bin:$PATH"
 
     # aliases
     alias ls='ls -G'
