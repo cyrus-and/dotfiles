@@ -9,6 +9,9 @@ set disassembly-flavor intel
 # automatically set pending breakpoints
 set breakpoint pending on
 
+# disable annoyng confirmation
+set confirm off
+
 # useful auto-redraw hooks
 
 define hookpost-up
