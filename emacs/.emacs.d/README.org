@@ -805,6 +805,7 @@ Use visual indentation by default:
 
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'org-indent-mode)
 #+END_SRC
 
 Go to the beginning of the buffer when the global visibility is changed:
