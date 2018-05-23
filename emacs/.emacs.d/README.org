@@ -71,6 +71,7 @@ Install packages:
          htmlize
          js2-mode
          json-mode
+         lua-mode
          magit
          markdown-mode
          password-store
