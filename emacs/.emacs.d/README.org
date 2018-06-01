@@ -365,6 +365,8 @@ Automatically kill the compilation window on success after a short delay, but on
 (defun my/compile-auto-quit (buffer status)
   (let ((window (get-buffer-window buffer)))
     (when (and my/compile-should-auto-quit
+               ;; do not kill grep and similar
+               (equal (buffer-name (window-buffer window)) "*compilation*")
                window (equal status "finished\n"))
       (run-at-time 1 nil 'quit-window nil window))))
 
