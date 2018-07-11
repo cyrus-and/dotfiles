@@ -7,7 +7,7 @@ At startup Emacs loads [[file:init.el][init.el]] which in turn tangles this file
 Common native key bindings:
 
 | ~% m~       | ~dired-mark-files-regexp~                               |
-| ~C-s C-w~   | ~isearch-yank-word-or-char~                             |
+| ~C-s C-w~   | ~isearch-yank-word-or-char~ (~M-e~ to edit)             |
 | ~C-u C-SPC~ | ~pop-mark~                                              |
 | ~C-x -~     | ~shrink-window-if-larger-than-buffer~                   |
 | ~C-x 8 RET~ | ~insert-char~                                           |
