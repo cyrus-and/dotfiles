@@ -290,7 +290,7 @@ Put all the backups in a single place without touching the original file:
  '(backup-directory-alist '(("." . "~/.emacs.d/backups"))))
 #+END_SRC
 
-** TODO C/C++ IDE
+** C/C++ IDE
 
 This requires the [[https://github.com/Andersbakken/rtags][rtags]] external dependency and works out-of-the-box with CMake projects.
 
