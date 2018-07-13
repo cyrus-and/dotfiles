@@ -444,30 +444,6 @@ Group directories first and tune the displayed information:
  '(ls-lisp-verbosity '(uid gid)))
 #+END_SRC
 
-** Disable /bad/ keys
-
-This minor mode is a best-effort attempt to force the user to avoid keys located outside the main keyboard block.
-
-#+BEGIN_SRC emacs-lisp
-(define-minor-mode my/disable-bad-keys-mode
-  "Disable bad keys."
-  :init-value nil
-  :keymap (let ((map (make-sparse-keymap)))
-            (dolist (key '("<deletechar>"
-                           "<home>" "<end>" "<prior>" "<next>"
-                           "<up>" "<down>" "<left>" "<right>"))
-              (dolist (mod '("" "C-" "M-" "C-M-"))
-                (let ((keystroke (kbd (concat mod key))))
-                  (define-key map keystroke 'ignore))))
-            map))
-#+END_SRC
-
-Add convenience shortcut:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c b") 'my/disable-bad-keys-mode)
-#+END_SRC
-
 ** Easy customization interface
 
 Avoid that Emacs messes up the configuration files:
@@ -1056,13 +1032,6 @@ Misc:
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(winner-mode t))
-#+END_SRC
-
-Replace convenience shortcuts:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c w u") 'winner-undo)
-(global-set-key (kbd "C-c w r") 'winner-redo)
 #+END_SRC
 
 ** WoMan
