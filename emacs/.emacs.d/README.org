@@ -1043,6 +1043,14 @@ Fill the whole frame on creation or refresh with ~R~.
  '(woman-fill-frame t))
 #+END_SRC
 
+** YAML
+
+Use visual line wrapping:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'yaml-mode-hook 'visual-line-mode)
+#+END_SRC
+
 ** Zoom
 
 Use a local copy since it is still in active development:

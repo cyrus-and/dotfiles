@@ -1,5 +1,5 @@
 ##########
-# params #
+# PARAMS #
 ##########
 
 tile_force_overlay      = true
@@ -21,37 +21,3 @@ confirm_butcher         = never
 ##########
 
 macros += M \{32} o
-
-#############
-# SCRIPTING #
-#############
-
-include += skills.lua
-
-{
-    function ready()
-
-        local wizard = {
-            ['Shields']        = {cap = 4},
-            ['Spellcasting']   = {},
-            ['Conjurations']   = {},
-            ['Summonings']     = {cap = 4},
-            ['Translocations'] = {cap = 4},
-            ['Fire Magic']     = {focus = true},
-            ['Air Magic']      = {focus = true},
-            ['Poison Magic']   = {},
-            ['Earth Magic']    = {}}
-
-        local fighter = {
-            ['Fighting']       = {},
-            ['Long Blades']    = {},
-            ['Dodging']        = {focus = true},
-            ['Shields']        = {focus = true, cap = 4},
-            ['Stealth']        = {}}
-
-        profile('Naga', 'Wizard', wizard)
-        profile('Octopode', 'Wizard', wizard)
-        profile('Octopode', 'Fighter', fighter)
-
-    end
-}
