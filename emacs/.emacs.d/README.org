@@ -637,6 +637,14 @@ Use ~ibuffer~ instead of ~list-buffer~:
 (defalias 'list-buffers 'ibuffer)
 #+END_SRC
 
+** Initialization
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(initial-scratch-message "")
+ '(initial-buffer-choice t))
+#+END_SRC
+
 ** Ispell
 
 #+BEGIN_SRC emacs-lisp
@@ -905,13 +913,15 @@ Avoid showing the shell buffer output immediately for async commands and allow m
 
 ** Skeletons
 
-Silently auto insert skeletons in new files and mark them as modified:
+Silently auto insert skeletons in new files and mark them as modified, but only
+for custom skeletons:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(auto-insert t)
  '(auto-insert-mode t)
- '(auto-insert-query nil))
+ '(auto-insert-query nil)
+ '(auto-insert-alist nil))
 #+END_SRC
 
 *** C
@@ -1009,8 +1019,6 @@ Misc:
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
- '(inhibit-startup-screen t)
- '(initial-scratch-message "")
  '(menu-bar-mode nil)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
