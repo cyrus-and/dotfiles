@@ -146,9 +146,9 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(shadow         ((t (:foreground ,theme-faint))))
    `(link           ((t (:foreground ,theme-accent :underline (:color foreground-color :style line)))))
    `(link-visited   ((t (:inherit (link) :weight normal))))
-   `(highlight      ((t (:inherit (link) :inverse-video t :underline nil))))
-   `(match          ((t (:foreground ,theme-background :background ,theme-accent))))
-   `(isearch        ((t (:inherit (match)))))
+   `(highlight      ((t (:background ,theme-dark))))
+   `(match          ((t (:foreground ,theme-accent))))
+   `(isearch        ((t (:foreground ,theme-background :background ,theme-accent))))
    `(lazy-highlight ((t (:foreground ,theme-background :background ,theme-bright))))
    `(error          ((t (:foreground ,theme-red))))
    `(warning        ((t (:foreground ,theme-yellow))))
@@ -191,6 +191,8 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(isearch-fail                 ((t (:inherit (error)))))
    `(completions-common-part      ((t (:inherit (shadow)))))
    `(completions-first-difference ((t (:foreground ,theme-accent))))
+   `(widget-button                ((((type x)) (:inherit ,(progn (require 'cus-edit) 'custom-button)))
+                                   (((type tty)) (:background ,theme-dark))))
 
    ;; fix: compilation
    `(compilation-mode-line-exit ((t (:inherit (success)))))
@@ -238,6 +240,16 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(org-level-6               ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
    `(org-level-7               ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
    `(org-level-8               ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark))))))
+#+END_SRC
+
+Theme-related configuration:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(widget-push-button-prefix " ")
+ '(widget-push-button-suffix " ")
+ '(widget-link-prefix " ")
+ '(widget-link-suffix " "))
 #+END_SRC
 
 * Configuration
@@ -471,6 +483,14 @@ Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c R") 'my/force-revert-buffer)
+#+END_SRC
+
+** elisp evaluation helper
+
+Add convenience shortcut for buffer evaluation:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c v") 'eval-buffer)
 #+END_SRC
 
 ** ERC
