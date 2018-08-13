@@ -75,6 +75,7 @@ Install packages:
          lua-mode
          magit
          markdown-mode
+         neotree
          password-store
          php-mode
          rainbow-mode
@@ -775,6 +776,14 @@ Replace the original shortcut:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "S-<insert>") 'my/yank-primary)
+#+END_SRC
+
+** Neotree
+
+Add convenience shortcut:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c n") 'neotree-toggle)
 #+END_SRC
 
 ** Org
