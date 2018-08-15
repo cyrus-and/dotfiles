@@ -113,6 +113,8 @@ Introduce a personal custom theme:
 The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
 
 #+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/my-theme.el
+(require 'cus-edit) ; for buttons
+
 (let (;; theme base colors
       (theme-background "#000000")
       (theme-foreground "#c5c8c6")
@@ -155,10 +157,11 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(warning        ((t (:foreground ,theme-yellow))))
    `(success        ((t (:foreground ,theme-green))))
 
-   ;; mode line
+   ;; header/mode line
    `(mode-line           ((t (:foreground ,theme-accent :background ,theme-dark :box (:line-width 5 :color ,theme-dark :style nil)))))
    `(mode-line-inactive  ((t (:inherit (mode-line) :foreground ,theme-bright))))
    `(mode-line-highlight ((t (:inverse-video t :box nil))))
+   `(header-line         ((t (:inherit (mode-line) :foreground ,theme-foreground))))
 
    ;; font lock
    `(font-lock-function-name-face ((t (:foreground ,theme-palette-1))))
@@ -192,8 +195,8 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(isearch-fail                 ((t (:inherit (error)))))
    `(completions-common-part      ((t (:inherit (shadow)))))
    `(completions-first-difference ((t (:foreground ,theme-accent))))
-   `(widget-button                ((((type x)) (:inherit ,(progn (require 'cus-edit) 'custom-button)))
-                                   (((type tty)) (:background ,theme-dark))))
+   `(widget-button                ((t (:inherit (custom-button)))))
+   `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
 
    ;; fix: compilation
    `(compilation-mode-line-exit ((t (:inherit (success)))))
@@ -246,11 +249,12 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
 Theme-related configuration:
 
 #+BEGIN_SRC emacs-lisp
-(custom-set-variables
- '(widget-push-button-prefix " ")
- '(widget-push-button-suffix " ")
- '(widget-link-prefix " ")
- '(widget-link-suffix " "))
+(when (display-graphic-p)
+  (custom-set-variables
+   '(widget-push-button-prefix " ")
+   '(widget-push-button-suffix " ")
+   '(widget-link-prefix " ")
+   '(widget-link-suffix " ")))
 #+END_SRC
 
 * Configuration
@@ -353,6 +357,21 @@ Never use tabs and fix the default C indentation:
      (arglist-close . 0)
      (cpp-macro . 0)
      (innamespace . 0))))
+#+END_SRC
+
+** Comb
+
+Use a local copy since it is still in active development:
+
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "~/dev/comb/")
+(ignore-errors (require 'comb))
+#+END_SRC
+
+Add convenience shortcut:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c b") 'comb)
 #+END_SRC
 
 ** Compilation
