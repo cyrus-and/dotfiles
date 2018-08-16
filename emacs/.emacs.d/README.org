@@ -371,7 +371,7 @@ Use a local copy since it is still in active development:
 
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'load-path "~/dev/comb/")
-(ignore-errors (require 'comb))
+(require 'comb)
 #+END_SRC
 
 Add convenience shortcut:
