@@ -185,6 +185,14 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(hi-red-b    ((t (:inherit (bold) :foreground ,theme-red))))
    `(hi-yellow   ((t (:foreground ,theme-background :background ,theme-yellow))))
 
+   ;; widgets
+   `(custom-button         ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-foreground :background ,theme-faint))))
+   `(custom-button-pressed ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style released-button) :foreground ,theme-accent))))
+   `(custom-button-mouse   ((t (:inherit (highlight)))))
+   `(widget-field          ((t (:foreground ,theme-foreground :background ,theme-faint))))
+   `(widget-button         ((t (:inherit (custom-button)))))
+   `(widget-button-pressed ((t (:inherit (custom-button-pressed)))))
+
    ;; others
    `(vertical-border              ((t (:foreground ,theme-dark))))
    `(cursor                       ((t (:background ,theme-bright))))
@@ -195,8 +203,6 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(isearch-fail                 ((t (:inherit (error)))))
    `(completions-common-part      ((t (:inherit (shadow)))))
    `(completions-first-difference ((t (:foreground ,theme-accent))))
-   `(widget-button                ((t (:inherit (custom-button)))))
-   `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
 
    ;; fix: compilation
    `(compilation-mode-line-exit ((t (:inherit (success)))))
