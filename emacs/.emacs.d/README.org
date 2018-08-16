@@ -188,7 +188,7 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    ;; widgets
    `(custom-button         ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-foreground :background ,theme-faint))))
    `(custom-button-pressed ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style released-button) :foreground ,theme-accent))))
-   `(custom-button-mouse   ((t (:inherit (highlight)))))
+   `(custom-button-mouse   ((t (:inherit (highlight))))) ; for coherence with widget-button
    `(widget-field          ((t (:foreground ,theme-foreground :background ,theme-faint))))
    `(widget-button         ((t (:inherit (custom-button)))))
    `(widget-button-pressed ((t (:inherit (custom-button-pressed)))))
@@ -255,12 +255,12 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
 Theme-related configuration:
 
 #+BEGIN_SRC emacs-lisp
-(when (display-graphic-p)
-  (custom-set-variables
-   '(widget-push-button-prefix " ")
-   '(widget-push-button-suffix " ")
-   '(widget-link-prefix " ")
-   '(widget-link-suffix " ")))
+(custom-set-variables
+ '(custom-raised-buttons t)
+ '(widget-push-button-prefix " ")
+ '(widget-push-button-suffix " ")
+ '(widget-link-prefix " ")
+ '(widget-link-suffix " "))
 #+END_SRC
 
 * Configuration
