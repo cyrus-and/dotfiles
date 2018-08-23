@@ -68,7 +68,6 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
         brew upgrade &&\
         brew cleanup &&\
         brew cask upgrade &&\
-        brew cask cleanup &&\
         true
     }
 

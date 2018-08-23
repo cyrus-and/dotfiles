@@ -150,7 +150,7 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(link           ((t (:foreground ,theme-accent :underline (:color foreground-color :style line)))))
    `(link-visited   ((t (:inherit (link) :weight normal))))
    `(highlight      ((t (:background ,theme-dark))))
-   `(match          ((t (:foreground ,theme-accent))))
+   `(match          ((t (:foreground ,theme-accent :weight bold))))
    `(isearch        ((t (:foreground ,theme-background :background ,theme-accent))))
    `(lazy-highlight ((t (:foreground ,theme-background :background ,theme-bright))))
    `(error          ((t (:foreground ,theme-red))))
