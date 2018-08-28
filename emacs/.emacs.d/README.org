@@ -203,6 +203,7 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(isearch-fail                 ((t (:inherit (error)))))
    `(completions-common-part      ((t (:inherit (shadow)))))
    `(completions-first-difference ((t (:foreground ,theme-accent))))
+   `(pulse-highlight-start-face   ((t (:background ,theme-accent))))
 
    ;; fix: compilation
    `(compilation-mode-line-exit ((t (:inherit (success)))))
@@ -372,6 +373,22 @@ Use a local copy since it is still in active development:
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'load-path "~/dev/comb/")
 (require 'comb)
+#+END_SRC
+
+Customize the keybindings:
+
+#+BEGIN_SRC  emacs-lisp
+(define-key comb-keymap (kbd "RET") 'comb-approve-next)
+(define-key comb-keymap (kbd "DEL") 'comb-reject-next)
+(define-key comb-keymap (kbd "SPC") 'comb-undecide-next)
+#+END_SRC
+
+Always wrap long lines:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'comb-buffer-setup-hook
+          (lambda ()
+            (toggle-truncate-lines nil)))
 #+END_SRC
 
 Add convenience shortcut:
@@ -1073,6 +1090,7 @@ Misc:
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
+ '(isearch-allow-scroll t)
  '(menu-bar-mode nil)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
@@ -1129,4 +1147,9 @@ Use a bigger target size and resize temp buffers anyway:
  '(zoom-mode t)
  '(zoom-size '(90 . 30))
  '(temp-buffer-resize-mode t))
+#+END_SRC
+Add convenience shortcut:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c z") 'zoom)
 #+END_SRC
