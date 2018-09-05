@@ -86,8 +86,8 @@ bindsym $mod+Next workspace next
 # move windows
 bindsym $mod+Control+Left move container to workspace prev; workspace prev
 bindsym $mod+Control+Right move container to workspace next; workspace next
-bindsym --whole-window $mod+Shift+button4 move container to workspace prev; workspace prev
-bindsym --whole-window $mod+Shift+button5 move container to workspace next; workspace next
+bindsym --whole-window $mod+Control+button4 move container to workspace prev; workspace prev
+bindsym --whole-window $mod+Control+button5 move container to workspace next; workspace next
 
 # disposable workspaces marker
 set $marker :
