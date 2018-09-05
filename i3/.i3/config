@@ -84,8 +84,8 @@ bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
 
 # move windows
-bindsym $mod+Shift+Control+Left move container to workspace prev; workspace prev
-bindsym $mod+Shift+Control+Right move container to workspace next; workspace next
+bindsym $mod+Control+Left move container to workspace prev; workspace prev
+bindsym $mod+Control+Right move container to workspace next; workspace next
 bindsym --whole-window $mod+Shift+button4 move container to workspace prev; workspace prev
 bindsym --whole-window $mod+Shift+button5 move container to workspace next; workspace next
 
@@ -117,16 +117,16 @@ bindsym $mod+9 workspace 19:$marker$9
 bindsym $mod+0 workspace 20:$marker$0
 
 # move
-bindsym $mod+Shift+Control+1 move workspace 11:$marker$1; workspace 11:$marker$1
-bindsym $mod+Shift+Control+2 move workspace 12:$marker$2; workspace 12:$marker$2
-bindsym $mod+Shift+Control+3 move workspace 13:$marker$3; workspace 13:$marker$3
-bindsym $mod+Shift+Control+4 move workspace 14:$marker$4; workspace 14:$marker$4
-bindsym $mod+Shift+Control+5 move workspace 15:$marker$5; workspace 15:$marker$5
-bindsym $mod+Shift+Control+6 move workspace 16:$marker$6; workspace 16:$marker$6
-bindsym $mod+Shift+Control+7 move workspace 17:$marker$7; workspace 17:$marker$7
-bindsym $mod+Shift+Control+8 move workspace 18:$marker$8; workspace 18:$marker$8
-bindsym $mod+Shift+Control+9 move workspace 19:$marker$9; workspace 19:$marker$9
-bindsym $mod+Shift+Control+0 move workspace 20:$marker$0; workspace 20:$marker$0
+bindsym $mod+Control+1 move workspace 11:$marker$1; workspace 11:$marker$1
+bindsym $mod+Control+2 move workspace 12:$marker$2; workspace 12:$marker$2
+bindsym $mod+Control+3 move workspace 13:$marker$3; workspace 13:$marker$3
+bindsym $mod+Control+4 move workspace 14:$marker$4; workspace 14:$marker$4
+bindsym $mod+Control+5 move workspace 15:$marker$5; workspace 15:$marker$5
+bindsym $mod+Control+6 move workspace 16:$marker$6; workspace 16:$marker$6
+bindsym $mod+Control+7 move workspace 17:$marker$7; workspace 17:$marker$7
+bindsym $mod+Control+8 move workspace 18:$marker$8; workspace 18:$marker$8
+bindsym $mod+Control+9 move workspace 19:$marker$9; workspace 19:$marker$9
+bindsym $mod+Control+0 move workspace 20:$marker$0; workspace 20:$marker$0
 
 ####################
 # FIXED WORKSPACES #
