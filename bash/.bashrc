@@ -40,6 +40,9 @@ alias l='ls -lArt'
 alias p='python3'
 alias gdb='gdb -q'
 
+# editor
+export EDITOR='emacsclient -t'
+
 # helpers
 
 hack() {
@@ -51,10 +54,6 @@ hack() {
 # OS-specific
 
 if [[ "$OSTYPE" =~ darwin* ]]; then
-    # environment
-    export EDITOR='emacs -nw'
-    export GIT_EDITOR="$EDITOR"
-
     # brew PATH
     export PATH="/usr/local/sbin:$PATH"
     export PATH="/usr/local/opt/curl/bin:$PATH"
@@ -79,11 +78,6 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
 fi
 
 if [ "$OSTYPE" = 'linux-gnu' ]; then
-    # environment
-    export ALTERNATE_EDITOR=''
-    export EDITOR='emacsclient -t'
-    export GIT_EDITOR="$EDITOR"
-
     # aliases
     alias ls='ls --color=auto'
     alias dmesg='dmesg -w'

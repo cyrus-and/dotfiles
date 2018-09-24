@@ -671,10 +671,24 @@ Use a cleaner ~rgrep~ output by hiding the command:
 (advice-add 'rgrep :after 'my/rgrep-fix)
 #+END_SRC
 
-Add convenience shortcut:
+Allow to repeat ~rgrep~ in for the same files unsing the symbol at point without asking:
+
+#+BEGIN_SRC emacs-lisp
+(defun my/rgrep-again ()
+  (interactive)
+  (let* ((buffer (if (buffer-live-p grep-last-buffer)
+                     grep-last-buffer (current-buffer)))
+         (default-directory (buffer-local-value 'default-directory buffer)))
+    (rgrep (thing-at-point 'symbol t)
+           (car grep-files-history)
+           default-directory)))
+#+END_SRC
+
+Add convenience shortcuts:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c g") 'rgrep)
+(global-set-key (kbd "C-c G") 'my/rgrep-again)
 #+END_SRC
 
 ** HTML
@@ -1053,7 +1067,7 @@ for custom skeletons:
   "</html>\n")
 #+END_SRC
 
-** Term
+** Term and shell
 
 Shell terminal helper:
 
@@ -1064,10 +1078,11 @@ Shell terminal helper:
   (term (getenv "SHELL")))
 #+END_SRC
 
-Add convenience shortcut:
+Add convenience shortcuts:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c t") 'my/shell-terminal)
+(global-set-key (kbd "C-c l") 'shell)
 #+END_SRC
 
 ** User interface settings
