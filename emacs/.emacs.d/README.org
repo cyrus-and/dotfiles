@@ -852,6 +852,7 @@ Ensure spacing coherence and fix indentation:
  '(org-src-tab-acts-natively t)
  '(org-startup-folded nil)
  '(org-cycle-separator-lines 1)
+ '(org-tags-column 0)
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
 #+END_SRC
 
@@ -986,7 +987,7 @@ Scroll without jumps if the cursor moves out the window boundaries:
 
 *Note:* setting ~scroll-conservatively~ to a large number yields the same result but it also affects the point position after a /jump/, e.g., ~next-error~, ~iserach-forward~, etc.
 
-** Shell
+** Shell commands
 
 Avoid showing the shell buffer output immediately for async commands and allow more than one of them:
 
@@ -1082,7 +1083,7 @@ Add convenience shortcuts:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c t") 'my/shell-terminal)
-(global-set-key (kbd "C-c l") 'shell)
+(global-set-key (kbd "C-c a") 'shell)
 #+END_SRC
 
 ** User interface settings
