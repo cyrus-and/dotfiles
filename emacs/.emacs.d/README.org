@@ -234,6 +234,12 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
 
    ;; fix: markdown-mode
    `(markdown-code-face ((t (:background ,theme-very-dark))))
+   `(markdown-header-face-1 ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
+   `(markdown-header-face-2 ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
+   `(markdown-header-face-3 ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
+   `(markdown-header-face-4 ((t (:inherit (outline-4 bold) :height 1.4 :background ,theme-very-dark))))
+   `(markdown-header-face-5 ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
+   `(markdown-header-face-6 ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
 
    ;; fix: org-mode
    `(org-block                 ((t (:background ,theme-very-dark))))
@@ -243,6 +249,7 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(org-block-begin-line      ((t (:inherit (org-meta-line) :height 0.7))))
    `(org-block-end-line        ((t (:inherit (org-meta-line) :height 0.7))))
    `(org-ellipsis              ((t (:inherit (link)))))
+   `(org-tag                   ((t (:inherit (shadow)))))
    `(org-level-1               ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
    `(org-level-2               ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
    `(org-level-3               ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
@@ -734,15 +741,27 @@ Use ~ibuffer~ instead of ~list-buffer~:
              '(setq ispell-personal-dictionary
                     (concat (locate-dominating-file default-directory ".dir-locals.el")
                             ".dictionary")))
+
+(add-to-list 'safe-local-eval-forms
+             '(setq ispell-personal-dictionary ".dictionary"))
 #+END_SRC
 
-The above allows to safely set a per-directory personal dictionary (~.dir-locals.el~), for example:
+The above allows to safely set a per-directory personal dictionary, use the following as a template for ~.dir-locals.el~:
 
 #+BEGIN_SRC emacs-lisp :tangle no
 ((nil . ((ispell-local-dictionary . "english")
          (eval . (setq ispell-personal-dictionary
                        (concat (locate-dominating-file default-directory ".dir-locals.el")
                                ".dictionary"))))))
+#+END_SRC
+
+Use the following as a template for single files:
+
+#+BEGIN_SRC emacs-lisp :tangle no
+# Local Variables:
+# ispell-local-dictionary: "english"
+# eval: (setq ispell-personal-dictionary ".dictionary")
+# End:
 #+END_SRC
 
 ** JavaScript
