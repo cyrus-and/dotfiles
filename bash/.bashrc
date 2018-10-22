@@ -1,5 +1,7 @@
 # history
 PROMPT_COMMAND='history -a'
+shopt -s cmdhist
+shopt -s lithist
 shopt -s histappend
 HISTCONTROL=ignoreboth
 HISTSIZE=-1

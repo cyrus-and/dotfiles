@@ -965,7 +965,7 @@ Use a bigger font size to compensate the retina screen:
 
 #+BEGIN_SRC emacs-lisp
   (custom-set-faces
-   '(default ((t (:family "Iosevka" :height 150))))))
+   '(default ((t (:family "Iosevka" :height 170))))))
 #+END_SRC
 
 *** Terminal
