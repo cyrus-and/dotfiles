@@ -1120,7 +1120,7 @@ Misc:
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(disabled-command-function nil)
- '(echo-keystrokes 0.25)
+ '(echo-keystrokes 0.1)
  '(font-lock-maximum-decoration 2)
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
