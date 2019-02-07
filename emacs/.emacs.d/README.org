@@ -1180,7 +1180,7 @@ Use a bigger target size and resize temp buffers anyway:
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(zoom-mode t)
- '(zoom-size '(90 . 30))
+ '(zoom-size '(120 . 30))
  '(temp-buffer-resize-mode t))
 #+END_SRC
 Add convenience shortcut:
