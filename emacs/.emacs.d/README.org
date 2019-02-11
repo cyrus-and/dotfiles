@@ -276,20 +276,21 @@ Theme-related configuration:
 
 ** Auto-complete mode
 
-Enable for all modes but not for the minibuffer:
-
-#+BEGIN_SRC emacs-lisp
-(defun auto-complete-mode-maybe ()
-  (unless (minibufferp (current-buffer))
-    (auto-complete-mode 1)))
-#+END_SRC
-
 Show immediately the menu:
 
 #+BEGIN_SRC emacs-lisp
- (custom-set-variables
- '(global-auto-complete-mode t)
+(custom-set-variables
+ '(global-auto-complete-mode 1)
  '(ac-auto-show-menu 0))
+#+END_SRC
+
+Enable for all modes but not for the minibuffer:
+
+#+BEGIN_SRC emacs-lisp
+;; XXX this must be evaluated after the above customization
+(defun auto-complete-mode-maybe ()
+  (unless (minibufferp (current-buffer))
+    (auto-complete-mode 1)))
 #+END_SRC
 
 ** Automatic whitespace management
