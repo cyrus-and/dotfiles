@@ -61,7 +61,8 @@ Install packages:
 
 #+BEGIN_SRC emacs-lisp
 (let ((packages
-       '(auctex
+       '(auto-complete
+         auctex
          avy
          cmake-ide
          cmake-mode
@@ -272,6 +273,24 @@ Theme-related configuration:
 #+END_SRC
 
 * Configuration
+
+** Auto-complete mode
+
+Enable for all modes but not for the minibuffer:
+
+#+BEGIN_SRC emacs-lisp
+(defun auto-complete-mode-maybe ()
+  (unless (minibufferp (current-buffer))
+    (auto-complete-mode 1)))
+#+END_SRC
+
+Show immediately the menu:
+
+#+BEGIN_SRC emacs-lisp
+ (custom-set-variables
+ '(global-auto-complete-mode t)
+ '(ac-auto-show-menu 0))
+#+END_SRC
 
 ** Automatic whitespace management
 
