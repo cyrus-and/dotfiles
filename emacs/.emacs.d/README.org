@@ -793,6 +793,14 @@ Associate ~js2-mode~:
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 #+END_SRC
 
+Do not mark as errors Node.js globals:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(js2-include-node-externs t)
+ '(js2-skip-preprocessor-directives t))
+#+END_SRC
+
 ** Keywords highlighting
 
 Useful keyword highlighting:
@@ -828,7 +836,7 @@ Visual improvements:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
- `(markdown-fontify-code-blocks-natively t))
+ '(markdown-fontify-code-blocks-natively t))
 #+END_SRC
 
 Use visual indentation by default:
