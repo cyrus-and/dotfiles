@@ -276,12 +276,13 @@ Theme-related configuration:
 
 ** Auto-complete mode
 
-Show immediately the menu:
+Show immediately the menu and complete everywhere:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(global-auto-complete-mode 1)
- '(ac-auto-show-menu 0))
+ '(ac-auto-show-menu 0)
+ '(ac-disable-faces nil))
 #+END_SRC
 
 Enable for all modes but not for the minibuffer:
@@ -824,11 +825,7 @@ Use Magit for external ~git commit~ and enable spell checking:
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 #+END_SRC
 
-Add convenience shortcut:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c s") 'magit-status)
-#+END_SRC
+The default shortcut is `C-x g`.
 
 ** Markdown
 
