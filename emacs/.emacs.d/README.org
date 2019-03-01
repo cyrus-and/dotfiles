@@ -825,7 +825,11 @@ Use Magit for external ~git commit~ and enable spell checking:
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 #+END_SRC
 
-The default shortcut is `C-x g`.
+Add convenience shortcut:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c s") 'magit-status)
+#+END_SRC
 
 ** Markdown
 
