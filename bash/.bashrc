@@ -19,7 +19,7 @@ if [ "$TERM" != dumb ]; then
     c() { echo -n "\[\e[${2}m\]$1\[\e[0m\]"; }
 
     PS1="\
-$(c '*' '$([ "$?" = 0 ] && echo "1;32" || echo "1;31")')\
+$(c '»' '$([ "$?" = 0 ] && echo "1;32" || echo "1;31")')\
 $(c '$(jobs | while read; do echo -n "·"; done)' '1;34')\
  \
 $(c '\h' '1;36')\
