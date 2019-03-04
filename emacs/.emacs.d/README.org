@@ -258,7 +258,10 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(org-level-5               ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
    `(org-level-6               ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
    `(org-level-7               ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
-   `(org-level-8               ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark))))))
+   `(org-level-8               ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark))))
+
+   ;; fix: magit
+   `(git-commit-overlong-summary ((t (:inherit (font-lock-warning-face) :inverse-video t))))))
 #+END_SRC
 
 Theme-related configuration:
@@ -699,17 +702,29 @@ Use a cleaner ~rgrep~ output by hiding the command:
 (advice-add 'rgrep :after 'my/rgrep-fix)
 #+END_SRC
 
-Allow to repeat ~rgrep~ in for the same files unsing the symbol at point without asking:
+Insert an additional newline between command and results so that the ~next-error~ function properly jumps to the first error the first time.
+
+#+BEGIN_SRC emacs-lisp
+(eval-after-load "grep"
+  '(progn
+     (grep-compute-defaults)
+     (grep-apply-setting 'grep-find-template (concat grep-find-template "\n"))))
+#+END_SRC
+
+Allow to repeat ~rgrep~ in for the same files using the symbol at point without asking:
 
 #+BEGIN_SRC emacs-lisp
 (defun my/rgrep-again ()
   (interactive)
-  (let* ((buffer (if (buffer-live-p grep-last-buffer)
+  (let* ((buffer (if (buffer-live-p 'grep-last-buffer)
                      grep-last-buffer (current-buffer)))
          (default-directory (buffer-local-value 'default-directory buffer)))
-    (rgrep (thing-at-point 'symbol t)
-           (car grep-files-history)
-           default-directory)))
+    (let ((symbol (thing-at-point 'symbol t)))
+      (if symbol
+          (rgrep symbol
+                 (car grep-files-history)
+                 default-directory)
+        (message "Nothing to look up...")))))
 #+END_SRC
 
 Add convenience shortcuts:
