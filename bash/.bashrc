@@ -41,6 +41,7 @@ alias grep='grep --color=auto'
 alias l='ls -lArt'
 alias p='python3'
 alias gdb='gdb -q'
+alias playground='make -sC ~/dev/playground/'
 
 # editor
 export EDITOR='emacsclient -t'
