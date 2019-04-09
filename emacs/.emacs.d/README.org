@@ -64,7 +64,6 @@ Install packages:
        '(auto-complete
          auctex
          avy
-         cmake-ide
          cmake-mode
          dockerfile-mode
          edit-indirect
@@ -80,7 +79,6 @@ Install packages:
          password-store
          php-mode
          rainbow-mode
-         rtags
          rust-mode
          web-mode
          window-numbering
@@ -344,21 +342,6 @@ Put all the backups in a single place without touching the original file:
 (custom-set-variables
  '(backup-by-copying t)
  '(backup-directory-alist '(("." . "~/.emacs.d/backups"))))
-#+END_SRC
-
-** C/C++ IDE
-
-This requires the [[https://github.com/Andersbakken/rtags][rtags]] external dependency and works out-of-the-box with CMake projects.
-
-#+BEGIN_SRC emacs-lisp
-(require 'rtags)
-(cmake-ide-setup)
-#+END_SRC
-
-It should be enough to just navigate a project to take advantage of ~rtags~. The following enables the standard ~rtags~ convenience shortcuts (prefix ~C-c r~):
-
-#+BEGIN_SRC emacs-lisp
-(rtags-enable-standard-keybindings)
 #+END_SRC
 
 ** Calculator
@@ -1009,7 +992,13 @@ Use a bigger font size to compensate the retina screen:
 
 #+BEGIN_SRC emacs-lisp
   (custom-set-faces
-   '(default ((t (:family "Iosevka" :height 170))))))
+   '(default ((t (:family "Iosevka" :height 170)))))
+#+END_SRC
+
+Disable scrolling inertia:
+
+#+BEGIN_SRC emacs-lisp
+  (setq ns-use-mwheel-momentum nil))
 #+END_SRC
 
 *** Terminal
