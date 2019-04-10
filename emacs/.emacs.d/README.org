@@ -163,6 +163,11 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(mode-line-highlight ((t (:inverse-video t :box nil))))
    `(header-line         ((t (:inherit (mode-line) :foreground ,theme-foreground))))
 
+   ;; window dividers
+   `(window-divider             ((t (:foreground ,theme-faint))))
+   `(window-divider-first-pixel ((t (:foreground ,theme-faint))))
+   `(window-divider-last-pixel  ((t (:foreground ,theme-faint))))
+
    ;; font lock
    `(font-lock-function-name-face ((t (:foreground ,theme-palette-1))))
    `(font-lock-variable-name-face ((t (:foreground ,theme-palette-2))))
@@ -194,7 +199,6 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(widget-button-pressed ((t (:inherit (custom-button-pressed)))))
 
    ;; others
-   `(vertical-border              ((t (:foreground ,theme-dark))))
    `(cursor                       ((t (:background ,theme-bright))))
    `(fringe                       ((t (:foreground ,theme-dark))))
    `(minibuffer-prompt            ((t (:foreground ,theme-accent :weight bold))))
@@ -263,7 +267,9 @@ The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
    `(git-commit-overlong-summary ((t (:inherit (font-lock-warning-face) :inverse-video t))))))
 #+END_SRC
 
-Theme-related configuration:
+** Theme-related configuration
+
+Widgets:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
@@ -272,6 +278,16 @@ Theme-related configuration:
  '(widget-push-button-suffix " ")
  '(widget-link-prefix " ")
  '(widget-link-suffix " "))
+#+END_SRC
+
+Window dividers:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(window-divider-mode t)
+ '(window-divider-default-places t)
+ '(window-divider-default-bottom-width 1)
+ '(window-divider-default-right-width 1))
 #+END_SRC
 
 * Configuration
