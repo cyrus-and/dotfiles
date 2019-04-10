@@ -68,6 +68,7 @@ Install packages:
          dockerfile-mode
          edit-indirect
          exec-path-from-shell
+         ggtags
          go-mode
          htmlize
          js2-mode
@@ -662,6 +663,16 @@ Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c e") 'eshell)
+#+END_SRC
+
+** ggtags
+
+Enable ggtags globally for every C-derived programming mode:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (ggtags-mode 1)))
 #+END_SRC
 
 ** Grep
