@@ -849,7 +849,15 @@ Visual improvements:
  '(markdown-fontify-code-blocks-natively t))
 #+END_SRC
 
-Use visual indentation by default:
+Customize the ellipses character:
+
+#+BEGIN_SRC emacs-lisp
+(set-display-table-slot standard-display-table
+                        'selective-display
+                        (string-to-vector "\u2026"))
+#+END_SRC
+
+Use visual line wrapping by default:
 
 #+BEGIN_SRC emacs-lisp
 (add-hook 'markdown-mode-hook 'visual-line-mode)
