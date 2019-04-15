@@ -103,26 +103,22 @@ Load the below theme file:
 (load-theme 'my t)
 #+END_SRC
 
-Introduce a personal custom theme:
+Define a personal custom theme, to test it in real time use `C-c '` in the following block to edit it in a new buffer then `C-c v` to evaluate it.
 
 #+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/my-theme.el
+(require 'cus-edit) ; for styling buttons
+
 (deftheme my "Simple flat dark theme.")
 (provide-theme 'my)
-#+END_SRC
 
-The following palette is adapted from [[https://terminal.sexy][terminal.sexy]]:
-
-#+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/my-theme.el
-(require 'cus-edit) ; for buttons
-
-(let (;; theme base colors
+(let (;; theme base colors (palette adapted from https://terminal.sexy)
       (theme-background "#000000")
-      (theme-foreground "#c5c8c6")
+      (theme-foreground "#bfbfbf")
       (theme-accent     "#ff6000")
       (theme-bright     "#ffffff")
-      (theme-faint      "#373b41")
-      (theme-dark       "#111213")
-      (theme-very-dark  "#090909")
+      (theme-faint      "#666666")
+      (theme-dark       "#141414")
+      (theme-very-dark  "#0c0c0c")
 
       ;; emacs common colors
       (theme-red        "#cc6666")
