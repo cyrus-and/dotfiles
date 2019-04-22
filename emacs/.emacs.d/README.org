@@ -282,8 +282,8 @@ Window dividers:
 (custom-set-variables
  '(window-divider-mode t)
  '(window-divider-default-places t)
- '(window-divider-default-bottom-width 1)
- '(window-divider-default-right-width 1))
+ '(window-divider-default-bottom-width 6)
+ '(window-divider-default-right-width 6))
 #+END_SRC
 
 * Configuration
