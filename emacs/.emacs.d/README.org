@@ -722,10 +722,9 @@ Allow to repeat ~rgrep~ in for the same files using the symbol at point without 
 #+BEGIN_SRC emacs-lisp
 (defun my/rgrep-again ()
   (interactive)
-  (let* ((buffer (if (buffer-live-p 'grep-last-buffer)
-                     grep-last-buffer (current-buffer)))
+  (let* ((buffer (or grep-last-buffer (current-buffer)))
          (default-directory (buffer-local-value 'default-directory buffer)))
-    (let ((symbol (thing-at-point 'symbol t)))
+    (let ((symbol (or (thing-at-point 'symbol t) (read-string "Regex: "))))
       (if symbol
           (rgrep symbol
                  (car grep-files-history)
