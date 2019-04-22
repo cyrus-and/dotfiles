@@ -724,7 +724,7 @@ Allow to repeat ~rgrep~ in for the same files using the symbol at point without 
   (interactive)
   (let* ((buffer (or grep-last-buffer (current-buffer)))
          (default-directory (buffer-local-value 'default-directory buffer)))
-    (let ((symbol (or (thing-at-point 'symbol t) (read-string "Regex: "))))
+    (let ((symbol (or (thing-at-point 'symbol t) (read-regexp "Regex"))))
       (if symbol
           (rgrep symbol
                  (car grep-files-history)
