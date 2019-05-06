@@ -1201,6 +1201,7 @@ Misc:
  '(disabled-command-function nil)
  '(echo-keystrokes 0.1)
  '(font-lock-maximum-decoration 2)
+ '(global-visual-line-mode t)
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
