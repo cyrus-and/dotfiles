@@ -65,6 +65,7 @@ Install packages:
          auctex
          avy
          cmake-mode
+         diff-hl
          dockerfile-mode
          edit-indirect
          exec-path-from-shell
@@ -260,7 +261,12 @@ Define a personal custom theme, to test it in real time use `C-c '` in the follo
    `(org-level-8               ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark))))
 
    ;; fix: magit
-   `(git-commit-overlong-summary ((t (:inherit (font-lock-warning-face) :inverse-video t))))))
+   `(git-commit-overlong-summary ((t (:inherit (font-lock-warning-face) :inverse-video t))))
+
+   ;; fix: diff-hl-mode
+   `(diff-hl-change ((t (:inherit (warning) :inverse-video t))))
+   `(diff-hl-insert ((t (:inherit (success) :inverse-video t))))
+   `(diff-hl-delete ((t (:inherit (error) :inverse-video t))))))
 #+END_SRC
 
 ** Theme-related configuration
@@ -284,6 +290,13 @@ Window dividers:
  '(window-divider-default-places t)
  '(window-divider-default-bottom-width 6)
  '(window-divider-default-right-width 6))
+#+END_SRC
+
+`diff-hl` mode:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(global-diff-hl-mode t))
 #+END_SRC
 
 * Configuration
