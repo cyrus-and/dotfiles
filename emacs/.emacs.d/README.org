@@ -296,7 +296,8 @@ Window dividers:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
- '(global-diff-hl-mode t))
+ '(global-diff-hl-mode t)
+ '(diff-hl-draw-borders nil))
 #+END_SRC
 
 * Configuration
