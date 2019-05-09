@@ -450,12 +450,6 @@ Make the compiling interaction less painful:
  '(compilation-disable-input t))
 #+END_SRC
 
-Ensure that the compilation messages are nicely readable:
-
-#+BEGIN_SRC emacs-lisp
-(add-hook 'compilation-mode-hook 'visual-line-mode)
-#+END_SRC
-
 Automatically kill the compilation window on success after a short delay, but only if successful:
 
 #+BEGIN_SRC emacs-lisp
@@ -598,12 +592,6 @@ Disable hard fill:
                  ring
                  stamp
                  track)))
-#+END_SRC
-
-Enable visual indentation instead:
-
-#+BEGIN_SRC emacs-lisp
-(add-hook 'erc-mode-hook 'visual-line-mode)
 #+END_SRC
 
 Make track mode less noisy:
@@ -779,6 +767,12 @@ Use ~ibuffer~ instead of ~list-buffer~:
 (defalias 'list-buffers 'ibuffer)
 #+END_SRC
 
+No visual line wrapping:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'ibuffer-mode-hook (lambda () (visual-line-mode -1)))
+#+END_SRC
+
 ** Initialization
 
 #+BEGIN_SRC emacs-lisp
@@ -885,12 +879,6 @@ Customize the ellipses character:
                         (string-to-vector "\u2026"))
 #+END_SRC
 
-Use visual line wrapping by default:
-
-#+BEGIN_SRC emacs-lisp
-(add-hook 'markdown-mode-hook 'visual-line-mode)
-#+END_SRC
-
 ** Minibuffer history
 
 Infinite minibuffer history:
@@ -980,7 +968,6 @@ Configure the spell checker to ignore some Org regions:
 Use visual indentation by default:
 
 #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'org-indent-mode)
 #+END_SRC
 
@@ -1238,14 +1225,6 @@ Fill the whole frame on creation or refresh with ~R~.
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
  '(woman-fill-frame t))
-#+END_SRC
-
-** YAML
-
-Use visual line wrapping:
-
-#+BEGIN_SRC emacs-lisp
-(add-hook 'yaml-mode-hook 'visual-line-mode)
 #+END_SRC
 
 ** Zoom
