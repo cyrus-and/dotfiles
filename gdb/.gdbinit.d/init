@@ -28,6 +28,6 @@ end
 
 # save GDB dashboard configuation on exit
 
-define hook-quit
-  dashboard -configuration ~/.gdbinit.d/auto
-end
+# define hook-quit
+#   dashboard -configuration ~/.gdbinit.d/auto
+# end

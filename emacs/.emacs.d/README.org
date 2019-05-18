@@ -679,6 +679,21 @@ Add convenience shortcut:
 (global-set-key (kbd "C-c e") 'eshell)
 #+END_SRC
 
+** find
+
+Search in the whole path by default:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(find-name-arg "-path"))
+#+END_SRC
+
+Add convenience shortcuts:
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c f") 'find-name-dired)
+#+END_SRC
+
 ** ggtags
 
 Enable ggtags globally for every C-derived programming mode:
