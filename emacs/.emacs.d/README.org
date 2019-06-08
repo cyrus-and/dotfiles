@@ -196,7 +196,7 @@ Define a personal custom theme, to test it in real time use `C-c '` in the follo
 
    ;; others
    `(cursor                       ((t (:background ,theme-bright))))
-   `(fringe                       ((t (:foreground ,theme-dark))))
+   `(fringe                       ((t (:foreground ,theme-faint))))
    `(minibuffer-prompt            ((t (:foreground ,theme-accent :weight bold))))
    `(region                       ((t (:foreground ,theme-accent :background ,theme-faint))))
    `(secondary-selection          ((t (:foreground ,theme-accent :background ,theme-dark))))
@@ -1190,6 +1190,7 @@ Misc:
  '(echo-keystrokes 0.1)
  '(font-lock-maximum-decoration 2)
  '(global-visual-line-mode t)
+ '(visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
