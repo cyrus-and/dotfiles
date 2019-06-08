@@ -63,7 +63,6 @@ Install packages:
 (let ((packages
        '(auto-complete
          auctex
-         avy
          cmake-mode
          diff-hl
          dockerfile-mode
@@ -345,20 +344,6 @@ Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
-#+END_SRC
-
-** Avy
-
-Override ~goto-line~:
-
-#+BEGIN_SRC emacs-lisp
-(defalias 'goto-line 'avy-goto-line)
-#+END_SRC
-
-Main goto-char shortcut:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c l") 'avy-goto-char-timer)
 #+END_SRC
 
 ** Backups
