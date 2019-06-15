@@ -856,6 +856,15 @@ Use Magit for external ~git commit~ and enable spell checking:
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 #+END_SRC
 
+Configure section visibility in status:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(magit-section-initial-visibility-alist
+   '((stashes . show)
+     (unpushed . show))))
+#+END_SRC
+
 Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
@@ -877,6 +886,20 @@ Customize the ellipses character:
 (set-display-table-slot standard-display-table
                         'selective-display
                         (string-to-vector "\u2026"))
+#+END_SRC
+
+Customize the global cycling:
+
+#+BEGIN_SRC emacs-lisp
+(advice-add 'markdown-cycle :before 'my/markdown-cycle-advice)
+
+(defun my/markdown-cycle-advice (arg)
+  ;; skip "CONTENTS" visibility status
+  (when (eq markdown-cycle-global-status 2)
+    (setq markdown-cycle-global-status 3))
+  ;; scroll the current heading to top
+  (when arg
+    (recenter 0)))
 #+END_SRC
 
 ** Minibuffer history
