@@ -303,12 +303,14 @@ Window dividers:
 
 ** Auto-complete mode
 
-Show immediately the menu and complete everywhere:
+Show immediately the menu and complete from everywhere:
 
 #+BEGIN_SRC emacs-lisp
+(setq-default ac-sources '(ac-source-words-in-all-buffer))
+
 (custom-set-variables
  '(global-auto-complete-mode 1)
- '(ac-auto-show-menu 0)
+ '(ac-auto-show-menu 0.2)
  '(ac-disable-faces nil))
 #+END_SRC
 
