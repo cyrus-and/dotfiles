@@ -522,6 +522,12 @@ Group directories first and tune the displayed information:
  '(ls-lisp-verbosity '(uid gid)))
 #+END_SRC
 
+No visual line wrapping:
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'dired-mode-hook (lambda () (visual-line-mode -1)))
+#+END_SRC
+
 ** Easy customization interface
 
 Avoid that Emacs messes up the configuration files:
