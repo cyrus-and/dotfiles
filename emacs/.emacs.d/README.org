@@ -902,11 +902,15 @@ Customize the global cycling:
 (advice-add 'markdown-cycle :before 'my/markdown-cycle-advice)
 
 (defun my/markdown-cycle-advice (arg)
-  ;; skip "CONTENTS" visibility status
+  ;; skip "CONTENTS" visibility global status
   (when (eq markdown-cycle-global-status 2)
     (setq markdown-cycle-global-status 3))
-  ;; scroll the current heading to top
+  ;; skip "SUBTREE" visibility subtree status
+  (when (eq markdown-cycle-subtree-status 'children)
+    (setq markdown-cycle-subtree-status 'subtree))
+  ;; scroll the current heading to top if globally invoked
   (when arg
+    (ignore-errors (markdown-back-to-heading))
     (recenter 0)))
 #+END_SRC
 
