@@ -972,6 +972,17 @@ Ensure spacing coherence and fix indentation:
  '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
 #+END_SRC
 
+Do not inhibit ~windmove~ keys:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(org-support-shift-select 'always))
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+#+END_SRC
+
 Visual improvements:
 
 #+BEGIN_SRC emacs-lisp
