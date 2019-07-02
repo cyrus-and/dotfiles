@@ -97,13 +97,13 @@ Add convenience shortcut:
 
 * Theme
 
-Load the below theme file:
+Load the below theme which is stored in ~my-theme.el~:
 
 #+BEGIN_SRC emacs-lisp
 (load-theme 'my t)
 #+END_SRC
 
-Define a personal custom theme, to test it in real time use `C-c '` in the following block to edit it in a new buffer then `C-c v` to evaluate it.
+Define a personal custom theme, to test it in real time use ~C-c '~ in the following block to edit it in a new buffer then ~C-c v~ to evaluate it.
 
 #+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/my-theme.el
 (require 'cus-edit) ; for styling buttons
@@ -291,7 +291,7 @@ Window dividers:
  '(window-divider-default-right-width 6))
 #+END_SRC
 
-`diff-hl` mode:
+~diff-hl~ mode:
 
 #+BEGIN_SRC emacs-lisp
 (custom-set-variables
