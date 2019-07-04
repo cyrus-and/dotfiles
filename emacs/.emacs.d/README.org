@@ -686,47 +686,33 @@ Ignore Node.js folder in searches:
 Use a cleaner ~rgrep~ output by hiding the command:
 
 #+BEGIN_SRC emacs-lisp
-(defun my/rgrep-fix (&rest ignore)
+(defun my/grep-fix ()
   (save-excursion
-    (with-current-buffer grep-last-buffer
-      (goto-line 5) ; manually checked
-      (narrow-to-region (point) (point-max)))))
+    (let ((inhibit-read-only t))
+      (goto-line 4)
+      (kill-whole-line))))
 
-(advice-add 'rgrep :after 'my/rgrep-fix)
+(add-hook 'grep-setup-hook 'my/grep-fix)
 #+END_SRC
 
-Insert an additional newline between command and results so that the ~next-error~ function properly jumps to the first error the first time.
+Call ~rgrep~ in the same conditions if there is already an ~rgrep~ buffer alive:
 
 #+BEGIN_SRC emacs-lisp
-(eval-after-load "grep"
-  '(progn
-     (grep-compute-defaults)
-     (grep-apply-setting 'grep-find-template (concat grep-find-template "\n"))))
-#+END_SRC
-
-Allow to repeat ~rgrep~ in for the same files using the symbol at point without asking:
-
-#+BEGIN_SRC emacs-lisp
-(defun my/rgrep-again ()
+(defun my/rgrep ()
   (interactive)
   (if (and (boundp 'grep-last-buffer)
            (buffer-live-p grep-last-buffer))
-      (let* ((buffer grep-last-buffer)
-             (default-directory (buffer-local-value 'default-directory buffer)))
-        (let ((symbol (or (thing-at-point 'symbol t) (read-regexp "Regex"))))
-          (if symbol
-              (rgrep symbol
-                     (car grep-files-history)
-                     default-directory)
-            (message "Nothing to look up..."))))
+      (rgrep
+       (grep-read-regexp)
+       (car grep-files-history)
+       (with-current-buffer grep-last-buffer default-directory))
     (call-interactively 'rgrep)))
 #+END_SRC
 
 Add convenience shortcuts:
 
 #+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c g") 'my/rgrep-again)
-(global-set-key (kbd "C-c G") 'rgrep)
+(global-set-key (kbd "C-c g") 'my/rgrep)
 #+END_SRC
 
 ** HTML
