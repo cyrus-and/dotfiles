@@ -61,8 +61,7 @@ Install packages:
 
 #+BEGIN_SRC emacs-lisp
 (let ((packages
-       '(auto-complete
-         auctex
+       '(auctex
          cmake-mode
          diff-hl
          dockerfile-mode
@@ -300,28 +299,6 @@ Window dividers:
 #+END_SRC
 
 * Configuration
-
-** Auto-complete mode
-
-Show immediately the menu and complete from everywhere:
-
-#+BEGIN_SRC emacs-lisp
-(setq-default ac-sources '(ac-source-words-in-all-buffer))
-
-(custom-set-variables
- '(global-auto-complete-mode 1)
- '(ac-auto-show-menu 0.2)
- '(ac-disable-faces nil))
-#+END_SRC
-
-Enable for all modes but not for the minibuffer:
-
-#+BEGIN_SRC emacs-lisp
-;; XXX this must be evaluated after the above customization
-(defun auto-complete-mode-maybe ()
-  (unless (minibufferp (current-buffer))
-    (auto-complete-mode 1)))
-#+END_SRC
 
 ** Automatic whitespace management
 
