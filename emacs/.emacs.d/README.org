@@ -388,20 +388,6 @@ Customize the keybindings:
 (define-key comb-keymap (kbd "SPC") 'comb-undecide-next)
 #+END_SRC
 
-Always wrap long lines:
-
-#+BEGIN_SRC emacs-lisp
-(add-hook 'comb-buffer-setup-hook
-          (lambda ()
-            (toggle-truncate-lines nil)))
-#+END_SRC
-
-Add convenience shortcut:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c b") 'comb)
-#+END_SRC
-
 ** Compilation
 
 Make the compiling interaction less painful:
