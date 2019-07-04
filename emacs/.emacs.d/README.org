@@ -683,7 +683,7 @@ Ignore Node.js folder in searches:
   '(add-to-list 'grep-find-ignored-directories "node_modules"))
 #+END_SRC
 
-Use a cleaner ~rgrep~ output by hiding the command:
+Use a cleaner ~grep~ output by hiding the command:
 
 #+BEGIN_SRC emacs-lisp
 (defun my/grep-fix ()
