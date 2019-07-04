@@ -1097,20 +1097,6 @@ Force Python 3 sessions:
  '(save-place-mode t))
 #+END_SRC
 
-** Scrolling
-
-Scroll without jumps if the cursor moves out the window boundaries:
-
-#+BEGIN_SRC emacs-lisp
-(custom-set-variables
- '(scroll-step 1)
- '(scroll-margin 0)
- '(hscroll-step 1)
- '(hscroll-margin 0))
-#+END_SRC
-
-*Note:* setting ~scroll-conservatively~ to a large number yields the same result but it also affects the point position after a /jump/, e.g., ~next-error~, ~iserach-forward~, etc.
-
 ** Shell commands
 
 Avoid showing the shell buffer output immediately for async commands and allow more than one of them:
