@@ -967,9 +967,7 @@ Ensure spacing coherence and fix indentation:
  '(org-src-preserve-indentation t)
  '(org-src-tab-acts-natively t)
  '(org-startup-folded nil)
- '(org-cycle-separator-lines 1)
- '(org-tags-column 0)
- '(org-blank-before-new-entry '((heading . t) (plain-list-item))))
+ '(org-tags-column 0))
 #+END_SRC
 
 Do not inhibit ~windmove~ keys:
@@ -1009,12 +1007,6 @@ Configure the spell checker to ignore some Org regions:
   (add-to-list 'ispell-skip-region-alist '("^ *#\\+BEGIN_EXAMPLE" . "^ *#\\+END_EXAMPLE")))
 
 (add-hook 'org-mode-hook 'my/org-ispell)
-#+END_SRC
-
-Use visual indentation by default:
-
-#+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 'org-indent-mode)
 #+END_SRC
 
 Go to the beginning of the buffer when the global visibility is changed:
