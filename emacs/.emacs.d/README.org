@@ -766,6 +766,15 @@ No visual line wrapping:
  '(initial-buffer-choice t))
 #+END_SRC
 
+** Isearch
+
+Avoid interactive search/replace to happen in invisible text, this is useful when searching for a particular Markdown heading in overview mode:
+
+#+BEGIN_SRC emacs-lisp
+(custom-set-variables
+ '(search-invisible nil))
+#+END_SRC
+
 ** Ispell
 
 #+BEGIN_SRC emacs-lisp
