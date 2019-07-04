@@ -1009,8 +1009,10 @@ On Linux set the GTK default background to match the theme background to prevent
 
 #+BEGIN_SRC text :tangle ~/.emacs.d/gtkrc
 style "default" {
-    bg[NORMAL] = {0, 0, 0}
+    bg[NORMAL] = "#000000"
 }
+
+class "GtkWidget" style "default"
 #+END_SRC
 
 *** macOS fixes
