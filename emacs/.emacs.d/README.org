@@ -102,7 +102,7 @@ Load the below theme which is stored in ~my-theme.el~:
 (load-theme 'my t)
 #+END_SRC
 
-Define a personal custom theme, to test it in real time use ~C-c '~ in the following block to edit it in a new buffer then ~C-c v~ to evaluate it.
+Define a personal custom theme, to test it in real time use ~C-c '~ in the following block to edit it in a new buffer then ~M-x eval-buffer~ to evaluate it.
 
 #+BEGIN_SRC emacs-lisp :tangle ~/.emacs.d/my-theme.el
 (require 'cus-edit) ; for styling buttons
@@ -517,14 +517,6 @@ Add convenience shortcut:
 
 #+BEGIN_SRC emacs-lisp
 (global-set-key (kbd "C-c R") 'my/force-revert-buffer)
-#+END_SRC
-
-** elisp evaluation helper
-
-Add convenience shortcut for buffer evaluation:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "C-c v") 'eval-buffer)
 #+END_SRC
 
 ** ERC
