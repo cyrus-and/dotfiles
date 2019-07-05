@@ -457,17 +457,6 @@ Add convenience shortcuts:
 (global-set-key (kbd "C-c C") 'compile)
 #+END_SRC
 
-** Custom paragraph motions
-
-The default key bindings with an Italian keyboard are crazy, plus due to ghosting not every keyboard is able to process such sequences:
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key (kbd "M-p") 'backward-paragraph)
-(global-set-key (kbd "M-n") 'forward-paragraph)
-#+END_SRC
-
-*Note:* ~<C-up>~ and ~<C-down>~ can be used instead.
-
 ** Dired
 
 Use the native Emacs Lisp ~ls~ program emulation:
