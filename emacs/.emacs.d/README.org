@@ -272,7 +272,8 @@ Define a personal custom theme, to test it in real time use ~C-c '~ in the follo
 Widgets:
 
 #+BEGIN_SRC emacs-lisp
-(custom-set-variables
+(custom-theme-set-variables
+ 'my
  '(custom-raised-buttons t)
  '(widget-push-button-prefix " ")
  '(widget-push-button-suffix " ")
@@ -283,7 +284,8 @@ Widgets:
 Window dividers:
 
 #+BEGIN_SRC emacs-lisp
-(custom-set-variables
+(custom-theme-set-variables
+ 'my
  '(window-divider-mode t)
  '(window-divider-default-places t)
  '(window-divider-default-bottom-width 6)
@@ -293,7 +295,8 @@ Window dividers:
 ~diff-hl~ mode:
 
 #+BEGIN_SRC emacs-lisp
-(custom-set-variables
+(custom-theme-set-variables
+ 'my
  '(global-diff-hl-mode t)
  '(diff-hl-draw-borders nil))
 #+END_SRC
