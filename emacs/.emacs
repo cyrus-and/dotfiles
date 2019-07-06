@@ -359,8 +359,6 @@
 
 ;;; MACOS
 
-;; TODO check exec-path-from-shell needed
-
 (my/install 'exec-path-from-shell)
 
 (when (eq system-type 'darwin)
