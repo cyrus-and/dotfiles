@@ -265,15 +265,18 @@
 
 ;;; WHITESPACE MANAGMENT
 
+(defun my/trim-whitespace--handler ()
+  "Delete trailing whitespaces if `my/trim-whitespace-mode' is enabled."
+  (when my/trim-whitespace-mode
+    (delete-trailing-whitespace)))
+
 (define-minor-mode my/trim-whitespace-mode
   "Delete trailing whitespaces on save."
   :init-value t
   :lighter " W"
-  (if my/trim-whitespace-mode
-      (progn
-        (add-hook 'before-save-hook 'delete-trailing-whitespace)
-        (delete-trailing-whitespace))
-    (remove-hook 'before-save-hook 'delete-trailing-whitespace)))
+  (my/trim-whitespace--handler))
+
+(add-hook 'before-save-hook 'my/trim-whitespace--handler)
 
 (global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
 
