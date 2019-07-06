@@ -223,9 +223,13 @@
 
 (my/install 'password-store)
 
+;; disable hard fill module
+(eval-after-load 'erc
+  '(progn
+     (delete 'fill erc-modules)
+     (erc-update-modules)))
+
 (custom-set-variables
- ;; disable hard fill
- '(erc-modules '(completion autojoin button irccontrols list match menu move-to-prompt netsplit networks noncommands readonly ring stamp track))
  ;; timestamp always visible
  '(erc-insert-timestamp-function 'erc-insert-timestamp-left)
  '(erc-timestamp-format "[%H:%M] ")
@@ -240,10 +244,12 @@
  `(erc-timestamp-face ((t (:inherit (shadow)))))
  `(erc-notice-face    ((t (:inherit (shadow bold))))))
 
-;; disable automatic point recentering so that the prompt stays still
-(add-hook 'erc-mode-hook
-          (lambda ()
-            (set (make-local-variable 'scroll-conservatively) 101)))
+;; disable automatic point recentering so that the prompt stays still and enable
+;; visual line wrapping
+(add-hook 'erc-mode-hook 'my/erc-setup)
+(defun my/erc-setup ()
+  (visual-line-mode)
+  (set (make-local-variable 'scroll-conservatively) 101))
 
 ;; automatic freenode.net connection (a pinentry program must be available)
 (defun my/irc ()
@@ -335,7 +341,8 @@
 (my/install 'ggtags)
 
 ;; automatically enable ggtags globally for every C-derived programming mode
-(add-hook 'c-mode-common-hook (lambda () (ggtags-mode 1)))
+;; (add-hook 'c-mode-common-hook (lambda () (ggtags-mode 1)))
+(add-hook 'c-mode-common-hook 'ggtags-mode)
 
 ;;; GRAPHINCAL INTERFACE
 
@@ -394,6 +401,7 @@
 
 ;; inhibit search/replace on invisible text
 (custom-set-variables
+ '(isearch-allow-scroll t)
  '(search-invisible nil))
 
 ;;; JAVASCRIPT
@@ -507,7 +515,6 @@
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
- '(isearch-allow-scroll t)
  '(menu-bar-mode nil)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
