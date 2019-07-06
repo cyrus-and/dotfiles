@@ -145,6 +145,16 @@
      (cpp-macro . 0)
      (innamespace . 0))))
 
+;;;; COMB
+
+(my/install 'comb)
+
+;; customize the keybindings
+(eval-after-load 'comb
+  '(progn (define-key comb-keymap (kbd "RET") 'comb-approve-next)
+          (define-key comb-keymap (kbd "DEL") 'comb-reject-next)
+          (define-key comb-keymap (kbd "SPC") 'comb-undecide-next)))
+
 ;;;; COMPILATION
 
 (custom-set-variables
@@ -192,16 +202,6 @@
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 (global-set-key (kbd "C-c C") 'compile)
 
-;;;; DIRED
-
-(require 'ls-lisp)
-
-(custom-set-variables
- '(ls-lisp-use-insert-directory-program nil)
- '(ls-lisp-dirs-first t)
- '(ls-lisp-use-localized-time-format t)
- '(ls-lisp-verbosity '(uid gid)))
-
 ;;;; DIFF-HL
 
 (my/install 'diff-hl)
@@ -214,6 +214,25 @@
  '(diff-hl-change ((t (:inherit (warning) :inverse-video t))))
  '(diff-hl-insert ((t (:inherit (success) :inverse-video t))))
  '(diff-hl-delete ((t (:inherit (error) :inverse-video t)))))
+
+;;;; DIRED
+
+(require 'ls-lisp)
+
+(custom-set-variables
+ '(ls-lisp-use-insert-directory-program nil)
+ '(ls-lisp-dirs-first t)
+ '(ls-lisp-use-localized-time-format t)
+ '(ls-lisp-verbosity '(uid gid)))
+
+;;;; EASY REVERT BUFFER
+
+(defun my/force-revert-buffer ()
+  "Revert buffer without confirmation."
+  (interactive)
+  (revert-buffer t t))
+
+(global-set-key (kbd "C-c R") 'my/force-revert-buffer)
 
 ;;;; ERC
 
@@ -261,37 +280,6 @@
 
 (global-set-key (kbd "C-c i") 'my/irc)
 
-;;;; WHITESPACE MANAGMENT
-
-(defun my/trim-whitespace--handler ()
-  "Delete trailing whitespaces if `my/trim-whitespace-mode' is enabled."
-  (when my/trim-whitespace-mode
-    (delete-trailing-whitespace)))
-
-(define-minor-mode my/trim-whitespace-mode
-  "Delete trailing whitespaces on save."
-  :init-value t
-  :lighter " W"
-  (my/trim-whitespace--handler))
-
-(add-hook 'before-save-hook 'my/trim-whitespace--handler)
-
-(global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
-
-;;;; INHIBIT CUSTOMIZATION INTERFACE
-
-(custom-set-variables
- '(custom-file "/dev/null"))
-
-;;;; EASY REVERT BUFFER
-
-(defun my/force-revert-buffer ()
-  "Revert buffer without confirmation."
-  (interactive)
-  (revert-buffer t t))
-
-(global-set-key (kbd "C-c R") 'my/force-revert-buffer)
-
 ;;;; ERROR NAVIGATION
 
 (global-set-key (kbd "<M-up>") 'previous-error)
@@ -304,6 +292,30 @@
  '(find-name-arg "-path"))
 
 (global-set-key (kbd "C-c f") 'find-name-dired)
+
+;;;; GGTAGS
+
+(my/install 'ggtags)
+
+;; automatically enable ggtags globally for every C-derived programming mode
+;; (add-hook 'c-mode-common-hook (lambda () (ggtags-mode 1)))
+(add-hook 'c-mode-common-hook 'ggtags-mode)
+
+;;;; GRAPHINCAL INTERFACE
+
+;; avoid suspend-frame in GUI mode
+(advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
+
+;; create a gtkrc file that matches the theme color to avoid glitches (it works
+;; from the second time on)
+(let ((gtkrc "~/.emacs.d/gtkrc"))
+  (when (file-newer-than-file-p load-file-name gtkrc)
+    (mkdir "~/.emacs.d" t)
+    (with-temp-file gtkrc
+      (insert (format "style \"default\" { bg[NORMAL] = \"%s\" }\n" theme-background))
+      (insert "class \"GtkWidget\" style \"default\"\n"))))
+
+;; TODO do the same for Xresources?
 
 ;;;; GREP
 
@@ -332,55 +344,17 @@
 
 (global-set-key (kbd "C-c g") 'my/rgrep)
 
-;;;; GGTAGS
-
-(my/install 'ggtags)
-
-;; automatically enable ggtags globally for every C-derived programming mode
-;; (add-hook 'c-mode-common-hook (lambda () (ggtags-mode 1)))
-(add-hook 'c-mode-common-hook 'ggtags-mode)
-
-;;;; GRAPHINCAL INTERFACE
-
-;; avoid suspend-frame in GUI mode
-(advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
-
-;; create a gtkrc file that matches the theme color to avoid glitches (it works
-;; from the second time on)
-(let ((gtkrc "~/.emacs.d/gtkrc"))
-  (when (file-newer-than-file-p load-file-name gtkrc)
-    (mkdir "~/.emacs.d" t)
-    (with-temp-file gtkrc
-      (insert (format "style \"default\" { bg[NORMAL] = \"%s\" }\n" theme-background))
-      (insert "class \"GtkWidget\" style \"default\"\n"))))
-
-;; TODO do the same for Xresources?
-
-;;;; MACOS
-
-(my/install 'exec-path-from-shell)
-
-(when (eq system-type 'darwin)
-  ;; use the correct $PATH environment variable
-  (exec-path-from-shell-initialize)
-
-  ;; use the right meta key natively so to allow typing fancy glyphs
-  (custom-set-variables
-   '(mac-right-option-modifier 'none))
-
-  ;; use a bigger font size to compensate the retina screen
-  (custom-set-faces
-   '(default ((t (:family "Iosevka" :height 170)))))
-
-  ;; disable scrolling inertia
-  (setq ns-use-mwheel-momentum nil))
-
 ;;;; IBUFFER
 
 (custom-set-variables
  '(ibuffer-expert t))
 
 (defalias 'list-buffers 'ibuffer)
+
+;;;; INHIBIT CUSTOMIZATION INTERFACE
+
+(custom-set-variables
+ '(custom-file "/dev/null"))
 
 ;;;; INITIALIZATION
 
@@ -414,6 +388,25 @@
 ;; associate by file name and shebang
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+;;;; MACOS
+
+(my/install 'exec-path-from-shell)
+
+(when (eq system-type 'darwin)
+  ;; use the correct $PATH environment variable
+  (exec-path-from-shell-initialize)
+
+  ;; use the right meta key natively so to allow typing fancy glyphs
+  (custom-set-variables
+   '(mac-right-option-modifier 'none))
+
+  ;; use a bigger font size to compensate the retina screen
+  (custom-set-faces
+   '(default ((t (:family "Iosevka" :height 170)))))
+
+  ;; disable scrolling inertia
+  (setq ns-use-mwheel-momentum nil))
 
 ;;;; MAGIT
 
@@ -477,6 +470,12 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t))
 
+;;;; OTHER PACKAGES
+
+(my/install 'yaml-mode)
+(my/install 'rainbow-mode)
+(my/install 'dockerfile-mode)
+
 ;;;; PHP
 
 (my/install 'php-mode)
@@ -525,20 +524,27 @@
 ;; visual line for text modes
 (add-hook 'text-mode-hook 'visual-line-mode)
 
+;;;; WHITESPACE MANAGMENT
+
+(defun my/trim-whitespace--handler ()
+  "Delete trailing whitespaces if `my/trim-whitespace-mode' is enabled."
+  (when my/trim-whitespace-mode
+    (delete-trailing-whitespace)))
+
+(define-minor-mode my/trim-whitespace-mode
+  "Delete trailing whitespaces on save."
+  :init-value t
+  :lighter " W"
+  (my/trim-whitespace--handler))
+
+(add-hook 'before-save-hook 'my/trim-whitespace--handler)
+
+(global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
+
 ;;;; WINNER
 
 (custom-set-variables
  '(winner-mode t))
-
-;; COMB
-
-(my/install 'comb)
-
-;; customize the keybindings
-(eval-after-load 'comb
-  '(progn (define-key comb-keymap (kbd "RET") 'comb-approve-next)
-          (define-key comb-keymap (kbd "DEL") 'comb-reject-next)
-          (define-key comb-keymap (kbd "SPC") 'comb-undecide-next)))
 
 ;;;; ZOOM
 
@@ -549,12 +555,6 @@
  '(zoom-mode t)
  '(zoom-size '(120 . 30))
  '(temp-buffer-resize-mode t))
-
-;;;; OTHER PACKAGES
-
-(my/install 'yaml-mode)
-(my/install 'rainbow-mode)
-(my/install 'dockerfile-mode)
 
 ;;; FILE VARIABLES
 
