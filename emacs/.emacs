@@ -1,3 +1,38 @@
+;;; CHEATSHEET
+
+;; % m           `dired-mark-files-regexp'
+;; C-s C-w       `isearch-yank-word-or-char' (M-e to edit)
+;; C-u C-SPC     `pop-mark'
+;; C-x -         `shrink-window-if-larger-than-buffer'
+;; C-x 8 RET     `insert-char'
+;; C-x C-;       `comment-line'
+;; C-x C-SPC     `pop-global-mark'
+;; C-x C-b       `list-buffers'
+;; C-x C-q       `wdired-change-to-wdired-mode'
+;; C-x M-:       `repeat-complex-command'
+;; C-x SPC       `rectangle-mark-mode'
+;; C-x TAB       `indent-rigidly'`
+;; C-x d         `dired' (useful for applying filters, e.g., *.c)
+;; C-x n n       `narrow-to-region'
+;; C-x n w       `widen'
+;; C-x r SPC     `point-to-register'
+;; C-x r i       `insert-register'
+;; C-x r s       `copy-to-register'
+;; C-x r w       `window-configuration-to-register'
+;; C-x w r       `unhighlight-regexp'
+;; C-x z         `repeat'
+;; M-/           `dabbrev-expand'
+;; M-^           `delete-indentation'
+;; M-g M-n       `next-error'
+;; M-g M-p       `previous-error'
+;; M-h           `mark-paragraph'
+;; M-s h .       `highlight-symbol-at-point'
+;; M-s h r       `highlight-regexp'
+;; M-s o         `occur' (specify the context with C-u; edit with e)
+;; M-x ffap RET  `find-file-at-point'
+;; M-z           `zap-to-char'
+;; M-|           `shell-command-on-region' (replace with C-u)
+
 ;;; PERFORMANCE
 
 ;; call the garbage collector less often (see `gcs-done')
