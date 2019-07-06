@@ -35,23 +35,6 @@
 ;; theme parameters
 (setq theme-divider-width 6)
 
-;;; UTILITIES
-
-(defun my/install (package)
-  (unless (package-installed-p package)
-    (package-refresh-contents)
-    (package-install package)))
-
-;;; PACKAGES
-
-(custom-set-variables
- '(package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
-                      ("melpa" . "https://melpa.org/packages/"))))
-
-(global-set-key (kbd "C-c p") 'package-list-packages)
-
-(package-initialize)
-
 ;;; THEME
 
 (custom-set-variables
@@ -126,13 +109,26 @@
  `(show-paren-match             ((t (:inherit (bold) :foreground ,theme-accent))))
  `(show-paren-mismatch          ((t (:inherit (error) :inverse-video t)))))
 
-;;; BACKUPS
+;;; PACKAGES
+
+(defun my/install (package)
+  (unless (package-installed-p package)
+    (package-refresh-contents)
+    (package-install package)))
+
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+(global-set-key (kbd "C-c p") 'package-list-packages)
+
+;;; CONFIGURATIONS
+;;;; BACKUPS
 
 (custom-set-variables
  '(backup-by-copying t)
  '(backup-directory-alist '(("." . "~/.emacs.d/backups"))))
 
-;;; BASIC EDITING
+;;;; BASIC EDITING
 
 (custom-set-variables
  '(require-final-newline 'ask)
@@ -149,7 +145,7 @@
      (cpp-macro . 0)
      (innamespace . 0))))
 
-;;; COMPILATION
+;;;; COMPILATION
 
 (custom-set-variables
  '(compile-command "make")
@@ -196,7 +192,7 @@
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 (global-set-key (kbd "C-c C") 'compile)
 
-;;; DIRED
+;;;; DIRED
 
 (require 'ls-lisp)
 
@@ -206,7 +202,7 @@
  '(ls-lisp-use-localized-time-format t)
  '(ls-lisp-verbosity '(uid gid)))
 
-;;; DIFF-HL
+;;;; DIFF-HL
 
 (my/install 'diff-hl)
 
@@ -219,7 +215,7 @@
  '(diff-hl-insert ((t (:inherit (success) :inverse-video t))))
  '(diff-hl-delete ((t (:inherit (error) :inverse-video t)))))
 
-;;; ERC
+;;;; ERC
 
 (my/install 'password-store)
 
@@ -265,7 +261,7 @@
 
 (global-set-key (kbd "C-c i") 'my/irc)
 
-;;; WHITESPACE MANAGMENT
+;;;; WHITESPACE MANAGMENT
 
 (defun my/trim-whitespace--handler ()
   "Delete trailing whitespaces if `my/trim-whitespace-mode' is enabled."
@@ -282,12 +278,12 @@
 
 (global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
 
-;;; INHIBIT CUSTOMIZATION INTERFACE
+;;;; INHIBIT CUSTOMIZATION INTERFACE
 
 (custom-set-variables
  '(custom-file "/dev/null"))
 
-;;; EASY REVERT BUFFER
+;;;; EASY REVERT BUFFER
 
 (defun my/force-revert-buffer ()
   "Revert buffer without confirmation."
@@ -296,12 +292,12 @@
 
 (global-set-key (kbd "C-c R") 'my/force-revert-buffer)
 
-;;; ERROR NAVIGATION
+;;;; ERROR NAVIGATION
 
 (global-set-key (kbd "<M-up>") 'previous-error)
 (global-set-key (kbd "<M-down>") 'next-error)
 
-;;; FIND
+;;;; FIND
 
 ;; find in whole path
 (custom-set-variables
@@ -309,7 +305,7 @@
 
 (global-set-key (kbd "C-c f") 'find-name-dired)
 
-;;; GREP
+;;;; GREP
 
 ;; exclude Node.js folders
 (eval-after-load 'grep
@@ -336,7 +332,7 @@
 
 (global-set-key (kbd "C-c g") 'my/rgrep)
 
-;;; GGTAGS
+;;;; GGTAGS
 
 (my/install 'ggtags)
 
@@ -344,7 +340,7 @@
 ;; (add-hook 'c-mode-common-hook (lambda () (ggtags-mode 1)))
 (add-hook 'c-mode-common-hook 'ggtags-mode)
 
-;;; GRAPHINCAL INTERFACE
+;;;; GRAPHINCAL INTERFACE
 
 ;; avoid suspend-frame in GUI mode
 (advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
@@ -360,7 +356,7 @@
 
 ;; TODO do the same for Xresources?
 
-;;; MACOS
+;;;; MACOS
 
 (my/install 'exec-path-from-shell)
 
@@ -379,14 +375,14 @@
   ;; disable scrolling inertia
   (setq ns-use-mwheel-momentum nil))
 
-;;; IBUFFER
+;;;; IBUFFER
 
 (custom-set-variables
  '(ibuffer-expert t))
 
 (defalias 'list-buffers 'ibuffer)
 
-;;; INITIALIZATION
+;;;; INITIALIZATION
 
 (custom-set-variables
  '(initial-scratch-message "")
@@ -397,14 +393,14 @@
   (message "Emacs started in %s triggering the garbage collector %d times"
            (emacs-init-time) gcs-done))
 
-;;; ISEARCH
+;;;; ISEARCH
 
 ;; inhibit search/replace on invisible text
 (custom-set-variables
  '(isearch-allow-scroll t)
  '(search-invisible nil))
 
-;;; JAVASCRIPT
+;;;; JAVASCRIPT
 
 (my/install 'js2-mode)
 
@@ -419,7 +415,7 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
-;;; MAGIT
+;;;; MAGIT
 
 (my/install 'magit)
 
@@ -432,7 +428,7 @@
 
 (global-set-key (kbd "C-c s") 'magit-status)
 
-;;; MARKDOWN
+;;;; MARKDOWN
 
 (my/install 'markdown-mode)
 (my/install 'edit-indirect)
@@ -467,32 +463,32 @@
     (ignore-errors (markdown-back-to-heading))
     (recenter 0)))
 
-;;; MINIBUFFER
+;;;; MINIBUFFER
 
 ;; infinite minibuffer history
 (custom-set-variables
  '(savehist-mode t)
  '(history-length t))
 
-;;; MOUSE
+;;;; MOUSE
 
 (custom-set-variables
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t))
 
-;;; PHP
+;;;; PHP
 
 (my/install 'php-mode)
 
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
-;;; SAVE PLACE
+;;;; SAVE PLACE
 
 (custom-set-variables
  '(save-place-mode t))
 
-;;; SHELL
+;;;; SHELL
 
 ;; avoid showing the shell buffer output immediately for async commands and
 ;; allow more than one of them
@@ -502,7 +498,7 @@
 
 (global-set-key (kbd "C-c a") 'shell)
 
-;;; USER INTERFACE
+;;;; USER INTERFACE
 
 (windmove-default-keybindings)
 
@@ -529,7 +525,7 @@
 ;; visual line for text modes
 (add-hook 'text-mode-hook 'visual-line-mode)
 
-;;; WINNER
+;;;; WINNER
 
 (custom-set-variables
  '(winner-mode t))
@@ -544,7 +540,7 @@
           (define-key comb-keymap (kbd "DEL") 'comb-reject-next)
           (define-key comb-keymap (kbd "SPC") 'comb-undecide-next)))
 
-;;; ZOOM
+;;;; ZOOM
 
 (my/install 'zoom)
 
@@ -554,7 +550,7 @@
  '(zoom-size '(120 . 30))
  '(temp-buffer-resize-mode t))
 
-;;; OTHER PACKAGES
+;;;; OTHER PACKAGES
 
 (my/install 'yaml-mode)
 (my/install 'rainbow-mode)
@@ -564,4 +560,5 @@
 
 ;; Local Variables:
 ;; eval: (rainbow-mode)
+;; eval: (outshine-mode)
 ;; End:
