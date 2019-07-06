@@ -109,6 +109,10 @@
  `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-faint))))
  `(widget-button                ((t (:inherit (custom-button)))))
  `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
+ ;; compilation
+ '(compilation-mode-line-exit   ((t (:inherit (success)))))
+ '(compilation-mode-line-run    ((t (:inherit (warning)))))
+ '(compilation-mode-line-fail   ((t (:inherit (error)))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-faint))))
@@ -153,12 +157,6 @@
  '(compilation-always-kill t)
  '(compilation-disable-input t))
 
-;; TODO move in theme since this is not an external package
-(custom-set-faces
- '(compilation-mode-line-exit ((t (:inherit (success)))))
- '(compilation-mode-line-run  ((t (:inherit (warning)))))
- '(compilation-mode-line-fail ((t (:inherit (error))))))
-
 ;; automatically kill the compilation window on success after a short delay, but
 ;; only if successful
 (add-to-list 'compilation-finish-functions 'my/compile-auto-quit)
@@ -199,8 +197,6 @@
 (global-set-key (kbd "C-c C") 'compile)
 
 ;;; DIRED
-
-;; TODO check this is actually working
 
 (require 'ls-lisp)
 
