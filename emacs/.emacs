@@ -4,13 +4,6 @@
 (custom-set-variables
  '(gc-cons-threshold (* 32 (expt 2 20)))) ; 32 MB
 
-;;; UTILITIES
-
-(defun my/install (package)
-  (unless (package-installed-p package)
-    (package-refresh-contents)
-    (package-install package)))
-
 ;;; GLOBALS
 
 ;; theme base colors, adapted from https://terminal.sexy
@@ -41,6 +34,13 @@
 
 ;; theme parameters
 (setq theme-divider-width 6)
+
+;;; UTILITIES
+
+(defun my/install (package)
+  (unless (package-installed-p package)
+    (package-refresh-contents)
+    (package-install package)))
 
 ;;; PACKAGES
 
