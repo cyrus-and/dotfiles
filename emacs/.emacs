@@ -476,6 +476,24 @@
 (my/install 'rainbow-mode)
 (my/install 'dockerfile-mode)
 
+;;;; OUTSHINE
+
+;; this is basically only used for this file
+(my/install 'outshine)
+
+(custom-set-variables
+ '(outshine-fontify-whole-heading-line t))
+
+(custom-set-faces
+ `(outshine-level-1 ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
+ `(outshine-level-2 ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
+ `(outshine-level-3 ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
+ `(outshine-level-4 ((t (:inherit (outline-4 bold) :height 1.4 :background ,theme-very-dark))))
+ `(outshine-level-5 ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
+ `(outshine-level-6 ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
+ `(outshine-level-7 ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
+ `(outshine-level-8 ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark)))))
+
 ;;;; PHP
 
 (my/install 'php-mode)
