@@ -159,6 +159,7 @@
 
 ;;; PACKAGES
 
+;; just refresh packet list once if even needed
 (setq my/install-refreshed nil)
 
 (defun my/install (package)
