@@ -35,7 +35,7 @@
 
 ;;; PERFORMANCE
 
-;; call the garbage collector less often (see `gcs-done')
+;; call the garbage collector less often (especially during the startup)
 (custom-set-variables
  '(gc-cons-threshold (* 32 (expt 2 20)))) ; 32 MB
 

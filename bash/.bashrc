@@ -8,6 +8,9 @@ HISTSIZE=-1
 HISTFILESIZE=-1
 HISTIGNORE='fg'
 
+# common
+export EDITOR='emacsclient -t -a emacs'
+
 # tty
 if [ -t 0 ]; then
     stty -ctlecho -ixon
@@ -42,9 +45,6 @@ alias l='ls -lArt'
 alias p='python3'
 alias gdb='gdb -q'
 alias playground='make -sC ~/dev/playground/'
-
-# editor
-export EDITOR='emacsclient -t'
 
 # helpers
 
@@ -90,7 +90,6 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
 
     # aliases
     alias ls='ls -G'
-    alias e="$EDITOR"
 
     up() {
         brew update  &&\
@@ -113,8 +112,6 @@ if [ "$OSTYPE" = 'linux-gnu' ]; then
     alias dmesg='dmesg -w'
     alias xcopy='xclip -i -selection clipboard'
     alias xpaste='xclip -o -selection clipboard'
-    alias emacs='emacsclient -c -a emacs'
-    alias e='emacs -nw'
 
     up() {
         sudo apt-get update        &&\
