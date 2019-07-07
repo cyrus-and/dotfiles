@@ -82,6 +82,8 @@
  '(window-divider-default-places t)
  '(window-divider-default-bottom-width theme-divider-width)
  '(window-divider-default-right-width theme-divider-width)
+ ;; widget and custom button coherence
+ '(widget-mouse-face 'custom-button-mouse)
  ;; use no widgets marks
  '(widget-push-button-prefix " ")
  '(widget-push-button-suffix " ")
@@ -136,11 +138,10 @@
  '(compilation-mode-line-fail   ((t (:inherit (error)))))
  ;; widgets
  `(custom-button                ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-foreground :background ,theme-faint))))
- `(custom-button-mouse          ((t (:inherit (highlight))))) ; for coherence with widget-button
  `(custom-button-pressed        ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style released-button) :foreground ,theme-accent))))
- `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-faint))))
  `(widget-button                ((t (:inherit (custom-button)))))
  `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
+ `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-faint))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-faint))))
