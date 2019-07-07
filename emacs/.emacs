@@ -73,12 +73,20 @@
 
 ;;; THEME
 
-;; window dividers
+;; required for styling buttons
+(require 'cus-edit)
+
 (custom-set-variables
+ ;; window dividers
  '(window-divider-mode t)
  '(window-divider-default-places t)
  '(window-divider-default-bottom-width theme-divider-width)
- '(window-divider-default-right-width theme-divider-width))
+ '(window-divider-default-right-width theme-divider-width)
+ ;; use no widgets marks
+ '(widget-push-button-prefix " ")
+ '(widget-push-button-suffix " ")
+ '(widget-link-prefix " ")
+ '(widget-link-suffix " "))
 
 (custom-set-faces
  ;; basic faces
@@ -122,17 +130,17 @@
  `(hi-pink                      ((t (:foreground ,theme-background :background ,theme-pink))))
  `(hi-red-b                     ((t (:inherit (bold) :foreground ,theme-red))))
  `(hi-yellow                    ((t (:foreground ,theme-background :background ,theme-yellow))))
- ;; widgets
- `(custom-button                ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-foreground :background ,theme-faint))))
- `(custom-button-pressed        ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style released-button) :foreground ,theme-accent))))
- `(custom-button-mouse          ((t (:inherit (highlight))))) ; for coherence with widget-button
- `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-faint))))
- `(widget-button                ((t (:inherit (custom-button)))))
- `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
  ;; compilation
  '(compilation-mode-line-exit   ((t (:inherit (success)))))
  '(compilation-mode-line-run    ((t (:inherit (warning)))))
  '(compilation-mode-line-fail   ((t (:inherit (error)))))
+ ;; widgets
+ `(custom-button                ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-foreground :background ,theme-faint))))
+ `(custom-button-mouse          ((t (:inherit (highlight))))) ; for coherence with widget-button
+ `(custom-button-pressed        ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style released-button) :foreground ,theme-accent))))
+ `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-faint))))
+ `(widget-button                ((t (:inherit (custom-button)))))
+ `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-faint))))
