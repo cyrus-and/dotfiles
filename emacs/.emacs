@@ -83,6 +83,7 @@
  '(window-divider-default-bottom-width theme-divider-width)
  '(window-divider-default-right-width theme-divider-width)
  ;; widget and custom button coherence
+ '(custom-raised-buttons t) ; for terminal mode
  '(widget-mouse-face 'custom-button-mouse)
  ;; use no widgets marks
  '(widget-push-button-prefix " ")
@@ -137,11 +138,12 @@
  '(compilation-mode-line-run    ((t (:inherit (warning)))))
  '(compilation-mode-line-fail   ((t (:inherit (error)))))
  ;; widgets
- `(custom-button                ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-foreground :background ,theme-faint))))
- `(custom-button-pressed        ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style released-button) :foreground ,theme-accent))))
+ `(custom-button                ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-background :background ,theme-faint))))
+ `(custom-button-pressed        ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style pressed-button)))))
+ `(custom-button-mouse          ((t (:inherit (custom-button) :background ,theme-foreground))))
  `(widget-button                ((t (:inherit (custom-button)))))
  `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
- `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-faint))))
+ `(widget-field                 ((t (:foreground ,theme-background :background ,theme-faint))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-faint))))
