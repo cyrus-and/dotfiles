@@ -163,6 +163,16 @@
 (global-set-key (kbd "C-c p") 'package-list-packages)
 
 ;;; CONFIGURATIONS
+;;;; ANNOTATIONS
+
+(defun my/annotations ()
+  (let ((regexp (rx bow (or "TODO" "XXX") eow))
+        (face 'font-lock-warning-face))
+    (font-lock-add-keywords nil `((,regexp 0 ,face prepend)) t)))
+
+(add-hook 'text-mode-hook 'my/annotations)
+(add-hook 'prog-mode-hook 'my/annotations)
+
 ;;;; BACKUPS
 
 (custom-set-variables
@@ -497,7 +507,7 @@
  `(markdown-header-face-5 ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
  `(markdown-header-face-6 ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark)))))
 
-;; use nice ellipses
+;; use nice ellipses (this also works for org mode)
 (set-display-table-slot standard-display-table
                         'selective-display
                         (string-to-vector "\u2026"))
