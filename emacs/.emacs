@@ -165,13 +165,13 @@
 ;;; CONFIGURATIONS
 ;;;; ANNOTATIONS
 
-(defun my/annotations ()
+(defun my/annotations-hook ()
   (let ((regexp (rx bow (or "TODO" "XXX") eow))
         (face 'font-lock-warning-face))
     (font-lock-add-keywords nil `((,regexp 0 ,face prepend)) t)))
 
-(add-hook 'text-mode-hook 'my/annotations)
-(add-hook 'prog-mode-hook 'my/annotations)
+(add-hook 'text-mode-hook 'my/annotations-hook)
+(add-hook 'prog-mode-hook 'my/annotations-hook)
 
 ;;;; BACKUPS
 
