@@ -62,18 +62,3 @@ Rxvt*iso14755_52: false
 ! font styles
 *colorBD: #ffffff
 *colorUL: #00ff00
-
-!!!!!!!!!
-! emacs !
-!!!!!!!!!
-
-! GUI settings
-! emacs.font: Terminus-14
-emacs.font: Iosevka-14
-emacs.menuBar: off
-emacs.toolBar: off
-emacs.verticalScrollBars: off
-emacs.background: #000000
-
-! lucid widgets
-emacs.menu*.font: Terminus-10

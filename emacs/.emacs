@@ -1,4 +1,4 @@
-;;; CHEATSHEET
+;;; CHEAT SHEET
 
 ;; % m           `dired-mark-files-regexp'
 ;; C-s C-w       `isearch-yank-word-or-char' (M-e to edit)
@@ -69,9 +69,11 @@
 
 ;; theme parameters
 (setq theme-divider-width 6)
+(setq theme-font "Iosevka")
 
 ;;; THEME
 
+;; window dividers
 (custom-set-variables
  '(window-divider-mode t)
  '(window-divider-default-places t)
@@ -110,7 +112,7 @@
  `(font-lock-builtin-face       ((t (:foreground ,theme-palette-7))))
  `(font-lock-string-face        ((t (:foreground ,theme-palette-8))))
  `(font-lock-negation-char-face ((t (:inherit (default)))))
- ;; highlightings
+ ;; highlighting
  `(hi-black-b                   ((t (:inherit (bold)))))
  `(hi-black-hb                  ((t (:inherit (bold)))))
  `(hi-blue                      ((t (:foreground ,theme-background :background ,theme-blue))))
@@ -146,9 +148,13 @@
 
 ;;; PACKAGES
 
+(setq my/install-refreshed nil)
+
 (defun my/install (package)
   (unless (package-installed-p package)
-    (package-refresh-contents)
+    (unless my/install-refreshed
+      (package-refresh-contents)
+      (setq my/install-refreshed t))
     (package-install package)))
 
 (package-initialize)
@@ -166,7 +172,6 @@
 ;;;; BASIC EDITING
 
 (custom-set-variables
- '(require-final-newline 'ask)
  '(fill-column 80)
  '(c-backslash-column 79)
  '(c-backslash-max-column 79)
@@ -209,7 +214,7 @@
                (equal status "finished\n"))
       (run-at-time 1 nil 'quit-window nil window))))
 
-;; inhibit the auto-kill beahavior if the compilation window is already present
+;; inhibit the auto-kill behavior if the compilation window is already present
 ;; when the re/compilation is started
 (advice-add 'compile :before 'my/compile-before)
 (advice-add 'recompile :before 'my/compile-before)
@@ -242,8 +247,8 @@
 (my/install 'diff-hl)
 
 (custom-set-variables
- '(diff-hl-draw-borders nil)
- '(global-diff-hl-mode t))
+ '(global-diff-hl-mode t)
+ '(diff-hl-draw-borders nil))
 
 (custom-set-faces
  '(diff-hl-change ((t (:inherit (warning) :inverse-video t))))
@@ -252,13 +257,15 @@
 
 ;;;; DIRED
 
-(require 'ls-lisp)
+;; use the native ls implementation to be consistent even on macOS
+(eval-after-load 'dired
+  '(require 'ls-lisp))
 
 (custom-set-variables
  '(ls-lisp-use-insert-directory-program nil)
- '(ls-lisp-dirs-first t)
  '(ls-lisp-use-localized-time-format t)
- '(ls-lisp-verbosity '(uid gid)))
+ '(ls-lisp-verbosity '(uid gid))
+ '(ls-lisp-dirs-first t))
 
 ;;;; EASY REVERT BUFFER
 
@@ -333,24 +340,32 @@
 (my/install 'ggtags)
 
 ;; automatically enable ggtags globally for every C-derived programming mode
-;; (add-hook 'c-mode-common-hook (lambda () (ggtags-mode 1)))
 (add-hook 'c-mode-common-hook 'ggtags-mode)
 
-;;;; GRAPHINCAL INTERFACE
+;;;; GRAPHICAL INTERFACE
 
 ;; avoid suspend-frame in GUI mode
 (advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
 
-;; create a gtkrc file that matches the theme color to avoid glitches (it works
-;; from the second time on)
+;; create a GTK configuration file that matches the theme color to avoid
+;; glitches but only if needed
 (let ((gtkrc "~/.emacs.d/gtkrc"))
   (when (file-newer-than-file-p load-file-name gtkrc)
     (mkdir "~/.emacs.d" t)
     (with-temp-file gtkrc
-      (insert (format "style \"default\" { bg[NORMAL] = \"%s\" }\n" theme-background))
-      (insert "class \"GtkWidget\" style \"default\"\n"))))
+      (insert (format "style 'default' { bg[NORMAL] = '%s' }\n" theme-background))
+      (insert "class 'GtkWidget' style 'default'\n"))))
 
-;; TODO do the same for Xresources?
+;; create a X resources file that matches the theme color and GUI setup to avoid
+;; glitches but only if needed
+(let ((xdefaults (format "~/.Xdefaults-%s" system-name)))
+  (when (file-newer-than-file-p load-file-name xdefaults)
+    (with-temp-file xdefaults
+      (insert (format "emacs.font: %s-14\n" theme-font))
+      (insert "emacs.menuBar: off\n")
+      (insert "emacs.toolBar: off\n")
+      (insert "emacs.verticalScrollBars: off\n")
+      (insert (format "emacs.background: %s\n" theme-background)))))
 
 ;;;; GREP
 
@@ -358,7 +373,7 @@
 (eval-after-load 'grep
   '(add-to-list 'grep-find-ignored-directories "node_modules"))
 
-;; use a cleaner ~grep~ output by hiding the command
+;; use a cleaner grep output by hiding the command
 (add-hook 'grep-setup-hook 'my/grep-fix)
 (defun my/grep-fix ()
   (save-excursion
@@ -381,13 +396,16 @@
 
 ;;;; IBUFFER
 
+;; avoid asking confirmation
 (custom-set-variables
  '(ibuffer-expert t))
 
+;; override `list-buffers'
 (defalias 'list-buffers 'ibuffer)
 
 ;;;; INHIBIT CUSTOMIZATION INTERFACE
 
+;; discard persistent changes via the customization interface
 (custom-set-variables
  '(custom-file "/dev/null"))
 
@@ -397,10 +415,16 @@
  '(initial-scratch-message "")
  '(initial-buffer-choice t))
 
-;; show some performace stats
+;; show some performance stats
 (defun display-startup-echo-area-message ()
   (message "Emacs started in %s triggering the garbage collector %d times"
            (emacs-init-time) gcs-done))
+
+;;;; INSTALL OTHER PACKAGES
+
+(my/install 'yaml-mode)
+(my/install 'rainbow-mode)
+(my/install 'dockerfile-mode)
 
 ;;;; ISEARCH
 
@@ -418,7 +442,7 @@
  '(js2-skip-preprocessor-directives t))
 
 (custom-set-faces
-  `(js2-object-property ((t (:inherit (font-lock-builtin-face))))))
+ `(js2-object-property ((t (:inherit (font-lock-builtin-face))))))
 
 ;; associate by file name and shebang
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -438,7 +462,7 @@
 
   ;; use a bigger font size to compensate the retina screen
   (custom-set-faces
-   '(default ((t (:family "Iosevka" :height 170)))))
+   `(default ((t (:family ,theme-font :height 170)))))
 
   ;; disable scrolling inertia
   (setq ns-use-mwheel-momentum nil))
@@ -447,7 +471,7 @@
 
 (my/install 'magit)
 
-;; git commit utilities
+;; git commit editing
 (global-git-commit-mode)
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 
@@ -473,6 +497,7 @@
  `(markdown-header-face-5 ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
  `(markdown-header-face-6 ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark)))))
 
+;; use nice ellipses
 (set-display-table-slot standard-display-table
                         'selective-display
                         (string-to-vector "\u2026"))
@@ -504,12 +529,6 @@
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t))
-
-;;;; OTHER PACKAGES
-
-(my/install 'yaml-mode)
-(my/install 'rainbow-mode)
-(my/install 'dockerfile-mode)
 
 ;;;; OUTSHINE
 
@@ -559,7 +578,6 @@
  '(column-number-mode t)
  '(disabled-command-function nil)
  '(echo-keystrokes 0.1)
- '(font-lock-maximum-decoration 2)
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
@@ -577,7 +595,10 @@
 ;; visual line for text modes
 (add-hook 'text-mode-hook 'visual-line-mode)
 
-;;;; WHITESPACE MANAGMENT
+;;;; WHITESPACE MANAGEMENT
+
+(custom-set-variables
+ '(require-final-newline 'ask))
 
 (defun my/trim-whitespace--handler ()
   "Delete trailing whitespaces if `my/trim-whitespace-mode' is enabled."
