@@ -435,7 +435,7 @@
 
 (custom-set-variables
  '(initial-scratch-message "")
- '(initial-buffer-choice t))
+ '(inhibit-startup-screen t))
 
 ;; show some performance stats
 (defun display-startup-echo-area-message ()
