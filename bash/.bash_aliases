@@ -1,3 +1,5 @@
+# -*- sh -*-
+
 # history
 PROMPT_COMMAND='history -a'
 shopt -s cmdhist
