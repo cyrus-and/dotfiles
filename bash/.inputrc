@@ -8,8 +8,8 @@ set mark-symlinked-directories on
 "\eOb": history-search-forward
 
 # Ctrl-* (tmux)
-"\eOA": history-search-backward
-"\eOB": history-search-forward
+"\e[1;5A": history-search-backward
+"\e[1;5B": history-search-forward
 
 # Pag-* (macOS)
 "\e[5~": history-search-backward

@@ -51,25 +51,25 @@
 (setq theme-very-dark  "#0c0c0c")
 
 ;; emacs common colors
-(setq theme-red        "#cc6666")
-(setq theme-green      "#b5bd68")
-(setq theme-yellow     "#f0c674")
-(setq theme-blue       "#81a2be")
-(setq theme-pink       "#b294bb")
+(setq theme-red    "#cc6666")
+(setq theme-green  "#b5bd68")
+(setq theme-yellow "#f0c674")
+(setq theme-blue   "#81a2be")
+(setq theme-pink   "#b294bb")
 
 ;; font lock palette
-(setq theme-palette-1  "#5f819d")
-(setq theme-palette-2  "#f0c674")
-(setq theme-palette-3  "#a54242")
-(setq theme-palette-4  "#666d65")
-(setq theme-palette-5  "#de935f")
-(setq theme-palette-6  "#85678f")
-(setq theme-palette-7  "#81a2be")
-(setq theme-palette-8  "#b5bd68")
+(setq theme-palette-1 "#5f819d")
+(setq theme-palette-2 "#f0c674")
+(setq theme-palette-3 "#a54242")
+(setq theme-palette-4 "#666d65")
+(setq theme-palette-5 "#de935f")
+(setq theme-palette-6 "#85678f")
+(setq theme-palette-7 "#81a2be")
+(setq theme-palette-8 "#b5bd68")
 
 ;; theme parameters
-(setq theme-divider-width 6)
-(setq theme-font "Iosevka")
+(setq theme-divider-width   6)
+(setq theme-font            "Iosevka")
 (setq theme-font-size-linux 14)
 (setq theme-font-size-macos 17)
 
@@ -649,6 +649,16 @@
 
 (custom-set-variables
  '(winner-mode t))
+
+;;;; WOMAN
+
+;; Fill the whole frame on creation (refresh with `R`)
+(custom-set-variables
+ '(woman-fill-frame t))
+
+(custom-set-faces
+ `(woman-bold   ((t (:inherit (bold) :foreground ,theme-bright))))
+ `(woman-italic ((t (:inherit (italic) :foreground ,theme-green)))))
 
 ;;;; ZOOM
 

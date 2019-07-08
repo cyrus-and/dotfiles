@@ -27,7 +27,6 @@ Rxvt*scrollBar: false
 ! this causes artifacts so pixelsize (carefully tuned) is used
 ! Rxvt*font: xft:Terminus:size=14:antialias=false
 Rxvt*font: xft:Iosevka:pixelsize=18
-Rxvt*internalBorder: 6
 Rxvt*geometry: 80x30
 Rxvt*saveLines: 65535
 Rxvt*scrollTtyKeypress: true
