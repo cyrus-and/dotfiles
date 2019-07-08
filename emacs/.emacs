@@ -70,6 +70,8 @@
 ;; theme parameters
 (setq theme-divider-width 6)
 (setq theme-font "Iosevka")
+(setq theme-font-size-linux 14)
+(setq theme-font-size-macos 17)
 
 ;;; THEME
 
@@ -364,31 +366,6 @@
 ;; automatically enable ggtags globally for every C-derived programming mode
 (add-hook 'c-mode-common-hook 'ggtags-mode)
 
-;;;; GRAPHICAL INTERFACE
-
-;; avoid suspend-frame in GUI mode
-(advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
-
-;; create a GTK configuration file that matches the theme color to avoid
-;; glitches but only if needed
-(let ((gtkrc "~/.emacs.d/gtkrc"))
-  (when (file-newer-than-file-p load-file-name gtkrc)
-    (mkdir "~/.emacs.d" t)
-    (with-temp-file gtkrc
-      (insert (format "style 'default' { bg[NORMAL] = '%s' }\n" theme-background))
-      (insert "class 'GtkWidget' style 'default'\n"))))
-
-;; create a X resources file that matches the theme color and GUI setup to avoid
-;; glitches but only if needed
-(let ((xdefaults (format "~/.Xdefaults-%s" system-name)))
-  (when (file-newer-than-file-p load-file-name xdefaults)
-    (with-temp-file xdefaults
-      (insert (format "emacs.font: %s-14\n" theme-font))
-      (insert "emacs.menuBar: off\n")
-      (insert "emacs.toolBar: off\n")
-      (insert "emacs.verticalScrollBars: off\n")
-      (insert (format "emacs.background: %s\n" theme-background)))))
-
 ;;;; GREP
 
 ;; exclude Node.js folders
@@ -470,6 +447,28 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
+;;;; LINUX
+
+(when (eq system-type 'gnu/linux)
+  ;; create a GTK configuration file that matches the theme color to avoid
+  ;; glitches but only if needed
+  (let ((gtkrc "~/.emacs.d/gtkrc"))
+    (when (file-newer-than-file-p load-file-name gtkrc)
+      (mkdir "~/.emacs.d" t)
+      (with-temp-file gtkrc
+        (insert (format "style 'default' { bg[NORMAL] = '%s' }\n" theme-background))
+        (insert "class 'GtkWidget' style 'default'\n"))))
+
+  ;; setup base GUI to avoid glitches but only if needed
+  (let ((xdefaults (format "~/.Xdefaults-%s" system-name)))
+    (when (file-newer-than-file-p load-file-name xdefaults)
+      (with-temp-file xdefaults
+        (insert (format "emacs.font: %s-%d\n" theme-font theme-font-size-linux))
+        (insert "emacs.menuBar: off\n")
+        (insert "emacs.toolBar: off\n")
+        (insert "emacs.verticalScrollBars: off\n")
+        (insert (format "emacs.background: %s\n" theme-background))))))
+
 ;;;; MACOS
 
 (my/install 'exec-path-from-shell)
@@ -482,12 +481,15 @@
   (custom-set-variables
    '(mac-right-option-modifier 'none))
 
-  ;; use a bigger font size to compensate the retina screen
-  (custom-set-faces
-   `(default ((t (:family ,theme-font :height 170)))))
-
   ;; disable scrolling inertia
-  (setq ns-use-mwheel-momentum nil))
+  (setq ns-use-mwheel-momentum nil)
+
+  ;; setup base GUI to avoid glitches but only if needed
+  (let ((plist "~/Library/Preferences/org.gnu.Emacs.plist"))
+    (when (file-newer-than-file-p load-file-name plist)
+      (shell-command "defaults write org.gnu.Emacs ToolBar -bool false")
+      (shell-command (format "defaults write org.gnu.Emacs Font %s-%d"
+                             theme-font theme-font-size-macos)))))
 
 ;;;; MAGIT
 
@@ -603,12 +605,10 @@
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
- '(menu-bar-mode nil)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 4)
- '(tool-bar-mode nil)
  '(truncate-lines t)
  '(use-dialog-box nil)
  '(vc-follow-symlinks t)
@@ -616,6 +616,14 @@
 
 ;; visual line for text modes
 (add-hook 'text-mode-hook 'visual-line-mode)
+
+;; avoid suspend-frame in GUI mode
+(advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
+
+;; disable menu in terminals
+;; (unless (display-graphic-p)
+;;   (custom-set-variables
+;;    '(menu-bar-mode nil)))
 
 ;;;; WHITESPACE MANAGEMENT
 
