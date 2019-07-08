@@ -14,8 +14,8 @@ rofi.color-normal: #000000,#cccccc,#000000,#000000,#ff6000
 rofi.color-urgent: #ffffff,#ffffff,#ffffff,#ffffff,#ffffff
 rofi.color-active: #cccccc,#000000,#cccccc,#ff6000,#000000
 
-! colors           bg      border
-rofi.color-window: #000000,#111111
+! colors           bg      border  separator
+rofi.color-window: #000000,#111111,#111111
 
 !!!!!!!!!
 ! urxvt !
