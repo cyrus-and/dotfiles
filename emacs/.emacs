@@ -474,8 +474,8 @@
 (my/install 'exec-path-from-shell)
 
 (when (eq system-type 'darwin)
-  ;; fetch environment variables from shell (namely, the ones in ~/.profile that
-  ;; is not sourced by macOS)
+  ;; fetch environment variables from shell (namely, the ones in ~/.profile
+  ;; since it is not sourced by macOS but only from bash)
   (run-with-idle-timer
    0.1 nil
    (lambda ()
