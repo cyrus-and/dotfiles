@@ -483,7 +483,6 @@
      (exec-path-from-shell-copy-env "NPM_CONFIG_PREFIX")
      (exec-path-from-shell-copy-env "GEM_HOME")))
 
-
   ;; use the right meta key natively so to allow typing fancy glyphs
   (custom-set-variables
    '(mac-right-option-modifier 'none))
