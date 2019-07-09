@@ -474,8 +474,15 @@
 (my/install 'exec-path-from-shell)
 
 (when (eq system-type 'darwin)
-  ;; use the correct $PATH environment variable
-  (exec-path-from-shell-initialize)
+  ;; fetch environment variables from shell (namely, the ones in ~/.profile that
+  ;; is not sourced by macOS)
+  (run-with-idle-timer
+   1 nil
+   (lambda ()
+     (exec-path-from-shell-initialize)
+     (exec-path-from-shell-copy-env "NPM_CONFIG_PREFIX")
+     (exec-path-from-shell-copy-env "GEM_HOME")))
+
 
   ;; use the right meta key natively so to allow typing fancy glyphs
   (custom-set-variables
