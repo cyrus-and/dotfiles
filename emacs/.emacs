@@ -626,10 +626,10 @@
 ;; avoid suspend-frame in GUI mode
 (advice-add 'iconify-or-deiconify-frame :before-until 'display-graphic-p)
 
-;; disable menu in terminals
-;; (unless (display-graphic-p)
-;;   (custom-set-variables
-;;    '(menu-bar-mode nil)))
+;; disable menu in terminals anyway
+(unless (display-graphic-p)
+  (custom-set-variables
+   '(menu-bar-mode nil)))
 
 ;;;; WHITESPACE MANAGEMENT
 
