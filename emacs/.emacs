@@ -477,7 +477,7 @@
   ;; fetch environment variables from shell (namely, the ones in ~/.profile that
   ;; is not sourced by macOS)
   (run-with-idle-timer
-   1 nil
+   0.1 nil
    (lambda ()
      (exec-path-from-shell-initialize)
      (exec-path-from-shell-copy-env "NPM_CONFIG_PREFIX")
