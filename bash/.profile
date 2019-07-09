@@ -7,9 +7,10 @@ fi
 export GEM_HOME="$HOME/.gem"
 export PATH="$PATH:$GEM_HOME/bin"
 
-# always install npm package locally
+# always install npm packages locally
 export NPM_CONFIG_PREFIX="$HOME/.npm"
 export PATH="$PATH:$NPM_CONFIG_PREFIX/bin"
 
-# this is used by pip that by default uses ~/.local for non-root
+# always install pip packages locally
+export PIP_USER=yes
 export PATH="$HOME/.local/bin:$PATH"

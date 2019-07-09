@@ -475,7 +475,7 @@
 
 (when (eq system-type 'darwin)
   ;; fetch environment variables from shell (namely, the ones in ~/.profile
-  ;; since it is not sourced by macOS but only from bash)
+  ;; since it is not sourced by macOS but only by bash)
   (run-with-idle-timer
    0.1 nil
    (lambda ()

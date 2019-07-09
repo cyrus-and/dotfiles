@@ -2,4 +2,4 @@ welcome-screen-list = no
 enable-colors       = yes
 color background    = none
 list-format         = "[%artist% - %album%[ (%date%)] - [%track%. ]%title%]|[%file%]"
-color list-bold     = yellow
+enable-colors       = no
