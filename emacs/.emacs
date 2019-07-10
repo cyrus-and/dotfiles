@@ -35,6 +35,11 @@
 
 ;;; PERFORMANCE
 
+;; utility to defer slow operation so to not directly impact init time
+(defmacro my/defer (body)
+  `(run-with-idle-timer
+    0.5 nil (lambda () ,body)))
+
 ;; call the garbage collector less often (especially during the startup)
 (custom-set-variables
  '(gc-cons-threshold (* 32 (expt 2 20)))) ; 32 MB
@@ -163,7 +168,6 @@
 
 ;; just refresh packet list once if even needed
 (setq my/install-refreshed nil)
-
 (defun my/install (package)
   (unless (package-installed-p package)
     (unless my/install-refreshed
@@ -475,7 +479,8 @@
   ;; fetch environment variables from shell (namely, those in ~/.profile since
   ;; it is not sourced by macOS but only by bash)
   (my/install 'exec-path-from-shell)
-  (exec-path-from-shell-copy-envs '("PATH" "NPM_CONFIG_PREFIX" "GEM_HOME" "PIP_USER"))
+  (my/defer (exec-path-from-shell-copy-envs
+             '("PATH" "NPM_CONFIG_PREFIX" "GEM_HOME" "PIP_USER")))
 
   ;; use the right meta key natively so to allow typing fancy glyphs
   (custom-set-variables
