@@ -1,5 +1,3 @@
-# -*- sh -*-
-
 # history
 PROMPT_COMMAND='history -a'
 shopt -s cmdhist
@@ -11,7 +9,7 @@ HISTFILESIZE=-1
 HISTIGNORE='fg'
 
 # common
-export EDITOR='emacsclient -t -a emacs'
+export EDITOR='emacsclient -c -a emacs'
 
 # tty
 if [ -t 0 ]; then
@@ -44,7 +42,6 @@ fi
 # aliases
 alias grep='grep --color=auto'
 alias l='ls -lArt'
-alias p='python3'
 alias gdb='gdb -q'
 alias playground='make -sC ~/dev/playground/'
 
@@ -53,7 +50,7 @@ alias playground='make -sC ~/dev/playground/'
 hack() {
     local path=$(mktemp -dp ~/tmp "hack-${1:-this}.XXX")
     cd $path
-    e .
+    $EDITOR .
 }
 
 rttyshell() {
@@ -91,7 +88,7 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
     # aliases
-    alias ls='ls -G'
+    alias ls='ls --color=auto'
 
     up() {
         brew update  &&\
@@ -110,10 +107,7 @@ fi
 
 if [ "$OSTYPE" = 'linux-gnu' ]; then
     # aliases
-    alias ls='ls --color=auto'
-    alias dmesg='dmesg -w'
-    alias xcopy='xclip -i -selection clipboard'
-    alias xpaste='xclip -o -selection clipboard'
+    alias ls='ls -G'
 
     up() {
         sudo apt-get update        &&\
