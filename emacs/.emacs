@@ -181,6 +181,7 @@
 (global-set-key (kbd "C-c p") 'package-list-packages)
 
 ;;; CONFIGURATIONS
+
 ;;;; ANNOTATIONS
 
 (defun my/annotations-hook ()
