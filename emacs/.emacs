@@ -492,9 +492,9 @@
   ;; setup base GUI to avoid glitches but only if needed
   (let ((plist "~/Library/Preferences/org.gnu.Emacs.plist"))
     (when (file-newer-than-file-p load-file-name plist)
-      (shell-command "defaults write org.gnu.Emacs ToolBar -bool false")
-      (shell-command (format "defaults write org.gnu.Emacs Font %s-%d"
-                             theme-font theme-font-size-macos)))))
+      (shell-command-to-string "defaults write org.gnu.Emacs ToolBar -bool false")
+      (shell-command-to-string (format "defaults write org.gnu.Emacs Font %s-%d"
+                                       theme-font theme-font-size-macos)))))
 
 ;;;; MAGIT
 
