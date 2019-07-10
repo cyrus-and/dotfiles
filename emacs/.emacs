@@ -528,9 +528,7 @@
  `(markdown-header-face-6 ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark)))))
 
 ;; use nice ellipses (this also works for org mode)
-(set-display-table-slot standard-display-table
-                        'selective-display
-                        (string-to-vector "\u2026"))
+(set-display-table-slot standard-display-table 'selective-display (string-to-vector "\u2026"))
 
 ;; avoid some visibilities
 (advice-add 'markdown-cycle :before 'my/markdown-cycle-advice)
