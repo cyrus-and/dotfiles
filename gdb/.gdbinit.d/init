@@ -12,9 +12,6 @@ set breakpoint pending on
 # disable annoyng confirmation
 set confirm off
 
-# if the font does not render bold clearly
-dashboard -style style_selected_2 '37'
-
 # useful auto-redraw hooks
 
 define hookpost-up
