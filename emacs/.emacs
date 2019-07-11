@@ -481,7 +481,7 @@
   ;; it is not sourced by macOS but only by bash)
   (my/install 'exec-path-from-shell)
   (my/defer (exec-path-from-shell-copy-envs
-             '("PATH" "NPM_CONFIG_PREFIX" "GEM_HOME" "PIP_USER")))
+             '("PATH" "PASSWORD_STORE_DIR" "NPM_CONFIG_PREFIX" "GEM_HOME" "PIP_USER")))
 
   ;; use the right meta key natively so to allow typing fancy glyphs
   (custom-set-variables
@@ -495,7 +495,14 @@
     (when (file-newer-than-file-p load-file-name plist)
       (shell-command-to-string "defaults write org.gnu.Emacs ToolBar -bool false")
       (shell-command-to-string (format "defaults write org.gnu.Emacs Font %s-%d"
-                                       theme-font theme-font-size-macos)))))
+                                       theme-font theme-font-size-macos))))
+
+  ;; force GPG to use a GUI pinentry program to avoid problems
+  (let ((gpg-agent-conf "~/.gnupg/gpg-agent.conf"))
+    (when (file-newer-than-file-p load-file-name gpg-agent-conf)
+      (mkdir "~/.gnupg" t)
+      (with-temp-file gpg-agent-conf
+        (insert "pinentry-program /usr/local/bin/pinentry-mac\n")))))
 
 ;;;; MAGIT
 

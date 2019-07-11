@@ -3,6 +3,9 @@ if [ -n "$BASH_VERSION" -a -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
 fi
 
+# password store on dropbox
+export PASSWORD_STORE_DIR="$HOME/Dropbox/pass/"
+
 # always install gems locally with gem or bundler
 export GEM_HOME="$HOME/.gem"
 export PATH="$PATH:$GEM_HOME/bin"
