@@ -88,7 +88,7 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
     export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
     # aliases
-    alias ls='ls --color=auto'
+    alias ls='ls -G'
 
     up() {
         brew update  &&\
@@ -107,7 +107,7 @@ fi
 
 if [ "$OSTYPE" = 'linux-gnu' ]; then
     # aliases
-    alias ls='ls -G'
+    alias ls='ls --color=auto'
 
     up() {
         sudo apt-get update        &&\
