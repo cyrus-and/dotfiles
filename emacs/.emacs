@@ -497,7 +497,8 @@
       (shell-command-to-string (format "defaults write org.gnu.Emacs Font %s-%d"
                                        theme-font theme-font-size-macos))))
 
-  ;; force GPG to use a GUI pinentry program to avoid problems
+  ;; force GPG to use a GUI pinentry program (fetch pinentry-mac from brew) to
+  ;; avoid problems
   (let ((gpg-agent-conf "~/.gnupg/gpg-agent.conf"))
     (when (file-newer-than-file-p load-file-name gpg-agent-conf)
       (mkdir "~/.gnupg" t)
