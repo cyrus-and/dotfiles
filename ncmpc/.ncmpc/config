@@ -1,15 +1,17 @@
 list-format                  = "[%artist% - %album%[ (%date%)] - [%track%. ]%title%]|[%file%]"
+
+# 202 ~> #ff6000
 color title                  = white/black
-color title-bold             = green
+color title-bold             = 202
 color line                   = none
-color line-flags             = green
+color line-flags             = 202
 color list                   = none
-color list-bold              = green
+color list-bold              = 202
 color browser-directory      = none
 color browser-playlist       = none
-color progressbar            = green
+color progressbar            = 202
 color progressbar-background = none
-color status-state           = green
+color status-state           = 202
 color status-song            = none/black
-color status-time            = green/black
+color status-time            = 202/black
 color alert                  = red
