@@ -590,6 +590,11 @@
 
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
+;;;; PYTHON
+
+(custom-set-variables
+ '(python-shell-interpreter "python3"))
+
 ;;;; SAVE PLACE
 
 (custom-set-variables
