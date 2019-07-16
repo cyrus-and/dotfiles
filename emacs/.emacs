@@ -31,7 +31,7 @@
 ;; M-s o         `occur' (specify the context with C-u; edit with e)
 ;; M-x ffap RET  `find-file-at-point'
 ;; M-z           `zap-to-char'
-;; M-|           `shell-command-on-region' (replace with C-u)
+;; M-|           `shell-command-on-region' (replace the region with C-u)
 
 ;;; PERFORMANCE
 

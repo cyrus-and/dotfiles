@@ -8,11 +8,11 @@ export PASSWORD_STORE_DIR="$HOME/Dropbox/pass/"
 
 # always install gems locally with gem or bundler
 export GEM_HOME="$HOME/.gem"
-export PATH="$PATH:$GEM_HOME/bin"
+export PATH="$GEM_HOME/bin:$PATH"
 
 # always install npm packages locally
 export NPM_CONFIG_PREFIX="$HOME/.npm"
-export PATH="$PATH:$NPM_CONFIG_PREFIX/bin"
+export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
 
 # always install pip packages locally
 export PIP_USER=yes
