@@ -538,20 +538,6 @@
 ;; use nice ellipses (this also works for org mode)
 (set-display-table-slot standard-display-table 'selective-display (string-to-vector "\u2026"))
 
-;; avoid some visibilities
-(advice-add 'markdown-cycle :before 'my/markdown-cycle-advice)
-(defun my/markdown-cycle-advice (arg)
-  ;; skip "CONTENTS" visibility global status
-  (when (eq markdown-cycle-global-status 2)
-    (setq markdown-cycle-global-status 3))
-  ;; skip "SUBTREE" visibility subtree status
-  (when (eq markdown-cycle-subtree-status 'children)
-    (setq markdown-cycle-subtree-status 'subtree))
-  ;; scroll the current heading to top if globally invoked
-  (when arg
-    (ignore-errors (markdown-back-to-heading))
-    (recenter 0)))
-
 ;;;; MINIBUFFER
 
 ;; infinite minibuffer history
@@ -565,6 +551,12 @@
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t))
+
+;;;; OUTLINE
+
+;; utility shortcuts that works with all the outline-based modes
+(global-set-key (kbd "M-1") 'outline-hide-body)
+(global-set-key (kbd "M-2") 'outline-show-all)
 
 ;;;; OUTSHINE
 
