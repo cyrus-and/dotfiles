@@ -602,6 +602,12 @@
 
 (global-set-key (kbd "C-c a") 'shell)
 
+;;;; TRAMP
+
+;; avoid verbose tramp messages and show errors only
+(custom-set-variables
+ '(tramp-verbose 1))
+
 ;;;; USER INTERFACE
 
 (windmove-default-keybindings)
