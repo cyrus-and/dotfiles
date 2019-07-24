@@ -166,11 +166,10 @@
 
 ;;; PACKAGES
 
-;; just refresh packet list once if even needed
-(setq my/install-refreshed nil)
+;; install a package refreshing the packet list just once
 (defun my/install (package)
   (unless (package-installed-p package)
-    (unless my/install-refreshed
+    (unless (bound-and-true-p my/install-refreshed)
       (package-refresh-contents)
       (setq my/install-refreshed t))
     (package-install package)))
