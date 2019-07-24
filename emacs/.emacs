@@ -76,7 +76,7 @@
 (setq theme-divider-width   6)
 (setq theme-font            "Iosevka")
 (setq theme-font-size-linux 14)
-(setq theme-font-size-macos 17)
+(setq theme-font-size-macos 15)
 
 ;;; THEME
 
@@ -165,6 +165,10 @@
  `(show-paren-mismatch          ((t (:inherit (error) :inverse-video t)))))
 
 ;;; PACKAGES
+
+;; XXX temporary hackish solution for https://debbugs.gnu.org/34341
+(when (eq emacs-version "26.2")
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; install a package refreshing the packet list just once
 (defun my/install (package)
