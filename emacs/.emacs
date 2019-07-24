@@ -575,6 +575,11 @@
  `(outshine-level-7 ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
  `(outshine-level-8 ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark)))))
 
+;; enable shift tab everywhere to be coherent with org and markdown modes
+(eval-after-load 'outshine
+  '(outshine-define-key outshine-mode-map
+     (kbd "<backtab>") 'outshine-cycle-buffer t))
+
 ;;;; PHP
 
 (my/install 'php-mode)
