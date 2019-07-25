@@ -239,10 +239,19 @@
 (add-to-list 'compilation-finish-functions 'my/compile-auto-quit)
 (defun my/compile-auto-quit (buffer status)
   (let ((window (get-buffer-window buffer)))
-    (when (and (equal (buffer-name buffer) "*compilation*") ; do not kill grep and similar
-               my/compile-should-auto-quit ;; only for *compilation** buffers
-               window ; a window to kill must exist
-               (equal status "finished\n"))
+    (when (and
+           (bound-and-true-p my/compile-should-auto-quit)
+           ;; only for *compilation** buffers (do not kill grep and similar)
+           (equal (buffer-name buffer) "*compilation*")
+           ;; a window to kill must exist
+           window
+           ;; status must be success
+           (equal status "finished\n")
+           ;; there must not be any additional information
+           (with-current-buffer buffer
+             (zerop (+ compilation-num-errors-found
+                       compilation-num-warnings-found
+                       compilation-num-infos-found))))
       (run-at-time 1 nil 'quit-window nil window))))
 
 ;; inhibit the auto-kill behavior if the compilation window is already present
