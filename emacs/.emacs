@@ -687,7 +687,7 @@
  '(winum-scope 'frame-local))
 
 (custom-set-faces
- `(winum-face ((t (:box (:line-width 1 :color ,theme-foreground) :foreground ,theme-background :background ,theme-foreground)))))
+ `(winum-face ((t (:box (:color ,theme-foreground) :foreground ,theme-background :background ,theme-foreground)))))
 
 ;; this needs to be explicitly called in order to properly work at startup
 (winum-mode)
