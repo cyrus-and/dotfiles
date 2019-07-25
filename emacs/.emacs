@@ -150,7 +150,7 @@
  `(custom-button-mouse          ((t (:inherit (custom-button) :background ,theme-foreground))))
  `(widget-button                ((t (:inherit (custom-button)))))
  `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
- `(widget-field                 ((t (:foreground ,theme-background :background ,theme-faint))))
+ `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-dark))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-faint))))
@@ -683,9 +683,14 @@
 (define-key winum-keymap (kbd "M-0") 'winum-select-window-0-or-10)
 
 (custom-set-variables
- '(winum-mode t)
- '(winum-format "(%s)")
+ '(winum-format (propertize " %s " 'face 'winum-face))
  '(winum-scope 'frame-local))
+
+(custom-set-faces
+ `(winum-face ((t (:box (:line-width 1 :color ,theme-foreground) :foreground ,theme-background :background ,theme-foreground)))))
+
+;; this needs to be explicitly called in order to properly work at startup
+(winum-mode)
 
 ;;;; WOMAN
 
