@@ -231,7 +231,6 @@
 
 (custom-set-variables
  '(compile-command "make")
- '(compilation-scroll-output 'first-error)
  '(compilation-always-kill t)
  '(compilation-disable-input t))
 
