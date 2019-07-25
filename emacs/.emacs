@@ -73,7 +73,7 @@
 (setq theme-palette-8 "#b5bd68")
 
 ;; theme parameters
-(setq theme-divider-width   6)
+(setq theme-divider-width   4)
 (setq theme-font            "Iosevka")
 (setq theme-font-size-linux 14)
 (setq theme-font-size-macos 15)
@@ -117,9 +117,9 @@
  `(mode-line-highlight          ((t (:inverse-video t :box nil))))
  `(header-line                  ((t (:inherit (mode-line) :foreground ,theme-foreground))))
  ;; window dividers
- `(window-divider               ((t (:foreground ,theme-faint))))
- `(window-divider-first-pixel   ((t (:foreground ,theme-faint))))
- `(window-divider-last-pixel    ((t (:foreground ,theme-faint))))
+ `(window-divider               ((t (:foreground ,theme-foreground))))
+ `(window-divider-first-pixel   ((t (:foreground ,theme-foreground))))
+ `(window-divider-last-pixel    ((t (:foreground ,theme-foreground))))
  ;; font lock
  `(font-lock-function-name-face ((t (:foreground ,theme-palette-1))))
  `(font-lock-variable-name-face ((t (:foreground ,theme-palette-2))))
