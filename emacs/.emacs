@@ -432,8 +432,8 @@
 
 ;; show some performance stats
 (defun display-startup-echo-area-message ()
-  (message "Emacs started in %s triggering the garbage collector %d times"
-           (emacs-init-time) gcs-done))
+  (message "Emacs started in %s triggering the GC %d times taking %.2f seconds"
+           (emacs-init-time) gcs-done gc-elapsed))
 
 ;;;; INSTALL OTHER PACKAGES
 
