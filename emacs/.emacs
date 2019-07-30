@@ -520,12 +520,14 @@
 
 (my/install 'magit)
 
-;; git commit editing
-(global-git-commit-mode)
+;; better git commit editing
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
+(add-to-list 'auto-mode-alist `(,git-commit-filename-regexp . git-commit-setup))
 
+;; set up status sections visibility
 (custom-set-variables
- '(magit-section-initial-visibility-alist '((stashes . show) (unpushed . show))))
+ '(magit-section-initial-visibility-alist
+   '((stashes . show) (unpushed . show))))
 
 (global-set-key (kbd "C-c s") 'magit-status)
 
@@ -590,7 +592,7 @@
 
 (my/install 'php-mode)
 
-(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
 
 ;;;; PYTHON
 
