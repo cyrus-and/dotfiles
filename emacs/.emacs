@@ -520,11 +520,14 @@
 
 (my/install 'magit)
 
-;; better git commit editing
-(add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
-(add-to-list 'auto-mode-alist `(,git-commit-filename-regexp . git-commit-setup))
+;; XXX the following auto-mode-alist approach is faster than the conventional
+;; (global-git-commit-mode)
 
-;; set up status sections visibility
+;; always use magit for commit editing and enable spell checking
+(add-to-list 'auto-mode-alist (cons git-commit-filename-regexp 'git-commit-setup))
+(add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
+
+;; set up default status sections visibility
 (custom-set-variables
  '(magit-section-initial-visibility-alist
    '((stashes . show) (unpushed . show))))
