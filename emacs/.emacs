@@ -222,10 +222,10 @@
 (my/install 'comb)
 
 ;; customize the keybindings
-(eval-after-load 'comb
-  '(progn (define-key comb-keymap (kbd "RET") 'comb-approve-next)
-          (define-key comb-keymap (kbd "DEL") 'comb-reject-next)
-          (define-key comb-keymap (kbd "SPC") 'comb-undecide-next)))
+(with-eval-after-load 'comb
+  (progn (define-key comb-keymap (kbd "RET") 'comb-approve-next)
+         (define-key comb-keymap (kbd "DEL") 'comb-reject-next)
+         (define-key comb-keymap (kbd "SPC") 'comb-undecide-next)))
 
 ;;;; COMPILATION
 
@@ -298,8 +298,8 @@
 ;;;; DIRED
 
 ;; use the native ls implementation to be consistent even on macOS
-(eval-after-load 'dired
-  '(require 'ls-lisp))
+(with-eval-after-load 'dired
+  (require 'ls-lisp))
 
 (custom-set-variables
  '(ls-lisp-use-insert-directory-program nil)
@@ -321,10 +321,10 @@
 (my/install 'password-store)
 
 ;; disable hard fill module
-(eval-after-load 'erc
-  '(progn
-     (delete 'fill erc-modules)
-     (erc-update-modules)))
+(with-eval-after-load 'erc
+  (progn
+    (delete 'fill erc-modules)
+    (erc-update-modules)))
 
 (custom-set-variables
  ;; timestamp always visible
@@ -385,8 +385,8 @@
 ;;;; GREP
 
 ;; exclude Node.js folders
-(eval-after-load 'grep
-  '(add-to-list 'grep-find-ignored-directories "node_modules"))
+(with-eval-after-load 'grep
+  (add-to-list 'grep-find-ignored-directories "node_modules"))
 
 ;; use a cleaner grep output by hiding the command
 (add-hook 'grep-setup-hook 'my/grep-fix)
@@ -584,9 +584,9 @@
  `(outshine-level-8 ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark)))))
 
 ;; enable shift tab everywhere to be coherent with org and markdown modes
-(eval-after-load 'outshine
-  '(outshine-define-key outshine-mode-map
-     (kbd "<backtab>") 'outshine-cycle-buffer t))
+(with-eval-after-load 'outshine
+  (outshine-define-key outshine-mode-map
+    (kbd "<backtab>") 'outshine-cycle-buffer t))
 
 ;;;; PHP
 
