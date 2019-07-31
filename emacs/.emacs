@@ -393,7 +393,7 @@
 (defun my/grep-fix ()
   (save-excursion
     (let ((inhibit-read-only t))
-      (goto-line 4)
+      (forward-line 3) ; kill 4th line
       (kill-whole-line))))
 
 ;; call rgrep in the same conditions if there is already an rgrep buffer alive
@@ -476,7 +476,7 @@
         (insert "class 'GtkWidget' style 'default'\n"))))
 
   ;; setup base GUI to avoid glitches but only if needed
-  (let ((xdefaults (format "~/.Xdefaults-%s" system-name)))
+  (let ((xdefaults (format "~/.Xdefaults-%s" (system-name))))
     (when (file-newer-than-file-p load-file-name xdefaults)
       (with-temp-file xdefaults
         (insert (format "emacs.font: %s-%d\n" theme-font theme-font-size-linux))
@@ -519,9 +519,6 @@
 ;;;; MAGIT
 
 (my/install 'magit)
-
-;; XXX the following auto-mode-alist approach is faster than the conventional
-;; (global-git-commit-mode)
 
 ;; always use magit for commit editing and enable spell checking
 (add-to-list 'auto-mode-alist (cons git-commit-filename-regexp 'git-commit-setup))
