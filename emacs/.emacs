@@ -295,6 +295,9 @@
  '(diff-hl-insert ((t (:inherit (success) :inverse-video t))))
  '(diff-hl-delete ((t (:inherit (error) :inverse-video t)))))
 
+;; update the indicators also after a commit
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
 ;;;; DIRED
 
 ;; use the native ls implementation to be consistent even on macOS
