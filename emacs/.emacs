@@ -40,9 +40,15 @@
   `(run-with-idle-timer
     0.5 nil (lambda () ,body)))
 
-;; call the garbage collector less often (especially during the startup)
-(custom-set-variables
- '(gc-cons-threshold (* 32 (expt 2 20)))) ; 32 MB
+;; call the garbage collector less often during the startup then restore the
+;; initial value to avoid longer pauses during the interactive usage (note that
+;; `custom-reevaluate-setting' only works as long as the value has not been
+;; customized)
+(setq gc-cons-threshold (* 32 (expt 2 20))) ; 32 MB
+(add-hook 'after-init-hook (lambda () (custom-reevaluate-setting 'gc-cons-threshold)))
+
+;; force the garbage collection to happen when the focus moves away from emacs
+(add-hook 'focus-out-hook 'garbage-collect)
 
 ;;; GLOBALS
 
