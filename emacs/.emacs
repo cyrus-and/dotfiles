@@ -229,9 +229,9 @@
 
 ;; customize the keybindings
 (with-eval-after-load 'comb
-  (progn (define-key comb-keymap (kbd "RET") 'comb-approve-next)
-         (define-key comb-keymap (kbd "DEL") 'comb-reject-next)
-         (define-key comb-keymap (kbd "SPC") 'comb-undecide-next)))
+  (define-key comb-keymap (kbd "RET") 'comb-approve-next)
+  (define-key comb-keymap (kbd "DEL") 'comb-reject-next)
+  (define-key comb-keymap (kbd "SPC") 'comb-undecide-next))
 
 ;;;; COMPILATION
 
@@ -331,9 +331,8 @@
 
 ;; disable hard fill module
 (with-eval-after-load 'erc
-  (progn
-    (delete 'fill erc-modules)
-    (erc-update-modules)))
+  (delete 'fill erc-modules)
+  (erc-update-modules))
 
 (custom-set-variables
  ;; timestamp always visible
