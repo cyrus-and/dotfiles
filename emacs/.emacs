@@ -265,7 +265,7 @@
   (let ((window (get-buffer-window buffer)))
     (when (and
            (bound-and-true-p my/compile-should-auto-quit)
-           ;; only for *compilation** buffers (do not kill grep and similar)
+           ;; only for *compilation* buffers (do not kill grep and similar)
            (equal (buffer-name buffer) "*compilation*")
            ;; a window to kill must exist
            window
@@ -590,7 +590,8 @@
 
 (custom-set-variables
  '(minions-mode t)
- '(minions-mode-line-lighter "···"))
+ '(minions-mode-line-lighter "···")
+ '(minions-direct '(overwrite-mode)))
 
 ;;;; MOUSE
 
