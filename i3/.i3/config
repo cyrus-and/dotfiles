@@ -145,7 +145,7 @@ bindsym $mod+XF86Mail workspace $music_ws
 # browser
 set $www_ws 3:www
 assign [class="Google-chrome"] $www_ws
-bindsym $mod+z workspace $www_ws
+bindsym $mod+Home workspace $www_ws
 
 # tmux session
 set $tmux_ws 4:tmux
