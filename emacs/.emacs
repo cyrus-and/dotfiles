@@ -566,6 +566,14 @@
  '(savehist-mode t)
  '(history-length t))
 
+;;;; MINIONS
+
+(my/install 'minions)
+
+(custom-set-variables
+ '(minions-mode t)
+ '(minions-mode-line-lighter "···"))
+
 ;;;; MOUSE
 
 (custom-set-variables
