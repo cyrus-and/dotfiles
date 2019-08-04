@@ -233,6 +233,24 @@
   (define-key comb-keymap (kbd "DEL") 'comb-reject-next)
   (define-key comb-keymap (kbd "SPC") 'comb-undecide-next))
 
+;;;; COMPANY
+
+(my/install 'company)
+
+(custom-set-variables
+ '(global-company-mode t)
+ '(company-idle-delay 0.1))
+
+(custom-set-faces
+  `(company-tooltip                  ((t (:background ,theme-faint :foreground ,theme-background))))
+  `(company-tooltip-common           ((t (:foreground ,theme-accent))))
+  `(company-tooltip-common-selection ((t (:foreground ,theme-background))))
+  `(company-tooltip-selection        ((t (:background ,theme-accent))))
+  `(company-tooltip-mouse            ((t (:inherit (company-tooltip-selection)))))
+  `(company-preview-common           ((t (:background ,theme-very-dark :foreground ,theme-accent))))
+  `(company-scrollbar-bg             ((t (:background ,theme-dark))))
+  `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
+
 ;;;; COMPILATION
 
 (custom-set-variables
