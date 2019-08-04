@@ -82,6 +82,7 @@ bindsym $mod+x layout toggle split
 # navigate
 bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
+bindsym $mod+less workspace back_and_forth
 
 # move windows
 bindsym $mod+Control+Left move container to workspace prev; workspace prev
@@ -144,7 +145,7 @@ bindsym $mod+XF86Mail workspace $music_ws
 # browser
 set $www_ws 3:www
 assign [class="Google-chrome"] $www_ws
-bindsym $mod+less workspace $www_ws
+bindsym $mod+z workspace $www_ws
 
 # tmux session
 set $tmux_ws 4:tmux
