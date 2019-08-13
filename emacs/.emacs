@@ -242,16 +242,16 @@
  '(company-idle-delay 0.1))
 
 (custom-set-faces
-  `(company-tooltip                  ((t (:background ,theme-faint :foreground ,theme-background))))
-  `(company-tooltip-common           ((t (:foreground ,theme-accent))))
-  `(company-tooltip-common-selection ((t (:foreground ,theme-background))))
-  `(company-tooltip-search           ((t (:inherit (isearch)))))
-  `(company-tooltip-search-selection ((t (:inherit (lazy-highlight)))))
-  `(company-tooltip-selection        ((t (:background ,theme-accent))))
-  `(company-tooltip-mouse            ((t (:inherit (company-tooltip-selection)))))
-  `(company-preview-common           ((t (:background ,theme-very-dark :foreground ,theme-accent))))
-  `(company-scrollbar-bg             ((t (:background ,theme-dark))))
-  `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
+ `(company-tooltip                  ((t (:background ,theme-faint :foreground ,theme-background))))
+ `(company-tooltip-common           ((t (:foreground ,theme-accent))))
+ `(company-tooltip-common-selection ((t (:foreground ,theme-background))))
+ `(company-tooltip-search           ((t (:inherit (isearch)))))
+ `(company-tooltip-search-selection ((t (:inherit (lazy-highlight)))))
+ `(company-tooltip-selection        ((t (:background ,theme-accent))))
+ `(company-tooltip-mouse            ((t (:inherit (company-tooltip-selection)))))
+ `(company-preview-common           ((t (:background ,theme-very-dark :foreground ,theme-accent))))
+ `(company-scrollbar-bg             ((t (:background ,theme-dark))))
+ `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
 
 ;; start completion with backspace too
 (add-to-list 'company-begin-commands #'delete-backward-char)
