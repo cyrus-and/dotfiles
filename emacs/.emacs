@@ -245,6 +245,8 @@
   `(company-tooltip                  ((t (:background ,theme-faint :foreground ,theme-background))))
   `(company-tooltip-common           ((t (:foreground ,theme-accent))))
   `(company-tooltip-common-selection ((t (:foreground ,theme-background))))
+  `(company-tooltip-search           ((t (:inherit (isearch)))))
+  `(company-tooltip-search-selection ((t (:inherit (lazy-highlight)))))
   `(company-tooltip-selection        ((t (:background ,theme-accent))))
   `(company-tooltip-mouse            ((t (:inherit (company-tooltip-selection)))))
   `(company-preview-common           ((t (:background ,theme-very-dark :foreground ,theme-accent))))
