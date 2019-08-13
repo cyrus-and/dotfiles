@@ -173,7 +173,7 @@
 ;;; PACKAGES
 
 ;; XXX temporary hackish solution for https://debbugs.gnu.org/34341
-(when (eq emacs-version "26.2")
+(when (equal emacs-version "26.2")
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; install a package refreshing the packet list just once
