@@ -253,6 +253,10 @@
   `(company-scrollbar-bg             ((t (:background ,theme-dark))))
   `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
 
+;; start completion with backspace too
+(add-to-list 'company-begin-commands #'delete-backward-char)
+(add-to-list 'company-begin-commands #'backward-delete-char-untabify)
+
 ;;;; COMPILATION
 
 (custom-set-variables
