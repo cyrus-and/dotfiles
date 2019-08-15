@@ -239,7 +239,8 @@
 
 (custom-set-variables
  '(global-company-mode t)
- '(company-idle-delay 0.1))
+ '(company-idle-delay 0.1)
+ '(company-minimum-prefix-length 2))
 
 (custom-set-faces
  `(company-tooltip                  ((t (:background ,theme-faint :foreground ,theme-background))))
