@@ -173,8 +173,7 @@
 ;;; PACKAGES
 
 ;; XXX temporary hackish solution for https://debbugs.gnu.org/34341
-(when (equal emacs-version "26.2")
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; install a package refreshing the packet list just once
 (defun my/install (package)
@@ -364,8 +363,10 @@
  '(erc-insert-timestamp-function 'erc-insert-timestamp-left)
  '(erc-timestamp-format "[%H:%M] ")
  '(erc-timestamp-only-if-changed-flag nil)
- ;; make track mode less noisy
+ ;; make track mode less noisy and add the indicator at the end of the modeline
+ ;; to not interfere with minions
  '(erc-track-exclude-types '("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE"))
+ '(erc-track-position-in-mode-line t)
  ;; autojoin
  '(erc-autojoin-channels-alist '(("freenode.net$" . ("#emacs")))))
 
