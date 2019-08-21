@@ -452,6 +452,18 @@
 ;; override `list-buffers'
 (defalias 'list-buffers 'ibuffer)
 
+;;;; IDO
+
+;; use IDO only for buffers and avoid the completion buffer
+
+(custom-set-variables
+ '(ido-mode 'buffers)
+ '(ido-completion-buffer nil))
+
+(custom-set-faces
+ `(ido-only-match ((t (:foreground ,theme-accent))))
+ `(ido-first-match ((t (:inherit (ido-only-match))))))
+
 ;;;; INHIBIT CUSTOMIZATION INTERFACE
 
 ;; discard persistent changes via the customization interface
