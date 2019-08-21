@@ -644,6 +644,17 @@
   (outshine-define-key outshine-mode-map
     (kbd "<backtab>") 'outshine-cycle-buffer t))
 
+;;;; OPENWITH
+
+;; this is especially useful to open PDF files directly from markdown
+
+(my/install 'openwith)
+
+(custom-set-variables
+ '(openwith-mode t)
+ `(openwith-associations '(("\\.pdf\\'" ,(if (eq system-type 'darwin) "open" "xdg-open") (file))))
+ '(large-file-warning-threshold nil))
+
 ;;;; PHP
 
 (my/install 'php-mode)
