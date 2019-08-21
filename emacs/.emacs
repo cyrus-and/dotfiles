@@ -497,7 +497,7 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
-;;;; LINUX
+;;;; LINUX SPECIFIC
 
 (when (eq system-type 'gnu/linux)
   ;; create a GTK configuration file that matches the theme color to avoid
@@ -519,7 +519,7 @@
         (insert "emacs.verticalScrollBars: off\n")
         (insert (format "emacs.background: %s\n" theme-background))))))
 
-;;;; MACOS
+;;;; MACOS SPECIFIC
 
 (when (eq system-type 'darwin)
   ;; fetch environment variables from shell (namely, those in ~/.profile since
@@ -611,6 +611,7 @@
 ;;;; OUTSHINE
 
 ;; this is basically only used for this file
+
 (my/install 'outshine)
 
 (custom-set-variables
@@ -748,7 +749,7 @@
 
 ;;;; WOMAN
 
-;; Fill the whole frame on creation (refresh with `R`)
+;; fill the whole frame on creation (refresh with `R`)
 (custom-set-variables
  '(woman-fill-frame t))
 
