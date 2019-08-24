@@ -575,6 +575,10 @@
  '(magit-section-initial-visibility-alist
    '((stashes . show) (unpushed . show))))
 
+;; make clearer the commit message overflow
+(custom-set-faces
+ `(git-commit-overlong-summary ((t (:inherit (error) :inverse-video t)))))
+
 (global-set-key (kbd "C-c s") 'magit-status)
 
 ;;;; MARKDOWN
