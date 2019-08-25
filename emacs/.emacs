@@ -190,23 +190,6 @@
 
 ;;; CONFIGURATIONS
 
-;;;; CODE ANNOTATIONS
-
-(setq my/todo-regexp (rx bow (or "TODO" "XXX") eow))
-(setq my/todo-face 'font-lock-warning-face)
-
-(defun my/todo-fontlock-hook ()
-  (font-lock-add-keywords nil `((,my/todo-regexp 0 ,my/todo-face prepend)) t))
-
-(defun my/todo-occur ()
-  (interactive)
-  (occur my/todo-regexp))
-
-(add-hook 'text-mode-hook #'my/todo-fontlock-hook)
-(add-hook 'prog-mode-hook #'my/todo-fontlock-hook)
-
-(global-set-key (kbd "C-c t") 'my/todo-occur)
-
 ;;;; BACKUPS
 
 (custom-set-variables
@@ -228,6 +211,23 @@
      (arglist-close . 0)
      (cpp-macro . 0)
      (innamespace . 0))))
+
+;;;; CODE ANNOTATIONS
+
+(setq my/todo-regexp (rx bow (or "TODO" "XXX") eow))
+(setq my/todo-face 'font-lock-warning-face)
+
+(defun my/todo-fontlock-hook ()
+  (font-lock-add-keywords nil `((,my/todo-regexp 0 ,my/todo-face prepend)) t))
+
+(defun my/todo-occur ()
+  (interactive)
+  (occur my/todo-regexp))
+
+(add-hook 'text-mode-hook #'my/todo-fontlock-hook)
+(add-hook 'prog-mode-hook #'my/todo-fontlock-hook)
+
+(global-set-key (kbd "C-c t") 'my/todo-occur)
 
 ;;;; COMB
 
@@ -631,6 +631,17 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t))
 
+;;;; OPENWITH
+
+;; this is especially useful to open PDF files directly from markdown
+
+(my/install 'openwith)
+
+(custom-set-variables
+ '(openwith-mode t)
+ `(openwith-associations '(("\\.pdf\\'" ,(if (eq system-type 'darwin) "open" "xdg-open") (file))))
+ '(large-file-warning-threshold nil))
+
 ;;;; OUTSHINE
 
 ;; this is basically only used for this file
@@ -654,17 +665,6 @@
 (with-eval-after-load 'outshine
   (outshine-define-key outshine-mode-map
     (kbd "<backtab>") 'outshine-cycle-buffer t))
-
-;;;; OPENWITH
-
-;; this is especially useful to open PDF files directly from markdown
-
-(my/install 'openwith)
-
-(custom-set-variables
- '(openwith-mode t)
- `(openwith-associations '(("\\.pdf\\'" ,(if (eq system-type 'darwin) "open" "xdg-open") (file))))
- '(large-file-warning-threshold nil))
 
 ;;;; PHP
 
