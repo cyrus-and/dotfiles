@@ -405,8 +405,8 @@
 
 ;;;; ERROR NAVIGATION
 
-(global-set-key (kbd "<M-up>") 'previous-error)
-(global-set-key (kbd "<M-down>") 'next-error)
+(global-set-key (kbd "C-,") 'previous-error)
+(global-set-key (kbd "C-.") 'next-error)
 
 ;;;; FIND
 
