@@ -190,15 +190,22 @@
 
 ;;; CONFIGURATIONS
 
-;;;; ANNOTATIONS
+;;;; CODE ANNOTATIONS
 
-(defun my/annotations-hook ()
-  (let ((regexp (rx bow (or "TODO" "XXX") eow))
-        (face 'font-lock-warning-face))
-    (font-lock-add-keywords nil `((,regexp 0 ,face prepend)) t)))
+(setq my/todo-regexp (rx bow (or "TODO" "XXX") eow))
+(setq my/todo-face 'font-lock-warning-face)
 
-(add-hook 'text-mode-hook 'my/annotations-hook)
-(add-hook 'prog-mode-hook 'my/annotations-hook)
+(defun my/todo-fontlock-hook ()
+  (font-lock-add-keywords nil `((,my/todo-regexp 0 ,my/todo-face prepend)) t))
+
+(defun my/todo-occur ()
+  (interactive)
+  (occur my/todo-regexp))
+
+(add-hook 'text-mode-hook #'my/todo-fontlock-hook)
+(add-hook 'prog-mode-hook #'my/todo-fontlock-hook)
+
+(global-set-key (kbd "C-c t") 'my/todo-occur)
 
 ;;;; BACKUPS
 
