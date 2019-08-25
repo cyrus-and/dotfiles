@@ -38,24 +38,10 @@ Rxvt*iso14755_52: false
 *background: #000000
 *foreground: #cccccc
 
-! palette (from colors.html 0.4 - 0.8)
-*color0: #000000
-*color1: #ff4200
-*color2: #00ff00
-*color3: #ffd100
-*color4: #0074ff
-*color5: #ff29ff
-*color6: #00ffff
-*color7: #cccccc
-*color8: #666666
-*color9: #ff4200
-*color10: #00ff00
-*color11: #ffd100
-*color12: #0074ff
-*color13: #ff29ff
-*color14: #00ffff
-*color15: #ffffff
-
 ! font styles
 *colorBD: #ffffff
-*colorUL: #00ff00
+*colorUL: #ff6000
+
+! Local Variables:
+! eval: (rainbow-mode)
+! End:
