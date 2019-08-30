@@ -317,6 +317,8 @@
             (recompile))
         (call-interactively 'compile)))))
 
+(add-hook 'compilation-mode-hook #'visual-line-mode)
+
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 (global-set-key (kbd "C-c C") 'compile)
 
@@ -466,7 +468,8 @@
 
 (custom-set-variables
  '(ido-mode 'buffers)
- '(ido-completion-buffer nil))
+ '(ido-completion-buffer nil)
+ '(ido-default-buffer-method 'selected-window))
 
 (custom-set-faces
  `(ido-only-match ((t (:foreground ,theme-accent))))

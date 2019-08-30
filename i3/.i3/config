@@ -64,9 +64,9 @@ bindsym $mod+Mod1+Up resize shrink height 1 px or 1 ppt
 bindsym $mod+Mod1+Right resize grow width 1 px or 1 ppt
 
 # layout
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+d layout default
+bindsym $mod+F1 layout default
+bindsym $mod+F2 layout tabbed
+bindsym $mod+F3 layout stacking
 
 # split
 bindsym $mod+p focus parent
@@ -157,8 +157,8 @@ bindsym $mod+backslash workspace $tmux_ws
 #########################
 
 bindsym $mod+w exec --no-startup-id google-chrome --force-dark-mode
-bindsym $mod+BackSpace exec i3-sensible-terminal
-bindsym $mod+Insert exec --no-startup-id emacsclient -c -a emacs
+bindsym $mod+t exec i3-sensible-terminal
+bindsym $mod+i exec --no-startup-id emacsclient -c -a emacs
 bindsym $mod+f exec thunar
 bindsym $mod+a exec pavucontrol
 
