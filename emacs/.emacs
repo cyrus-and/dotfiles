@@ -340,15 +340,18 @@
 
 ;;;; DIRED
 
-;; use the native ls implementation to be consistent even on macOS
+;; use the native ls implementation to be consistent even on macOS and allow to
+;; omit hidden files
 (with-eval-after-load 'dired
-  (require 'ls-lisp))
+  (require 'ls-lisp)
+  (require 'dired-x))
 
 (custom-set-variables
  '(ls-lisp-use-insert-directory-program nil)
  '(ls-lisp-use-localized-time-format t)
  '(ls-lisp-verbosity '(uid gid))
- '(ls-lisp-dirs-first t))
+ '(ls-lisp-dirs-first t)
+ '(dired-omit-files "^\\."))
 
 ;;;; EASY REVERT BUFFER
 
