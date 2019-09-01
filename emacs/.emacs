@@ -598,7 +598,9 @@
 (my/install 'edit-indirect)
 
 (custom-set-variables
- '(markdown-fontify-code-blocks-natively t))
+ '(markdown-fontify-code-blocks-natively t)
+ '(markdown-hide-urls t)
+ '(markdown-url-compose-char "…"))
 
 (custom-set-faces
  `(markdown-code-face ((t (:background ,theme-very-dark))))
