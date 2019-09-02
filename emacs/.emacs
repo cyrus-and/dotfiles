@@ -80,7 +80,7 @@
 
 ;; theme parameters
 (setq theme-divider-width   4)
-(setq theme-font            "Iosevka")
+(setq theme-font            "Iosevka SS04")
 (setq theme-font-size-linux 14)
 (setq theme-font-size-macos 15)
 

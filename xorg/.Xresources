@@ -24,7 +24,7 @@ rofi.color-window: #000000,#111111,#111111
 ! settings
 Rxvt*termName: xterm-256color
 Rxvt*scrollBar: false
-Rxvt*font: xft:Iosevka:size=14
+Rxvt*font: xft:Iosevka SS04:size=14
 Rxvt*geometry: 80x30
 Rxvt*saveLines: 65535
 Rxvt*scrollTtyKeypress: true
