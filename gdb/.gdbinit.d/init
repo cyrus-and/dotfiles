@@ -1,18 +1,11 @@
-# requires: https://github.com/cyrus-and/gdb-dashboard
-
-# enable auto-load
-set auto-load safe-path /
-
-# prefer Intel assembly syntax
+add-auto-load-safe-path ~/dev/
+set breakpoint pending on
+set confirm off
 set disassembly-flavor intel
 
-# automatically set pending breakpoints
-set breakpoint pending on
-
-# disable annoyng confirmation
-set confirm off
-
-# useful auto-redraw hooks
+# requires: https://github.com/cyrus-and/gdb-dashboard
+#
+#     wget -P ~ git.io/.gdbinit
 
 define hookpost-up
   dashboard
@@ -25,9 +18,3 @@ end
 define hookpost-frame
   dashboard
 end
-
-# save GDB dashboard configuation on exit
-
-# define hook-quit
-#   dashboard -configuration ~/.gdbinit.d/auto
-# end
