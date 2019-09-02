@@ -225,8 +225,8 @@
   (interactive)
   (occur my/todo-regexp))
 
-(add-hook 'text-mode-hook #'my/todo-fontlock-hook)
-(add-hook 'prog-mode-hook #'my/todo-fontlock-hook)
+(add-hook 'text-mode-hook 'my/todo-fontlock-hook)
+(add-hook 'prog-mode-hook 'my/todo-fontlock-hook)
 
 (global-set-key (kbd "C-c t") 'my/todo-occur)
 
@@ -262,8 +262,8 @@
  `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
 
 ;; start completion with backspace too
-(add-to-list 'company-begin-commands #'delete-backward-char)
-(add-to-list 'company-begin-commands #'backward-delete-char-untabify)
+(add-to-list 'company-begin-commands 'delete-backward-char)
+(add-to-list 'company-begin-commands 'backward-delete-char-untabify)
 
 ;;;; COMPILATION
 
@@ -317,7 +317,7 @@
             (recompile))
         (call-interactively 'compile)))))
 
-(add-hook 'compilation-mode-hook #'visual-line-mode)
+(add-hook 'compilation-mode-hook 'visual-line-mode)
 
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 (global-set-key (kbd "C-c C") 'compile)
