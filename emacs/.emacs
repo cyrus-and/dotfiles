@@ -565,7 +565,7 @@
   (let ((plist "~/Library/Preferences/org.gnu.Emacs.plist"))
     (when (file-newer-than-file-p load-file-name plist)
       (shell-command-to-string "defaults write org.gnu.Emacs ToolBar -bool false")
-      (shell-command-to-string (format "defaults write org.gnu.Emacs Font %s-%d"
+      (shell-command-to-string (format "defaults write org.gnu.Emacs Font \"%s\"-%d"
                                        theme-font theme-font-size-macos))))
 
   ;; force GPG to use a GUI pinentry program (fetch pinentry-mac from brew) to
