@@ -152,6 +152,9 @@ set $tmux_ws 4:tmux
 assign [class="URxvt" instance="tmux"] $tmux_ws
 bindsym $mod+backslash workspace $tmux_ws
 
+# utility to make certain windows floating by default
+for_window [instance="float"] floating enable
+
 #########################
 # APPLICATION LAUNCHERS #
 #########################
