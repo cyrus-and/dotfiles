@@ -478,6 +478,12 @@
  `(ido-only-match ((t (:foreground ,theme-accent))))
  `(ido-first-match ((t (:inherit (ido-only-match))))))
 
+;;;; IMENU-LIST
+
+(my/install 'imenu-list)
+
+(global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
+
 ;;;; INHIBIT CUSTOMIZATION INTERFACE
 
 ;; discard persistent changes via the customization interface
