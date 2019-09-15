@@ -44,6 +44,7 @@ bindsym $mod+Tab exec --no-startup-id rofi -modi window -show window
 bindsym $mod+Return floating toggle
 bindsym $mod+Shift+Return fullscreen
 bindsym $mod+q kill
+bindsym $mod+s sticky toggle
 
 # focus
 bindsym $mod+Left focus left
