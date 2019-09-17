@@ -54,7 +54,7 @@
 
 ;; UI and base colors
 (setq theme-background "#000000")
-(setq theme-foreground "#bfbfbf")
+(setq theme-foreground "#aaaaaa")
 (setq theme-accent     "#ff6000")
 (setq theme-bright     "#ffffff")
 (setq theme-faint      "#666666")

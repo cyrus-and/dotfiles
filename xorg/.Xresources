@@ -36,7 +36,7 @@ Rxvt*iso14755_52: false
 
 ! base colors
 *background: #000000
-*foreground: #cccccc
+*foreground: #aaaaaa
 
 ! font styles
 *colorBD: #ffffff
