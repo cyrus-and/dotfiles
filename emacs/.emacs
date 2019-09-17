@@ -123,7 +123,7 @@
  `(font-lock-keyword-face       ((t (:inherit (bold) :foreground ,theme-red))))
  `(font-lock-comment-face       ((t (:inherit (bold) :foreground ,theme-faint))))
  `(font-lock-type-face          ((t (:inherit (bold) :foreground ,theme-magenta))))
- `(font-lock-constant-face      ((t (:inherit (bold) :foreground ,theme-cyan))))
+ `(font-lock-constant-face      ((t (:foreground ,theme-cyan))))
  `(font-lock-builtin-face       ((t (:inherit (bold) :foreground ,theme-blue))))
  `(font-lock-string-face        ((t (:foreground ,theme-green))))
  `(font-lock-negation-char-face ((t (:inherit (bold) :inherit (default)))))
@@ -474,6 +474,12 @@
 ;;;; IMENU-LIST
 
 (my/install 'imenu-list)
+
+(custom-set-faces
+ `(imenu-list-entry-face-0 ((t (:inherit (outline-1 bold)))))
+ `(imenu-list-entry-face-1 ((t (:inherit (outline-2 bold)))))
+ `(imenu-list-entry-face-2 ((t (:inherit (outline-3 bold)))))
+ `(imenu-list-entry-face-3 ((t (:inherit (outline-4 bold))))))
 
 (global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
 
