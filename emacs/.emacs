@@ -118,13 +118,13 @@
  `(window-divider-first-pixel   ((t (:foreground ,theme-foreground))))
  `(window-divider-last-pixel    ((t (:foreground ,theme-foreground))))
  ;; font lock
- `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-blue))))
+ `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-magenta))))
  `(font-lock-variable-name-face ((t (:foreground ,theme-yellow))))
  `(font-lock-keyword-face       ((t (:inherit (bold) :foreground ,theme-red))))
  `(font-lock-comment-face       ((t (:foreground ,theme-faint))))
- `(font-lock-type-face          ((t (:foreground ,theme-magenta))))
+ `(font-lock-type-face          ((t (:foreground ,theme-blue))))
  `(font-lock-constant-face      ((t (:foreground ,theme-cyan))))
- `(font-lock-builtin-face       ((t (:foreground ,theme-blue))))
+ `(font-lock-builtin-face       ((t (:foreground ,theme-cyan))))
  `(font-lock-string-face        ((t (:foreground ,theme-green))))
  `(font-lock-negation-char-face ((t (:inherit (bold) :inherit (default)))))
  ;; highlighting lock ssds
