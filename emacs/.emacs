@@ -616,6 +616,7 @@
 
 (custom-set-faces
  `(markdown-code-face ((t (:background ,theme-very-dark))))
+ `(markdown-pre-face ((t (:inherit (markdown-code-face)))))
  `(markdown-header-face-1 ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
  `(markdown-header-face-2 ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
  `(markdown-header-face-3 ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
