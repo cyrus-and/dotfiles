@@ -148,6 +148,15 @@
  `(widget-button                ((t (:inherit (custom-button)))))
  `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
  `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-dark))))
+ ;; outlines
+ `(outline-1                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-blue))))
+ `(outline-2                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-green))))
+ `(outline-3                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-cyan))))
+ `(outline-4                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-yellow))))
+ `(outline-5                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-6                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-magenta))))
+ `(outline-7                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-faint))))
+ `(outline-8                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-faint))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-faint))))
@@ -476,10 +485,10 @@
 (my/install 'imenu-list)
 
 (custom-set-faces
- `(imenu-list-entry-face-0 ((t (:inherit (outline-1 bold)))))
- `(imenu-list-entry-face-1 ((t (:inherit (outline-2 bold)))))
- `(imenu-list-entry-face-2 ((t (:inherit (outline-3 bold)))))
- `(imenu-list-entry-face-3 ((t (:inherit (outline-4 bold))))))
+ `(imenu-list-entry-face-0 ((t (:inherit (outline-1)))))
+ `(imenu-list-entry-face-1 ((t (:inherit (outline-2)))))
+ `(imenu-list-entry-face-2 ((t (:inherit (outline-3)))))
+ `(imenu-list-entry-face-3 ((t (:inherit (outline-4))))))
 
 (global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
 
@@ -617,12 +626,12 @@
 (custom-set-faces
  `(markdown-code-face ((t (:background ,theme-very-dark))))
  `(markdown-pre-face ((t (:inherit (markdown-code-face)))))
- `(markdown-header-face-1 ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
- `(markdown-header-face-2 ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
- `(markdown-header-face-3 ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
- `(markdown-header-face-4 ((t (:inherit (outline-4 bold) :height 1.4 :background ,theme-very-dark))))
- `(markdown-header-face-5 ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
- `(markdown-header-face-6 ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark)))))
+ `(markdown-header-face-1 ((t (:inherit (outline-1)))))
+ `(markdown-header-face-2 ((t (:inherit (outline-2)))))
+ `(markdown-header-face-3 ((t (:inherit (outline-3)))))
+ `(markdown-header-face-4 ((t (:inherit (outline-4)))))
+ `(markdown-header-face-5 ((t (:inherit (outline-5)))))
+ `(markdown-header-face-6 ((t (:inherit (outline-6))))))
 
 ;; use nice ellipses (this also works for org mode)
 (set-display-table-slot standard-display-table 'selective-display (string-to-vector "…"))
@@ -669,16 +678,6 @@
 
 (custom-set-variables
  '(outshine-fontify-whole-heading-line t))
-
-(custom-set-faces
- `(outshine-level-1 ((t (:inherit (outline-1 bold) :height 1.4 :background ,theme-very-dark))))
- `(outshine-level-2 ((t (:inherit (outline-2 bold) :height 1.4 :background ,theme-very-dark))))
- `(outshine-level-3 ((t (:inherit (outline-3 bold) :height 1.4 :background ,theme-very-dark))))
- `(outshine-level-4 ((t (:inherit (outline-4 bold) :height 1.4 :background ,theme-very-dark))))
- `(outshine-level-5 ((t (:inherit (outline-5 bold) :height 1.4 :background ,theme-very-dark))))
- `(outshine-level-6 ((t (:inherit (outline-6 bold) :height 1.4 :background ,theme-very-dark))))
- `(outshine-level-7 ((t (:inherit (outline-7 bold) :height 1.4 :background ,theme-very-dark))))
- `(outshine-level-8 ((t (:inherit (outline-8 bold) :height 1.4 :background ,theme-very-dark)))))
 
 ;; enable shift tab everywhere to be coherent with org and markdown modes
 (with-eval-after-load 'outshine
