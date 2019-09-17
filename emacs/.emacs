@@ -52,7 +52,7 @@
 
 ;;; GLOBALS
 
-;; theme base colors, adapted from https://terminal.sexy
+;; UI and base colors
 (setq theme-background "#000000")
 (setq theme-foreground "#bfbfbf")
 (setq theme-accent     "#ff6000")
@@ -61,22 +61,13 @@
 (setq theme-dark       "#141414")
 (setq theme-very-dark  "#0c0c0c")
 
-;; emacs common colors
-(setq theme-red    "#cc6666")
-(setq theme-green  "#b5bd68")
-(setq theme-yellow "#f0c674")
-(setq theme-blue   "#81a2be")
-(setq theme-pink   "#b294bb")
-
-;; font lock palette
-(setq theme-palette-1 "#5f819d")
-(setq theme-palette-2 "#f0c674")
-(setq theme-palette-3 "#a54242")
-(setq theme-palette-4 "#666d65")
-(setq theme-palette-5 "#de935f")
-(setq theme-palette-6 "#85678f")
-(setq theme-palette-7 "#81a2be")
-(setq theme-palette-8 "#b5bd68")
+;; common colors (from http://terminal.sexy/)
+(setq theme-red     "#cc6666")
+(setq theme-green   "#b5bd68")
+(setq theme-yellow  "#f0c674")
+(setq theme-blue    "#81a2be")
+(setq theme-magenta "#b294bb")
+(setq theme-cyan    "#8abeb7")
 
 ;; theme parameters
 (setq theme-divider-width   4)
@@ -127,23 +118,23 @@
  `(window-divider-first-pixel   ((t (:foreground ,theme-foreground))))
  `(window-divider-last-pixel    ((t (:foreground ,theme-foreground))))
  ;; font lock
- `(font-lock-function-name-face ((t (:foreground ,theme-palette-1))))
- `(font-lock-variable-name-face ((t (:foreground ,theme-palette-2))))
- `(font-lock-keyword-face       ((t (:foreground ,theme-palette-3))))
- `(font-lock-comment-face       ((t (:foreground ,theme-palette-4))))
- `(font-lock-type-face          ((t (:foreground ,theme-palette-5))))
- `(font-lock-constant-face      ((t (:foreground ,theme-palette-6))))
- `(font-lock-builtin-face       ((t (:foreground ,theme-palette-7))))
- `(font-lock-string-face        ((t (:foreground ,theme-palette-8))))
- `(font-lock-negation-char-face ((t (:inherit (default)))))
- ;; highlighting
- `(hi-black-b                   ((t (:inherit (bold)))))
- `(hi-black-hb                  ((t (:inherit (bold)))))
+ `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-cyan))))
+ `(font-lock-variable-name-face ((t (:inherit (bold) :foreground ,theme-yellow))))
+ `(font-lock-keyword-face       ((t (:inherit (bold) :foreground ,theme-red))))
+ `(font-lock-comment-face       ((t (:inherit (bold) :foreground ,theme-faint))))
+ `(font-lock-type-face          ((t (:inherit (bold) :foreground ,theme-blue))))
+ `(font-lock-constant-face      ((t (:inherit (bold) :foreground ,theme-magenta))))
+ `(font-lock-builtin-face       ((t (:inherit (bold) :foreground ,theme-cyan))))
+ `(font-lock-string-face        ((t (:foreground ,theme-green))))
+ `(font-lock-negation-char-face ((t (:inherit (bold) :inherit (default)))))
+ ;; highlighting lock ssds
+ `(hi-black-b                   ((t (:inherit (bold) :background ,theme-very-dark))))
+ `(hi-black-hb                  ((t (:inherit (bold) :background ,theme-dark))))
  `(hi-blue                      ((t (:foreground ,theme-background :background ,theme-blue))))
  `(hi-blue-b                    ((t (:inherit (hi-blue bold) :inverse-video t))))
  `(hi-green                     ((t (:foreground ,theme-background :background ,theme-green))))
  `(hi-green-b                   ((t (:inherit (hi-green bold) :inverse-video t))))
- `(hi-pink                      ((t (:foreground ,theme-background :background ,theme-pink))))
+ `(hi-pink                      ((t (:foreground ,theme-background :background ,theme-magenta))))
  `(hi-red-b                     ((t (:inherit (bold) :foreground ,theme-red))))
  `(hi-yellow                    ((t (:foreground ,theme-background :background ,theme-yellow))))
  ;; compilation
@@ -523,7 +514,10 @@
  '(js2-skip-preprocessor-directives t))
 
 (custom-set-faces
- `(js2-object-property ((t (:inherit (font-lock-builtin-face))))))
+ `(js2-function-param ((t (:inherit (font-lock-variable-name-face)))))
+ `(js2-function-call ((t (:inherit (font-lock-function-name-face)))))
+ `(js2-object-property ((t (:inherit (font-lock-variable-name-face)))))
+ `(js2-object-property-access ((t (:inherit (default))))))
 
 ;; associate by file name and shebang
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
