@@ -61,13 +61,13 @@
 (setq theme-dark       "#141414")
 (setq theme-very-dark  "#0c0c0c")
 
-;; common colors (from http://terminal.sexy/)
-(setq theme-red     "#cc6666")
-(setq theme-green   "#b5bd68")
-(setq theme-yellow  "#f0c674")
-(setq theme-blue    "#81a2be")
-(setq theme-magenta "#b294bb")
-(setq theme-cyan    "#8abeb7")
+;; common colors (darker variant from http://terminal.sexy/)
+(setq theme-red     "#A54242")
+(setq theme-green   "#8C9440")
+(setq theme-yellow  "#DE935F")
+(setq theme-blue    "#5F819D")
+(setq theme-magenta "#85678F")
+(setq theme-cyan    "#5E8D87")
 
 ;; theme parameters
 (setq theme-divider-width   4)
