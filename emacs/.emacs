@@ -477,7 +477,7 @@
  '(ido-default-buffer-method 'selected-window))
 
 (custom-set-faces
- `(ido-only-match ((t (:foreground ,theme-accent))))
+ `(ido-only-match  ((t (:foreground ,theme-accent))))
  `(ido-first-match ((t (:inherit (ido-only-match))))))
 
 ;;;; IMENU-LIST
@@ -531,9 +531,9 @@
  '(js2-skip-preprocessor-directives t))
 
 (custom-set-faces
- `(js2-function-param ((t (:inherit (font-lock-variable-name-face)))))
- `(js2-function-call ((t (:inherit (font-lock-function-name-face)))))
- `(js2-object-property ((t (:inherit (font-lock-variable-name-face)))))
+ `(js2-function-param         ((t (:inherit (font-lock-variable-name-face)))))
+ `(js2-function-call          ((t (:inherit (font-lock-function-name-face)))))
+ `(js2-object-property        ((t (:inherit (font-lock-variable-name-face)))))
  `(js2-object-property-access ((t (:inherit (default))))))
 
 ;; associate by file name and shebang
@@ -624,15 +624,15 @@
  '(markdown-asymmetric-header t))
 
 (custom-set-faces
- `(markdown-code-face ((t (:background ,theme-very-dark))))
- `(markdown-pre-face ((t (:inherit (markdown-code-face)))))
+ `(markdown-code-face           ((t (:background ,theme-very-dark))))
+ `(markdown-pre-face            ((t (:inherit (markdown-code-face)))))
  `(markdown-metadata-value-face ((t (:inherit (default)))))
- `(markdown-header-face-1 ((t (:inherit (outline-1)))))
- `(markdown-header-face-2 ((t (:inherit (outline-2)))))
- `(markdown-header-face-3 ((t (:inherit (outline-3)))))
- `(markdown-header-face-4 ((t (:inherit (outline-4)))))
- `(markdown-header-face-5 ((t (:inherit (outline-5)))))
- `(markdown-header-face-6 ((t (:inherit (outline-6))))))
+ `(markdown-header-face-1       ((t (:inherit (outline-1)))))
+ `(markdown-header-face-2       ((t (:inherit (outline-2)))))
+ `(markdown-header-face-3       ((t (:inherit (outline-3)))))
+ `(markdown-header-face-4       ((t (:inherit (outline-4)))))
+ `(markdown-header-face-5       ((t (:inherit (outline-5)))))
+ `(markdown-header-face-6       ((t (:inherit (outline-6))))))
 
 ;; use nice ellipses (this also works for org mode)
 (set-display-table-slot standard-display-table 'selective-display (string-to-vector "…"))
