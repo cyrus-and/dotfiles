@@ -150,9 +150,9 @@
  `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-dark))))
  ;; outlines
  `(outline-1                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-blue))))
- `(outline-2                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-green))))
+ `(outline-2                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-yellow))))
  `(outline-3                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-cyan))))
- `(outline-4                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-yellow))))
+ `(outline-4                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-green))))
  `(outline-5                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-red))))
  `(outline-6                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-magenta))))
  `(outline-7                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-faint))))
@@ -626,6 +626,7 @@
 (custom-set-faces
  `(markdown-code-face ((t (:background ,theme-very-dark))))
  `(markdown-pre-face ((t (:inherit (markdown-code-face)))))
+ `(markdown-metadata-value-face ((t (:inherit (default)))))
  `(markdown-header-face-1 ((t (:inherit (outline-1)))))
  `(markdown-header-face-2 ((t (:inherit (outline-2)))))
  `(markdown-header-face-3 ((t (:inherit (outline-3)))))
@@ -687,6 +688,10 @@
 ;;;; PHP
 
 (my/install 'php-mode)
+
+;; fix $ background in Markdown code blocks
+(custom-set-faces
+ `(php-variable-sigil ((t ()))))
 
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
 
