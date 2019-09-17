@@ -35,10 +35,7 @@
 
 ;;; PERFORMANCE
 
-;; utility to defer slow operation so to not directly impact init time
-(defmacro my/defer (body)
-  `(run-with-idle-timer
-    0.5 nil (lambda () ,body)))
+;;;; GARBAGE COLLECTION
 
 ;; call the garbage collector less often during the startup then restore the
 ;; initial value to avoid longer pauses during the interactive usage (note that
@@ -49,6 +46,13 @@
 
 ;; force the garbage collection to happen when the focus moves away from emacs
 (add-hook 'focus-out-hook 'garbage-collect)
+
+;;;; UTILITIES
+
+;; utility to defer slow operation so to not directly impact init time
+(defmacro my/defer (body)
+  `(run-with-idle-timer
+    0.5 nil (lambda () ,body)))
 
 ;;; GLOBALS
 
