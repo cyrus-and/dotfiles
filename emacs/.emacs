@@ -62,7 +62,7 @@
 (setq theme-accent     "#ff6000")
 (setq theme-bright     "#ffffff")
 (setq theme-faint      "#666666")
-(setq theme-dark       "#141414")
+(setq theme-dark       "#222222")
 (setq theme-very-dark  "#0c0c0c")
 
 ;; common colors (darker variant from http://terminal.sexy/)
@@ -163,7 +163,7 @@
  `(outline-8                   ((t (:inherit (bold) :height 1.1 :background ,theme-very-dark :foreground ,theme-faint))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
- `(fringe                       ((t (:foreground ,theme-faint))))
+ `(fringe                       ((t (:foreground ,theme-dark))))
  `(minibuffer-prompt            ((t (:foreground ,theme-accent :weight bold))))
  `(region                       ((t (:foreground ,theme-background :background ,theme-faint))))
  `(secondary-selection          ((t (:foreground ,theme-background :background ,theme-foreground))))
@@ -194,6 +194,10 @@
 (global-set-key (kbd "C-c p") 'package-list-packages)
 
 ;;; CONFIGURATIONS
+
+(my/install 'adaptive-wrap)
+
+(add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
 
 ;;;; BACKUPS
 
