@@ -1,4 +1,4 @@
-;;; CHEAT SHEET
+;;; CHEATSHEET
 
 ;; % m           `dired-mark-files-regexp'
 ;; C-s C-w       `isearch-yank-word-or-char' (M-e to edit)
@@ -153,14 +153,14 @@
  `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
  `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-dark))))
  ;; outlines
- `(outline-1                   ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-blue))))
+ `(outline-1                   ((t (:inherit (bold) :height 1.4 :background ,theme-very-dark :foreground ,theme-blue))))
  `(outline-2                   ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-yellow))))
  `(outline-3                   ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-green))))
  `(outline-4                   ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-magenta))))
  `(outline-5                   ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-6                   ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-7                   ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-8                   ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-6                   ((t (:inherit (bold) :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-7                   ((t (:inherit (bold) :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-8                   ((t (:inherit (bold) :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-dark))))
@@ -194,6 +194,8 @@
 (global-set-key (kbd "C-c p") 'package-list-packages)
 
 ;;; CONFIGURATIONS
+
+;;;; ADAPTIVE WRAP
 
 (my/install 'adaptive-wrap)
 
