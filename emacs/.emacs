@@ -77,7 +77,7 @@
 (setq theme-divider-width   4)
 (setq theme-font            "Iosevka SS04")
 (setq theme-font-size-linux 14)
-(setq theme-font-size-macos 15)
+(setq theme-font-size-macos 16)
 
 ;;; THEME
 
@@ -521,9 +521,10 @@
 
 ;;;; INSTALL OTHER PACKAGES
 
-(my/install 'yaml-mode)
-(my/install 'rainbow-mode)
 (my/install 'dockerfile-mode)
+(my/install 'rainbow-mode)
+(my/install 'rust-mode)
+(my/install 'yaml-mode)
 
 ;;;; ISEARCH
 

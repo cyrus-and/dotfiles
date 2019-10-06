@@ -17,3 +17,6 @@ export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
 # always install pip packages locally
 export PIP_USER=yes
 export PATH="$HOME/.local/bin:$PATH"
+
+# add rust to path
+export PATH="$HOME/.cargo/bin:$PATH"
