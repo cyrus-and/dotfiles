@@ -257,6 +257,7 @@
 (custom-set-variables
  '(global-company-mode t)
  '(company-idle-delay 0.1)
+ '(company-show-numbers t)
  '(company-minimum-prefix-length 2)
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil))
