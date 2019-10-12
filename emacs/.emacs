@@ -256,9 +256,11 @@
 ;;;; COMPANY
 
 (my/install 'company)
+(my/install 'company-posframe)
 
 (custom-set-variables
  '(global-company-mode t)
+ '(company-posframe-mode t)
  '(company-idle-delay 0.1)
  '(company-show-numbers t)
  '(company-minimum-prefix-length 2)
