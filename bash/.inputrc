@@ -14,3 +14,19 @@ set mark-symlinked-directories on
 # Pag-* (macOS)
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
+
+$if gdb
+    "\e[5~": "\C-a\C-kserver dashboard source scroll -1\n"
+    "\e[6~": "\C-a\C-kserver dashboard source scroll +1\n"
+    "\e[7~": "\C-a\C-kserver dashboard source scroll\n"
+
+    # tmux
+    "\e[5;5~": "\C-a\C-kserver dashboard assembly scroll -1\n"
+    "\e[6;5~": "\C-a\C-kserver dashboard assembly scroll +1\n"
+    "\e[1;5H": "\C-a\C-kserver dashboard assembly scroll\n"
+
+    # terminal
+    "\e[5^": "\C-a\C-kserver dashboard assembly scroll -1\n"
+    "\e[6^": "\C-a\C-kserver dashboard assembly scroll +1\n"
+    "\e[7^": "\C-a\C-kserver dashboard assembly scroll\n"
+$endif
