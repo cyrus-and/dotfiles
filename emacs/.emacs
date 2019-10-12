@@ -74,7 +74,7 @@
 (setq theme-cyan    "#5E8D87")
 
 ;; theme parameters
-(setq theme-divider-width   4)
+(setq theme-divider-width   6)
 (setq theme-font            "Iosevka SS04")
 (setq theme-font-size-linux 14)
 (setq theme-font-size-macos 16)
@@ -90,6 +90,7 @@
  '(window-divider-default-places t)
  '(window-divider-default-bottom-width theme-divider-width)
  '(window-divider-default-right-width theme-divider-width)
+ '(default-frame-alist `((internal-border-width . ,theme-divider-width)))
  ;; widget and custom button coherence
  '(custom-raised-buttons t) ; for terminal mode
  '(widget-mouse-face 'custom-button-mouse)
@@ -118,9 +119,11 @@
  `(mode-line-highlight          ((t (:inverse-video t :box nil))))
  `(header-line                  ((t (:inherit (mode-line) :foreground ,theme-foreground))))
  ;; window dividers
- `(window-divider               ((t (:foreground ,theme-foreground))))
- `(window-divider-first-pixel   ((t (:foreground ,theme-foreground))))
- `(window-divider-last-pixel    ((t (:foreground ,theme-foreground))))
+ `(window-divider               ((t (:foreground ,theme-faint))))
+ `(window-divider-first-pixel   ((t (:foreground ,theme-faint))))
+ `(window-divider-last-pixel    ((t (:foreground ,theme-faint))))
+ `(window-divider-last-pixel    ((t (:foreground ,theme-faint))))
+ `(internal-border              ((t (:background ,theme-faint))))
  ;; font lock
  `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-magenta))))
  `(font-lock-variable-name-face ((t (:foreground ,theme-yellow))))
@@ -811,7 +814,7 @@
  '(winum-scope 'frame-local))
 
 (custom-set-faces
- `(winum-face ((t (:box (:color ,theme-foreground) :foreground ,theme-background :background ,theme-foreground)))))
+ `(winum-face ((t (:box (:color ,theme-faint) :foreground ,theme-background :background ,theme-faint)))))
 
 ;; this needs to be explicitly called in order to properly work at startup
 (winum-mode)
