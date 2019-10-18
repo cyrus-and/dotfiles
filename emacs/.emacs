@@ -841,6 +841,8 @@
  '(zoom-size '(120 . 30))
  '(temp-buffer-resize-mode t))
 
+(global-set-key (kbd "C-c z") 'zoom-mode)
+
 ;;; FILE VARIABLES
 
 ;; Local Variables:
