@@ -260,7 +260,7 @@
 
 (custom-set-variables
  '(global-company-mode t)
- '(company-posframe-mode t)
+ '(company-posframe-mode (not (eq system-type 'darwin))) ; https://github.com/tumashu/posframe/issues/30
  '(company-idle-delay 0.1)
  '(company-show-numbers t)
  '(company-minimum-prefix-length 2)
@@ -591,6 +591,9 @@
   ;; use the right meta key natively so to allow typing fancy glyphs
   (custom-set-variables
    '(mac-right-option-modifier 'none))
+
+  ;; disable the internal border as it is not possible to change the color
+  (add-to-list 'default-frame-alist '(internal-border-width . 0))
 
   ;; disable scrolling inertia
   (setq ns-use-mwheel-momentum nil)
