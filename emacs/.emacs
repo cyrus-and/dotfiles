@@ -260,7 +260,7 @@
 
 (custom-set-variables
  '(global-company-mode t)
- '(company-posframe-mode (not (eq system-type 'darwin))) ; https://github.com/tumashu/posframe/issues/30
+ `(company-posframe-mode ,(not (eq system-type 'darwin))) ; https://github.com/tumashu/posframe/issues/30
  '(company-idle-delay 0.1)
  '(company-show-numbers t)
  '(company-minimum-prefix-length 2)
