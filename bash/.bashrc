@@ -10,6 +10,7 @@ HISTIGNORE='fg'
 
 # common
 export EDITOR='emacsclient -c -a emacs'
+export LESS='--RAW-CONTROL-CHARS --jump-target=5'
 
 # tty
 if [ -t 0 ]; then
