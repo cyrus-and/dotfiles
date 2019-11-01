@@ -90,7 +90,6 @@
  '(window-divider-default-places t)
  '(window-divider-default-bottom-width theme-divider-width)
  '(window-divider-default-right-width theme-divider-width)
- '(default-frame-alist `((internal-border-width . ,theme-divider-width)))
  ;; widget and custom button coherence
  '(custom-raised-buttons t) ; for terminal mode
  '(widget-mouse-face 'custom-button-mouse)
@@ -123,7 +122,6 @@
  `(window-divider-first-pixel   ((t (:foreground ,theme-faint))))
  `(window-divider-last-pixel    ((t (:foreground ,theme-faint))))
  `(window-divider-last-pixel    ((t (:foreground ,theme-faint))))
- `(internal-border              ((t (:background ,theme-faint))))
  ;; font lock
  `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-magenta))))
  `(font-lock-variable-name-face ((t (:foreground ,theme-yellow))))
@@ -591,9 +589,6 @@
   ;; use the right meta key natively so to allow typing fancy glyphs
   (custom-set-variables
    '(mac-right-option-modifier 'none))
-
-  ;; disable the internal border as it is not possible to change the color
-  (add-to-list 'default-frame-alist '(internal-border-width . 0))
 
   ;; disable scrolling inertia
   (setq ns-use-mwheel-momentum nil)
