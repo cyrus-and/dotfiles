@@ -351,6 +351,9 @@
  '(diff-hl-insert ((t (:inherit (success) :inverse-video t))))
  '(diff-hl-delete ((t (:inherit (error) :inverse-video t)))))
 
+;; enable annotations for dired buffers too
+(add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+
 ;; update the indicators also after a commit
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
