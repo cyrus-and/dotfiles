@@ -707,8 +707,9 @@
 
 (my/install 'php-mode)
 
-;; fix $ background in Markdown code blocks
+;; fix wrong background in Markdown code blocks
 (custom-set-faces
+ `(php-object-op ((t ())))
  `(php-variable-sigil ((t ()))))
 
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
