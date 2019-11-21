@@ -273,6 +273,7 @@
  `(company-tooltip-search-selection ((t (:inherit (lazy-highlight)))))
  `(company-tooltip-selection        ((t (:background ,theme-accent))))
  `(company-tooltip-mouse            ((t (:inherit (company-tooltip-selection)))))
+ `(company-tooltip-annotation       ((t (:foreground ,theme-dark))))
  `(company-preview-common           ((t (:background ,theme-very-dark :foreground ,theme-accent))))
  `(company-scrollbar-bg             ((t (:background ,theme-dark))))
  `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
