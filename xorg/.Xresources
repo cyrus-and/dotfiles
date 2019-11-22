@@ -22,25 +22,25 @@ rofi.color-window: #000000,#111111,#111111
 !!!!!!!!!
 
 ! settings
-Rxvt*termName: xterm-256color
-Rxvt*scrollBar: false
-Rxvt*font: xft:Iosevka SS04:size=14
-Rxvt*geometry: 80x30
-Rxvt*saveLines: 65535
-Rxvt*scrollTtyKeypress: true
-Rxvt*perl-ext-common:
-Rxvt*perl-ext:
-Rxvt*pastableTabs: false
-Rxvt*iso14755: false
-Rxvt*iso14755_52: false
+URxvt.termName: xterm-256color
+URxvt.scrollBar: false
+URxvt.font: xft:Iosevka SS04:size=14
+URxvt.geometry: 80x30
+URxvt.saveLines: 65535
+URxvt.scrollTtyKeypress: true
+URxvt.perl-ext-common:
+URxvt.perl-ext:
+URxvt.pastableTabs: false
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 ! base colors
-*background: #000000
-*foreground: #aaaaaa
+URxvt.background: #000000
+URxvt.foreground: #aaaaaa
 
 ! font styles
-*colorBD: #ffffff
-*colorUL: #ff6000
+URxvt.colorBD: #ffffff
+URxvt.colorUL: #ff6000
 
 ! Local Variables:
 ! eval: (rainbow-mode)
