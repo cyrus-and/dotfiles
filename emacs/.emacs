@@ -274,6 +274,7 @@
  `(company-tooltip-selection        ((t (:background ,theme-accent))))
  `(company-tooltip-mouse            ((t (:inherit (company-tooltip-selection)))))
  `(company-tooltip-annotation       ((t (:foreground ,theme-dark))))
+ `(company-template-field           ((t (:background ,theme-dark))))
  `(company-preview-common           ((t (:background ,theme-very-dark :foreground ,theme-accent))))
  `(company-scrollbar-bg             ((t (:background ,theme-dark))))
  `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
@@ -530,6 +531,7 @@
 ;;;; INSTALL OTHER PACKAGES
 
 (my/install 'dockerfile-mode)
+(my/install 'go-mode)
 (my/install 'rainbow-mode)
 (my/install 'rust-mode)
 (my/install 'yaml-mode)

@@ -9,7 +9,7 @@ HISTFILESIZE=-1
 HISTIGNORE='fg'
 
 # common
-export EDITOR='emacsclient -c -a emacs'
+export EDITOR='emacsclient -t -a emacs'
 export LESS='--RAW-CONTROL-CHARS --jump-target=5'
 
 # tty
