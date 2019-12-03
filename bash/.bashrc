@@ -10,7 +10,6 @@ HISTIGNORE='fg'
 
 # common
 export EDITOR='emacsclient -t -a emacs'
-export LESS='--RAW-CONTROL-CHARS --jump-target=5'
 
 # tty
 if [ -t 0 ]; then
@@ -81,6 +80,9 @@ fttyshell() {
 # OS-specific
 
 if [[ "$OSTYPE" =~ darwin* ]]; then
+    # mute zsh warning
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+
     # brew PATH
     export PATH="/usr/local/sbin:$PATH"
 
