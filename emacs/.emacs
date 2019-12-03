@@ -8,6 +8,7 @@
 ;; C-x C-;       `comment-line'
 ;; C-x C-SPC     `pop-global-mark'
 ;; C-x C-b       `list-buffers'
+;; C-x C-j       `dired-jump'
 ;; C-x C-q       `wdired-change-to-wdired-mode'
 ;; C-x M-:       `repeat-complex-command'
 ;; C-x SPC       `rectangle-mark-mode'
@@ -222,6 +223,7 @@
      (arglist-intro . +)
      (arglist-close . 0)
      (cpp-macro . 0)
+     (inlambda . 0)
      (innamespace . 0))))
 
 ;;;; CODE ANNOTATIONS
@@ -339,6 +341,15 @@
 
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 (global-set-key (kbd "C-c C") 'compile)
+
+;;;; CURSOR
+
+(custom-set-variables
+ '(blink-cursor-mode t)
+ '(blink-cursor-delay 2.0)
+ '(blink-cursor-blinks 0)
+ '(cursor-type 'hollow)
+ '(cursor-in-non-selected-windows nil))
 
 ;;;; DIFF-HL
 
