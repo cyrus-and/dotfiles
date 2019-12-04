@@ -595,7 +595,7 @@
         (insert (format "emacs.background: %s\n" theme-background)))
       ;; workaround for emacs 27 that does not read .Xdefaults-hostname
       (mkdir "~/.Xdefaults" t)
-      (copy-file xdefaults (format "~/.Xdefaults/%s" (system-name))))))
+      (copy-file xdefaults (format "~/.Xdefaults/%s" (system-name)) t))))
 
 ;;;; MACOS SPECIFIC
 
