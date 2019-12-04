@@ -597,6 +597,20 @@
       (mkdir "~/.Xdefaults" t)
       (copy-file xdefaults (format "~/.Xdefaults/%s" (system-name)) t))))
 
+;;;; LSP
+
+(my/install 'lsp-mode)
+(my/install 'lsp-ui)
+(my/install 'company-lsp)
+(my/install 'yasnippet)
+
+;; add modes manually
+(add-hook 'c++-mode-hook 'lsp-deferred)
+
+;; remove the default company clang backend to avoid interferences
+(custom-set-variables
+ '(company-backends (remove 'company-clang company-backends)))
+
 ;;;; MACOS SPECIFIC
 
 (when (eq system-type 'darwin)
