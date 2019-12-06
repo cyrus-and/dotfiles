@@ -155,14 +155,14 @@
  `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
  `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-dark))))
  ;; outlines
- `(outline-1                    ((t (:inherit (bold) :height 1.4 :background ,theme-very-dark :foreground ,theme-blue))))
- `(outline-2                    ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-yellow))))
- `(outline-3                    ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-green))))
- `(outline-4                    ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-magenta))))
- `(outline-5                    ((t (:inherit (bold) :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-6                    ((t (:inherit (bold) :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-7                    ((t (:inherit (bold) :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-8                    ((t (:inherit (bold) :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-1                    ((t (:inherit (bold) :extend t :height 1.4 :background ,theme-very-dark :foreground ,theme-blue))))
+ `(outline-2                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-yellow))))
+ `(outline-3                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-green))))
+ `(outline-4                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-magenta))))
+ `(outline-5                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-6                    ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-7                    ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-8                    ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
  ;; others
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-dark))))
@@ -673,7 +673,7 @@
  '(markdown-asymmetric-header t))
 
 (custom-set-faces
- `(markdown-code-face           ((t (:background ,theme-very-dark))))
+ `(markdown-code-face           ((t (:background ,theme-very-dark :extend t))))
  `(markdown-pre-face            ((t (:inherit (markdown-code-face)))))
  `(markdown-metadata-value-face ((t (:inherit (default)))))
  `(markdown-header-face-1       ((t (:inherit (outline-1)))))
@@ -740,7 +740,13 @@
 
 ;; fix wrong background in Markdown code blocks
 (custom-set-faces
+ `(php-arithmetic-op ((t ())))
+ `(php-assignment-op ((t ())))
+ `(php-comparison-op ((t ())))
+ `(php-function-call ((t ())))
  `(php-object-op ((t ())))
+ `(php-paamayim-nekudotayim ((t ())))
+ `(php-static-method-call ((t ())))
  `(php-variable-sigil ((t ()))))
 
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
