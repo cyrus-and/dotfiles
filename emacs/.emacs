@@ -269,7 +269,7 @@
 
 (custom-set-faces
  `(company-tooltip                  ((t (:background ,theme-faint :foreground ,theme-background))))
- `(company-tooltip-common           ((t (:foreground ,theme-accent :background ,theme-background))))
+ `(company-tooltip-common           ((t (:foreground ,theme-accent :background ,theme-very-dark))))
  `(company-tooltip-search           ((t (:inherit (isearch)))))
  `(company-tooltip-search-selection ((t (:inherit (lazy-highlight)))))
  `(company-tooltip-selection        ((t (:background ,theme-accent))))
@@ -737,17 +737,6 @@
 ;;;; PHP
 
 (my/install 'php-mode)
-
-;; fix wrong background in Markdown code blocks
-(custom-set-faces
- `(php-arithmetic-op ((t ())))
- `(php-assignment-op ((t ())))
- `(php-comparison-op ((t ())))
- `(php-function-call ((t ())))
- `(php-object-op ((t ())))
- `(php-paamayim-nekudotayim ((t ())))
- `(php-static-method-call ((t ())))
- `(php-variable-sigil ((t ()))))
 
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
 
