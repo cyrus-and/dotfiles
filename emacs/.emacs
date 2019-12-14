@@ -606,9 +606,11 @@
 
 ;; add modes manually
 (add-hook 'c++-mode-hook 'lsp-deferred)
+(add-hook 'python-mode-hook 'lsp-deferred)
 
 ;; remove the default company clang backend to avoid interferences
 (custom-set-variables
+ '(lsp-restart 'ignore)
  '(company-backends (remove 'company-clang company-backends)))
 
 ;;;; MACOS SPECIFIC
