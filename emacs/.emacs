@@ -48,6 +48,25 @@
 ;; force the garbage collection to happen when the focus moves away from emacs
 (add-hook 'focus-out-hook 'garbage-collect)
 
+;;;; COALESCE VARIABLE CUSTOMIZATION
+
+;; each `custom-set-variables' call introduce some overhead so this override
+;; collect all the customizations in a list which is applied just once after the
+;; initialization
+(setq my/variables nil)
+(defun my/custom-set-variables (&rest args)
+  (setq my/variables (nconc my/variables args)))
+
+(defun my/apply-customizations ()
+  (advice-remove 'custom-set-variables 'my/custom-set-variables)
+  (apply 'custom-set-variables my/variables)
+  (makunbound 'my/variables))
+
+;; apply the override during the initialization then restore and call
+;; `custom-set-variables' just once
+(advice-add 'custom-set-variables :override 'my/custom-set-variables)
+(add-hook 'after-init-hook 'my/apply-customizations)
+
 ;;;; UTILITIES
 
 ;; utility to defer slow operation so to not directly impact init time
@@ -286,8 +305,9 @@
  `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
 
 ;; start completion with backspace too
-(add-to-list 'company-begin-commands 'delete-backward-char)
-(add-to-list 'company-begin-commands 'backward-delete-char-untabify)
+(with-eval-after-load 'company
+  (add-to-list 'company-begin-commands 'delete-backward-char)
+  (add-to-list 'company-begin-commands 'backward-delete-char-untabify))
 
 ;;;; COMPILATION
 
