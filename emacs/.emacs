@@ -845,7 +845,22 @@
 
 (add-hook 'before-save-hook 'my/trim-whitespace--handler)
 
+(defun my/dired-normalize-whitespace-marked-files ()
+  "Normalize the whitespace in the currently marked dired files."
+  (interactive)
+  (let ((delete-trailing-lines t))
+    (dolist (file (dired-get-marked-files))
+      (with-current-buffer (find-file-literally file)
+	    (goto-char (point-max))
+	    (insert "\n")
+        (delete-trailing-whitespace)
+        (save-buffer)
+        (kill-buffer))))
+  (message "Done!"))
+
 (global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
+
+(global-set-key (kbd "C-c w") 'my/dired-normalize-whitespace-marked-files)
 
 ;;;; WINNER
 
