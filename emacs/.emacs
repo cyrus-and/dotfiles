@@ -198,8 +198,8 @@
 ;;; PACKAGES
 
 ;; XXX temporary hackish solution for https://debbugs.gnu.org/34341
-(if (version< emacs-version "26.3")
-    (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+(when (version< emacs-version "26.3")
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;; install a package refreshing the packet list just once
 (defun my/install (package)
@@ -209,7 +209,10 @@
       (setq my/install-refreshed t))
     (package-install package)))
 
-(package-initialize)
+;; no more needed in recent Emacs
+(when (version< emacs-version "27")
+  (package-initialize))
+
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (global-set-key (kbd "C-c p") 'package-list-packages)
@@ -866,14 +869,12 @@
 (define-key winum-keymap (kbd "M-0") 'winum-select-window-0-or-10)
 
 (custom-set-variables
+ '(winum-mode t)
  '(winum-format (propertize " %s " 'face 'winum-face))
  '(winum-scope 'frame-local))
 
 (custom-set-faces
  `(winum-face ((t (:box (:color ,theme-faint) :foreground ,theme-background :background ,theme-faint)))))
-
-;; this needs to be explicitly called in order to properly work at startup
-(winum-mode)
 
 ;;;; WOMAN
 
