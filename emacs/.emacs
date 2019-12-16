@@ -260,12 +260,17 @@
 
 (custom-set-variables
  '(global-company-mode t)
- `(company-posframe-mode ,(not (eq system-type 'darwin))) ; https://github.com/tumashu/posframe/issues/30
  '(company-idle-delay 0.1)
  '(company-show-numbers t)
  '(company-minimum-prefix-length 2)
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil))
+
+(custom-set-variables
+ `(company-posframe-mode ,(not (eq system-type 'darwin))) ; https://github.com/tumashu/posframe/issues/30
+ '(company-posframe-quickhelp-delay nil)
+ '(company-posframe-show-indicator nil)
+ '(company-posframe-show-metadata nil))
 
 (custom-set-faces
  `(company-tooltip                  ((t (:background ,theme-faint :foreground ,theme-background))))
