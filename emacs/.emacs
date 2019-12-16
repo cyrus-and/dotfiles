@@ -133,8 +133,8 @@
  `(warning                      ((t (:foreground ,theme-yellow))))
  `(success                      ((t (:foreground ,theme-green))))
  ;; header/mode line
- `(mode-line                    ((t (:foreground ,theme-accent :background ,theme-dark :box (:line-width 5 :color ,theme-dark :style nil)))))
- `(mode-line-inactive           ((t (:inherit (mode-line) :foreground ,theme-bright))))
+ `(mode-line                    ((t (:background ,theme-dark :box (:line-width ,theme-divider-width :color ,theme-dark :style nil)))))
+ `(mode-line-inactive           ((t (:inherit (mode-line)))))
  `(mode-line-highlight          ((t (:inverse-video t :box nil))))
  `(header-line                  ((t (:inherit (mode-line) :foreground ,theme-foreground))))
  ;; window dividers
@@ -731,6 +731,27 @@
  '(minions-mode t)
  '(minions-mode-line-lighter "···")
  '(minions-direct '(overwrite-mode)))
+
+;;;; MODE LINE
+
+(custom-set-variables
+ '(winum-mode-line-position 0)
+ `(mode-line-format
+   '(" "
+     (:propertize "%Z%*" face shadow)
+     "  "
+     (:propertize
+      (:eval (when (buffer-file-name)
+               (let ((path (abbreviate-file-name default-directory)))
+                 (if (> (length path) (/ (window-total-width) 2))
+                     (replace-regexp-in-string "\\(/[^/]\\)[^/]*" "\\1" path)
+                   path))))
+      face shadow)
+     (:propertize "%b" face (:foreground ,theme-accent))
+     "  "
+     (:propertize "+%l" face shadow)
+     "  "
+     mode-line-modes)))
 
 ;;;; MOUSE
 
