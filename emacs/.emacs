@@ -524,19 +524,6 @@
 ;; override `list-buffers'
 (defalias 'list-buffers 'ibuffer)
 
-;;;; IDO
-
-;; use IDO only for buffers and avoid the completion buffer
-
-(custom-set-variables
- '(ido-mode 'buffers)
- '(ido-completion-buffer nil)
- '(ido-default-buffer-method 'selected-window))
-
-(custom-set-faces
- `(ido-only-match  ((t (:foreground ,theme-accent))))
- `(ido-first-match ((t (:inherit (ido-only-match))))))
-
 ;;;; IMENU-LIST
 
 (my/install 'imenu-list)
@@ -721,7 +708,8 @@
 ;; infinite minibuffer history
 (custom-set-variables
  '(savehist-mode t)
- '(history-length t))
+ '(history-length t)
+ '(read-buffer-completion-ignore-case t))
 
 ;;;; MINIONS
 
@@ -822,7 +810,6 @@
 (windmove-default-keybindings)
 
 (custom-set-variables
- '(blink-cursor-mode nil)
  '(disabled-command-function nil)
  '(echo-keystrokes 0.1)
  '(help-window-select t)
