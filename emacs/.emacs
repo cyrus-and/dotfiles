@@ -153,7 +153,7 @@
  `(custom-button-mouse          ((t (:inherit (custom-button) :background ,theme-foreground))))
  `(widget-button                ((t (:inherit (custom-button)))))
  `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
- `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-dark))))
+ `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-dark :extend t))))
  ;; outlines
  `(outline-1                    ((t (:inherit (bold) :extend t :height 1.4 :background ,theme-very-dark :foreground ,theme-blue))))
  `(outline-2                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-yellow))))
@@ -167,8 +167,8 @@
  `(cursor                       ((t (:background ,theme-bright))))
  `(fringe                       ((t (:foreground ,theme-dark))))
  `(minibuffer-prompt            ((t (:foreground ,theme-accent :weight bold))))
- `(region                       ((t (:foreground ,theme-background :background ,theme-faint))))
- `(secondary-selection          ((t (:foreground ,theme-background :background ,theme-foreground))))
+ `(region                       ((t (:foreground ,theme-background :background ,theme-faint :extend t))))
+ `(secondary-selection          ((t (:foreground ,theme-background :background ,theme-foreground :extend t))))
  `(isearch-fail                 ((t (:inherit (error)))))
  `(completions-common-part      ((t (:inherit (shadow)))))
  `(completions-first-difference ((t (:foreground ,theme-accent))))
@@ -774,7 +774,6 @@
 
 (custom-set-variables
  '(blink-cursor-mode nil)
- '(column-number-mode t)
  '(disabled-command-function nil)
  '(echo-keystrokes 0.1)
  '(help-window-select t)
