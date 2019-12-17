@@ -569,6 +569,23 @@
  '(isearch-allow-scroll t)
  '(search-invisible nil))
 
+;;;; IVY
+
+(my/install 'ivy)
+(my/install 'ivy-prescient)
+
+(custom-set-variables
+ '(ivy-mode t)
+ '(ivy-minibuffer-faces '(nil ivy-minibuffer-match-face-1)))
+
+;; sort candidates by recency
+(custom-set-variables
+ '(ivy-prescient-mode t))
+
+(custom-set-faces
+ `(ivy-current-match           ((t (:background ,theme-accent :foreground ,theme-background))))
+ `(ivy-minibuffer-match-face-1 ((t (:background ,theme-bright :foreground ,theme-background)))))
+
 ;;;; JAVASCRIPT
 
 (my/install 'js2-mode)
