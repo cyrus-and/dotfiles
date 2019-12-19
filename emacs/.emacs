@@ -756,7 +756,8 @@
      "  "
      (:propertize "+%l" face shadow)
      "  "
-     mode-line-modes)))
+     mode-line-modes
+     global-mode-string)))
 
 ;;;; MOUSE
 
