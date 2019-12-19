@@ -183,7 +183,7 @@
  `(outline-7                    ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
  `(outline-8                    ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
  ;; others
- `(cursor                       ((t (:background ,theme-bright))))
+ `(cursor                       ((t (:background ,theme-accent))))
  `(fringe                       ((t (:foreground ,theme-dark))))
  `(minibuffer-prompt            ((t (:foreground ,theme-accent :weight bold))))
  `(region                       ((t (:foreground ,theme-background :background ,theme-faint :extend t))))
@@ -372,9 +372,6 @@
 ;;;; CURSOR
 
 (custom-set-variables
- '(blink-cursor-mode t)
- '(blink-cursor-delay 2.0)
- '(blink-cursor-blinks 0)
  '(cursor-type 'hollow)
  '(cursor-in-non-selected-windows nil))
 
