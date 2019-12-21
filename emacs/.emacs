@@ -74,7 +74,7 @@
   `(run-with-idle-timer
     0.5 nil (lambda () ,body)))
 
-;;; GLOBALS
+;;; THEME
 
 ;; UI and base colors
 (setq theme-background "#000000")
@@ -98,8 +98,6 @@
 (setq theme-font            "Iosevka SS04")
 (setq theme-font-size-linux 14)
 (setq theme-font-size-macos 16)
-
-;;; THEME
 
 ;; required for styling buttons
 (require 'cus-edit)
@@ -551,14 +549,6 @@
            (float-time (time-subtract after-init-time before-init-time))
            gcs-done gc-elapsed))
 
-;;;; INSTALL OTHER PACKAGES
-
-(my/install 'dockerfile-mode)
-(my/install 'go-mode)
-(my/install 'rainbow-mode)
-(my/install 'rust-mode)
-(my/install 'yaml-mode)
-
 ;;;; ISEARCH
 
 ;; inhibit search/replace on invisible text
@@ -773,6 +763,14 @@
  '(openwith-mode t)
  `(openwith-associations '(("\\.pdf\\'" ,(if (eq system-type 'darwin) "open" "xdg-open") (file))))
  '(large-file-warning-threshold nil))
+
+;;;; OTHER PACKAGES
+
+(my/install 'dockerfile-mode)
+(my/install 'go-mode)
+(my/install 'rainbow-mode)
+(my/install 'rust-mode)
+(my/install 'yaml-mode)
 
 ;;;; OUTSHINE
 
