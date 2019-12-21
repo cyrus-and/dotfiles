@@ -38,6 +38,10 @@ URxvt.iso14755_52: false
 URxvt.background: #000000
 URxvt.foreground: #aaaaaa
 
+! fix blue readability
+URxvt.color4: #0074ff
+URxvt.color12: #0074ff
+
 ! font styles
 URxvt.colorBD: #ffffff
 URxvt.colorUL: #ff6000
