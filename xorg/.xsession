@@ -2,9 +2,9 @@
 exec &>"/tmp/xsession-errors-$USER"
 
 # desktop setup
-xset r rate 200 b off # mouse 4
-# xinput --set-prop 8 'libinput Accel Speed' 1
+xset r rate 200 b off
 feh --bg-center ~/.background &
+redshift -l geoclue2 &
 
 # non-GUI autostart
 ~/.dropbox-dist/dropboxd &
