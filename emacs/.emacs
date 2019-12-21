@@ -563,7 +563,7 @@
 
 (custom-set-variables
  '(ivy-mode t)
- '(ivy-minibuffer-faces '(nil ivy-minibuffer-match-face-1)))
+ '(ivy-minibuffer-faces '(ivy-minibuffer-match-face-1)))
 
 ;; sort candidates by recency
 (custom-set-variables
@@ -625,7 +625,6 @@
 
 ;; add modes manually
 (add-hook 'c++-mode-hook 'lsp-deferred)
-(add-hook 'python-mode-hook 'lsp-deferred)
 
 ;; remove the default company clang backend to avoid interferences
 (custom-set-variables
