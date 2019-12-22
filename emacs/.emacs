@@ -411,6 +411,7 @@
 ;;;; CURSOR
 
 (custom-set-variables
+ '(blink-cursor nil)
  '(cursor-type 'hollow)
  '(cursor-in-non-selected-windows nil))
 
