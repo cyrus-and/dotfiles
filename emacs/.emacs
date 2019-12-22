@@ -51,9 +51,10 @@
 ;;;; COALESCE VARIABLE CUSTOMIZATION
 
 ;; each `custom-set-variables' call introduce some overhead so this override
-;; collect all the customizations in a list which is applied just once after the
-;; initialization
+;; collects all the customizations in a list which is then applied just once
+;; after the initialization
 (setq my/variables nil)
+
 (defun my/custom-set-variables (&rest args)
   (setq my/variables (nconc my/variables args)))
 
@@ -75,6 +76,11 @@
     0.5 nil (lambda () ,body)))
 
 ;;; THEME
+
+;; required for styling buttons
+(require 'cus-edit)
+
+;;;; CONSTANTS
 
 ;; UI and base colors
 (setq theme-background "#000000")
@@ -99,48 +105,59 @@
 (setq theme-font-size-linux 14)
 (setq theme-font-size-macos 16)
 
-;; required for styling buttons
-(require 'cus-edit)
+;;;; THEME VARIABLES
 
+;; window dividers
 (custom-set-variables
- ;; window dividers
  '(window-divider-mode t)
  '(window-divider-default-places t)
  '(window-divider-default-bottom-width theme-divider-width)
- '(window-divider-default-right-width theme-divider-width)
- ;; widget and custom button coherence
+ '(window-divider-default-right-width theme-divider-width))
+
+;; widget and custom button coherence
+(custom-set-variables
  '(custom-raised-buttons t) ; for terminal mode
- '(widget-mouse-face 'custom-button-mouse)
- ;; use no widgets marks
+ '(widget-mouse-face 'custom-button-mouse))
+
+;; use no widgets marks
+(custom-set-variables
  '(widget-push-button-prefix " ")
  '(widget-push-button-suffix " ")
  '(widget-link-prefix " ")
  '(widget-link-suffix " "))
 
+;;;; THEME FACES
+
+;; basic faces
 (custom-set-faces
- ;; basic faces
- `(default                      ((t (:foreground ,theme-foreground :background ,theme-background))))
- `(shadow                       ((t (:foreground ,theme-faint))))
- `(link                         ((t (:foreground ,theme-accent :underline (:color foreground-color :style line)))))
- `(link-visited                 ((t (:inherit (link) :weight normal))))
- `(highlight                    ((t (:background ,theme-dark))))
- `(match                        ((t (:foreground ,theme-accent :weight bold))))
- `(isearch                      ((t (:foreground ,theme-background :background ,theme-accent))))
- `(lazy-highlight               ((t (:foreground ,theme-background :background ,theme-bright))))
- `(error                        ((t (:foreground ,theme-red))))
- `(warning                      ((t (:foreground ,theme-yellow))))
- `(success                      ((t (:foreground ,theme-green))))
- ;; header/mode line
- `(mode-line                    ((t (:background ,theme-dark :box (:line-width ,theme-divider-width :color ,theme-dark :style nil)))))
- `(mode-line-inactive           ((t (:inherit (mode-line)))))
- `(mode-line-highlight          ((t (:inverse-video t :box nil))))
- `(header-line                  ((t (:inherit (mode-line) :foreground ,theme-foreground))))
- ;; window dividers
- `(window-divider               ((t (:foreground ,theme-faint))))
- `(window-divider-first-pixel   ((t (:foreground ,theme-faint))))
- `(window-divider-last-pixel    ((t (:foreground ,theme-faint))))
- `(window-divider-last-pixel    ((t (:foreground ,theme-faint))))
- ;; font lock
+ `(default        ((t (:foreground ,theme-foreground :background ,theme-background))))
+ `(shadow         ((t (:foreground ,theme-faint))))
+ `(link           ((t (:foreground ,theme-accent :underline (:color foreground-color :style line)))))
+ `(link-visited   ((t (:inherit (link) :weight normal))))
+ `(highlight      ((t (:background ,theme-dark))))
+ `(match          ((t (:foreground ,theme-accent :weight bold))))
+ `(isearch        ((t (:foreground ,theme-background :background ,theme-accent))))
+ `(lazy-highlight ((t (:foreground ,theme-background :background ,theme-bright))))
+ `(error          ((t (:foreground ,theme-red))))
+ `(warning        ((t (:foreground ,theme-yellow))))
+ `(success        ((t (:foreground ,theme-green)))))
+
+;; header/mode line
+(custom-set-faces
+ `(mode-line           ((t (:background ,theme-dark :box (:line-width ,theme-divider-width :color ,theme-dark :style nil)))))
+ `(mode-line-inactive  ((t (:inherit (mode-line)))))
+ `(mode-line-highlight ((t (:inverse-video t :box nil))))
+ `(header-line         ((t (:inherit (mode-line) :foreground ,theme-foreground)))))
+
+;; window dividers
+(custom-set-faces
+ `(window-divider             ((t (:foreground ,theme-faint))))
+ `(window-divider-first-pixel ((t (:foreground ,theme-faint))))
+ `(window-divider-last-pixel  ((t (:foreground ,theme-faint))))
+ `(window-divider-last-pixel  ((t (:foreground ,theme-faint)))))
+
+;; font lock
+(custom-set-faces
  `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-magenta))))
  `(font-lock-variable-name-face ((t (:foreground ,theme-yellow))))
  `(font-lock-keyword-face       ((t (:inherit (bold) :foreground ,theme-red))))
@@ -149,38 +166,48 @@
  `(font-lock-constant-face      ((t (:foreground ,theme-cyan))))
  `(font-lock-builtin-face       ((t (:foreground ,theme-cyan))))
  `(font-lock-string-face        ((t (:foreground ,theme-green))))
- `(font-lock-negation-char-face ((t (:inherit (bold) :inherit (default)))))
- ;; highlighting lock ssds
- `(hi-black-b                   ((t (:inherit (bold) :background ,theme-very-dark))))
- `(hi-black-hb                  ((t (:inherit (bold) :background ,theme-dark))))
- `(hi-blue                      ((t (:foreground ,theme-background :background ,theme-blue))))
- `(hi-blue-b                    ((t (:inherit (hi-blue bold) :inverse-video t))))
- `(hi-green                     ((t (:foreground ,theme-background :background ,theme-green))))
- `(hi-green-b                   ((t (:inherit (hi-green bold) :inverse-video t))))
- `(hi-pink                      ((t (:foreground ,theme-background :background ,theme-magenta))))
- `(hi-red-b                     ((t (:inherit (bold) :foreground ,theme-red))))
- `(hi-yellow                    ((t (:foreground ,theme-background :background ,theme-yellow))))
- ;; compilation
- '(compilation-mode-line-exit   ((t (:inherit (success)))))
- '(compilation-mode-line-run    ((t (:inherit (warning)))))
- '(compilation-mode-line-fail   ((t (:inherit (error)))))
- ;; widgets
- `(custom-button                ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-background :background ,theme-faint))))
- `(custom-button-pressed        ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style pressed-button)))))
- `(custom-button-mouse          ((t (:inherit (custom-button) :background ,theme-foreground))))
- `(widget-button                ((t (:inherit (custom-button)))))
- `(widget-button-pressed        ((t (:inherit (custom-button-pressed)))))
- `(widget-field                 ((t (:foreground ,theme-foreground :background ,theme-dark :extend t))))
- ;; outlines
- `(outline-1                    ((t (:inherit (bold) :extend t :height 1.4 :background ,theme-very-dark :foreground ,theme-blue))))
- `(outline-2                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-yellow))))
- `(outline-3                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-green))))
- `(outline-4                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-magenta))))
- `(outline-5                    ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-6                    ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-7                    ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-8                    ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
- ;; others
+ `(font-lock-negation-char-face ((t (:inherit (bold) :inherit (default))))))
+
+;; highlighting lock ssds
+(custom-set-faces
+ `(hi-black-b  ((t (:inherit (bold) :background ,theme-very-dark))))
+ `(hi-black-hb ((t (:inherit (bold) :background ,theme-dark))))
+ `(hi-blue     ((t (:foreground ,theme-background :background ,theme-blue))))
+ `(hi-blue-b   ((t (:inherit (hi-blue bold) :inverse-video t))))
+ `(hi-green    ((t (:foreground ,theme-background :background ,theme-green))))
+ `(hi-green-b  ((t (:inherit (hi-green bold) :inverse-video t))))
+ `(hi-pink     ((t (:foreground ,theme-background :background ,theme-magenta))))
+ `(hi-red-b    ((t (:inherit (bold) :foreground ,theme-red))))
+ `(hi-yellow   ((t (:foreground ,theme-background :background ,theme-yellow)))))
+
+;; compilation
+(custom-set-faces
+ '(compilation-mode-line-exit ((t (:inherit (success)))))
+ '(compilation-mode-line-run  ((t (:inherit (warning)))))
+ '(compilation-mode-line-fail ((t (:inherit (error))))))
+
+;; widgets
+(custom-set-faces
+ `(custom-button         ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-background :background ,theme-faint))))
+ `(custom-button-pressed ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style pressed-button)))))
+ `(custom-button-mouse   ((t (:inherit (custom-button) :background ,theme-foreground))))
+ `(widget-button         ((t (:inherit (custom-button)))))
+ `(widget-button-pressed ((t (:inherit (custom-button-pressed)))))
+ `(widget-field          ((t (:foreground ,theme-foreground :background ,theme-dark :extend t)))))
+
+;; outlines
+(custom-set-faces
+ `(outline-1 ((t (:inherit (bold) :extend t :height 1.4 :background ,theme-very-dark :foreground ,theme-blue))))
+ `(outline-2 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-yellow))))
+ `(outline-3 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-green))))
+ `(outline-4 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-magenta))))
+ `(outline-5 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-6 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-7 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
+ `(outline-8 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red)))))
+
+;; others
+(custom-set-faces
  `(cursor                       ((t (:background ,theme-accent))))
  `(fringe                       ((t (:foreground ,theme-dark))))
  `(minibuffer-prompt            ((t (:foreground ,theme-accent :weight bold))))
@@ -195,11 +222,7 @@
 
 ;;; PACKAGES
 
-;; XXX temporary hackish solution for https://debbugs.gnu.org/34341
-(when (version< emacs-version "26.3")
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
-
-;; install a package refreshing the packet list just once
+;; utility to install a package refreshing the packet list just once
 (defun my/install (package)
   (unless (package-installed-p package)
     (unless (bound-and-true-p my/install-refreshed)
@@ -207,10 +230,15 @@
       (setq my/install-refreshed t))
     (package-install package)))
 
-;; no more needed in recent Emacs
+;; XXX temporary hackish solution for https://debbugs.gnu.org/34341
+(when (version< emacs-version "26.3")
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
+;; package initialization is no more needed in recent Emacs
 (when (version< emacs-version "27")
   (package-initialize))
 
+;; add MELPA archive
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (global-set-key (kbd "C-c p") 'package-list-packages)
@@ -218,6 +246,8 @@
 ;;; CONFIGURATIONS
 
 ;;;; ADAPTIVE WRAP
+
+;; nicer `visual-line-mode'
 
 (my/install 'adaptive-wrap)
 
@@ -248,18 +278,20 @@
 
 ;;;; CODE ANNOTATIONS
 
+;; highlight custom keyword in all basic modes
 (setq my/todo-regexp (rx bow (or "TODO" "XXX") eow))
 (setq my/todo-face 'font-lock-warning-face)
 
 (defun my/todo-fontlock-hook ()
   (font-lock-add-keywords nil `((,my/todo-regexp 0 ,my/todo-face prepend)) t))
 
+(add-hook 'text-mode-hook 'my/todo-fontlock-hook)
+(add-hook 'prog-mode-hook 'my/todo-fontlock-hook)
+
+;; provide an utility to list the annotations of the current buffer
 (defun my/todo-occur ()
   (interactive)
   (occur my/todo-regexp))
-
-(add-hook 'text-mode-hook 'my/todo-fontlock-hook)
-(add-hook 'prog-mode-hook 'my/todo-fontlock-hook)
 
 (global-set-key (kbd "C-c t") 'my/todo-occur)
 
@@ -317,6 +349,12 @@
  '(compilation-always-kill t)
  '(compilation-disable-input t))
 
+(add-hook 'compilation-mode-hook 'visual-line-mode)
+
+;;;;; SMART COMPILE
+
+;; introduce a way to compile or recompile according to the current buffer
+
 ;; automatically kill the compilation window on success after a short delay, but
 ;; only if successful
 (add-to-list 'compilation-finish-functions 'my/compile-auto-quit)
@@ -361,8 +399,6 @@
           (with-current-buffer buffer
             (recompile))
         (call-interactively 'compile)))))
-
-(add-hook 'compilation-mode-hook 'visual-line-mode)
 
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 (global-set-key (kbd "C-c C") 'compile)
@@ -409,6 +445,8 @@
 
 ;;;; EASY REVERT BUFFER
 
+;; utility to abruptly discard changes in the current buffer
+
 (defun my/force-revert-buffer ()
   "Revert buffer without confirmation."
   (interactive)
@@ -425,16 +463,20 @@
   (delete 'fill erc-modules)
   (erc-update-modules))
 
+;; timestamp always visible
 (custom-set-variables
- ;; timestamp always visible
  '(erc-insert-timestamp-function 'erc-insert-timestamp-left)
  '(erc-timestamp-format "[%H:%M] ")
- '(erc-timestamp-only-if-changed-flag nil)
- ;; make track mode less noisy and add the indicator at the end of the modeline
- ;; to not interfere with minions
+ '(erc-timestamp-only-if-changed-flag nil))
+
+;; make track mode less noisy and add the indicator at the end of the modeline
+;; to not interfere with minions
+(custom-set-variables
  '(erc-track-exclude-types '("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE"))
- '(erc-track-position-in-mode-line t)
- ;; autojoin
+ '(erc-track-position-in-mode-line t))
+
+;; autojoin
+(custom-set-variables
  '(erc-autojoin-channels-alist '(("freenode.net$" . ("#emacs")))))
 
 (custom-set-faces
@@ -489,6 +531,8 @@
 (with-eval-after-load 'grep
   (add-to-list 'grep-find-ignored-directories "node_modules"))
 
+;;;;; HIDE THE GREP COMMAND
+
 ;; use a cleaner grep output by hiding the command
 (add-hook 'grep-setup-hook 'my/grep-fix)
 (defun my/grep-fix ()
@@ -496,6 +540,8 @@
     (let ((inhibit-read-only t))
       (forward-line 3) ; kill 4th line
       (kill-whole-line))))
+
+;;;;; SMART GREP
 
 ;; call rgrep in the same conditions if there is already an rgrep buffer alive
 (defun my/rgrep ()
@@ -559,13 +605,12 @@
 ;;;; IVY
 
 (my/install 'ivy)
-(my/install 'ivy-prescient)
+(my/install 'ivy-prescient) ; sort candidates by recency
 
 (custom-set-variables
  '(ivy-mode t)
  '(ivy-minibuffer-faces '(ivy-minibuffer-match-face-1)))
 
-;; sort candidates by recency
 (custom-set-variables
  '(ivy-prescient-mode t))
 
@@ -634,18 +679,18 @@
 ;;;; MACOS SPECIFIC
 
 (when (eq system-type 'darwin)
-  ;; fetch environment variables from shell (namely, those in ~/.profile since
-  ;; it is not sourced by macOS but only by bash)
-  (my/install 'exec-path-from-shell)
-  (my/defer (exec-path-from-shell-copy-envs
-             '("PATH" "PASSWORD_STORE_DIR" "NPM_CONFIG_PREFIX" "GEM_HOME" "PIP_USER")))
-
   ;; use the right meta key natively so to allow typing fancy glyphs
   (custom-set-variables
    '(mac-right-option-modifier 'none))
 
   ;; disable scrolling inertia
   (setq ns-use-mwheel-momentum nil)
+
+  ;; fetch environment variables from shell (namely, those in ~/.profile since
+  ;; it is not sourced by macOS but only by bash)
+  (my/install 'exec-path-from-shell)
+  (my/defer (exec-path-from-shell-copy-envs
+             '("PATH" "PASSWORD_STORE_DIR" "NPM_CONFIG_PREFIX" "GEM_HOME" "PIP_USER")))
 
   ;; setup base GUI to avoid glitches but only if needed
   (let ((plist "~/Library/Preferences/org.gnu.Emacs.plist"))
@@ -708,7 +753,7 @@
 
 ;;;; MINIBUFFER
 
-;; infinite minibuffer history
+;; infinite minibuffer history and case insensitive completion
 (custom-set-variables
  '(savehist-mode t)
  '(history-length t)
@@ -852,6 +897,8 @@
 (custom-set-variables
  '(require-final-newline 'ask))
 
+;;;;; TRIM WHITESPACE MODE
+
 (defun my/trim-whitespace--handler ()
   "Delete trailing whitespaces if `my/trim-whitespace-mode' is enabled."
   (when my/trim-whitespace-mode
@@ -865,6 +912,10 @@
 
 (add-hook 'before-save-hook 'my/trim-whitespace--handler)
 
+(global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
+
+;;;;; NORMALIZE WHITESPACE FOR DIRED BUFFERS
+
 (defun my/dired-normalize-whitespace-marked-files ()
   "Normalize the whitespace in the currently marked dired files."
   (interactive)
@@ -877,8 +928,6 @@
         (save-buffer)
         (kill-buffer))))
   (message "Done!"))
-
-(global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
 
 (global-set-key (kbd "C-c w") 'my/dired-normalize-whitespace-marked-files)
 
