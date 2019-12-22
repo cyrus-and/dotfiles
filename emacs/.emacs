@@ -1,3 +1,8 @@
+;;; META
+
+;; This is a standalone Emacs initialization file. Best viewed with
+;; `outshine-mode'.
+
 ;;; CHEATSHEET
 
 ;; % m           `dired-mark-files-regexp'
