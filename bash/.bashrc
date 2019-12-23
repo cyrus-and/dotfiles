@@ -1,15 +1,14 @@
+# common
+shopt -s extglob
+export EDITOR='emacsclient -t -a emacs'
+
 # history
-PROMPT_COMMAND='history -a'
-shopt -s cmdhist
-shopt -s lithist
 shopt -s histappend
 HISTCONTROL=ignoreboth
 HISTSIZE=-1
 HISTFILESIZE=-1
 HISTIGNORE='fg'
-
-# common
-export EDITOR='emacsclient -t -a emacs'
+PROMPT_COMMAND='history -a'
 
 # tty
 if [ -t 0 ]; then
@@ -111,7 +110,7 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
     }
 
     # completion
-    . $(brew --prefix)/etc/bash_completion
+    source $(brew --prefix)/etc/bash_completion
 
     # BUG? -1 not working
     HISTSIZE=100000
