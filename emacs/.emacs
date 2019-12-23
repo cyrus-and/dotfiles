@@ -471,6 +471,7 @@
 
 ;; timestamp always visible
 (custom-set-variables
+ '(erc-hide-list '("JOIN" "PART" "QUIT"))
  '(erc-insert-timestamp-function 'erc-insert-timestamp-left)
  '(erc-timestamp-format "[%H:%M] ")
  '(erc-timestamp-only-if-changed-flag nil))
@@ -780,7 +781,7 @@
  '(winum-mode-line-position 0)
  `(mode-line-format
    '(" "
-     (:propertize "%Z%*" face shadow)
+     (:propertize "%Z%*%@" face shadow)
      "  "
      (:propertize
       (:eval (when (buffer-file-name)
