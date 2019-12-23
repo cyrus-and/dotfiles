@@ -86,6 +86,10 @@ gdb-tmux() {
     tmux kill-pane -t "$id"
 }
 
+who-swaps() {
+    awk '/^Name:/ { name = $2 } /^VmSwap:/ && $2 != 0 { swap = $2; printf "%dkb %s\n", swap, name }' /proc/+([0-9])/status | column -t | sort -nk1
+}
+
 # OS-specific
 
 if [[ "$OSTYPE" =~ darwin* ]]; then
