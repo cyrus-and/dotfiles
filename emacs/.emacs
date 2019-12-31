@@ -248,6 +248,20 @@
 
 (global-set-key (kbd "C-c p") 'package-list-packages)
 
+;;;; Upgrade utility
+
+(defun my/upgrade ()
+  "Upgrade and clean up packages."
+  (interactive)
+  (with-current-buffer (package-list-packages t)
+    (package-refresh-contents)
+    (package-menu-mark-upgrades)
+    (ignore-errors (package-menu-execute t))
+    (package-autoremove)
+    (kill-buffer)))
+
+(global-set-key (kbd "C-c P") 'my/upgrade)
+
 ;;; CONFIGURATIONS
 
 ;;;; ADAPTIVE WRAP
