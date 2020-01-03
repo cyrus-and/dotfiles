@@ -239,10 +239,8 @@
 (when (version< emacs-version "26.3")
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
-;; package initialization
-(package-initialize)
-
 ;; add MELPA archive
+(package-initialize)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (global-set-key (kbd "C-c p") 'package-list-packages)
