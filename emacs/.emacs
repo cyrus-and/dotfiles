@@ -239,9 +239,8 @@
 (when (version< emacs-version "26.3")
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
-;; package initialization is no more needed in recent Emacs
-(when (version< emacs-version "27")
-  (package-initialize))
+;; package initialization
+(package-initialize)
 
 ;; add MELPA archive
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
