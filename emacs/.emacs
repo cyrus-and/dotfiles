@@ -269,6 +269,17 @@
 
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
 
+;;;; AUCTEX
+
+(my/install 'auctex)
+
+(custom-set-faces
+ `(font-latex-sectioning-1-face ((t (:inherit (outline-1)))))
+ `(font-latex-sectioning-2-face ((t (:inherit (outline-2)))))
+ `(font-latex-sectioning-3-face ((t (:inherit (outline-3)))))
+ `(font-latex-sectioning-4-face ((t (:inherit (outline-4)))))
+ `(font-latex-sectioning-5-face ((t (:inherit (outline-5))))))
+
 ;;;; BACKUPS
 
 (custom-set-variables
