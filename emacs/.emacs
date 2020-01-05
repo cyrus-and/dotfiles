@@ -337,6 +337,9 @@
 (my/install 'company)
 (my/install 'company-posframe)
 
+;; XXX workaround for https://github.com/tumashu/company-posframe/issues/20
+(advice-add 'posframe-workable-p :override (lambda () t))
+
 (custom-set-variables
  '(global-company-mode t)
  '(company-idle-delay 0.1)
