@@ -245,7 +245,7 @@
 
 (global-set-key (kbd "C-c p") 'package-list-packages)
 
-;;;; Upgrade utility
+;;;; UPGRADE UTILITY
 
 (defun my/upgrade ()
   "Upgrade and clean up packages."
