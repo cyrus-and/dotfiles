@@ -73,6 +73,43 @@
 (advice-add 'custom-set-variables :override 'my/custom-set-variables)
 (add-hook 'after-init-hook 'my/apply-customizations)
 
+;;; PACKAGES
+
+;; prevent the customization interface from altering this file
+(setq custom-file "/dev/null")
+
+;; utility to install a package refreshing the packet list just once
+(defun my/install (package)
+  (unless (package-installed-p package)
+    (unless (bound-and-true-p my/install-refreshed)
+      (package-refresh-contents)
+      (setq my/install-refreshed t))
+    (package-install package)))
+
+;; XXX temporary hackish solution for https://debbugs.gnu.org/34341
+(when (version< emacs-version "26.3")
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
+;; add MELPA archive
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+(global-set-key (kbd "C-c p") 'package-list-packages)
+
+;;;; UPGRADE UTILITY
+
+(defun my/upgrade ()
+  "Upgrade and clean up packages."
+  (interactive)
+  (with-current-buffer (package-list-packages t)
+    (package-refresh-contents)
+    (package-menu-mark-upgrades)
+    (ignore-errors (package-menu-execute t))
+    (package-autoremove)
+    (kill-buffer)))
+
+(global-set-key (kbd "C-c P") 'my/upgrade)
+
 ;;;; UTILITIES
 
 ;; utility to defer slow operation so to not directly impact init time
@@ -224,40 +261,6 @@
  `(pulse-highlight-start-face   ((t (:background ,theme-accent))))
  `(show-paren-match             ((t (:inherit (bold) :foreground ,theme-accent))))
  `(show-paren-mismatch          ((t (:inherit (error) :inverse-video t)))))
-
-;;; PACKAGES
-
-;; utility to install a package refreshing the packet list just once
-(defun my/install (package)
-  (unless (package-installed-p package)
-    (unless (bound-and-true-p my/install-refreshed)
-      (package-refresh-contents)
-      (setq my/install-refreshed t))
-    (package-install package)))
-
-;; XXX temporary hackish solution for https://debbugs.gnu.org/34341
-(when (version< emacs-version "26.3")
-  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
-
-;; add MELPA archive
-(package-initialize)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-
-(global-set-key (kbd "C-c p") 'package-list-packages)
-
-;;;; UPGRADE UTILITY
-
-(defun my/upgrade ()
-  "Upgrade and clean up packages."
-  (interactive)
-  (with-current-buffer (package-list-packages t)
-    (package-refresh-contents)
-    (package-menu-mark-upgrades)
-    (ignore-errors (package-menu-execute t))
-    (package-autoremove)
-    (kill-buffer)))
-
-(global-set-key (kbd "C-c P") 'my/upgrade)
 
 ;;; CONFIGURATIONS
 
@@ -605,12 +608,6 @@
  `(imenu-list-entry-face-3 ((t (:inherit (outline-4))))))
 
 (global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
-
-;;;; INHIBIT CUSTOMIZATION INTERFACE
-
-;; discard persistent changes via the customization interface
-(custom-set-variables
- '(custom-file "/dev/null"))
 
 ;;;; INITIALIZATION
 
