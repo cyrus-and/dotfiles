@@ -867,6 +867,16 @@
 (custom-set-variables
  '(python-shell-interpreter "python3"))
 
+;;;; RECENTF
+
+;; remember and access recently used files
+
+(custom-set-variables
+ '(recentf-mode t)
+ '(recentf-exclude (add-to-list 'recentf-exclude 'file-symlink-p)))
+
+(global-set-key (kbd "C-c r") 'recentf-open-files)
+
 ;;;; SAVE PLACE
 
 (custom-set-variables
