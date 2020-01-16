@@ -210,7 +210,7 @@
  `(font-lock-string-face        ((t (:foreground ,theme-green))))
  `(font-lock-negation-char-face ((t (:inherit (bold) :inherit (default))))))
 
-;; highlighting lock ssds
+;; highlighting lock
 (custom-set-faces
  `(hi-black-b  ((t (:inherit (bold) :background ,theme-very-dark))))
  `(hi-black-hb ((t (:inherit (bold) :background ,theme-dark))))
@@ -366,7 +366,8 @@
 (custom-set-variables
  '(compile-command "make")
  '(compilation-always-kill t)
- '(compilation-disable-input t))
+ '(compilation-disable-input t)
+ '(compilation-scroll-output 'first-error))
 
 (add-hook 'compilation-mode-hook 'visual-line-mode)
 
@@ -591,10 +592,10 @@
 (my/install 'imenu-list)
 
 (custom-set-faces
- `(imenu-list-entry-face-0 ((t (:inherit (outline-1)))))
- `(imenu-list-entry-face-1 ((t (:inherit (outline-2)))))
- `(imenu-list-entry-face-2 ((t (:inherit (outline-3)))))
- `(imenu-list-entry-face-3 ((t (:inherit (outline-4))))))
+ `(imenu-list-entry-face-0 ((t (:inherit (outline-1) :height 0.75))))
+ `(imenu-list-entry-face-1 ((t (:inherit (outline-2) :height 0.75))))
+ `(imenu-list-entry-face-2 ((t (:inherit (outline-3) :height 0.75))))
+ `(imenu-list-entry-face-3 ((t (:inherit (outline-4) :height 0.75)))))
 
 (global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
 
