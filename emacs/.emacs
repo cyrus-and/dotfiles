@@ -880,6 +880,8 @@
  `(tab-bar-tab-inactive ((t (:background ,theme-very-dark :box (:line-width ,theme-divider-width :color ,theme-very-dark :style nil))))))
 
 (custom-set-variables
+ `(tab-bar-new-tab-choice (lambda () (find-file default-directory)))
+ `(tab-bar-new-button "")
  `(tab-bar-mode t)
  `(tab-bar-tab-hints t)
  `(tab-bar-close-button-show nil)
@@ -892,6 +894,7 @@
 (global-set-key (kbd "C-M-<next>") 'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "C-M-S-<prior>") (lambda () (interactive) (tab-bar-move-tab -1)))
 (global-set-key (kbd "C-M-S-<next>") (lambda () (interactive) (tab-bar-move-tab +1)))
+(global-set-key (kbd "C-M-,") 'tab-bar-rename-tab)
 
 ;;;; TRAMP
 
