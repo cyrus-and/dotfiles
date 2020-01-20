@@ -491,7 +491,7 @@
  '(erc-timestamp-format "[%H:%M] ")
  '(erc-timestamp-only-if-changed-flag nil))
 
-;; make track mode less noisy and add the indicator at the end of the modeline
+;; make track mode less noisy and add the indicator at the end of the mode line
 ;; to not interfere with minions
 (custom-set-variables
  '(erc-track-exclude-types '("JOIN" "KICK" "NICK" "PART" "QUIT" "MODE"))
@@ -787,6 +787,7 @@
 ;;;; MODE LINE
 
 (custom-set-variables
+ '(column-number-mode t)
  '(winum-mode-line-position 0)
  `(mode-line-format
    '(" "
@@ -801,7 +802,7 @@
       face shadow)
      (:propertize "%b" face (:foreground ,theme-accent))
      "  "
-     (:propertize "+%l" face shadow)
+     (:propertize "+%l:%c" face shadow)
      "  "
      mode-line-modes
      global-mode-string)))
