@@ -532,6 +532,19 @@
 (global-set-key (kbd "C-(") 'previous-error)
 (global-set-key (kbd "C-)") 'next-error)
 
+;;;; EYEBROWSE
+
+(my/install 'eyebrowse)
+
+(custom-set-variables
+ '(eyebrowse-mode t))
+
+(custom-set-faces
+ `(eyebrowse-mode-line-active     ((t (:foreground ,theme-accent))))
+ `(eyebrowse-mode-line-inactive   ((t (:inherit (shadow)))))
+ `(eyebrowse-mode-line-separator  ((t (:inherit (shadow)))))
+ `(eyebrowse-mode-line-delimiters ((t (:inherit (shadow))))))
+
 ;;;; FIND
 
 ;; find in whole path
@@ -805,6 +818,8 @@
      (:propertize "+%l:%c" face shadow)
      "  "
      mode-line-modes
+     "  "
+     (:eval (eyebrowse-mode-line-indicator)) ; XXX depends on eyebrowse
      global-mode-string)))
 
 ;;;; MOUSE
