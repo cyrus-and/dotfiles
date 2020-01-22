@@ -895,30 +895,6 @@
 
 (global-set-key (kbd "C-s") 'swiper)
 
-;;;; TAB BAR
-
-(custom-set-faces
- `(tab-bar              ((t (:background ,theme-dark :height 0.75))))
- `(tab-bar-tab          ((t (:inherit (tab-bar-tab-inactive) :foreground ,theme-accent))))
- `(tab-bar-tab-inactive ((t (:background ,theme-very-dark :box (:line-width ,theme-divider-width :color ,theme-very-dark :style nil))))))
-
-(custom-set-variables
- `(tab-bar-new-tab-choice (lambda () (find-file default-directory)))
- `(tab-bar-new-button "")
- `(tab-bar-mode t)
- `(tab-bar-tab-hints t)
- `(tab-bar-close-button-show nil)
- `(tab-bar-select-tab-modifiers '(control meta)))
-
-;; since there are no native shortcut...
-(global-set-key (kbd "C-M-<return>") 'tab-bar-new-tab)
-(global-set-key (kbd "C-M-<backspace>") 'tab-bar-close-tab)
-(global-set-key (kbd "C-M-<prior>") 'tab-bar-switch-to-prev-tab)
-(global-set-key (kbd "C-M-<next>") 'tab-bar-switch-to-next-tab)
-(global-set-key (kbd "C-M-S-<prior>") (lambda () (interactive) (tab-bar-move-tab -1)))
-(global-set-key (kbd "C-M-S-<next>") (lambda () (interactive) (tab-bar-move-tab +1)))
-(global-set-key (kbd "C-M-,") 'tab-bar-rename-tab)
-
 ;;;; TRAMP
 
 ;; avoid verbose tramp messages and show errors only
