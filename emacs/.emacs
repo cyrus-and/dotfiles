@@ -540,7 +540,7 @@
  '(eyebrowse-mode t))
 
 (custom-set-faces
- `(eyebrowse-mode-line-active     ((t (:foreground ,theme-accent))))
+ `(eyebrowse-mode-line-active     ((t (:foreground ,theme-foreground))))
  `(eyebrowse-mode-line-inactive   ((t (:inherit (shadow)))))
  `(eyebrowse-mode-line-separator  ((t (:inherit (shadow)))))
  `(eyebrowse-mode-line-delimiters ((t (:inherit (shadow))))))
@@ -818,7 +818,7 @@
      (:propertize "+%l:%c" face shadow)
      "  "
      mode-line-modes
-     "  "
+     " " ; XXX one extra space is already there
      (:eval (eyebrowse-mode-line-indicator)) ; XXX depends on eyebrowse
      global-mode-string)))
 
