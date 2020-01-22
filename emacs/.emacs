@@ -889,6 +889,12 @@
 
 (global-set-key (kbd "C-c a") 'shell)
 
+;;;; SWIPER
+
+(my/install 'swiper)
+
+(global-set-key (kbd "C-s") 'swiper)
+
 ;;;; TAB BAR
 
 (custom-set-faces
