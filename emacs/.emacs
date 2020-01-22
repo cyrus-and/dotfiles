@@ -537,13 +537,14 @@
 (my/install 'eyebrowse)
 
 (custom-set-variables
- '(eyebrowse-mode t))
+ '(eyebrowse-mode t)
+ '(eyebrowse-mode-line-left-delimiter "")
+ '(eyebrowse-mode-line-right-delimiter "")
+ '(eyebrowse-mode-line-separator " "))
 
 (custom-set-faces
  `(eyebrowse-mode-line-active     ((t (:foreground ,theme-foreground))))
- `(eyebrowse-mode-line-inactive   ((t (:inherit (shadow)))))
- `(eyebrowse-mode-line-separator  ((t (:inherit (shadow)))))
- `(eyebrowse-mode-line-delimiters ((t (:inherit (shadow))))))
+ `(eyebrowse-mode-line-inactive   ((t (:inherit (shadow))))))
 
 ;;;; FIND
 
