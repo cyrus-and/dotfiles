@@ -915,6 +915,7 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(disabled-command-function nil)
  '(echo-keystrokes 0.1)
+ '(frame-resize-pixelwise t)
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
