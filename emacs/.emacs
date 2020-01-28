@@ -538,6 +538,7 @@
 
 (custom-set-variables
  '(eyebrowse-mode t)
+ '(eyebrowse-new-workspace (lambda () (find-file default-directory)))
  '(eyebrowse-mode-line-left-delimiter "")
  '(eyebrowse-mode-line-right-delimiter "")
  '(eyebrowse-mode-line-separator " "))
@@ -893,7 +894,7 @@
 
 (my/install 'swiper)
 
-(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-c w") 'swiper)
 
 ;;;; TRAMP
 
@@ -967,8 +968,6 @@
         (save-buffer)
         (kill-buffer))))
   (message "Done!"))
-
-(global-set-key (kbd "C-c w") 'my/dired-normalize-whitespace-marked-files)
 
 ;;;; WINNER
 
