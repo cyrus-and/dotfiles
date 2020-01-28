@@ -394,7 +394,7 @@
   "Determine if the next compilation should auto quit the compilation window."
   (let* ((buffer (get-buffer "*compilation*"))
          (window (get-buffer-window buffer)))
-    (setq my/compile-should-kill (not window))))
+    (setq my/compile-should-kill (not (and buffer window)))))
 
 (advice-add 'compile :before 'my/compile-before)
 (advice-add 'recompile :before 'my/compile-before)
