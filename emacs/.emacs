@@ -411,7 +411,9 @@ If prefix ARG is given, simply call `compile'."
   ;; if a prefix argument is present prompt the compilation command
   ;; otherwise try to fetch the command from the buffer-local variable
   (if arg
-      (call-interactively 'compile)
+      ;; do not propagate the prefix argument
+      (let ((current-prefix-arg))
+        (call-interactively 'compile))
     ;; reload safe variables silently
     (let ((enable-local-variables :safe))
       (hack-local-variables))
