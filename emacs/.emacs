@@ -371,9 +371,7 @@
 
 (add-hook 'compilation-mode-hook 'visual-line-mode)
 
-;;;;; SMART COMPILE
-
-;; introduce a way to compile or recompile according to the current buffer
+;;;;; AUTO QUIT
 
 ;; automatically kill the compilation window on success after a short delay, but
 ;; only if successful
@@ -404,24 +402,32 @@
          (window (get-buffer-window buffer)))
     (setq my/compile-should-auto-quit (not (and buffer window)))))
 
-;; add a smart recompilation helper
-(defun my/smart-compile ()
-  "Recompile or prompt a new compilation."
-  (interactive)
-  ;; reload safe variables silently
-  (let ((enable-local-variables :safe))
-    (hack-local-variables))
-  ;; smart compile
-  (if (local-variable-p 'compile-command)
-      (compile compile-command)
-    (let ((buffer (get-buffer "*compilation*")))
-      (if buffer
-          (with-current-buffer buffer
-            (recompile))
-        (call-interactively 'compile)))))
+;;;;; SMART COMPILE
+
+(defun my/smart-compile (arg)
+  "Recompile or prompt a new compilation.
+
+If prefix ARG is given, simply call `compile'."
+  (interactive "P")
+  ;; if a prefix argument is present prompt the compilation command
+  ;; otherwise try to fetch the command from the buffer-local variable
+  (if arg
+      (call-interactively 'compile)
+    ;; reload safe variables silently
+    (let ((enable-local-variables :safe))
+      (hack-local-variables))
+    ;; compile using the local value of `compile-command' or seek for the
+    ;; default compilation buffer
+    (if (local-variable-p 'compile-command)
+        (recompile)
+      (let ((buffer (get-buffer "*compilation*")))
+        ;; recompile the compilation buffer or prompt the compilation command
+        (if buffer
+            (with-current-buffer buffer
+              (recompile))
+          (call-interactively 'compile))))))
 
 (global-set-key (kbd "C-c c") 'my/smart-compile)
-(global-set-key (kbd "C-c C") 'compile)
 
 ;;;; CURSOR
 
