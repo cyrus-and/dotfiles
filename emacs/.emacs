@@ -662,6 +662,9 @@ If prefix ARG is given, simply call `compile'."
  `(ivy-current-match           ((t (:background ,theme-accent :foreground ,theme-background))))
  `(ivy-minibuffer-match-face-1 ((t (:background ,theme-bright :foreground ,theme-background)))))
 
+(custom-set-faces
+ `(ivy-posframe-border ((t (:background ,theme-faint)))))
+
 ;;;; JAVASCRIPT
 
 (my/install 'js2-mode)
