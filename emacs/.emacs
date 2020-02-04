@@ -144,7 +144,7 @@
 ;; theme parameters
 (setq theme-divider-width   6)
 (setq theme-font            "Iosevka SS04")
-(setq theme-font-size-linux 14)
+(setq theme-font-size-linux 12)
 (setq theme-font-size-macos 16)
 
 ;;;; THEME VARIABLES
