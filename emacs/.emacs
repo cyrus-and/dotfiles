@@ -660,7 +660,7 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-faces
  `(ivy-current-match           ((t (:background ,theme-accent :foreground ,theme-background))))
- `(ivy-minibuffer-match-face-1 ((t (:background ,theme-bright :foreground ,theme-background)))))
+ `(ivy-minibuffer-match-face-1 ((t (:background ,theme-faint :foreground ,theme-background))))) ; this must be grayscale
 
 (custom-set-faces
  `(ivy-posframe-border ((t (:background ,theme-faint)))))
