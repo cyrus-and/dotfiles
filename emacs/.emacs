@@ -621,6 +621,17 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
 
+;;;;; Use fixed size
+
+;; this helps with Zoom
+
+(defun my/fix-imenu-size ()
+  (with-selected-window (get-buffer-window "*Ilist*")
+    (setq window-size-fixed t)
+    (window-resize (selected-window) (- 30 (window-total-width)) t t)))
+
+(add-hook 'imenu-list-update-hook 'my/fix-imenu-size)
+
 ;;;; INITIALIZATION
 
 (custom-set-variables
