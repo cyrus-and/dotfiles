@@ -145,7 +145,7 @@
 (setq theme-divider-width   6)
 (setq theme-font            "Iosevka SS04")
 (setq theme-font-size-linux 12)
-(setq theme-font-size-macos 16)
+(setq theme-font-size-macos 14)
 
 ;;;; THEME VARIABLES
 
@@ -871,6 +871,7 @@ If prefix ARG is given, simply call `compile'."
 
 ;;;; OTHER PACKAGES
 
+(my/install 'auctex)
 (my/install 'dockerfile-mode)
 (my/install 'go-mode)
 (my/install 'rainbow-mode)
