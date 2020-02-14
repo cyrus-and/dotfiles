@@ -47,7 +47,7 @@
 ;; initial value to avoid longer pauses during the interactive usage (note that
 ;; `custom-reevaluate-setting' only works as long as the value has not been
 ;; customized)
-(setq gc-cons-threshold (* 32 (expt 2 20))) ; 32 MB
+(setq gc-cons-threshold most-positive-fixnum)
 (add-hook 'after-init-hook (lambda () (custom-reevaluate-setting 'gc-cons-threshold)))
 
 ;; force the garbage collection to happen when the focus moves away from emacs
