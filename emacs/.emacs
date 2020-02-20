@@ -1032,6 +1032,13 @@ If prefix ARG is given, simply call `compile'."
  `(woman-bold   ((t (:inherit (bold) :foreground ,theme-bright))))
  `(woman-italic ((t (:inherit (italic) :foreground ,theme-green)))))
 
+;;;; WRITEROOM
+
+(my/install 'writeroom)
+
+(custom-set-variables
+ '(writeroom-bottom-divider-width 0))
+
 ;;;; ZOOM
 
 (my/install 'zoom)
