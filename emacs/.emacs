@@ -650,7 +650,6 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'ivy)
 (my/install 'ivy-prescient) ; sort candidates by recency
-(my/install 'ivy-posframe)
 
 (custom-set-variables
  '(ivy-mode t)
@@ -658,11 +657,6 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-variables
  '(ivy-prescient-mode t))
-
-(custom-set-variables
- `(ivy-posframe-mode ,(not (eq system-type 'darwin)))
- `(ivy-posframe-border-width ,theme-divider-width) ; https://github.com/tumashu/posframe/issues/30
- '(ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center))))
 
 (custom-set-faces
  `(ivy-current-match           ((t (:background ,theme-accent :foreground ,theme-background))))
