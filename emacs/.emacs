@@ -25,6 +25,11 @@
 ;; C-x r i       `insert-register'
 ;; C-x r s       `copy-to-register'
 ;; C-x r w       `window-configuration-to-register'
+;; C-x t 0       `tab-close'
+;; C-x t 1       `tab-close-other'
+;; C-x t 2       `tab-new'
+;; C-x t RET     `tab-bar-select-tab-by-name'
+;; C-x t r       `tab-rename'
 ;; C-x w r       `unhighlight-regexp'
 ;; C-x z         `repeat'
 ;; M-/           `dabbrev-expand'
@@ -534,21 +539,6 @@ If prefix ARG is given, simply call `compile'."
 (global-set-key (kbd "C-(") 'previous-error)
 (global-set-key (kbd "C-)") 'next-error)
 
-;;;; EYEBROWSE
-
-(my/install 'eyebrowse)
-
-(custom-set-variables
- '(eyebrowse-mode t)
- '(eyebrowse-new-workspace (lambda () (find-file default-directory)))
- '(eyebrowse-mode-line-left-delimiter "")
- '(eyebrowse-mode-line-right-delimiter "")
- '(eyebrowse-mode-line-separator " "))
-
-(custom-set-faces
- `(eyebrowse-mode-line-active     ((t (:foreground ,theme-foreground))))
- `(eyebrowse-mode-line-inactive   ((t (:inherit (shadow))))))
-
 ;;;; FIND
 
 ;; find in whole path
@@ -912,6 +902,11 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'swiper)
 
 (global-set-key (kbd "C-c w") 'swiper)
+
+;;;; TAB BAR
+
+(custom-set-variables
+ '(tab-bar-mode 1))
 
 ;;;; TRAMP
 
