@@ -148,8 +148,9 @@
 
 ;; theme parameters
 (setq theme-divider-width   6)
-(setq theme-font            "Iosevka SS04")
-(setq theme-font-size-linux 12)
+(setq theme-font-linux      "Terminus")
+(setq theme-font-macos      "Iosevka SS04")
+(setq theme-font-size-linux 14)
 (setq theme-font-size-macos 14)
 
 ;;;; THEME VARIABLES
@@ -689,7 +690,7 @@ If prefix ARG is given, simply call `compile'."
   (let ((xdefaults (format "~/.Xdefaults-%s" (system-name))))
     (when (file-newer-than-file-p load-file-name xdefaults)
       (with-temp-file xdefaults
-        (insert (format "emacs.font: %s-%d\n" theme-font theme-font-size-linux))
+        (insert (format "emacs.font: %s-%d\n" theme-font-linux theme-font-size-linux))
         (insert "emacs.menuBar: off\n")
         (insert "emacs.toolBar: off\n")
         (insert "emacs.verticalScrollBars: off\n")
@@ -734,7 +735,7 @@ If prefix ARG is given, simply call `compile'."
     (when (file-newer-than-file-p load-file-name plist)
       (shell-command-to-string "defaults write org.gnu.Emacs ToolBar -bool false")
       (shell-command-to-string (format "defaults write org.gnu.Emacs Font \"%s\"-%d"
-                                       theme-font theme-font-size-macos))))
+                                       theme-font-macos theme-font-size-macos))))
 
   ;; force GPG to use a GUI pinentry program (fetch pinentry-mac from brew) to
   ;; avoid problems
@@ -902,11 +903,6 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'swiper)
 
 (global-set-key (kbd "C-c w") 'swiper)
-
-;;;; TAB BAR
-
-(custom-set-variables
- '(tab-bar-mode 1))
 
 ;;;; TRAMP
 
