@@ -828,7 +828,6 @@ If prefix ARG is given, simply call `compile'."
      "  "
      mode-line-modes
      " " ; XXX one extra space is already there
-     (:eval (eyebrowse-mode-line-indicator)) ; XXX depends on eyebrowse
      global-mode-string)))
 
 ;;;; MOUSE
