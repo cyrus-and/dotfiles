@@ -897,12 +897,6 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c a") 'shell)
 
-;;;; SWIPER
-
-(my/install 'swiper)
-
-(global-set-key (kbd "C-c w") 'swiper)
-
 ;;;; TRAMP
 
 ;; avoid verbose tramp messages and show errors only
