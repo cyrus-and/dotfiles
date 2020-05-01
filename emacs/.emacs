@@ -537,8 +537,8 @@ If prefix ARG is given, simply call `compile'."
 
 ;;;; ERROR NAVIGATION
 
-(global-set-key (kbd "C-(") 'previous-error)
-(global-set-key (kbd "C-)") 'next-error)
+(global-set-key (kbd "<M-S-up>") 'previous-error)
+(global-set-key (kbd "<M-S-down>") 'next-error)
 
 ;;;; FIND
 
