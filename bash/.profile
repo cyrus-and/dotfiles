@@ -20,3 +20,6 @@ export PATH="$HOME/.local/bin:$HOME/Library/Python/3.7/bin/:$PATH"
 
 # add rust to path
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# add go to path
+export PATH="$HOME/go/bin:$PATH"
