@@ -151,7 +151,7 @@
 (setq theme-font-linux      "Terminus")
 (setq theme-font-macos      "Iosevka SS04")
 (setq theme-font-size-linux 14)
-(setq theme-font-size-macos 14)
+(setq theme-font-size-macos 16)
 
 ;;;; THEME VARIABLES
 
@@ -850,7 +850,6 @@ If prefix ARG is given, simply call `compile'."
 
 ;;;; OTHER PACKAGES
 
-(my/install 'auctex)
 (my/install 'dockerfile-mode)
 (my/install 'go-mode)
 (my/install 'rainbow-mode)
