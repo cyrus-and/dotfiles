@@ -548,13 +548,6 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c f") 'find-name-dired)
 
-;;;; GGTAGS
-
-(my/install 'ggtags)
-
-;; automatically enable ggtags globally for every C-derived programming mode
-(add-hook 'c-mode-common-hook 'ggtags-mode)
-
 ;;;; GREP
 
 ;; exclude Node.js folders
