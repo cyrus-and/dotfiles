@@ -524,7 +524,7 @@ If prefix ARG is given, simply call `compile'."
 ;; automatic freenode.net connection (a pinentry program must be available)
 (defun my/irc ()
   (interactive)
-  (let* ((credentials (split-string (password-store-get "accounts/Freenode")))
+  (let* ((credentials (split-string (password-store-get "Freenode")))
          (nick (nth 0 credentials))
          (password (nth 1 credentials)))
     (erc
