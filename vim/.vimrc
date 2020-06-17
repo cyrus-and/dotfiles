@@ -1,13 +1,17 @@
+" appearance
+colorscheme elflord
+syntax on
+set hlsearch
+set incsearch
+
 " editing
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" appearance
-syntax on
-colorscheme elflord
-set hlsearch
-set incsearch
+" behavior
+set modeline
+filetype plugin indent on
 
 " markdown
 let g:markdown_fenced_languages = ['c', 'go', 'java', 'javascript', 'python']
