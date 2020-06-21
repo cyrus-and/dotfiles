@@ -13,8 +13,11 @@ set expandtab
 autocmd Filetype gitcommit,markdown setlocal spell
 
 " behavior
-set modeline
 filetype plugin indent on
+set modeline
+
+" netrw
+let g:netrw_banner = 0
 
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim
