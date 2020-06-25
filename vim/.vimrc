@@ -5,9 +5,9 @@ set incsearch
 
 " theme
 colorscheme elflord
-highlight VertSplit cterm=NONE ctermfg=darkgray
-highlight StatusLine ctermfg=darkgray
-highlight StatusLineNC ctermfg=darkgray
+highlight VertSplit cterm=NONE ctermfg=234
+highlight StatusLine ctermfg=234
+highlight StatusLineNC ctermfg=234
 set fillchars+=vert:│
 
 " editing
