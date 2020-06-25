@@ -8,6 +8,7 @@ set incsearch
 set tabstop=4
 set shiftwidth=4
 set expandtab
+autocmd Filetype markdown setlocal linebreak
 
 " spell checking
 autocmd Filetype gitcommit,markdown setlocal spell
