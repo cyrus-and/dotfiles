@@ -1,8 +1,14 @@
 " appearance
-colorscheme elflord
 syntax on
 set hlsearch
 set incsearch
+
+" theme
+colorscheme elflord
+highlight VertSplit cterm=NONE ctermfg=darkgray
+highlight StatusLine ctermfg=darkgray
+highlight StatusLineNC ctermfg=darkgray
+set fillchars+=vert:│
 
 " editing
 set tabstop=4
@@ -26,6 +32,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 
 Plugin 'tpope/vim-commentary'
