@@ -21,7 +21,7 @@ autocmd Filetype gitcommit,markdown setlocal spell
 
 " behavior
 filetype plugin indent on
-set modeline
+set modelines=5 " revert to vim default option
 
 " netrw
 let g:netrw_banner = 0
@@ -32,7 +32,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 
 Plugin 'tpope/vim-commentary'
