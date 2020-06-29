@@ -25,6 +25,8 @@ set modelines=5 " revert to vim default option
 
 " netrw
 let g:netrw_banner = 0
+let g:netrw_alto = 1
+let g:netrw_altv = 1
 
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/Vundle.vim

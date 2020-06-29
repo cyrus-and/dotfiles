@@ -3,6 +3,8 @@ set breakpoint pending on
 set confirm off
 set disassembly-flavor intel
 
+dashboard -layout assembly breakpoints registers stack memory
+
 # requires: https://github.com/cyrus-and/gdb-dashboard
 #
 #     wget -P ~ git.io/.gdbinit
