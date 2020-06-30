@@ -2,6 +2,9 @@
 syntax on
 set hlsearch
 set incsearch
+set cursorline
+set number
+set relativenumber
 
 " theme
 colorscheme elflord
@@ -9,6 +12,9 @@ highlight VertSplit cterm=NONE ctermfg=234
 highlight StatusLine ctermfg=234
 highlight StatusLineNC ctermfg=234
 set fillchars+=vert:│
+highlight CursorLine cterm=NONE ctermbg=234
+highlight CursorLineNr cterm=NONE
+highlight LineNr ctermfg=234
 
 " editing
 set tabstop=4
