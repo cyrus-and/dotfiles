@@ -50,6 +50,7 @@ set relativenumber
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set fillchars+=vert:│
+highlight SpellBad cterm=NONE ctermbg=9
 
 " editing
 set tabstop=4
