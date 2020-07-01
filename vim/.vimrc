@@ -1,3 +1,43 @@
+" first time setup:
+" 1. git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" 2. :PluginInstall
+
+" plugins start
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+" fancy bars
+Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline#extensions#tabline#enabled = 1
+
+" theme
+Plugin 'danilo-augusto/vim-afterglow'
+
+" code commenting utility
+Plugin 'tpope/vim-commentary'
+
+" whitespace management
+Plugin 'ntpeters/vim-better-whitespace'
+let g:better_whitespace_filetypes_blacklist = []
+let g:better_whitespace_enabled = 1
+let g:strip_whitelines_at_eof = 1
+let g:strip_whitespace_confirm = 0
+let g:strip_whitespace_on_save = 1
+let g:strip_max_file_size = 0
+
+" git integration
+Plugin 'tpope/vim-fugitive'
+
+" markdown editing
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
+
+" plugins end
+call vundle#end()
+
 " appearance
 syntax on
 set hlsearch
@@ -6,15 +46,12 @@ set cursorline
 set number
 set relativenumber
 
-" theme
-colorscheme elflord
-highlight VertSplit cterm=NONE ctermfg=234
-highlight StatusLine ctermfg=234
-highlight StatusLineNC ctermfg=234
+" set theme and fixes
+colorscheme afterglow
+hi VertSplit ctermbg=NONE
 set fillchars+=vert:│
-highlight CursorLine cterm=NONE ctermbg=234
-highlight CursorLineNr cterm=NONE
-highlight LineNr ctermfg=234
+highlight StatusLine ctermfg=235
+highlight StatusLineNC ctermfg=235
 
 " editing
 set tabstop=4
@@ -29,33 +66,14 @@ autocmd Filetype gitcommit,markdown setlocal spell
 filetype plugin indent on
 set modelines=5 " revert to vim default option
 
+" swap files (https://vi.stackexchange.com/a/179)
+set directory^=$HOME/.vim//
+
+" persistent undo
+set undofile
+set undodir=$HOME/.vim/
+
 " netrw
 let g:netrw_banner = 0
 let g:netrw_alto = 1
 let g:netrw_altv = 1
-
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'bling/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-
-Plugin 'tpope/vim-commentary'
-
-Plugin 'ntpeters/vim-better-whitespace'
-let g:better_whitespace_filetypes_blacklist = []
-let g:better_whitespace_enabled = 1
-let g:strip_whitelines_at_eof = 1
-let g:strip_whitespace_confirm = 0
-let g:strip_whitespace_on_save = 1
-let g:strip_max_file_size = 0
-
-Plugin 'tpope/vim-fugitive'
-
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled = 1
-
-call vundle#end()
