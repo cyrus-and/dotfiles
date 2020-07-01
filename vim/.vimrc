@@ -13,7 +13,7 @@ Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 
 " theme
-Plugin 'danilo-augusto/vim-afterglow'
+Plugin 'gruvbox-community/gruvbox'
 
 " code commenting utility
 Plugin 'tpope/vim-commentary'
@@ -47,11 +47,9 @@ set number
 set relativenumber
 
 " set theme and fixes
-colorscheme afterglow
-hi VertSplit ctermbg=NONE
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 set fillchars+=vert:│
-highlight StatusLine ctermfg=235
-highlight StatusLineNC ctermfg=235
 
 " editing
 set tabstop=4
