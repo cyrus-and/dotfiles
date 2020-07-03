@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " theme
 Plugin 'gruvbox-community/gruvbox'
@@ -64,6 +65,10 @@ autocmd Filetype gitcommit,markdown setlocal spell
 " behavior
 filetype plugin indent on
 set modelines=5 " revert to vim default option
+set wildmenu
+set ignorecase
+set smartcase
+set ttimeoutlen=0
 
 " swap files (https://vi.stackexchange.com/a/179)
 set directory^=$HOME/.vim//
