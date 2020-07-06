@@ -4,7 +4,13 @@
 
 " custom shortcuts
 let mapleader = " "
-nnoremap <leader>gg :tab Gstatus<CR>
+nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>gs :tab Gstatus<CR>
+nnoremap <leader>gs :tab Gstatus<CR>
+nnoremap <leader>xx :Explore<CR>
+nnoremap <leader>xt :Texplore<CR>
+nnoremap <leader>xv :Vexplore!<CR>
+nnoremap <leader>xh :Hexplore<CR>
 
 " plugins start
 set rtp+=~/.vim/bundle/Vundle.vim
