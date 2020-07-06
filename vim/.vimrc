@@ -13,7 +13,7 @@ Plugin 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
-" theme
+" theme (see below)
 Plugin 'gruvbox-community/gruvbox'
 
 " code commenting utility
@@ -30,6 +30,9 @@ let g:strip_max_file_size = 0
 
 " git integration
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+set updatetime=100
+let g:gitgutter_max_signs = -1
 
 " markdown editing
 Plugin 'godlygeek/tabular'
