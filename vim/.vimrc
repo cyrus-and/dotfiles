@@ -2,6 +2,10 @@
 " 1. git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " 2. :PluginInstall
 
+" custom shortcuts
+let mapleader = " "
+nnoremap <leader>gg :tab Gstatus<CR>
+
 " plugins start
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -81,6 +85,9 @@ set ignorecase
 set smartcase
 set ttimeoutlen=0
 set notimeout
+
+" remember position
+autocmd BufReadPost * silent! normal! `"
 
 " swap files (https://vi.stackexchange.com/a/179)
 set directory^=$HOME/.vim//
