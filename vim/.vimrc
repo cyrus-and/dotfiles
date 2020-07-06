@@ -30,9 +30,16 @@ let g:strip_max_file_size = 0
 
 " git integration
 Plugin 'tpope/vim-fugitive'
+
+" git changes in sign column
 Plugin 'airblade/vim-gitgutter'
 set updatetime=100
 let g:gitgutter_max_signs = -1
+let g:gitgutter_sign_added = '++'
+let g:gitgutter_sign_modified = '>>'
+let g:gitgutter_sign_removed = 'vv'
+let g:gitgutter_sign_removed_first_line = '^^'
+let g:gitgutter_sign_removed_above_and_below = '||'
 
 " markdown editing
 Plugin 'godlygeek/tabular'
@@ -73,6 +80,7 @@ set wildmenu
 set ignorecase
 set smartcase
 set ttimeoutlen=0
+set notimeout
 
 " swap files (https://vi.stackexchange.com/a/179)
 set directory^=$HOME/.vim//
