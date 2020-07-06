@@ -52,6 +52,7 @@ set relativenumber
 
 " set theme and fixes
 let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_invert_signs = 1
 colorscheme gruvbox
 set fillchars+=vert:│
 highlight SpellBad cterm=NONE ctermbg=9
