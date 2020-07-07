@@ -1,19 +1,17 @@
-" first time setup:
-" 1. git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" vim:foldmethod=marker:foldlevel=0
+
+" first time setup
+" 1. :!git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 " 2. :PluginInstall
 
 " custom shortcuts
 let mapleader = " "
 nnoremap <leader><space> :nohlsearch<CR>
-nnoremap <leader>gs :tab Gstatus<CR>
-nnoremap <leader>gs :tab Gstatus<CR>
-nnoremap <leader>xx :Explore<CR>
-nnoremap <leader>xt :Texplore<CR>
-nnoremap <leader>xv :Vexplore!<CR>
-nnoremap <leader>xh :Hexplore<CR>
+nnoremap <leader>g :Gstatus<CR>
+nnoremap <leader>x :Explore<CR>
 
 " plugins start
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim"
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
@@ -49,6 +47,7 @@ let g:gitgutter_sign_modified = '>>'
 let g:gitgutter_sign_removed = 'vv'
 let g:gitgutter_sign_removed_first_line = '^^'
 let g:gitgutter_sign_removed_above_and_below = '||'
+let g:gitgutter_sign_modified_removed = 'v>'
 
 " markdown editing
 Plugin 'godlygeek/tabular'
@@ -62,9 +61,11 @@ call vundle#end()
 syntax on
 set hlsearch
 set incsearch
-set cursorline
 set number
 set relativenumber
+set cursorline
+autocmd WinEnter * set cursorline
+autocmd WinLeave * set nocursorline
 
 " set theme and fixes
 let g:gruvbox_contrast_dark = 'hard'
@@ -106,3 +107,8 @@ set undodir=$HOME/.vim/
 let g:netrw_banner = 0
 let g:netrw_alto = 1
 let g:netrw_altv = 1
+
+" zoom
+set winwidth=80
+set winheight=24
+autocmd BufWinEnter,WinEnter * :wincmd =
