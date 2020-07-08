@@ -54,6 +54,12 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_concealcursor = 0
+let g:indentLine_char = '┆'
+
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " plugins end
 call vundle#end()
 
@@ -81,17 +87,20 @@ set shiftwidth=4
 set expandtab
 autocmd Filetype markdown setlocal linebreak
 
+" transarent system clipboard access
+set clipboard=unnamed
+
 " spell checking
 autocmd Filetype gitcommit,markdown setlocal spell
 
 " behavior
 filetype plugin indent on
 set modelines=5 " revert to vim default option
-set wildmenu
 set ignorecase
 set smartcase
 set ttimeoutlen=0
-set notimeout
+set wildmenu
+set wildmode=list:longest,full
 
 " remember position
 autocmd BufReadPost * silent! normal! `"
