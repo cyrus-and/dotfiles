@@ -35,6 +35,7 @@ Plugin 'tpope/vim-commentary'
 
 " CtrlP {{{
 Plugin 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_match_current_file = 1
 let g:ctrlp_show_hidden = 1
 " }}}
 
