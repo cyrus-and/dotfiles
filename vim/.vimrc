@@ -104,6 +104,7 @@ set wildmode=list:longest,full
 
 " Colorscheme {{{
 colorscheme gruvbox
+highligh link mkdLineBreak ExtraWhitespace " XXX https://github.com/plasticboy/vim-markdown/issues/289
 " }}}
 
 " Cursor line {{{
