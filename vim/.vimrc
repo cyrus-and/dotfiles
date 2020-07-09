@@ -103,8 +103,8 @@ set wildmode=list:longest,full
 
 " Colorscheme {{{
 colorscheme gruvbox
-highlight SpellBad cterm=NONE ctermbg='red'
-highlight SpellCap cterm=NONE ctermbg='blue'
+highlight SpellBad cterm=NONE ctermbg='red' ctermfg='white'
+highlight SpellCap cterm=NONE ctermbg='blue' ctermfg='black'
 " }}}
 
 " Cursor line {{{
