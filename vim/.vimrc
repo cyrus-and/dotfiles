@@ -1,4 +1,4 @@
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:nofoldenable
 
 " First-time setup {{{
 " :!git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -65,6 +65,7 @@ let g:gitgutter_sign_modified_removed = 'v>'
 "  Gruvbox {{{
 Plugin 'gruvbox-community/gruvbox'
 let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_guisp_fallback = 'bg'
 let g:gruvbox_invert_signs = 1
 " }}}
 
@@ -103,8 +104,6 @@ set wildmode=list:longest,full
 
 " Colorscheme {{{
 colorscheme gruvbox
-highlight SpellBad cterm=NONE ctermbg='red' ctermfg='white'
-highlight SpellCap cterm=NONE ctermbg='blue' ctermfg='black'
 " }}}
 
 " Cursor line {{{
