@@ -95,7 +95,8 @@ autocmd BufReadPost * silent! normal! `"
 filetype plugin indent on
 set directory^=$HOME/.vim// " swap files directory (https://vi.stackexchange.com/a/179)
 set ignorecase
-set modelines=5 " revert to vim default option
+set modelines=5 " revert to vim default option on macOS
+set shortmess+=I
 set smartcase
 set ttimeoutlen=0
 set wildmenu
