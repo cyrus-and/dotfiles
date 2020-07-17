@@ -21,6 +21,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 " Better Whitespace {{{
 Plugin 'ntpeters/vim-better-whitespace'
+autocmd FileType fugitive DisableWhitespace
 let g:better_whitespace_enabled = 1
 let g:better_whitespace_filetypes_blacklist = ['diff']
 let g:strip_max_file_size = 0
