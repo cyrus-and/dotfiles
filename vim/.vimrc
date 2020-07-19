@@ -127,6 +127,15 @@ set undofile
 set undodir=$HOME/.vim/
 " }}}
 
+" GUI {{{
+set background=dark
+set guifont=Iosevka\ SS04:h16
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+" }}}
+
 " Netrw {{{
 let g:netrw_alto = 1
 let g:netrw_altv = 1
