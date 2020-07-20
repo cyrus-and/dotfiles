@@ -1,6 +1,6 @@
 # common
 shopt -s extglob
-export EDITOR='emacsclient -t -a emacs'
+export EDITOR=vim
 
 # history
 shopt -s histappend
