@@ -37,6 +37,7 @@ Plugin 'tpope/vim-commentary'
 " CtrlP {{{
 Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_map = '<leader>p'
 let g:ctrlp_match_current_file = 1
 let g:ctrlp_show_hidden = 1
 " }}}
@@ -65,7 +66,7 @@ let g:gitgutter_sign_removed_above_and_below = '||'
 let g:gitgutter_sign_modified_removed = 'v>'
 " }}}
 
-"  Gruvbox {{{
+" Gruvbox {{{
 Plugin 'gruvbox-community/gruvbox'
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_guisp_fallback = 'bg'
@@ -136,6 +137,10 @@ set guioptions-=l
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
+" }}}
+
+" Highlight special characters {{{
+syntax match ErrorMsg " " " non breaking space
 " }}}
 
 " Netrw {{{
