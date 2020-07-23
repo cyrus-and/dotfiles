@@ -139,8 +139,8 @@ set guioptions-=r
 set guioptions-=R
 " }}}
 
-" Highlight special characters {{{
-syntax match ErrorMsg " " " non breaking space
+" Highlight annoying characters {{{
+autocmd BufWinEnter * match ErrorMsg /[ ‘’“”]/
 " }}}
 
 " Netrw {{{
@@ -152,7 +152,7 @@ let g:netrw_banner = 0
 " Shortcuts {{{
 let mapleader = " "
 nnoremap <leader><space> :nohlsearch<CR>
-nnoremap <leader>g :Gstatus<CR>
+nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>x :Explore<CR>
 " }}}
 
