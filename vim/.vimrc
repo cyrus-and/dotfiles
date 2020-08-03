@@ -152,6 +152,7 @@ let g:netrw_banner = 0
 let mapleader = " "
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
+nnoremap <leader>t :Texplore<CR>
 nnoremap <leader>x :Explore<CR>
 " }}}
 
