@@ -76,6 +76,8 @@ let g:gruvbox_invert_signs = 1
 " Markdown {{{
 Plugin 'godlygeek/tabular' " XXX must be before
 Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_folding_disabled = 1
 " }}}
 
