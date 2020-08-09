@@ -6,6 +6,9 @@ fi
 # password store on dropbox
 export PASSWORD_STORE_DIR="$HOME/Dropbox/pass/"
 
+# use the homebrew version of ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
 # always install gems locally with gem or bundler
 export GEM_HOME="$HOME/.gem"
 export PATH="$GEM_HOME/bin:$PATH"
