@@ -104,7 +104,6 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
     up() {
         brew update  &&\
         brew upgrade &&\
-        brew cask upgrade &&\
         brew cleanup &&\
         true
     }
