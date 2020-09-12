@@ -993,7 +993,7 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-variables
  '(writeroom-bottom-divider-width 0)
- '(writeroom-fullscreen-effect 'maximized))
+ '(writeroom-fullscreen-effect 'fullboth))
 
 ;;;; ZOOM
 
