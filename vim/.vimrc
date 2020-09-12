@@ -72,11 +72,26 @@ let g:gitgutter_sign_removed_above_and_below = '||'
 let g:gitgutter_sign_modified_removed = 'v>'
 " }}}
 
+" GnuPG {{{
+Plugin 'jamessan/vim-gnupg'
+" }}}
+
 " Gruvbox {{{
 Plugin 'gruvbox-community/gruvbox'
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_guisp_fallback = 'bg'
 let g:gruvbox_invert_signs = 1
+" }}}
+
+" Goyo {{{
+Plugin 'junegunn/goyo.vim'
+
+function! s:goyo_toggle()
+    set cursorline!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_toggle()
+autocmd! User GoyoLeave nested call <SID>goyo_toggle()
 " }}}
 
 " Markdown {{{
@@ -132,6 +147,7 @@ autocmd FileType markdown,gitcommit setlocal spell
 set backspace=indent,eol,start
 set clipboard=unnamed
 set expandtab
+set linebreak
 set shiftwidth=4
 set tabstop=4
 set undofile
@@ -140,11 +156,12 @@ set undodir=$HOME/.vim/
 
 " GUI {{{
 set background=dark
-set guifont=Iosevka\ SS04:h16
+set guifont=Iosevka\ SS04:h17
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
 set guioptions-=R
+set belloff=all
 " }}}
 
 " Highlight annoying characters {{{
