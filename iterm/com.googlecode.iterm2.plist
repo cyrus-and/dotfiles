@@ -388,6 +388,8 @@
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>IRMemory</key>
+	<integer>500</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
@@ -775,7 +777,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Recycle</string>
 			<key>Custom Window Title</key>
 			<string></string>
 			<key>Default Bookmark</key>
@@ -1414,7 +1416,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>68A78FCD-9D37-4DEC-B3E3-D2EC0CC9776E</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>263</integer>
+	<integer>285</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2199,7 +2201,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-07-06T12:41:32Z</date>
+	<date>2020-09-10T11:55:27Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
