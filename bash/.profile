@@ -19,7 +19,8 @@ export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
 
 # always install pip packages locally
 export PIP_USER=yes
-export PATH="$HOME/.local/bin:$HOME/Library/Python/3.7/bin/:$PATH"
+export PATH="$(python2 -c 'import site; print(site.USER_BASE + "/bin")'):$PATH"
+export PATH="$(python3 -c 'import site; print(site.USER_BASE + "/bin")'):$PATH"
 
 # add rust to path
 export PATH="$HOME/.cargo/bin:$PATH"
