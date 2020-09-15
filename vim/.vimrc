@@ -86,12 +86,23 @@ let g:gruvbox_invert_signs = 1
 " Goyo {{{
 Plugin 'junegunn/goyo.vim'
 
-function! s:goyo_toggle()
-    set cursorline!
+function! s:goyo_enter()
+    mkexrc! $HOME/.vim/mkexrc
+    set display+=lastline
+    set fullscreen
+    set nocursorline
+    noremap <Up> gk
+    noremap <Down> gj
+    noremap <D-Left> g0
+    noremap <D-Right> g$
 endfunction
 
-autocmd! User GoyoEnter nested call <SID>goyo_toggle()
-autocmd! User GoyoLeave nested call <SID>goyo_toggle()
+function! s:goyo_leave()
+    source $HOME/.vim/mkexrc
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }}}
 
 " Markdown {{{
