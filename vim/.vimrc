@@ -91,6 +91,8 @@ function! s:goyo_enter()
     set display+=lastline
     set fullscreen
     set nocursorline
+    noremap k gk
+    noremap j gj
     noremap <Up> gk
     noremap <Down> gj
     noremap <D-Left> g0
