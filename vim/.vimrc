@@ -194,7 +194,7 @@ let mapleader = " "
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>t :Texplore<CR>
-nnoremap <leader>x :Explore<CR>
+nnoremap <leader>x :Rexplore<CR>
 " }}}
 
 " Zoom {{{
