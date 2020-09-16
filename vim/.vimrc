@@ -169,6 +169,7 @@ set undodir=$HOME/.vim/
 
 " GUI {{{
 set background=dark
+set guicursor+=a:blinkon0
 set guifont=Iosevka\ SS04:h17
 set guioptions-=l
 set guioptions-=L
