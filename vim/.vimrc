@@ -191,11 +191,13 @@ let g:netrw_keepdir= 0
 " }}}
 
 " Shortcuts {{{
+command ExploreOrReturn if exists('w:netrw_rexlocal')|execute 'Rexplore'|else|execute 'Explore'|endif
+
 let mapleader = " "
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>t :Texplore<CR>
-nnoremap <leader>x :Rexplore<CR>
+nnoremap <leader>x :ExploreOrReturn<CR>
 " }}}
 
 " Zoom {{{
