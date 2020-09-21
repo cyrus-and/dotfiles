@@ -108,6 +108,10 @@ autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }}}
 
+" JavaScript {{{
+Plugin 'pangloss/vim-javascript'
+" }}}
+
 " Markdown {{{
 Plugin 'godlygeek/tabular' " XXX must be before
 Plugin 'plasticboy/vim-markdown'
