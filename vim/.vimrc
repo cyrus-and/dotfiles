@@ -42,7 +42,7 @@ Plugin 'tpope/vim-commentary'
 
 " CtrlP {{{
 Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_custom_ignore = 'node_modules'
+let g:ctrlp_custom_ignore = { 'dir': '\.git$\|^node_modules$', 'file': '^\.DS_Store$' }
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_match_current_file = 1
 let g:ctrlp_regexp = 1
@@ -175,7 +175,7 @@ set undodir=$HOME/.vim/
 " GUI {{{
 set background=dark
 set guicursor+=a:blinkon0
-set guifont=Iosevka\ SS04:h17
+set guifont=Iosevka\ SS04:h16
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
