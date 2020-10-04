@@ -187,6 +187,10 @@ set belloff=all
 autocmd BufWinEnter * match ErrorMsg /[ ‘’“”]/
 " }}}
 
+" JSON {{{
+let g:vim_json_conceal = 0
+" }}}
+
 " Netrw {{{
 let g:netrw_alto = 1
 let g:netrw_altv = 1
