@@ -45,7 +45,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_custom_ignore = { 'dir': '\.git$\|node_modules$', 'file': '\.DS_Store$' }
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_match_current_file = 1
-let g:ctrlp_regexp = 1
 let g:ctrlp_show_hidden = 1
 " }}}
 
