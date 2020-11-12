@@ -109,6 +109,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " JavaScript {{{
 Plugin 'pangloss/vim-javascript'
+Plugin 'MaxMEllon/vim-jsx-pretty'
 " }}}
 
 " Markdown {{{
@@ -135,7 +136,7 @@ set relativenumber
 " }}}
 
 " Behavior {{{
-autocmd BufReadPost * silent! normal! `"
+autocmd BufReadPost * silent! normal! g`"
 filetype plugin indent on
 set directory^=$HOME/.vim// " swap files directory (https://vi.stackexchange.com/a/179)
 set ignorecase
@@ -198,13 +199,11 @@ let g:netrw_keepdir= 0
 " }}}
 
 " Shortcuts {{{
-command ExploreOrReturn if exists('w:netrw_rexlocal')|execute 'Rexplore'|else|execute 'Explore'|endif
-
 let mapleader = " "
 nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>t :Texplore<CR>
-nnoremap <leader>x :ExploreOrReturn<CR>
+nnoremap <leader>x :Explore<CR>
 " }}}
 
 " Zoom {{{
