@@ -46,6 +46,7 @@ let g:ctrlp_custom_ignore = { 'dir': '\.git$\|node_modules$', 'file': '\.DS_Stor
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_match_current_file = 1
 let g:ctrlp_show_hidden = 1
+nnoremap <leader>o :CtrlPMRUFiles<CR>
 " }}}
 
 " Fugitive {{{
