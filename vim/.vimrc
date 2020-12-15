@@ -48,6 +48,10 @@ let g:ctrlp_match_current_file = 1
 let g:ctrlp_show_hidden = 1
 " }}}
 
+" EasyMotion {{{
+Plugin 'easymotion/vim-easymotion'
+" }}}
+
 " Fugitive {{{
 Plugin 'tpope/vim-fugitive'
 Plugin 'aymericbeaumet/vim-symlink'
@@ -200,7 +204,7 @@ let g:netrw_keepdir= 0
 
 " Shortcuts {{{
 let mapleader = " "
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>t :Texplore<CR>
 nnoremap <leader>x :Explore<CR>
