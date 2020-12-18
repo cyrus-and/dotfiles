@@ -208,7 +208,8 @@ nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>t :Texplore<CR>
 nnoremap <leader>x :Explore<CR>
-nnoremap <leader>o :CtrlPMRUFiles<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>r :CtrlPMRUFiles<CR>
 " }}}
 
 " Zoom {{{
