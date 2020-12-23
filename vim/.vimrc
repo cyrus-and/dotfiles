@@ -189,6 +189,12 @@ set guioptions-=L
 set guioptions-=r
 set guioptions-=R
 set belloff=all
+" defaults write org.vim.MacVim MMNativeFullScreen 0
+" defaults write org.vim.MacVim MMTextInsetTop 0
+" defaults write org.vim.MacVim MMTextInsetLeft 0
+" defaults write org.vim.MacVim MMTextInsetBottom 0
+" defaults write org.vim.MacVim MMTextInsetRight 0
+set fullscreen
 " }}}
 
 " Highlight annoying characters {{{
