@@ -124,6 +124,10 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_folding_disabled = 1
 " }}}
 
+" Vinegar {{{
+Plugin 'tpope/vim-vinegar'
+" }}}
+
 " Vundle (end) {{{
 call vundle#end()
 " }}}
@@ -198,7 +202,6 @@ let g:vim_json_conceal = 0
 " Netrw {{{
 let g:netrw_alto = 1
 let g:netrw_altv = 1
-" let g:netrw_banner = 0 " a bug causes the paste buffer to be deleted
 let g:netrw_keepdir= 0
 " }}}
 
