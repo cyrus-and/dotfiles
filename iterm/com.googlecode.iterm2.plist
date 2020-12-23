@@ -1374,6 +1374,10 @@
 	<integer>0</integer>
 	<key>TabsHaveCloseButton</key>
 	<true/>
+	<key>TerminalMargin</key>
+	<integer>0</integer>
+	<key>TerminalVMargin</key>
+	<integer>0</integer>
 	<key>UseBorder</key>
 	<true/>
 	<key>UseLionStyleFullscreen</key>
