@@ -124,6 +124,14 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_folding_disabled = 1
 " }}}
 
+" NERDTree {{{
+Plugin 'preservim/nerdtree'
+" }}}
+
+" ripgrep {{{
+Plugin 'jremmen/vim-ripgrep'
+" }}}
+
 " Vinegar {{{
 Plugin 'tpope/vim-vinegar'
 " }}}
@@ -183,7 +191,7 @@ set undodir=$HOME/.vim/
 " GUI {{{
 set background=dark
 set guicursor+=a:blinkon0
-set guifont=Iosevka\ SS04:h16
+set guifont=Iosevka\ SS04:h15
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
