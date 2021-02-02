@@ -371,7 +371,7 @@
 	<key>HideFromDockAndAppSwitcher</key>
 	<false/>
 	<key>HideMenuBarInFullscreen</key>
-	<false/>
+	<true/>
 	<key>HideTab</key>
 	<true/>
 	<key>HideTabNumber</key>
@@ -1218,7 +1218,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Iosevka-SS04 16</string>
+			<string>Iosevka-SS04 15</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -1275,6 +1275,8 @@
 			<array/>
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
+			<key>Thin Strokes</key>
+			<integer>4</integer>
 			<key>Title Components</key>
 			<integer>1</integer>
 			<key>Transparency</key>
