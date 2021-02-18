@@ -216,6 +216,7 @@ nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>t :NERDTreeFocus<CR>
 nnoremap <leader>f :Files<CR>
+nnoremap <leader>g :Rg<CR>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>z :wincmd =<CR>
