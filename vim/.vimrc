@@ -40,14 +40,6 @@ let g:strip_whitespace_on_save = 1
 Plugin 'tpope/vim-commentary'
 " }}}
 
-" CtrlP {{{
-Plugin 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_custom_ignore = { 'dir': '\.git$\|node_modules$', 'file': '\.DS_Store$' }
-let g:ctrlp_map = '<leader>p'
-let g:ctrlp_match_current_file = 1
-let g:ctrlp_show_hidden = 1
-" }}}
-
 " EasyMotion {{{
 Plugin 'easymotion/vim-easymotion'
 " }}}
@@ -55,6 +47,11 @@ Plugin 'easymotion/vim-easymotion'
 " Fugitive {{{
 Plugin 'tpope/vim-fugitive'
 Plugin 'aymericbeaumet/vim-symlink'
+" }}}
+
+" fzf {{{
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 " }}}
 
 " IndentLine {{{
@@ -126,14 +123,7 @@ let g:vim_markdown_folding_disabled = 1
 
 " NERDTree {{{
 Plugin 'preservim/nerdtree'
-" }}}
-
-" ripgrep {{{
-Plugin 'jremmen/vim-ripgrep'
-" }}}
-
-" Vinegar {{{
-Plugin 'tpope/vim-vinegar'
+let NERDTreeChDirMode = 2
 " }}}
 
 " Vundle (end) {{{
@@ -224,14 +214,15 @@ let g:netrw_keepdir= 0
 let mapleader = " "
 nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
-nnoremap <leader>t :Texplore<CR>
-nnoremap <leader>x :Explore<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>r :CtrlPMRUFiles<CR>
+nnoremap <leader>t :NERDTreeFocus<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffer<CR>
+nnoremap <leader>h :History<CR>
+nnoremap <leader>z :wincmd =<CR>
 " }}}
 
 " Zoom {{{
-autocmd BufWinEnter,WinEnter * :wincmd =
-set winheight=30
-set winwidth=120
+" autocmd BufWinEnter,WinEnter * :wincmd =
+" set winheight=30
+" set winwidth=120
 " }}}
