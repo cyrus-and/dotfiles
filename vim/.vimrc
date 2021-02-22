@@ -122,6 +122,10 @@ Plugin 'preservim/nerdtree'
 let NERDTreeChDirMode = 2
 " }}}
 
+" Rooter {{{
+Plugin 'airblade/vim-rooter'
+" }}}
+
 " Vundle (end) {{{
 call vundle#end()
 " }}}
@@ -212,7 +216,7 @@ nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>l :Commits<CR>
 nnoremap <leader>f :GitFiles<CR>
-nnoremap <leader>t :NERDTreeFocus<CR>
+nnoremap <leader>t :NERDTreeFind<CR>
 nnoremap <leader>F :Files<CR>
 nnoremap <leader>g :Rg<CR>
 nnoremap <leader>b :Buffer<CR>
