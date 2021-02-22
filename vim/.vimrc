@@ -80,30 +80,6 @@ let g:gruvbox_guisp_fallback = 'bg'
 let g:gruvbox_invert_signs = 1
 " }}}
 
-" Goyo {{{
-Plugin 'junegunn/goyo.vim'
-
-function! s:goyo_enter()
-    mkexrc! $HOME/.vim/mkexrc
-    set display+=lastline
-    set fullscreen
-    set nocursorline
-    noremap k gk
-    noremap j gj
-    noremap <Up> gk
-    noremap <Down> gj
-    noremap <D-Left> g0
-    noremap <D-Right> g$
-endfunction
-
-function! s:goyo_leave()
-    source $HOME/.vim/mkexrc
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-" }}}
-
 " JavaScript {{{
 Plugin 'pangloss/vim-javascript'
 Plugin 'MaxMEllon/vim-jsx-pretty'
