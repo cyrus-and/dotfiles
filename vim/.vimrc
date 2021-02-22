@@ -194,7 +194,8 @@ nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>l :Commits<CR>
 nnoremap <leader>f :GitFiles<CR>
-nnoremap <leader>t :NERDTreeFind<CR>
+nnoremap <leader>t :NERDTree<CR>
+nnoremap <leader>. :NERDTreeFind<CR>
 nnoremap <leader>F :Files<CR>
 nnoremap <leader>g :Rg<CR>
 nnoremap <leader>b :Buffer<CR>
