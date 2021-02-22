@@ -52,6 +52,7 @@ Plugin 'aymericbeaumet/vim-symlink'
 " fzf {{{
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+let g:fzf_layout = { 'down': '~40%' }
 " }}}
 
 " IndentLine {{{
