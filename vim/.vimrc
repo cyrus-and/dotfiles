@@ -73,10 +73,6 @@ let g:gitgutter_sign_removed_above_and_below = '||'
 let g:gitgutter_sign_modified_removed = 'v>'
 " }}}
 
-" GnuPG {{{
-Plugin 'jamessan/vim-gnupg'
-" }}}
-
 " Gruvbox {{{
 Plugin 'gruvbox-community/gruvbox'
 let g:gruvbox_contrast_dark = 'hard'
@@ -214,6 +210,7 @@ let g:netrw_keepdir= 0
 let mapleader = " "
 nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
+nnoremap <leader>l :Commits<CR>
 nnoremap <leader>t :NERDTreeFocus<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>g :Rg<CR>
