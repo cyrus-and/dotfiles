@@ -211,8 +211,9 @@ let mapleader = " "
 nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>s :Gstatus<CR>
 nnoremap <leader>l :Commits<CR>
+nnoremap <leader>f :GitFiles<CR>
 nnoremap <leader>t :NERDTreeFocus<CR>
-nnoremap <leader>f :Files<CR>
+nnoremap <leader>F :Files<CR>
 nnoremap <leader>g :Rg<CR>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <leader>h :History<CR>
