@@ -22,3 +22,5 @@
     subst = !sh -c 'git ls-files "$3" | xargs sed -i -e \"s/$1/$2/g\"' --
 [push]
     default = simple
+[init]
+    defaultBranch = master
