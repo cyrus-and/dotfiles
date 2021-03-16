@@ -98,6 +98,7 @@ let g:vim_markdown_folding_disabled = 1
 " NERDTree {{{
 Plugin 'preservim/nerdtree'
 let NERDTreeChDirMode = 2
+let NERDTreeQuitOnOpen = 1
 " }}}
 
 " Rooter {{{
