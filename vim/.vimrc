@@ -82,9 +82,17 @@ let g:gruvbox_guisp_fallback = 'bg'
 let g:gruvbox_invert_signs = 1
 " }}}
 
+" Highlightedyank {{{
+Plugin 'machakann/vim-highlightedyank'
+" }}}
+
 " JavaScript {{{
 Plugin 'pangloss/vim-javascript'
 Plugin 'MaxMEllon/vim-jsx-pretty'
+" }}}
+
+" liquid {{{
+Plugin 'tpope/vim-liquid'
 " }}}
 
 " Markdown {{{
@@ -193,7 +201,8 @@ let g:netrw_keepdir= 0
 " Shortcuts {{{
 let mapleader = " "
 nnoremap <leader>n :nohlsearch<CR>
-nnoremap <leader>s :Gstatus<CR>
+nnoremap <leader>s :Gstatus<CR><C-W>T
+nnoremap <leader>S :GFiles?<CR>
 nnoremap <leader>l :Commits<CR>
 nnoremap <leader>f :GitFiles<CR>
 nnoremap <leader>t :NERDTree<CR>
