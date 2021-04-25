@@ -11,12 +11,12 @@ HISTIGNORE='fg'
 PROMPT_COMMAND='history -a'
 
 # tty
-if [ -t 0 ]; then
+if [[ -t 0 ]]; then
     stty -ctlecho -ixon
 fi
 
 # prompt
-if [ "$TERM" != dumb ]; then
+if [[ "$TERM" != dumb ]]; then
     # c <ansi> <text>
     c() { echo -n "\[\e[${2}m\]$1\[\e[0m\]"; }
 
@@ -92,9 +92,6 @@ who-swaps() {
 # OS-specific
 
 if [[ "$OSTYPE" =~ darwin* ]]; then
-    # mute zsh warning
-    export BASH_SILENCE_DEPRECATION_WARNING=1
-
     # brew PATH
     export PATH="/usr/local/sbin:$PATH"
 
@@ -102,30 +99,27 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
     alias ls='ls -G'
 
     up() {
-        brew update  &&\
-        brew upgrade &&\
-        brew cleanup &&\
+        brew update  && \
+        brew upgrade && \
+        brew cleanup && \
         true
     }
 
     # completion
     source $(brew --prefix)/etc/bash_completion
-
-    # BUG? -1 not working
-    HISTSIZE=100000
 fi
 
-if [ "$OSTYPE" = 'linux-gnu' ]; then
+if [[ "$OSTYPE" = 'linux-gnu' ]]; then
     # aliases
     alias ls='ls --color=auto'
 
     up() {
-        sudo apt-get update        &&\
-        sudo apt-get upgrade -y    &&\
-        sudo apt-get autoremove -y &&\
-        sudo apt-get autoclean     &&\
-        sudo apt-get clean         &&\
-        sudo updatedb              &&\
+        sudo apt-get update        && \
+        sudo apt-get upgrade -y    && \
+        sudo apt-get autoremove -y && \
+        sudo apt-get autoclean     && \
+        sudo apt-get clean         && \
+        sudo updatedb              && \
         true
     }
 
