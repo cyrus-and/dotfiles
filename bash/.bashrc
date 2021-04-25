@@ -45,50 +45,6 @@ alias ll='ls -lartF'
 alias gdb='gdb -q'
 alias playground='make -sC ~/dev/playground/'
 
-# helpers
-
-hack() {
-    local path=$(mktemp -dp ~/tmp "hack-${1:-this}.XXX")
-    cd $path
-    $EDITOR .
-}
-
-rttyshell() {
-    local PORT="${1:?Specify a port}"
-    [ $# = 2 ] && local HOST="-s $2"
-    local STTY="$(stty -g)"
-    stty -echo raw
-    {
-        echo exec python -c "\"import pty; pty.spawn(['sh', '-c', 'stty rows $LINES columns $COLUMNS; export TERM=$TERM; clear; exec $SHELL'])\""
-        cat
-    } | nc -vlp "$PORT" $HOST
-    stty "$STTY"
-}
-
-fttyshell() {
-    local HOST="${1:?Specify a hostname}"
-    local PORT="${2:?Specify a port}"
-    local STTY="$(stty -g)"
-    stty -echo raw
-    {
-        echo exec python -c "\"import pty; pty.spawn(['sh', '-c', 'stty rows $LINES columns $COLUMNS; export TERM=$TERM; clear; exec $SHELL'])\""
-        cat
-    } | nc -v "$HOST" "$PORT"
-    stty "$STTY"
-}
-
-gdb-tmux() {
-    local id="$(tmux split-pane -hPF "#D" "tail -f /dev/null")"
-    tmux last-pane
-    local tty="$(tmux display-message -p -t "$id" '#{pane_tty}')"
-    gdb -ex "dashboard -output $tty" "$@"
-    tmux kill-pane -t "$id"
-}
-
-who-swaps() {
-    awk '/^Name:/ { name = $2 } /^VmSwap:/ && $2 != 0 { swap = $2; printf "%dkb %s\n", swap, name }' /proc/+([0-9])/status | column -t | sort -nk1
-}
-
 # OS-specific
 
 if [[ "$OSTYPE" =~ darwin* ]]; then
