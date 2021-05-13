@@ -133,6 +133,7 @@ set relativenumber
 autocmd BufReadPost * silent! normal! g`"
 filetype plugin indent on
 set directory^=$HOME/.vim// " swap files directory (https://vi.stackexchange.com/a/179)
+set hidden
 set ignorecase
 set modelines=5 " revert to vim default option on macOS
 set shortmess+=I
