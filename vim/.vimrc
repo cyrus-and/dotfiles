@@ -58,6 +58,7 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 
 " IndentLine {{{
 Plugin 'Yggdroot/indentLine'
+autocmd BufEnter NERD_tree* :IndentLinesDisable
 let g:indentLine_char = '┆'
 let g:indentLine_concealcursor = 0
 " }}}
@@ -107,6 +108,8 @@ let g:vim_markdown_folding_disabled = 1
 Plugin 'preservim/nerdtree'
 let NERDTreeChDirMode = 2
 let NERDTreeQuitOnOpen = 1
+let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeDirArrowExpandable = '+'
 " }}}
 
 " Rooter {{{
