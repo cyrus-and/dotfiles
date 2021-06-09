@@ -106,8 +106,8 @@ let g:vim_markdown_folding_disabled = 1
 
 " NERDTree {{{
 Plugin 'preservim/nerdtree'
-let NERDTreeChDirMode = 2
-let NERDTreeQuitOnOpen = 1
+let g:NERDTreeChDirMode = 2
+let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeShowHidden=1
@@ -206,7 +206,7 @@ let g:netrw_keepdir= 0
 " Shortcuts {{{
 let mapleader = " "
 nnoremap <leader>n :nohlsearch<CR>
-nnoremap <leader>s :Gstatus<CR><C-W>T
+nnoremap <leader>s :Git<CR><C-W>T
 nnoremap <leader>S :GFiles?<CR>
 nnoremap <leader>l :Commits<CR>
 nnoremap <leader>f :GitFiles<CR>
