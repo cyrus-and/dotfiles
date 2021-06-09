@@ -110,6 +110,7 @@ let NERDTreeChDirMode = 2
 let NERDTreeQuitOnOpen = 1
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeShowHidden=1
 " }}}
 
 " Rooter {{{
