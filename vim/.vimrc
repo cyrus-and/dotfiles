@@ -169,6 +169,8 @@ set shiftwidth=4
 set tabstop=4
 set undofile
 set undodir=$HOME/.vim/
+set backup
+set backupdir=$HOME/.vim/
 " }}}
 
 " GUI {{{
