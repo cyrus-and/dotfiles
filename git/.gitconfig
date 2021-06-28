@@ -24,3 +24,5 @@
     default = simple
 [init]
     defaultBranch = master
+[pull]
+	ff = only
