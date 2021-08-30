@@ -42,6 +42,8 @@ Plugin 'tpope/vim-commentary'
 
 " EasyMotion {{{
 Plugin 'easymotion/vim-easymotion'
+let g:EasyMotion_do_mapping = 0
+nmap <leader>w <Plug>(easymotion-overwin-w)
 " }}}
 
 " Fugitive {{{
