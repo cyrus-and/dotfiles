@@ -43,7 +43,6 @@ Plugin 'tpope/vim-commentary'
 " EasyMotion {{{
 Plugin 'easymotion/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
-nmap <leader>w <Plug>(easymotion-overwin-w)
 " }}}
 
 " Fugitive {{{
@@ -221,6 +220,7 @@ nnoremap <leader>g :Rg<CR>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>z :wincmd =<CR>
+nnoremap <leader>w <Plug>(easymotion-overwin-w)
 " }}}
 
 " Zoom {{{
