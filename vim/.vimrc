@@ -220,7 +220,7 @@ nnoremap <leader>g :Rg<CR>
 nnoremap <leader>b :Buffer<CR>
 nnoremap <leader>h :History<CR>
 nnoremap <leader>z :wincmd =<CR>
-nmap <leader>w <Plug>(easymotion-overwin-w)
+nmap <leader>j <Plug>(easymotion-overwin-f2)
 " }}}
 
 " Zoom {{{
