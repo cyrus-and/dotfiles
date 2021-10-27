@@ -175,6 +175,8 @@ set backupdir=$HOME/.vim/
 " }}}
 
 " GUI {{{
+if has('gui_running')
+
 set background=dark
 set guicursor+=a:blinkon0
 set guifont=Iosevka\ SS04:h15
@@ -184,6 +186,8 @@ set guioptions-=r
 set guioptions-=R
 set belloff=all
 set fullscreen
+
+endif
 " also set:
 " defaults write org.vim.MacVim MMNativeFullScreen 0
 " defaults write org.vim.MacVim MMTextInsetTop 0
