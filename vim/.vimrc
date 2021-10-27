@@ -141,6 +141,7 @@ set directory^=$HOME/.vim// " swap files directory (https://vi.stackexchange.com
 set hidden
 set ignorecase
 set modelines=5 " revert to vim default option on macOS
+set scrolloff=999
 set shortmess+=I
 set smartcase
 set ttimeoutlen=0
