@@ -876,6 +876,17 @@ If prefix ARG is given, simply call `compile'."
 
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . php-mode))
 
+;;;; PROJECTILE
+
+(my/install 'projectile)
+
+(custom-set-variables
+ '(projectile-mode t))
+
+;; define the global entrypoint key
+(with-eval-after-load 'projectile
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
+
 ;;;; PYTHON
 
 (custom-set-variables
