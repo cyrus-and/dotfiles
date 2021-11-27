@@ -654,14 +654,14 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'ivy)
 
-;; face-1 is empty by default and applies to the whole match, face-2 is used for
-;; all the other submatches
+;; face-1 applies to the whole match, face-2 is used for all the other submatches
 (custom-set-variables
  '(ivy-mode t)
  '(ivy-minibuffer-faces '(ivy-minibuffer-match-face-1 ivy-minibuffer-match-face-2)))
 
 (custom-set-faces
  `(ivy-current-match           ((t (:background ,theme-accent :foreground ,theme-background))))
+ `(ivy-minibuffer-match-face-1 ((t ())))
  `(ivy-minibuffer-match-face-2 ((t (:background ,theme-faint :foreground ,theme-accent)))))
 
 ;;;; JAVASCRIPT
