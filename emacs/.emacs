@@ -699,6 +699,9 @@ If prefix ARG is given, simply call `compile'."
   (custom-set-variables
    '(mac-right-option-modifier 'none))
 
+  ;; tune the window decorations
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+
   ;; disable scrolling inertia
   (setq ns-use-mwheel-momentum nil)
 
