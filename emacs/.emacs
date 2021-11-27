@@ -433,6 +433,19 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 
+;;;; Counsel
+
+;; this will also install swiper
+(my/install 'counsel)
+
+(custom-set-variables
+ '(counsel-mode t))
+
+;; override isearch
+(global-set-key (kbd "C-s") 'swiper)
+
+(global-set-key (kbd "C-c j") 'counsel-file-jump)
+
 ;;;; CURSOR
 
 (custom-set-variables
