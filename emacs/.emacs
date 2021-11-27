@@ -133,7 +133,7 @@
 
 ;;;; CONSTANTS
 
-;; Some colors from from http://terminal.sexy
+;; Some colors from from https://terminal.sexy
 
 ;; UI and base colors
 (setq theme-background "#1d1f21")
