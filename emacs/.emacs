@@ -726,6 +726,8 @@ If prefix ARG is given, simply call `compile'."
   ;; fetch environment variables from shell (namely, those in ~/.profile since
   ;; it is not sourced by macOS but only by bash)
   (my/install 'exec-path-from-shell)
+  (custom-set-variables
+   '(exec-path-from-shell-arguments nil))
   (my/defer (exec-path-from-shell-copy-envs
              '("PATH" "PASSWORD_STORE_DIR" "NPM_CONFIG_PREFIX" "GEM_HOME" "PIP_USER")))
 
