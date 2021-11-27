@@ -463,6 +463,7 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-variables
  '(global-diff-hl-mode t)
+ '(diff-hl-show-staged-changes nil)
  '(diff-hl-draw-borders nil))
 
 (custom-set-faces
