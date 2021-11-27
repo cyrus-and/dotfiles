@@ -753,8 +753,7 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'magit)
 
-;; always use magit for commit editing and enable spell checking
-(add-to-list 'auto-mode-alist (cons git-commit-filename-regexp 'git-commit-setup))
+;; enable spell checking in commit editing buffers
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
 
 ;; set up default status sections visibility
