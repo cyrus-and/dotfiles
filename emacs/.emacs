@@ -129,16 +129,18 @@
 
 ;;;; CONSTANTS
 
+;; Some colors from from http://terminal.sexy
+
 ;; UI and base colors
-(setq theme-background "#000000")
-(setq theme-foreground "#aaaaaa")
+(setq theme-background "#1d1f21")
+(setq theme-foreground "#c5c8c6")
 (setq theme-accent     "#ff6000")
 (setq theme-bright     "#ffffff")
 (setq theme-faint      "#666666")
 (setq theme-dark       "#222222")
 (setq theme-very-dark  "#0c0c0c")
 
-;; common colors (darker variant from http://terminal.sexy/)
+;; common colors
 (setq theme-red     "#A54242")
 (setq theme-green   "#8C9440")
 (setq theme-yellow  "#DE935F")
