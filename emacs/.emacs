@@ -722,8 +722,11 @@ If prefix ARG is given, simply call `compile'."
   ;; tune the window decorations
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 
-  ;; disable scrolling inertia
-  (setq ns-use-mwheel-momentum nil)
+  ;; use the lightweight fullscreen mode (XXX for some reason this only works
+  ;; the second time)
+  (custom-set-variables
+   '(ns-use-native-fullscreen nil)
+   '(ns-use-fullscreen-animation nil))
 
   ;; fetch environment variables from shell (namely, those in ~/.profile since
   ;; it is not sourced by macOS but only by bash)
