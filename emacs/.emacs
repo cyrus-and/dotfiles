@@ -3,6 +3,10 @@
 ;; This is a standalone Emacs initialization file. Best viewed with
 ;; `outshine-mode'.
 
+;; Apart from a few exceptions, default keybindings are left unchanged, rather
+;; some shortcuts in the `C-c <char>' format have been added, list them with
+;; `C-c ?'.
+
 ;;; CHEATSHEET
 
 ;; % m           `dired-mark-files-regexp'
