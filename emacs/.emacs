@@ -653,14 +653,10 @@ If prefix ARG is given, simply call `compile'."
 ;;;; IVY
 
 (my/install 'ivy)
-(my/install 'ivy-prescient) ; sort candidates by recency
 
 (custom-set-variables
  '(ivy-mode t)
  '(ivy-minibuffer-faces '(ivy-minibuffer-match-face-1)))
-
-(custom-set-variables
- '(ivy-prescient-mode t))
 
 (custom-set-faces
  `(ivy-current-match           ((t (:background ,theme-accent :foreground ,theme-background))))
