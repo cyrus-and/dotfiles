@@ -136,13 +136,10 @@
 ;; Some colors from from https://terminal.sexy
 
 ;; UI and base colors
-(setq theme-background "#1d1f21")
-(setq theme-foreground "#c5c8c6")
-(setq theme-accent     "#ff6000")
-(setq theme-bright     "#ffffff")
-(setq theme-faint      "#666666")
-(setq theme-dark       "#222222")
-(setq theme-very-dark  "#0c0c0c")
+(setq theme-color-accent   "#ff6000")
+(setq theme-color-level-1  "#1D1F21")
+(setq theme-color-level-2  "#373B41")
+(setq theme-color-level-3  "#C5C8C6")
 
 ;; common colors
 (setq theme-red     "#A54242")
@@ -151,9 +148,10 @@
 (setq theme-blue    "#5F819D")
 (setq theme-magenta "#85678F")
 (setq theme-cyan    "#5E8D87")
+(setq theme-gray    "#707880")
 
 ;; theme parameters
-(setq theme-divider-width   6)
+(setq theme-divider-width   15)
 (setq theme-font-linux      "Terminus")
 (setq theme-font-macos      "Iosevka SS04")
 (setq theme-font-size-linux 14)
@@ -162,6 +160,7 @@
 ;;;; THEME VARIABLES
 
 ;; window dividers
+(add-to-list 'default-frame-alist `(internal-border-width . ,theme-divider-width))
 (custom-set-variables
  '(window-divider-mode t)
  '(window-divider-default-places t)
@@ -184,54 +183,54 @@
 
 ;; basic faces
 (custom-set-faces
- `(default        ((t (:foreground ,theme-foreground :background ,theme-background))))
- `(shadow         ((t (:foreground ,theme-faint))))
- `(link           ((t (:foreground ,theme-accent :underline (:color foreground-color :style line)))))
+ `(default        ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-1))))
+ `(shadow         ((t (:foreground ,theme-color-level-2))))
+ `(link           ((t (:foreground ,theme-color-accent))))
  `(link-visited   ((t (:inherit (link) :weight normal))))
- `(highlight      ((t (:inverse-video t :extend t))))
- `(match          ((t (:foreground ,theme-accent :weight bold))))
- `(isearch        ((t (:foreground ,theme-background :background ,theme-accent))))
- `(lazy-highlight ((t (:foreground ,theme-background :background ,theme-bright))))
+ `(highlight      ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
+ `(isearch        ((t (:foreground ,theme-color-accent :background ,theme-color-level-3))))
+ `(lazy-highlight ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
  `(error          ((t (:foreground ,theme-red))))
  `(warning        ((t (:foreground ,theme-yellow))))
  `(success        ((t (:foreground ,theme-green)))))
 
 ;; header/mode line
 (custom-set-faces
- `(mode-line           ((t (:background ,theme-dark :box (:line-width ,theme-divider-width :color ,theme-dark :style nil)))))
+ `(mode-line           ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
  `(mode-line-inactive  ((t (:inherit (mode-line)))))
- `(mode-line-highlight ((t (:inverse-video t :box nil))))
- `(header-line         ((t (:inherit (mode-line) :foreground ,theme-foreground)))))
+ `(mode-line-highlight ((t (:background ,theme-color-accent))))
+ `(header-line         ((t (:inherit (mode-line))))))
 
 ;; window dividers
 (custom-set-faces
- `(window-divider             ((t (:foreground ,theme-faint))))
- `(window-divider-first-pixel ((t (:foreground ,theme-faint))))
- `(window-divider-last-pixel  ((t (:foreground ,theme-faint)))))
+ `(window-divider             ((t (:foreground ,theme-color-level-2))))
+ `(window-divider-first-pixel ((t (:foreground ,theme-color-level-2))))
+ `(window-divider-last-pixel  ((t (:foreground ,theme-color-level-2))))
+ `(internal-border            ((t (:background ,theme-color-level-2)))))
 
 ;; font lock
 (custom-set-faces
  `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-magenta))))
  `(font-lock-variable-name-face ((t (:foreground ,theme-yellow))))
  `(font-lock-keyword-face       ((t (:inherit (bold) :foreground ,theme-red))))
- `(font-lock-comment-face       ((t (:foreground ,theme-faint))))
+ `(font-lock-comment-face       ((t (:foreground ,theme-gray))))
  `(font-lock-type-face          ((t (:foreground ,theme-blue))))
  `(font-lock-constant-face      ((t (:foreground ,theme-cyan))))
  `(font-lock-builtin-face       ((t (:foreground ,theme-cyan))))
  `(font-lock-string-face        ((t (:foreground ,theme-green))))
- `(font-lock-negation-char-face ((t (:inherit (bold) :inherit (default))))))
+ `(font-lock-negation-char-face ((t (:inherit (default bold))))))
 
 ;; highlighting lock
 (custom-set-faces
- `(hi-black-b  ((t (:inherit (bold) :background ,theme-very-dark))))
- `(hi-black-hb ((t (:inherit (bold) :background ,theme-dark))))
- `(hi-blue     ((t (:foreground ,theme-background :background ,theme-blue))))
+ `(hi-black-b  ((t (:inherit (bold) :foreground ,theme-color-level-1 :background ,theme-gray))))
+ `(hi-black-hb ((t (:inherit (bold) :foreground ,theme-color-level-3 :background ,theme-gray))))
+ `(hi-blue     ((t (:foreground ,theme-color-level-1 :background ,theme-blue))))
  `(hi-blue-b   ((t (:inherit (hi-blue bold) :inverse-video t))))
- `(hi-green    ((t (:foreground ,theme-background :background ,theme-green))))
+ `(hi-green    ((t (:foreground ,theme-color-level-1 :background ,theme-green))))
  `(hi-green-b  ((t (:inherit (hi-green bold) :inverse-video t))))
- `(hi-pink     ((t (:foreground ,theme-background :background ,theme-magenta))))
+ `(hi-pink     ((t (:foreground ,theme-color-level-1 :background ,theme-magenta))))
  `(hi-red-b    ((t (:inherit (bold) :foreground ,theme-red))))
- `(hi-yellow   ((t (:foreground ,theme-background :background ,theme-yellow)))))
+ `(hi-yellow   ((t (:foreground ,theme-color-level-1 :background ,theme-yellow)))))
 
 ;; compilation
 (custom-set-faces
@@ -241,36 +240,36 @@
 
 ;; widgets
 (custom-set-faces
- `(custom-button         ((t (:box (:line-width 2 :color nil :style released-button) :foreground ,theme-background :background ,theme-faint))))
+ `(custom-button         ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 :box (:line-width 2 :color nil :style released-button)))))
  `(custom-button-pressed ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style pressed-button)))))
- `(custom-button-mouse   ((t (:inherit (custom-button) :background ,theme-foreground))))
+ `(custom-button-mouse   ((t (:inherit (custom-button) :foreground ,theme-color-accent))))
  `(widget-button         ((t (:inherit (custom-button)))))
  `(widget-button-pressed ((t (:inherit (custom-button-pressed)))))
- `(widget-field          ((t (:foreground ,theme-foreground :background ,theme-dark :extend t)))))
+ `(widget-field          ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 :extend t)))))
 
 ;; outlines
 (custom-set-faces
- `(outline-1 ((t (:inherit (bold) :extend t :height 1.4 :background ,theme-very-dark :foreground ,theme-blue))))
- `(outline-2 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-yellow))))
- `(outline-3 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-green))))
- `(outline-4 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-magenta))))
- `(outline-5 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-6 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-7 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red))))
- `(outline-8 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-very-dark :foreground ,theme-red)))))
+ `(outline-1 ((t (:inherit (bold) :extend t :height 1.4 :foreground ,theme-blue))))
+ `(outline-2 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-yellow))))
+ `(outline-3 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-green))))
+ `(outline-4 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-magenta))))
+ `(outline-5 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-red))))
+ `(outline-6 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-red))))
+ `(outline-7 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-red))))
+ `(outline-8 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-red)))))
 
 ;; others
 (custom-set-faces
- `(cursor                       ((t (:background ,theme-accent))))
- `(fringe                       ((t (:foreground ,theme-dark))))
- `(minibuffer-prompt            ((t (:foreground ,theme-accent :weight bold))))
- `(region                       ((t (:foreground ,theme-background :background ,theme-faint :extend t))))
- `(secondary-selection          ((t (:foreground ,theme-background :background ,theme-foreground :extend t))))
+ `(cursor                       ((t (:background ,theme-color-level-3))))
+ `(fringe                       ((t (:inherit (default)))))
+ `(minibuffer-prompt            ((t (:foreground ,theme-color-accent :weight bold))))
+ `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-2 :extend t))))
+ `(secondary-selection          ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 :extend t))))
  `(isearch-fail                 ((t (:inherit (error)))))
  `(completions-common-part      ((t (:inherit (shadow)))))
- `(completions-first-difference ((t (:foreground ,theme-accent))))
- `(pulse-highlight-start-face   ((t (:background ,theme-accent))))
- `(show-paren-match             ((t (:inherit (bold) :foreground ,theme-accent))))
+ `(completions-first-difference ((t (:foreground ,theme-color-accent))))
+ `(pulse-highlight-start-face   ((t (:background ,theme-color-accent))))
+ `(show-paren-match             ((t (:inherit (bold) :foreground ,theme-color-accent))))
  `(show-paren-mismatch          ((t (:inherit (error) :inverse-video t)))))
 
 ;;; CONFIGURATIONS
@@ -355,17 +354,13 @@
  '(company-posframe-show-metadata nil))
 
 (custom-set-faces
- `(company-tooltip                  ((t (:background ,theme-faint :foreground ,theme-background))))
- `(company-tooltip-common           ((t (:foreground ,theme-accent :background ,theme-very-dark))))
- `(company-tooltip-search           ((t (:inherit (isearch)))))
- `(company-tooltip-search-selection ((t (:inherit (lazy-highlight)))))
- `(company-tooltip-selection        ((t (:background ,theme-accent))))
- `(company-tooltip-mouse            ((t (:inherit (company-tooltip-selection)))))
- `(company-tooltip-annotation       ((t (:foreground ,theme-dark))))
- `(company-template-field           ((t (:background ,theme-dark))))
- `(company-preview-common           ((t (:background ,theme-very-dark :foreground ,theme-accent))))
- `(company-scrollbar-bg             ((t (:background ,theme-dark))))
- `(company-scrollbar-fg             ((t (:background ,theme-accent)))))
+ `(company-tooltip            ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 ))))
+ `(company-tooltip-common     ((t (:inherit (lazy-highlight)))))
+ `(company-tooltip-selection  ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
+ `(company-tooltip-mouse      ((t (:inherit (company-tooltip-selection)))))
+ `(company-tooltip-annotation ((t (:foreground ,theme-color-level-3))))
+ `(company-scrollbar-bg       ((t (:background ,theme-color-level-2))))
+ `(company-scrollbar-fg       ((t (:background ,theme-color-level-3)))))
 
 ;;;; COMPILATION
 
@@ -436,24 +431,10 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 
-;;;; Counsel
-
-;; this will also install swiper
-(my/install 'counsel)
-
-(custom-set-variables
- '(counsel-mode t))
-
-;; override isearch
-(global-set-key (kbd "C-s") 'swiper)
-
-(global-set-key (kbd "C-c j") 'counsel-file-jump)
-
 ;;;; CURSOR
 
 (custom-set-variables
  '(blink-cursor-mode nil)
- '(cursor-type 'hollow)
  '(cursor-in-non-selected-windows nil))
 
 ;;;; DIFF-HL
@@ -649,19 +630,40 @@ If prefix ARG is given, simply call `compile'."
  '(isearch-allow-scroll t)
  '(search-invisible nil))
 
-;;;; IVY
+;;;; IVY + COUNSEL + SWIPER
 
 (my/install 'ivy)
+(my/install 'counsel) ; this will also install swiper
 
-;; face-1 applies to the whole match, face-2 is used for all the other submatches
 (custom-set-variables
+ '(counsel-mode t)
  '(ivy-mode t)
  '(ivy-minibuffer-faces '(ivy-minibuffer-match-face-1 ivy-minibuffer-match-face-2)))
 
 (custom-set-faces
- `(ivy-current-match           ((t (:background ,theme-accent :foreground ,theme-background))))
- `(ivy-minibuffer-match-face-1 ((t ())))
- `(ivy-minibuffer-match-face-2 ((t (:background ,theme-faint :foreground ,theme-accent)))))
+ `(ivy-highlight-face             ((t ())))
+ `(ivy-current-match              ((t (:background ,theme-color-accent :foreground ,theme-color-level-1))))
+ `(ivy-minibuffer-match-face-1    ((t ())))
+ `(ivy-minibuffer-match-face-2    ((t (:inherit (lazy-highlight)))))
+ `(swiper-line-face               ((t (:inherit (ivy-current-match)))))
+ `(swiper-background-match-face-1 ((t (:inherit (lazy-highlight)))))
+ `(swiper-background-match-face-2 ((t (:inherit (swiper-background-match-face-1)))))
+ `(swiper-background-match-face-3 ((t (:inherit (swiper-background-match-face-1)))))
+ `(swiper-background-match-face-4 ((t (:inherit (swiper-background-match-face-1)))))
+ `(swiper-match-face-1            ((t (:inherit (isearch)))))
+ `(swiper-match-face-2            ((t (:inherit (swiper-match-face-1)))))
+ `(swiper-match-face-3            ((t (:inherit (swiper-match-face-1)))))
+ `(swiper-match-face-4            ((t (:inherit (swiper-match-face-1))))))
+
+;; prefer shorter matches
+(with-eval-after-load 'ivy
+  (add-to-list 'ivy-sort-matches-functions-alist '(t . ivy--shorter-matches-first)))
+
+;; override isearch
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-r") 'swiper-backward)
+
+(global-set-key (kbd "C-c j") 'counsel-file-jump)
 
 ;;;; JAVASCRIPT
 
@@ -726,7 +728,7 @@ If prefix ARG is given, simply call `compile'."
   ;; it is not sourced by macOS but only by bash)
   (my/install 'exec-path-from-shell)
   (custom-set-variables
-   '(exec-path-from-shell-arguments nil))
+   '(exec-path-from-shell-warn-duration-millis most-positive-fixnum))
   (my/defer (exec-path-from-shell-copy-envs
              '("PATH" "PASSWORD_STORE_DIR" "NPM_CONFIG_PREFIX" "GEM_HOME" "PIP_USER")))
 
@@ -775,8 +777,8 @@ If prefix ARG is given, simply call `compile'."
  '(markdown-asymmetric-header t))
 
 (custom-set-faces
- `(markdown-code-face           ((t (:background ,theme-very-dark :extend t))))
- `(markdown-pre-face            ((t (:inherit (markdown-code-face)))))
+ `(markdown-code-face           ((t ())))
+ `(markdown-inline-code-face    ((t (:foreground ,theme-gray))))
  `(markdown-metadata-value-face ((t (:inherit (default)))))
  `(markdown-header-face-1       ((t (:inherit (outline-1)))))
  `(markdown-header-face-2       ((t (:inherit (outline-2)))))
@@ -812,7 +814,7 @@ If prefix ARG is given, simply call `compile'."
  '(winum-mode-line-position 0)
  `(mode-line-format
    '(" "
-     (:propertize "%Z%*%@" face shadow)
+     (:propertize "%Z%*%@" face (:foreground ,theme-color-level-2))
      "  "
      (:propertize
       (:eval (when (buffer-file-name)
@@ -821,9 +823,9 @@ If prefix ARG is given, simply call `compile'."
                      (replace-regexp-in-string "\\(/[^/]\\)[^/]*" "\\1" path)
                    path))))
       face shadow)
-     (:propertize "%b" face (:foreground ,theme-accent))
+     (:propertize "%b" face bold)
      "  "
-     (:propertize "+%l:%c" face shadow)
+     (:propertize "+%l:%c" face (:foreground ,theme-color-level-2))
      "  "
      mode-line-modes
      " " ; XXX one extra space is already there
@@ -1007,7 +1009,7 @@ If prefix ARG is given, simply call `compile'."
  '(winum-scope 'frame-local))
 
 (custom-set-faces
- `(winum-face ((t (:box (:color ,theme-faint) :foreground ,theme-background :background ,theme-faint)))))
+ `(winum-face ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent)))))
 
 ;;;; WOMAN
 
@@ -1016,7 +1018,7 @@ If prefix ARG is given, simply call `compile'."
  '(woman-fill-frame t))
 
 (custom-set-faces
- `(woman-bold   ((t (:inherit (bold) :foreground ,theme-bright))))
+ `(woman-bold   ((t (:inherit (bold)))))
  `(woman-italic ((t (:inherit (italic) :foreground ,theme-green)))))
 
 ;;;; WRITEROOM
