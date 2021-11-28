@@ -207,7 +207,6 @@
 (custom-set-faces
  `(window-divider             ((t (:foreground ,theme-faint))))
  `(window-divider-first-pixel ((t (:foreground ,theme-faint))))
- `(window-divider-last-pixel  ((t (:foreground ,theme-faint))))
  `(window-divider-last-pixel  ((t (:foreground ,theme-faint)))))
 
 ;; font lock
