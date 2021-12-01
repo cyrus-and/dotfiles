@@ -910,8 +910,6 @@ If prefix ARG is given, simply call `compile'."
  '(async-shell-command-buffer 'new-buffer)
  '(async-shell-command-display-buffer nil))
 
-(global-set-key (kbd "C-c a") 'shell)
-
 ;;;; TERM
 
 (custom-set-faces
