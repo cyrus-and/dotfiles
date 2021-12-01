@@ -882,7 +882,8 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'projectile)
 
 (custom-set-variables
- '(projectile-mode t))
+ '(projectile-mode t)
+ '(projectile-switch-project-action 'projectile-project-buffers-other-buffer))
 
 ;; define the global entrypoint key
 (with-eval-after-load 'projectile
