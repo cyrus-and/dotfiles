@@ -893,6 +893,10 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(python-shell-interpreter "python3"))
 
+;;;; RIPGREP
+
+(my/install 'ripgrep)
+
 ;;;; SAVE PLACE
 
 (custom-set-variables
