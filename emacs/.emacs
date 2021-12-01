@@ -912,6 +912,23 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c a") 'shell)
 
+;;;; TERM
+
+(custom-set-faces
+ `(term-color-red     ((t (:foreground ,theme-red))))
+ `(term-color-green   ((t (:foreground ,theme-green))))
+ `(term-color-yellow  ((t (:foreground ,theme-yellow))))
+ `(term-color-blue    ((t (:foreground ,theme-blue))))
+ `(term-color-magenta ((t (:foreground ,theme-magenta))))
+ `(term-color-cyan    ((t (:foreground ,theme-cyan)))))
+
+;; shortcut to spawn a shell
+(defun my/term ()
+  (interactive)
+  (ansi-term (getenv "SHELL")))
+
+(global-set-key (kbd "C-c a") 'my/term)
+
 ;;;; TRAMP
 
 ;; avoid verbose tramp messages and show errors only
