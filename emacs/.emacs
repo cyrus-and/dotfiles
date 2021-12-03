@@ -184,12 +184,12 @@
 ;; basic faces
 (custom-set-faces
  `(default        ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-1))))
- `(shadow         ((t (:foreground ,theme-color-level-2))))
  `(link           ((t (:foreground ,theme-color-accent))))
  `(link-visited   ((t (:inherit (link) :weight normal))))
  `(highlight      ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
  `(isearch        ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
  `(lazy-highlight ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
+ `(shadow         ((t (:foreground ,theme-gray))))
  `(error          ((t (:foreground ,theme-red))))
  `(warning        ((t (:foreground ,theme-yellow))))
  `(success        ((t (:foreground ,theme-green)))))
@@ -263,8 +263,8 @@
  `(cursor                       ((t (:background ,theme-color-level-3))))
  `(fringe                       ((t (:inherit (default)))))
  `(minibuffer-prompt            ((t (:foreground ,theme-color-accent :weight bold))))
- `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-2 :extend t))))
- `(secondary-selection          ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 :extend t))))
+ `(region                       ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 :extend t))))
+ `(secondary-selection          ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-2 :extend t))))
  `(isearch-fail                 ((t (:inherit (error)))))
  `(completions-common-part      ((t (:inherit (shadow)))))
  `(completions-first-difference ((t (:foreground ,theme-color-accent))))
@@ -778,7 +778,7 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-faces
  `(markdown-code-face           ((t ())))
- `(markdown-inline-code-face    ((t (:foreground ,theme-gray))))
+ `(markdown-inline-code-face    ((t (:inherit (shadow)))))
  `(markdown-metadata-value-face ((t (:inherit (default)))))
  `(markdown-header-face-1       ((t (:inherit (outline-1)))))
  `(markdown-header-face-2       ((t (:inherit (outline-2)))))
@@ -822,7 +822,7 @@ If prefix ARG is given, simply call `compile'."
                  (if (> (length path) (/ (window-total-width) 2))
                      (replace-regexp-in-string "\\(/[^/]\\)[^/]*" "\\1" path)
                    path))))
-      face shadow)
+      face (:foreground ,theme-color-level-2))
      (:propertize "%b" face bold)
      "  "
      (:propertize "+%l:%c" face (:foreground ,theme-color-level-2))
