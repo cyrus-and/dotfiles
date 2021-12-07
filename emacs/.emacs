@@ -186,7 +186,7 @@
  `(default        ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-1))))
  `(link           ((t (:foreground ,theme-color-accent))))
  `(link-visited   ((t (:inherit (link) :weight normal))))
- `(highlight      ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
+ `(highlight      ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
  `(isearch        ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
  `(lazy-highlight ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
  `(shadow         ((t (:foreground ,theme-gray))))
@@ -630,42 +630,6 @@ If prefix ARG is given, simply call `compile'."
  '(isearch-allow-scroll t)
  '(search-invisible nil))
 
-;;;; IVY + COUNSEL + SWIPER
-
-(my/install 'ivy)
-(my/install 'counsel) ; this will also install swiper
-(my/install 'smex) ; to have proper ordering at least in M-x
-
-(custom-set-variables
- '(ivy-mode t)
- '(counsel-mode t)
- '(ivy-minibuffer-faces '(ivy-minibuffer-match-face-1 ivy-minibuffer-match-face-2)))
-
-(custom-set-faces
- `(ivy-highlight-face             ((t ())))
- `(ivy-current-match              ((t (:background ,theme-color-accent :foreground ,theme-color-level-1))))
- `(ivy-minibuffer-match-face-1    ((t ())))
- `(ivy-minibuffer-match-face-2    ((t (:inherit (lazy-highlight)))))
- `(swiper-line-face               ((t (:inherit (ivy-current-match)))))
- `(swiper-background-match-face-1 ((t (:inherit (lazy-highlight)))))
- `(swiper-background-match-face-2 ((t (:inherit (swiper-background-match-face-1)))))
- `(swiper-background-match-face-3 ((t (:inherit (swiper-background-match-face-1)))))
- `(swiper-background-match-face-4 ((t (:inherit (swiper-background-match-face-1)))))
- `(swiper-match-face-1            ((t (:inherit (isearch)))))
- `(swiper-match-face-2            ((t (:inherit (swiper-match-face-1)))))
- `(swiper-match-face-3            ((t (:inherit (swiper-match-face-1)))))
- `(swiper-match-face-4            ((t (:inherit (swiper-match-face-1))))))
-
-;; prefer shorter matches
-(with-eval-after-load 'ivy
-  (add-to-list 'ivy-sort-matches-functions-alist '(t . ivy--shorter-matches-first)))
-
-;; override isearch
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "C-r") 'swiper-backward)
-
-(global-set-key (kbd "C-c j") 'counsel-file-jump)
-
 ;;;; JAVASCRIPT
 
 (my/install 'js2-mode)
@@ -903,6 +867,36 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-variables
  '(save-place-mode t))
+
+;;;; SELECTRUM
+
+(my/install 'selectrum)
+
+(custom-set-variables
+ '(selectrum-mode t))
+
+;;;; SWIPER
+
+(my/install 'swiper)
+
+(custom-set-faces
+ `(ivy-highlight-face             ((t ())))
+ `(ivy-current-match              ((t (:background ,theme-color-accent :foreground ,theme-color-level-1))))
+ `(ivy-minibuffer-match-face-1    ((t ())))
+ `(ivy-minibuffer-match-face-2    ((t (:inherit (lazy-highlight)))))
+ `(swiper-line-face               ((t (:inherit (ivy-current-match)))))
+ `(swiper-background-match-face-1 ((t (:inherit (lazy-highlight)))))
+ `(swiper-background-match-face-2 ((t (:inherit (swiper-background-match-face-1)))))
+ `(swiper-background-match-face-3 ((t (:inherit (swiper-background-match-face-1)))))
+ `(swiper-background-match-face-4 ((t (:inherit (swiper-background-match-face-1)))))
+ `(swiper-match-face-1            ((t (:inherit (isearch)))))
+ `(swiper-match-face-2            ((t (:inherit (swiper-match-face-1)))))
+ `(swiper-match-face-3            ((t (:inherit (swiper-match-face-1)))))
+ `(swiper-match-face-4            ((t (:inherit (swiper-match-face-1))))))
+
+;; override isearch
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-r") 'swiper-backward)
 
 ;;;; SHELL
 
