@@ -636,8 +636,8 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'counsel) ; this will also install swiper
 
 (custom-set-variables
- '(counsel-mode t)
  '(ivy-mode t)
+ '(counsel-mode t)
  '(ivy-minibuffer-faces '(ivy-minibuffer-match-face-1 ivy-minibuffer-match-face-2)))
 
 (custom-set-faces
