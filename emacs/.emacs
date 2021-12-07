@@ -634,6 +634,7 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'ivy)
 (my/install 'counsel) ; this will also install swiper
+(my/install 'smex) ; to have proper ordering at least in M-x
 
 (custom-set-variables
  '(ivy-mode t)
