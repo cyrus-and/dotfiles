@@ -260,7 +260,7 @@
 
 ;; others
 (custom-set-faces
- `(cursor                       ((t (:background ,theme-color-level-3))))
+ `(cursor                       ((t (:background ,theme-color-accent))))
  `(fringe                       ((t (:inherit (default)))))
  `(minibuffer-prompt            ((t (:foreground ,theme-color-accent :weight bold))))
  `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3 :extend t))))
