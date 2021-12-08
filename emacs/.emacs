@@ -873,7 +873,8 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'selectrum)
 
 (custom-set-variables
- '(selectrum-mode t))
+ '(selectrum-mode t)
+ '(completion-styles '(flex))) ; this affects completions natively
 
 ;;;; SWIPER
 
