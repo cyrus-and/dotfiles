@@ -348,7 +348,7 @@
  '(company-dabbrev-ignore-case nil))
 
 (custom-set-variables
- `(company-posframe-mode ,(not (eq system-type 'darwin))) ; https://github.com/tumashu/posframe/issues/30
+ '(company-posframe-mode t)
  '(company-posframe-quickhelp-delay nil)
  '(company-posframe-show-indicator nil)
  '(company-posframe-show-metadata nil))
