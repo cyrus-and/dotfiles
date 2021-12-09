@@ -876,6 +876,10 @@ If prefix ARG is given, simply call `compile'."
  '(selectrum-mode t)
  '(completion-styles '(flex))) ; this affects completions natively
 
+;;;; SPELL CHECK
+
+(global-set-key (kbd "C-c k") 'ispell-buffer)
+
 ;;;; SWIPER
 
 (my/install 'swiper)
