@@ -871,10 +871,14 @@ If prefix ARG is given, simply call `compile'."
 ;;;; SELECTRUM
 
 (my/install 'selectrum)
+(my/install 'selectrum-prescient) ; improved candidates order
 
 (custom-set-variables
  '(selectrum-mode t)
- '(completion-styles '(flex))) ; this affects completions natively
+ '(selectrum-prescient-mode t))
+
+(custom-set-faces
+ '(selectrum-prescient-primary-highlight ((t (:inherit (completions-first-difference)))))))
 
 ;;;; SPELL CHECK
 
