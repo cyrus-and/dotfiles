@@ -878,7 +878,7 @@ If prefix ARG is given, simply call `compile'."
  '(selectrum-prescient-mode t))
 
 (custom-set-faces
- '(selectrum-prescient-primary-highlight ((t (:inherit (completions-first-difference)))))))
+ '(selectrum-prescient-primary-highlight ((t (:inherit (completions-first-difference))))))
 
 ;;;; SPELL CHECK
 
