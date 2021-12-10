@@ -600,7 +600,7 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
 
-;;;;; Use fixed size
+;;;;; USE FIXED SIZE
 
 ;; this helps with Zoom
 
