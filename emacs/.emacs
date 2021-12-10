@@ -1046,7 +1046,7 @@ If prefix ARG is given, simply call `compile'."
  `(woman-bold   ((t (:inherit (bold)))))
  `(woman-italic ((t (:inherit (italic) :foreground ,theme-green)))))
 
-(global-set-key (kbd "C-c m") 'zoom-mode)
+(global-set-key (kbd "C-c m") 'woman)
 
 ;;;; WRITEROOM
 
