@@ -187,7 +187,7 @@
  `(link           ((t (:foreground ,theme-color-accent))))
  `(link-visited   ((t (:inherit (link) :weight normal))))
  `(highlight      ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
- `(isearch        ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
+ `(isearch        ((t (:foreground ,theme-color-accent :background ,theme-color-level-3))))
  `(lazy-highlight ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
  `(shadow         ((t (:foreground ,theme-gray))))
  `(error          ((t (:foreground ,theme-red))))
