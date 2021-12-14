@@ -885,29 +885,6 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c k") 'ispell-buffer)
 
-;;;; SWIPER
-
-(my/install 'swiper)
-
-(custom-set-faces
- `(ivy-highlight-face             ((t ())))
- `(ivy-current-match              ((t (:background ,theme-color-accent :foreground ,theme-color-level-1))))
- `(ivy-minibuffer-match-face-1    ((t ())))
- `(ivy-minibuffer-match-face-2    ((t (:inherit (lazy-highlight)))))
- `(swiper-line-face               ((t (:inherit (ivy-current-match)))))
- `(swiper-background-match-face-1 ((t (:inherit (lazy-highlight)))))
- `(swiper-background-match-face-2 ((t (:inherit (swiper-background-match-face-1)))))
- `(swiper-background-match-face-3 ((t (:inherit (swiper-background-match-face-1)))))
- `(swiper-background-match-face-4 ((t (:inherit (swiper-background-match-face-1)))))
- `(swiper-match-face-1            ((t (:inherit (isearch)))))
- `(swiper-match-face-2            ((t (:inherit (swiper-match-face-1)))))
- `(swiper-match-face-3            ((t (:inherit (swiper-match-face-1)))))
- `(swiper-match-face-4            ((t (:inherit (swiper-match-face-1))))))
-
-;; override isearch
-(global-set-key (kbd "C-s") 'swiper)
-(global-set-key (kbd "C-r") 'swiper-backward)
-
 ;;;; SHELL
 
 ;; avoid showing the shell buffer output immediately for async commands and
