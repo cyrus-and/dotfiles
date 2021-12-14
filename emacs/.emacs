@@ -629,7 +629,11 @@ If prefix ARG is given, simply call `compile'."
 ;; inhibit search/replace on invisible text
 (custom-set-variables
  '(isearch-allow-scroll t)
+ '(lazy-highlight-cleanup nil)
  '(search-invisible nil))
+
+;; occur using the last isearch query
+(global-set-key (kbd "C-c o") 'isearch-occur)
 
 ;;;; JAVASCRIPT
 
@@ -803,11 +807,6 @@ If prefix ARG is given, simply call `compile'."
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t))
-
-;;;; OCCUR
-
-;; occur using the last isearch query
-(global-set-key (kbd "C-c o") 'isearch-occur)
 
 ;;;; OPENWITH
 
