@@ -189,6 +189,7 @@
  `(highlight      ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
  `(isearch        ((t (:foreground ,theme-color-accent :background ,theme-color-level-3))))
  `(lazy-highlight ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
+ `(match          ((t (:inherit (lazy-highlight)))))
  `(shadow         ((t (:foreground ,theme-gray))))
  `(error          ((t (:foreground ,theme-red))))
  `(warning        ((t (:foreground ,theme-yellow))))
@@ -802,6 +803,11 @@ If prefix ARG is given, simply call `compile'."
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t))
+
+;;;; OCCUR
+
+;; occur using the last isearch query
+(global-set-key (kbd "C-c o") 'isearch-occur)
 
 ;;;; OPENWITH
 
