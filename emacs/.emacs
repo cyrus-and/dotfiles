@@ -1053,8 +1053,10 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'writeroom-mode)
 
 (custom-set-variables
- '(writeroom-bottom-divider-width 0)
+ `(writeroom-bottom-divider-width ,theme-divider-width)
  '(writeroom-fullscreen-effect 'fullboth))
+
+(global-set-key (kbd "C-c w") 'writeroom-mode)
 
 ;;;; ZOOM
 
