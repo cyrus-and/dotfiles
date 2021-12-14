@@ -630,6 +630,8 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(isearch-allow-scroll t)
  '(lazy-highlight-cleanup nil)
+ '(lazy-highlight-buffer t)
+ '(lazy-highlight-max-at-a-time nil)
  '(search-invisible nil))
 
 ;; occur using the last isearch query
