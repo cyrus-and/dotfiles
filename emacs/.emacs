@@ -1057,9 +1057,9 @@ If prefix ARG is given, simply call `compile'."
 ;;; ADDITIONAL INITIALIZATION
 
 ;; use this as an entrypoint for additional local configurations
-(let ((local "~/.emacs.d/lodal.el"))
-  (if (file-exists-p local)
-      (load-file local)))
+(let ((local "~/.emacs.d/local.el"))
+  (when (file-exists-p local)
+    (load-file local)))
 
 ;;; FILE VARIABLES
 
