@@ -1054,6 +1054,13 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c z") 'zoom-mode)
 
+;;; ADDITIONAL INITIALIZATION
+
+;; use this as an entrypoint for additional local configurations
+(let ((local "~/.emacs.d/lodal.el"))
+  (if (file-exists-p local)
+      (load-file local)))
+
 ;;; FILE VARIABLES
 
 ;; Local Variables:
