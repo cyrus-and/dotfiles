@@ -136,19 +136,19 @@
 ;; Some colors from from https://terminal.sexy
 
 ;; UI and base colors
-(setq theme-color-accent   "#ff6000")
-(setq theme-color-level-1  "#1D1F21")
-(setq theme-color-level-2  "#373B41")
-(setq theme-color-level-3  "#C5C8C6")
+(setq theme-color-accent  "#ff6000")
+(setq theme-color-level-1 "#1D1F21")
+(setq theme-color-level-2 "#373B41")
+(setq theme-color-level-3 "#C5C8C6")
 
 ;; common colors
-(setq theme-red     "#A54242")
-(setq theme-green   "#8C9440")
-(setq theme-yellow  "#DE935F")
-(setq theme-blue    "#5F819D")
-(setq theme-magenta "#85678F")
-(setq theme-cyan    "#5E8D87")
-(setq theme-gray    "#707880")
+(setq theme-color-red     "#A54242")
+(setq theme-color-green   "#8C9440")
+(setq theme-color-yellow  "#DE935F")
+(setq theme-color-blue    "#5F819D")
+(setq theme-color-magenta "#85678F")
+(setq theme-color-cyan    "#5E8D87")
+(setq theme-color-gray    "#707880")
 
 ;; theme parameters
 (setq theme-divider-width   15)
@@ -190,10 +190,10 @@
  `(isearch        ((t (:foreground ,theme-color-accent :background ,theme-color-level-3))))
  `(lazy-highlight ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
  `(match          ((t (:inherit (lazy-highlight)))))
- `(shadow         ((t (:foreground ,theme-gray))))
- `(error          ((t (:foreground ,theme-red))))
- `(warning        ((t (:foreground ,theme-yellow))))
- `(success        ((t (:foreground ,theme-green)))))
+ `(shadow         ((t (:foreground ,theme-color-gray))))
+ `(error          ((t (:foreground ,theme-color-red))))
+ `(warning        ((t (:foreground ,theme-color-yellow))))
+ `(success        ((t (:foreground ,theme-color-green)))))
 
 ;; header/mode line
 (custom-set-faces
@@ -211,27 +211,27 @@
 
 ;; font lock
 (custom-set-faces
- `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-magenta))))
- `(font-lock-variable-name-face ((t (:foreground ,theme-yellow))))
- `(font-lock-keyword-face       ((t (:inherit (bold) :foreground ,theme-red))))
- `(font-lock-comment-face       ((t (:foreground ,theme-gray))))
- `(font-lock-type-face          ((t (:foreground ,theme-blue))))
- `(font-lock-constant-face      ((t (:foreground ,theme-cyan))))
- `(font-lock-builtin-face       ((t (:foreground ,theme-cyan))))
- `(font-lock-string-face        ((t (:foreground ,theme-green))))
+ `(font-lock-function-name-face ((t (:inherit (bold) :foreground ,theme-color-magenta))))
+ `(font-lock-variable-name-face ((t (:foreground ,theme-color-yellow))))
+ `(font-lock-keyword-face       ((t (:inherit (bold) :foreground ,theme-color-red))))
+ `(font-lock-comment-face       ((t (:foreground ,theme-color-gray))))
+ `(font-lock-type-face          ((t (:foreground ,theme-color-blue))))
+ `(font-lock-constant-face      ((t (:foreground ,theme-color-cyan))))
+ `(font-lock-builtin-face       ((t (:foreground ,theme-color-cyan))))
+ `(font-lock-string-face        ((t (:foreground ,theme-color-green))))
  `(font-lock-negation-char-face ((t (:inherit (default bold))))))
 
 ;; highlighting lock
 (custom-set-faces
- `(hi-black-b  ((t (:inherit (bold) :foreground ,theme-color-level-1 :background ,theme-gray))))
- `(hi-black-hb ((t (:inherit (bold) :foreground ,theme-color-level-3 :background ,theme-gray))))
- `(hi-blue     ((t (:foreground ,theme-color-level-1 :background ,theme-blue))))
+ `(hi-black-b  ((t (:inherit (bold) :foreground ,theme-color-level-1 :background ,theme-color-gray))))
+ `(hi-black-hb ((t (:inherit (bold) :foreground ,theme-color-level-3 :background ,theme-color-gray))))
+ `(hi-blue     ((t (:foreground ,theme-color-level-1 :background ,theme-color-blue))))
  `(hi-blue-b   ((t (:inherit (hi-blue bold) :inverse-video t))))
- `(hi-green    ((t (:foreground ,theme-color-level-1 :background ,theme-green))))
+ `(hi-green    ((t (:foreground ,theme-color-level-1 :background ,theme-color-green))))
  `(hi-green-b  ((t (:inherit (hi-green bold) :inverse-video t))))
- `(hi-pink     ((t (:foreground ,theme-color-level-1 :background ,theme-magenta))))
- `(hi-red-b    ((t (:inherit (bold) :foreground ,theme-red))))
- `(hi-yellow   ((t (:foreground ,theme-color-level-1 :background ,theme-yellow)))))
+ `(hi-pink     ((t (:foreground ,theme-color-level-1 :background ,theme-color-magenta))))
+ `(hi-red-b    ((t (:inherit (bold) :foreground ,theme-color-red))))
+ `(hi-yellow   ((t (:foreground ,theme-color-level-1 :background ,theme-color-yellow)))))
 
 ;; compilation
 (custom-set-faces
@@ -250,14 +250,14 @@
 
 ;; outlines
 (custom-set-faces
- `(outline-1 ((t (:inherit (bold) :extend t :height 1.4 :foreground ,theme-blue))))
- `(outline-2 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-yellow))))
- `(outline-3 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-green))))
- `(outline-4 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-magenta))))
- `(outline-5 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-red))))
- `(outline-6 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-red))))
- `(outline-7 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-red))))
- `(outline-8 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-red)))))
+ `(outline-1 ((t (:inherit (bold) :extend t :height 1.4 :foreground ,theme-color-blue))))
+ `(outline-2 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-color-yellow))))
+ `(outline-3 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-color-green))))
+ `(outline-4 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-color-magenta))))
+ `(outline-5 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-color-red))))
+ `(outline-6 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-color-red))))
+ `(outline-7 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-color-red))))
+ `(outline-8 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-color-red)))))
 
 ;; others
 (custom-set-faces
@@ -903,12 +903,12 @@ If prefix ARG is given, simply call `compile'."
 ;;;; TERM
 
 (custom-set-faces
- `(term-color-red     ((t (:foreground ,theme-red))))
- `(term-color-green   ((t (:foreground ,theme-green))))
- `(term-color-yellow  ((t (:foreground ,theme-yellow))))
- `(term-color-blue    ((t (:foreground ,theme-blue))))
- `(term-color-magenta ((t (:foreground ,theme-magenta))))
- `(term-color-cyan    ((t (:foreground ,theme-cyan)))))
+ `(term-color-red     ((t (:foreground ,theme-color-red))))
+ `(term-color-green   ((t (:foreground ,theme-color-green))))
+ `(term-color-yellow  ((t (:foreground ,theme-color-yellow))))
+ `(term-color-blue    ((t (:foreground ,theme-color-blue))))
+ `(term-color-magenta ((t (:foreground ,theme-color-magenta))))
+ `(term-color-cyan    ((t (:foreground ,theme-color-cyan)))))
 
 ;; shortcut to spawn a shell
 (defun my/term ()
@@ -1028,7 +1028,7 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-faces
  `(woman-bold   ((t (:inherit (bold)))))
- `(woman-italic ((t (:inherit (italic) :foreground ,theme-green)))))
+ `(woman-italic ((t (:inherit (italic) :foreground ,theme-color-green)))))
 
 (global-set-key (kbd "C-c m") 'woman)
 
