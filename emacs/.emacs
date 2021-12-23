@@ -488,6 +488,7 @@ If prefix ARG is given, simply call `compile'."
 (defun my/force-revert-buffer ()
   "Revert buffer without confirmation."
   (interactive)
+  (lazy-highlight-cleanup)
   (revert-buffer t t))
 
 (global-set-key (kbd "C-c R") 'my/force-revert-buffer)
@@ -642,7 +643,7 @@ If prefix ARG is given, simply call `compile'."
  '(lazy-highlight-max-at-a-time nil)
  '(search-invisible nil))
 
-;; occur using the last isearch query
+;; occur using the last isearch query (superseded by ctrlf's `M-s o')
 (global-set-key (kbd "C-c o") 'isearch-occur)
 
 ;;;; JAVASCRIPT
