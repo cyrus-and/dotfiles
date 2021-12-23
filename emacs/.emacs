@@ -451,9 +451,10 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'diff-hl)
 
 (custom-set-variables
- '(global-diff-hl-mode t)
+ '(diff-hl-draw-borders nil)
+ '(diff-hl-show-hunk-inline-popup-hide-hunk t)
  '(diff-hl-show-staged-changes nil)
- '(diff-hl-draw-borders nil))
+ '(global-diff-hl-mode t))
 
 (custom-set-faces
  '(diff-hl-change ((t (:inherit (warning) :inverse-video t))))
