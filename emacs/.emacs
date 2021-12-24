@@ -793,7 +793,6 @@ If prefix ARG is given, simply call `compile'."
 ;;;; MODE LINE
 
 (custom-set-variables
- '(column-number-mode t)
  '(winum-mode-line-position 0)
  `(mode-line-format
    '(" "
