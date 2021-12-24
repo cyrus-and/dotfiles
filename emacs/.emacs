@@ -453,6 +453,7 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(diff-hl-draw-borders nil)
  '(diff-hl-show-hunk-inline-popup-hide-hunk t)
+ '(diff-hl-show-hunk-inline-popup-smart-lines nil)
  '(diff-hl-show-staged-changes nil)
  '(global-diff-hl-mode t))
 
@@ -489,7 +490,7 @@ If prefix ARG is given, simply call `compile'."
 (defun my/force-revert-buffer ()
   "Revert buffer without confirmation."
   (interactive)
-  (lazy-highlight-cleanup)
+  (lazy-highlight-cleanup t)
   (revert-buffer t t))
 
 (global-set-key (kbd "C-c R") 'my/force-revert-buffer)
