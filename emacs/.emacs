@@ -519,7 +519,7 @@ If prefix ARG is given, simply call `compile'."
 
 ;; autojoin
 (custom-set-variables
- '(erc-autojoin-channels-alist '(("freenode.net$" . ("#emacs")))))
+ '(erc-autojoin-channels-alist '(("libera.chat$" . ("#emacs")))))
 
 (custom-set-faces
  `(erc-prompt-face    ((t (:inherit (minibuffer-prompt)))))
@@ -536,12 +536,12 @@ If prefix ARG is given, simply call `compile'."
 ;; automatic freenode.net connection (a pinentry program must be available)
 (defun my/irc ()
   (interactive)
-  (let* ((credentials (split-string (password-store-get "Freenode")))
+  (let* ((credentials (split-string (password-store-get "Libera.Chat")))
          (nick (nth 0 credentials))
          (password (nth 1 credentials)))
-    (erc
-     :server "irc.freenode.net"
-     :port 6667
+    (erc-tls
+     :server "irc.libera.chat"
+     :port 6697
      :nick nick
      :password password)))
 
