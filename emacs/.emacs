@@ -483,6 +483,13 @@ If prefix ARG is given, simply call `compile'."
  '(ls-lisp-dirs-first t)
  '(dired-omit-files "^\\."))
 
+;;;; DUMB JUMP
+
+(my/install 'dumb-jump)
+
+;; allow to use dumb-jump with xref (e.g., M-.)
+(add-hook 'xref-backend-functions 'dumb-jump-xref-activate)
+
 ;;;; EASY REVERT BUFFER
 
 ;; utility to abruptly discard changes in the current buffer
