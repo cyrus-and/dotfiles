@@ -262,7 +262,7 @@
 ;; others
 (custom-set-faces
  `(cursor                       ((t (:background ,theme-color-accent))))
- `(fringe                       ((t (:inherit (default)))))
+ `(fringe                       ((t (:inherit (shadow)))))
  `(minibuffer-prompt            ((t (:foreground ,theme-color-accent :weight bold))))
  `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3 :extend t))))
  `(secondary-selection          ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent :extend t))))
