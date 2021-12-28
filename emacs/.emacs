@@ -927,13 +927,6 @@ If prefix ARG is given, simply call `compile'."
  `(term-color-magenta ((t (:foreground ,theme-color-magenta))))
  `(term-color-cyan    ((t (:foreground ,theme-color-cyan)))))
 
-;; shortcut to spawn a shell
-(defun my/term ()
-  (interactive)
-  (ansi-term (getenv "SHELL")))
-
-(global-set-key (kbd "C-c a") 'my/term)
-
 ;;;; TRAMP
 
 ;; avoid verbose tramp messages and show errors only
@@ -970,6 +963,13 @@ If prefix ARG is given, simply call `compile'."
 (unless (display-graphic-p)
   (custom-set-variables
    '(menu-bar-mode nil)))
+
+;;;; VTERM
+
+;; XXX this requires CMake to be installed so that the first time it compiles the module
+(my/install 'vterm)
+
+(global-set-key (kbd "C-c a") 'vterm)
 
 ;;;; WHITESPACE MANAGEMENT
 
