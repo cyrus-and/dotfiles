@@ -970,6 +970,9 @@ If prefix ARG is given, simply call `compile'."
 ;; XXX this requires CMake to be installed so that the first time it compiles the module
 (my/install 'vterm)
 
+(custom-set-variables
+ '(vterm-kill-buffer-on-exit nil))
+
 (global-set-key (kbd "C-c a") 'vterm)
 
 ;;;; WHITESPACE MANAGEMENT
