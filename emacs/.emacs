@@ -840,8 +840,8 @@ If prefix ARG is given, simply call `compile'."
 
 ;;;; OTHER PACKAGES
 
-(my/install 'dockerfile-mode)
 (my/install 'docker-tramp)
+(my/install 'dockerfile-mode)
 (my/install 'go-mode)
 (my/install 'rainbow-mode)
 (my/install 'rust-mode)
