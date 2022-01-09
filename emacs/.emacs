@@ -880,6 +880,23 @@ If prefix ARG is given, simply call `compile'."
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
 
+;;;;; Also save and restore window configurations
+
+(setq my/projectile-window-configurations nil)
+
+(defun my/projectile-save-window-configuration ()
+  (add-to-list 'my/projectile-window-configurations
+               (cons (projectile-project-root) (current-window-configuration))))
+
+(defun my/projectile-restore-window-configuration ()
+  (let ((window-configuration (alist-get (projectile-project-root)
+                                         my/projectile-window-configurations)))
+    (when window-configuration
+      (set-window-configuration window-configuration))))
+
+(add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
+(add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
+
 ;;;; PYTHON
 
 (custom-set-variables
