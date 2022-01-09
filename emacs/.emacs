@@ -889,10 +889,9 @@ If prefix ARG is given, simply call `compile'."
                (cons (projectile-project-root) (current-window-configuration))))
 
 (defun my/projectile-restore-window-configuration ()
-  (let ((window-configuration (alist-get (projectile-project-root)
-                                         my/projectile-window-configurations)))
-    (when window-configuration
-      (set-window-configuration window-configuration))))
+  (let ((match (assoc (projectile-project-root) my/projectile-window-configurations)))
+    (when match
+      (set-window-configuration (cdr match)))))
 
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
