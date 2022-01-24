@@ -432,15 +432,6 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c c") 'my/smart-compile)
 
-;;;; CTRLF
-
-(my/install 'ctrlf)
-
-(custom-set-variables
- '(ctrlf-mode t)
- '(ctrlf-go-to-end-of-match nil)
- '(ctrlf-highlight-current-line nil))
-
 ;;;; CURSOR
 
 (custom-set-variables
