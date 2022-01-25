@@ -892,9 +892,24 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(python-shell-interpreter "python3"))
 
+(defun my/fix-python-tab-width-nonsense ()
+  (setq tab-width (default-value 'tab-width)))
+
+(add-hook 'python-mode-hook 'my/fix-python-tab-width-nonsense)
+
 ;;;; RIPGREP
 
 (my/install 'ripgrep)
+
+;;;;; HIDE THE RIPGREP COMMAND
+
+;; use a cleaner ripgrep output by hiding the command
+(add-hook 'ripgrep-search-finished-hook 'my/ripgrep-fix)
+(defun my/ripgrep-fix ()
+  (save-excursion
+    (let ((inhibit-read-only t))
+      (forward-line 3) ; kill 4th line
+      (kill-whole-line))))
 
 ;;;; SAVE PLACE
 
