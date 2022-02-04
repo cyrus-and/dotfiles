@@ -103,8 +103,6 @@
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
-(global-set-key (kbd "C-c p") 'package-list-packages)
-
 ;;;; UPGRADE UTILITY
 
 (defun my/upgrade ()
@@ -117,7 +115,7 @@
     (package-autoremove)
     (kill-buffer)))
 
-(global-set-key (kbd "C-c P") 'my/upgrade)
+(global-set-key (kbd "C-c u") 'my/upgrade)
 
 ;;;; UTILITIES
 
@@ -869,7 +867,7 @@ If prefix ARG is given, simply call `compile'."
 
 ;; define the global entrypoint key
 (with-eval-after-load 'projectile
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map))
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
 
 ;;;;; Also save and restore window configurations
 
