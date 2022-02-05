@@ -884,6 +884,11 @@ If prefix ARG is given, simply call `compile'."
     (projectile-dired)
     (delete-other-windows)))
 
+(defun my/projectile-open-project (new-project-root)
+  (interactive "fOpen project: ")
+  (my/projectile-save-window-configuration)
+  (dired new-project-root))
+
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
 
@@ -893,7 +898,9 @@ If prefix ARG is given, simply call `compile'."
 
 ;; define the global entrypoint key
 (with-eval-after-load 'projectile
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p p") 'projectile-switch-open-project)
+  (define-key projectile-mode-map (kbd "C-c p q") 'my/projectile-open-project))
 
 ;;;; PYTHON
 
