@@ -881,7 +881,8 @@ If prefix ARG is given, simply call `compile'."
 (defun my/projectile-switch-project-action ()
   (if (my/projectile-get-window-configuration)
       (projectile-project-buffers-other-buffer)
-    (projectile-find-file)))
+    (projectile-dired)
+    (delete-other-windows)))
 
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
