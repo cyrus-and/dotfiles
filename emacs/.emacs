@@ -861,29 +861,38 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'projectile)
 
+;; save and restore the window configurations on switch or fuzzy-find file
+
+(setq my/projectile-window-configurations nil)
+
+(defun my/projectile-get-window-configuration ()
+  (cdr (assoc (projectile-project-root) my/projectile-window-configurations)))
+
+(defun my/projectile-save-window-configuration ()
+  (when (projectile-project-p)
+    (add-to-list 'my/projectile-window-configurations
+                 (cons (projectile-project-root) (current-window-configuration)))))
+
+(defun my/projectile-restore-window-configuration ()
+  (let ((configuration (my/projectile-get-window-configuration)))
+    (when configuration
+      (set-window-configuration configuration))))
+
+(defun my/projectile-switch-project-action ()
+  (if (my/projectile-get-window-configuration)
+      (projectile-project-buffers-other-buffer)
+    (projectile-find-file)))
+
+(add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
+(add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
+
 (custom-set-variables
  '(projectile-mode t)
- '(projectile-switch-project-action 'projectile-project-buffers-other-buffer))
+ '(projectile-switch-project-action 'my/projectile-switch-project-action))
 
 ;; define the global entrypoint key
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
-
-;;;;; Also save and restore window configurations
-
-(setq my/projectile-window-configurations nil)
-
-(defun my/projectile-save-window-configuration ()
-  (add-to-list 'my/projectile-window-configurations
-               (cons (projectile-project-root) (current-window-configuration))))
-
-(defun my/projectile-restore-window-configuration ()
-  (let ((match (assoc (projectile-project-root) my/projectile-window-configurations)))
-    (when match
-      (set-window-configuration (cdr match)))))
-
-(add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
-(add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
 
 ;;;; PYTHON
 
