@@ -770,6 +770,8 @@ If prefix ARG is given, simply call `compile'."
 ;; use nice ellipses (this also works for org mode)
 (set-display-table-slot standard-display-table 'selective-display (string-to-vector "…"))
 
+(add-hook 'markdown-mode-hook 'flyspell-mode)
+
 ;;;; MINIBUFFER
 
 ;; infinite minibuffer history and case insensitive completion
