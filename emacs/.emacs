@@ -889,7 +889,8 @@ If prefix ARG is given, simply call `compile'."
 (defun my/projectile-open-project (new-project-root)
   (interactive "fOpen project: ")
   (my/projectile-save-window-configuration)
-  (dired new-project-root))
+  (dired new-project-root)
+  (delete-other-windows))
 
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
