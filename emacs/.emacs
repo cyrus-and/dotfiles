@@ -903,7 +903,8 @@ If prefix ARG is given, simply call `compile'."
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p p") 'projectile-switch-open-project)
-  (define-key projectile-mode-map (kbd "C-c p q") 'my/projectile-open-project))
+  (define-key projectile-mode-map (kbd "C-c p q") 'my/projectile-open-project)
+  (define-key projectile-mode-map (kbd "C-c p s") 'projectile-ripgrep))
 
 ;;;; PYTHON
 
