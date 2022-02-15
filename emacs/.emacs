@@ -887,7 +887,7 @@ If prefix ARG is given, simply call `compile'."
     (delete-other-windows)))
 
 (defun my/projectile-open-project (new-project-root)
-  (interactive "fOpen project: ")
+  (interactive "DOpen project: ")
   (my/projectile-save-window-configuration)
   (dired new-project-root)
   (delete-other-windows))
