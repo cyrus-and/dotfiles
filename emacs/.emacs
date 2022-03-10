@@ -899,12 +899,19 @@ If prefix ARG is given, simply call `compile'."
  '(projectile-mode t)
  '(projectile-switch-project-action 'my/projectile-switch-project-action))
 
-;; define the global entrypoint key
+;; define the global entrypoint key and some shortcuts
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p p") 'projectile-switch-open-project)
-  (define-key projectile-mode-map (kbd "C-c p q") 'my/projectile-open-project)
-  (define-key projectile-mode-map (kbd "C-c p s") 'projectile-ripgrep))
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-switch-open-project)
+  (define-key projectile-mode-map (kbd "s-o") 'my/projectile-open-project)
+  (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
+  (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
+  (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
+  (define-key projectile-mode-map (kbd "s-r") 'projectile-dired)
+  (define-key projectile-mode-map (kbd "s-g") 'projectile-ripgrep)
+  (define-key projectile-mode-map (kbd "s-s") 'projectile-run-vterm)
+  (define-key projectile-mode-map (kbd "s-b") 'projectile-switch-to-buffer)
+  (define-key projectile-mode-map (kbd "s-i") 'projectile-ibuffer))
 
 ;;;; PYTHON
 
