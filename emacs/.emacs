@@ -988,6 +988,7 @@ If prefix ARG is given, simply call `compile'."
 (windmove-default-keybindings)
 
 (custom-set-variables
+ '(confirm-kill-emacs 'y-or-n-p)
  '(disabled-command-function nil)
  '(echo-keystrokes 0.1)
  '(frame-resize-pixelwise t)
