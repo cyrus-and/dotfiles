@@ -153,7 +153,7 @@
 (setq theme-font-linux      "Terminus")
 (setq theme-font-macos      "Iosevka SS04")
 (setq theme-font-size-linux 14)
-(setq theme-font-size-macos 16)
+(setq theme-font-size-macos 15)
 
 ;;;; THEME VARIABLES
 
@@ -280,6 +280,12 @@
 (my/install 'adaptive-wrap)
 
 (add-hook 'visual-line-mode-hook 'adaptive-wrap-prefix-mode)
+
+;;;; AVY
+
+(my/install 'avy)
+
+(global-set-key (kbd "s-.") 'avy-goto-char-timer)
 
 ;;;; BACKUPS
 
