@@ -827,6 +827,11 @@ If prefix ARG is given, simply call `compile'."
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t))
 
+;;;; NATIVE COMP
+
+(custom-set-variables
+ '(native-comp-async-report-warnings-errors nil))
+
 ;;;; OPENWITH
 
 ;; this is especially useful to open PDF files directly from markdown
