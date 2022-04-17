@@ -921,6 +921,11 @@ If prefix ARG is given, simply call `compile'."
   (define-key projectile-mode-map (kbd "s-b") 'projectile-switch-to-buffer)
   (define-key projectile-mode-map (kbd "s-i") 'projectile-ibuffer))
 
+;; show the current project in the title bar
+(custom-set-variables
+ '(frame-title-format '(:eval (let ((project (projectile-project-name)))
+                                (if (equal project "-") "%b" (format "< %s >" project))))))
+
 ;;;; PYTHON
 
 (custom-set-variables
