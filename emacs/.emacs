@@ -924,7 +924,7 @@ If prefix ARG is given, simply call `compile'."
 ;; show the current project in the title bar
 (custom-set-variables
  '(frame-title-format '(:eval (let ((project (projectile-project-name)))
-                                (if (equal project "-") "%b" (format "< %s >" project))))))
+                                (if (equal project "-") "" project)))))
 
 ;;;; PYTHON
 
