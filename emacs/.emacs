@@ -701,8 +701,10 @@ If prefix ARG is given, simply call `compile'."
   (custom-set-variables
    '(mac-right-option-modifier 'none))
 
-  ;; tune the window decorations
+  ;; tune the window decorations and appearance
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (custom-set-variables
+   '(ns-use-proxy-icon nil))
 
   ;; use the lightweight fullscreen mode (XXX for some reason this only works
   ;; the second time)
