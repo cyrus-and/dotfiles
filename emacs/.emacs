@@ -642,7 +642,7 @@ If prefix ARG is given, simply call `compile'."
 
 ;; inhibit search/replace on invisible text
 (custom-set-variables
- '(isearch-allow-scroll t)
+ '(isearch-allow-motion t)
  '(lazy-highlight-cleanup nil)
  '(lazy-highlight-buffer t)
  '(lazy-highlight-max-at-a-time nil)
