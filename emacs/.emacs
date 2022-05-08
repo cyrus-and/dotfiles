@@ -248,14 +248,14 @@
 
 ;; outlines
 (custom-set-faces
- `(outline-1 ((t (:inherit (bold) :extend t :height 1.4 :foreground ,theme-color-blue))))
- `(outline-2 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-color-yellow))))
- `(outline-3 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-color-green))))
- `(outline-4 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-color-magenta))))
- `(outline-5 ((t (:inherit (bold) :extend t :height 1.2 :foreground ,theme-color-red))))
- `(outline-6 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-color-red))))
- `(outline-7 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-color-red))))
- `(outline-8 ((t (:inherit (bold) :extend t :height 1.0 :foreground ,theme-color-red)))))
+ `(outline-1 ((t (:inherit (bold) :extend t :height 1.4 :background ,theme-color-level-2 :foreground ,theme-color-blue))))
+ `(outline-2 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-color-level-2 :foreground ,theme-color-yellow))))
+ `(outline-3 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-color-level-2 :foreground ,theme-color-green))))
+ `(outline-4 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-color-level-2 :foreground ,theme-color-magenta))))
+ `(outline-5 ((t (:inherit (bold) :extend t :height 1.2 :background ,theme-color-level-2 :foreground ,theme-color-red))))
+ `(outline-6 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-color-level-2 :foreground ,theme-color-red))))
+ `(outline-7 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-color-level-2 :foreground ,theme-color-red))))
+ `(outline-8 ((t (:inherit (bold) :extend t :height 1.0 :background ,theme-color-level-2 :foreground ,theme-color-red)))))
 
 ;; others
 (custom-set-faces
@@ -760,6 +760,7 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-variables
  '(markdown-fontify-code-blocks-natively t)
+ '(markdown-fontify-whole-heading-line t)
  '(markdown-hide-urls t)
  '(markdown-url-compose-char "…")
  '(markdown-asymmetric-header t))
