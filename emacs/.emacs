@@ -472,6 +472,9 @@ If prefix ARG is given, simply call `compile'."
   (require 'ls-lisp)
   (require 'dired-x))
 
+;; refresh the dired buffer at every visit
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
 (custom-set-variables
  '(ls-lisp-use-insert-directory-program nil)
  '(ls-lisp-use-localized-time-format t)
