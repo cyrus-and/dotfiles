@@ -364,6 +364,8 @@
 	<false/>
 	<key>FlashTabBarInFullscreen</key>
 	<true/>
+	<key>FractionOfCharacterSelectingNextNeighbor</key>
+	<real>0.0</real>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HideActivityIndicator</key>
