@@ -26,3 +26,5 @@
     defaultBranch = master
 [pull]
 	ff = only
+[core]
+	trustctime = false
