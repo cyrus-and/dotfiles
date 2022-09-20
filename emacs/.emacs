@@ -562,6 +562,8 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'evil)
 
+(require 'evil)
+
 (custom-set-variables
  '(evil-mode t))
 
@@ -984,8 +986,9 @@ If prefix ARG is given, simply call `compile'."
  '(selectrum-prescient-mode t)
  '(prescient-persist-mode t))
 
-(custom-set-faces
- '(selectrum-prescient-primary-highlight ((t (:inherit (completions-first-difference))))))
+(with-eval-after-load 'selectrum-prescient
+  (custom-set-faces
+   '(selectrum-prescient-primary-highlight ((t (:inherit (completions-first-difference)))))))
 
 ;;;; SPELL CHECK
 
