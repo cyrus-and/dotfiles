@@ -561,11 +561,13 @@ If prefix ARG is given, simply call `compile'."
 ;;;; EVIL
 
 (my/install 'evil)
+(my/install 'evil-goggles)
 
 (require 'evil)
 
 (custom-set-variables
- '(evil-mode t))
+ '(evil-mode t)
+ '(evil-goggles-mode t))
 
 (with-eval-after-load 'evil
   (evil-set-initial-state 'dired-mode 'emacs)
