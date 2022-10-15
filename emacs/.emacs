@@ -571,7 +571,8 @@ If prefix ARG is given, simply call `compile'."
 
 (with-eval-after-load 'evil
   (evil-set-initial-state 'dired-mode 'emacs)
-  (evil-set-initial-state 'vterm-mode 'emacs))
+  (evil-set-initial-state 'vterm-mode 'emacs)
+  (evil-set-initial-state 'xref--xref-buffer-mode 'emacs))
 
 ;;;; FIND
 
