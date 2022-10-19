@@ -764,7 +764,7 @@ If prefix ARG is given, simply call `compile'."
 ;; set up default status sections visibility
 (custom-set-variables
  '(magit-section-initial-visibility-alist
-   '((stashes . show) (unpushed . show))))
+   '((stashes . hide) (unpushed . show))))
 
 ;; make clearer the commit message overflow
 (custom-set-faces
