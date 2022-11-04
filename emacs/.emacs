@@ -558,22 +558,6 @@ If prefix ARG is given, simply call `compile'."
 (global-set-key (kbd "<s-up>") 'previous-error)
 (global-set-key (kbd "<s-down>") 'next-error)
 
-;;;; EVIL
-
-(my/install 'evil)
-(my/install 'evil-goggles)
-
-(require 'evil)
-
-(custom-set-variables
- '(evil-mode t)
- '(evil-goggles-mode t))
-
-(with-eval-after-load 'evil
-  (evil-set-initial-state 'dired-mode 'emacs)
-  (evil-set-initial-state 'vterm-mode 'emacs)
-  (evil-set-initial-state 'xref--xref-buffer-mode 'emacs))
-
 ;;;; FIND
 
 ;; find in whole path
