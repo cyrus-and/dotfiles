@@ -1386,6 +1386,11 @@
 	<integer>0</integer>
 	<key>TerminalVMargin</key>
 	<integer>0</integer>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Profiles</string>
+		<string>Paste History</string>
+	</array>
 	<key>UseBorder</key>
 	<true/>
 	<key>UseLionStyleFullscreen</key>
