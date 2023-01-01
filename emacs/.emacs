@@ -881,12 +881,9 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'projectile)
 
-;; save and restore the window configurations on switch or fuzzy-find file
+;; save and restore the window configurations on switch
 
 (setq my/projectile-window-configurations nil)
-
-(defun my/projectile-get-window-configuration ()
-  (cdr (assoc (projectile-project-root) my/projectile-window-configurations)))
 
 (defun my/projectile-save-window-configuration ()
   (when (projectile-project-p)
@@ -894,34 +891,21 @@ If prefix ARG is given, simply call `compile'."
                  (cons (projectile-project-root) (current-window-configuration)))))
 
 (defun my/projectile-restore-window-configuration ()
-  (let ((configuration (my/projectile-get-window-configuration)))
+  (let ((configuration (cdr (assoc (projectile-project-root) my/projectile-window-configurations))))
     (when configuration
       (set-window-configuration configuration))))
-
-(defun my/projectile-switch-project-action ()
-  (if (my/projectile-get-window-configuration)
-      (projectile-project-buffers-other-buffer)
-    (projectile-dired)
-    (delete-other-windows)))
-
-(defun my/projectile-open-project (new-project-root)
-  (interactive "DOpen project: ")
-  (my/projectile-save-window-configuration)
-  (dired new-project-root)
-  (delete-other-windows))
 
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
 
 (custom-set-variables
  '(projectile-mode t)
- '(projectile-switch-project-action 'my/projectile-switch-project-action))
+ '(projectile-switch-project-action 'projectile-project-buffers-other-buffer))
 
 ;; define the global entrypoint key and some shortcuts
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-switch-open-project)
-  (define-key projectile-mode-map (kbd "s-o") 'my/projectile-open-project)
   (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
