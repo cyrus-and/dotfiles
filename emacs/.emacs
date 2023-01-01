@@ -965,20 +965,6 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(save-place-mode t))
 
-;;;; SELECTRUM
-
-(my/install 'selectrum)
-(my/install 'selectrum-prescient) ; improved candidates order
-
-(custom-set-variables
- '(selectrum-mode t)
- '(selectrum-prescient-mode t)
- '(prescient-persist-mode t))
-
-(with-eval-after-load 'selectrum-prescient
-  (custom-set-faces
-   '(selectrum-prescient-primary-highlight ((t (:inherit (completions-first-difference)))))))
-
 ;;;; SPELL CHECK
 
 (global-set-key (kbd "C-c k") 'ispell-buffer)
@@ -1038,6 +1024,14 @@ If prefix ARG is given, simply call `compile'."
 (unless (display-graphic-p)
   (custom-set-variables
    '(menu-bar-mode nil)))
+
+;;;; VERTICO
+
+(my/install 'vertico)
+
+(custom-set-variables
+ '(completion-styles '(basic partial-completion))
+ '(vertico-mode t))
 
 ;;;; VTERM
 
