@@ -1014,7 +1014,7 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'vertico)
 
 (custom-set-variables
- '(completion-styles '(basic partial-completion))
+ '(completion-styles '(substring partial-completion basic))
  '(vertico-mode t))
 
 ;;;; VTERM
