@@ -1,6 +1,6 @@
 # common
 shopt -s extglob
-export EDITOR=vim
+export EDITOR='emacsclient -c -a emacs'
 
 # history
 shopt -s histappend
@@ -62,7 +62,7 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
     }
 
     # completion
-    source $(brew --prefix)/etc/bash_completion
+    source /usr/local/etc/profile.d/bash_completion.sh
 fi
 
 if [[ "$OSTYPE" = 'linux-gnu' ]]; then

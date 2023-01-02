@@ -949,6 +949,10 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(save-place-mode t))
 
+;;;; SERVER
+
+(server-start)
+
 ;;;; SPELL CHECK
 
 (global-set-key (kbd "C-c k") 'ispell-buffer)
