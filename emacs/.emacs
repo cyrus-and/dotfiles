@@ -788,8 +788,9 @@ If prefix ARG is given, simply call `compile'."
 
 ;; infinite minibuffer history and case insensitive completion
 (custom-set-variables
- '(savehist-mode t)
+ '(completion-ignore-case t)
  '(history-length t)
+ '(savehist-mode t)
  '(read-buffer-completion-ignore-case t))
 
 ;;;; MINIONS
