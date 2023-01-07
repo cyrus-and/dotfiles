@@ -1016,9 +1016,11 @@ If prefix ARG is given, simply call `compile'."
 ;;;; VERTICO
 
 (my/install 'vertico)
+(my/install 'orderless)
 
 (custom-set-variables
- '(completion-styles '(flex basic))
+ '(completion-styles '(orderless basic))
+ '(orderless-match-faces [completions-common-part])
  '(vertico-mode t))
 
 ;;;; VTERM
