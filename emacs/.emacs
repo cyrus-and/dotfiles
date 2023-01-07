@@ -895,6 +895,12 @@ If prefix ARG is given, simply call `compile'."
     (when configuration
       (set-window-configuration configuration))))
 
+(defun my/projectile-open (filename)
+  (interactive "fFind file: ")
+  (my/projectile-save-window-configuration)
+  (find-file filename)
+  (delete-other-windows))
+
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
 
@@ -905,6 +911,7 @@ If prefix ARG is given, simply call `compile'."
 ;; define the global entrypoint key and some shortcuts
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "s-o") 'my/projectile-open)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-switch-open-project)
   (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
