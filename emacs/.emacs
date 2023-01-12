@@ -954,6 +954,7 @@ If prefix ARG is given, simply call `compile'."
 (defun my/ripgrep-fix ()
   (save-excursion
     (let ((inhibit-read-only t))
+      (goto-char (point-min))
       (forward-line 3) ; kill 4th line
       (kill-whole-line))))
 
