@@ -922,7 +922,7 @@ If prefix ARG is given, simply call `compile'."
   (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
-  (define-key projectile-mode-map (kbd "s-r") 'projectile-dired)
+  (define-key projectile-mode-map (kbd "s-t") 'projectile-dired)
   (define-key projectile-mode-map (kbd "s-g") 'projectile-ripgrep)
   (define-key projectile-mode-map (kbd "s-s") 'projectile-run-vterm)
   (define-key projectile-mode-map (kbd "s-b") 'projectile-switch-to-buffer)
@@ -942,6 +942,13 @@ If prefix ARG is given, simply call `compile'."
   (setq tab-width (default-value 'tab-width)))
 
 (add-hook 'python-mode-hook 'my/fix-python-tab-width-nonsense)
+
+;;;; RECENTF
+
+(custom-set-variables
+ '(recentf-mode t))
+
+(global-set-key (kbd "s-r") 'recentf-open)
 
 ;;;; RIPGREP
 
