@@ -135,9 +135,12 @@
 
 ;; UI and base colors
 (setq theme-color-accent  "#ff6000")
+(setq theme-color-low     "#000000")
+(setq theme-color-high    "#ffffff")
 (setq theme-color-level-1 "#1D1F21")
-(setq theme-color-level-2 "#373B41")
-(setq theme-color-level-3 "#C5C8C6")
+(setq theme-color-level-2 "#282A2E")
+(setq theme-color-level-3 "#373B41")
+(setq theme-color-level-4 "#C5C8C6")
 
 ;; common colors
 (setq theme-color-red     "#A54242")
@@ -181,12 +184,12 @@
 
 ;; basic faces
 (custom-set-faces
- `(default        ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-1))))
+ `(default        ((t (:foreground ,theme-color-level-4 :background ,theme-color-level-1))))
  `(link           ((t (:foreground ,theme-color-accent))))
  `(link-visited   ((t (:inherit (link) :weight normal))))
- `(highlight      ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
- `(isearch        ((t (:foreground ,theme-color-accent :background ,theme-color-level-3))))
- `(lazy-highlight ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
+ `(highlight      ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-4))))
+ `(isearch        ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
+ `(lazy-highlight ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-4))))
  `(match          ((t (:inherit (lazy-highlight)))))
  `(shadow         ((t (:foreground ,theme-color-gray))))
  `(error          ((t (:foreground ,theme-color-red))))
@@ -195,17 +198,17 @@
 
 ;; header/mode line
 (custom-set-faces
- `(mode-line           ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3))))
+ `(mode-line           ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-4))))
  `(mode-line-inactive  ((t (:inherit (mode-line)))))
  `(mode-line-highlight ((t (:background ,theme-color-accent))))
  `(header-line         ((t (:inherit (mode-line))))))
 
 ;; window dividers
 (custom-set-faces
- `(window-divider             ((t (:foreground ,theme-color-level-2))))
- `(window-divider-first-pixel ((t (:foreground ,theme-color-level-2))))
- `(window-divider-last-pixel  ((t (:foreground ,theme-color-level-2))))
- `(internal-border            ((t (:background ,theme-color-level-2)))))
+ `(window-divider             ((t (:foreground ,theme-color-level-3))))
+ `(window-divider-first-pixel ((t (:foreground ,theme-color-level-3))))
+ `(window-divider-last-pixel  ((t (:foreground ,theme-color-level-3))))
+ `(internal-border            ((t (:background ,theme-color-level-3)))))
 
 ;; font lock
 (custom-set-faces
@@ -222,7 +225,7 @@
 ;; highlighting lock
 (custom-set-faces
  `(hi-black-b  ((t (:inherit (bold) :foreground ,theme-color-level-1 :background ,theme-color-gray))))
- `(hi-black-hb ((t (:inherit (bold) :foreground ,theme-color-level-3 :background ,theme-color-gray))))
+ `(hi-black-hb ((t (:inherit (bold) :foreground ,theme-color-level-4 :background ,theme-color-gray))))
  `(hi-blue     ((t (:foreground ,theme-color-level-1 :background ,theme-color-blue))))
  `(hi-blue-b   ((t (:inherit (hi-blue bold) :inverse-video t))))
  `(hi-green    ((t (:foreground ,theme-color-level-1 :background ,theme-color-green))))
@@ -239,12 +242,12 @@
 
 ;; widgets
 (custom-set-faces
- `(custom-button         ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 :box (:line-width 2 :color nil :style released-button)))))
+ `(custom-button         ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-4 :box (:line-width 2 :color nil :style released-button)))))
  `(custom-button-pressed ((t (:inherit (custom-button-mouse) :box (:line-width 2 :color nil :style pressed-button)))))
  `(custom-button-mouse   ((t (:inherit (custom-button) :foreground ,theme-color-accent))))
  `(widget-button         ((t (:inherit (custom-button)))))
  `(widget-button-pressed ((t (:inherit (custom-button-pressed)))))
- `(widget-field          ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 :extend t)))))
+ `(widget-field          ((t (:foreground ,theme-color-level-4 :background ,theme-color-level-2 :extend t)))))
 
 ;; outlines
 (custom-set-faces
@@ -261,12 +264,12 @@
 (custom-set-faces
  `(cursor                       ((t (:background ,theme-color-accent))))
  `(fringe                       ((t (:inherit (shadow)))))
- `(minibuffer-prompt            ((t (:foreground ,theme-color-accent :weight bold))))
- `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-level-3 :extend t))))
- `(secondary-selection          ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent :extend t))))
+ `(minibuffer-prompt            ((t (:inherit (bold) :foreground ,theme-color-accent))))
+ `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-high :extend t))))
+ `(secondary-selection          ((t (:foreground ,theme-color-accent :background ,theme-color-high :extend t))))
  `(isearch-fail                 ((t (:inherit (error)))))
- `(completions-common-part      ((t (:inherit (shadow)))))
- `(completions-first-difference ((t (:foreground ,theme-color-accent))))
+ `(completions-common-part      ((t (:foreground ,theme-color-accent))))
+ `(completions-first-difference ((t (:inherit (completions-common-part) :))))
  `(pulse-highlight-start-face   ((t (:background ,theme-color-accent))))
  `(show-paren-match             ((t (:inherit (bold) :foreground ,theme-color-accent))))
  `(show-paren-mismatch          ((t (:inherit (error) :inverse-video t)))))
@@ -358,14 +361,15 @@
  '(company-posframe-show-indicator nil)
  '(company-posframe-show-metadata nil))
 
+(setq company-posframe-show-params `(:internal-border-color ,theme-color-level-2 :internal-border-width 5))
+
 (custom-set-faces
- `(company-tooltip            ((t (:foreground ,theme-color-level-3 :background ,theme-color-level-2 ))))
- `(company-tooltip-common     ((t (:inherit (lazy-highlight)))))
- `(company-tooltip-selection  ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
- `(company-tooltip-mouse      ((t (:inherit (company-tooltip-selection)))))
- `(company-tooltip-annotation ((t (:foreground ,theme-color-level-3))))
- `(company-scrollbar-bg       ((t (:background ,theme-color-level-2))))
- `(company-scrollbar-fg       ((t (:background ,theme-color-level-3)))))
+ `(company-tooltip            ((t (:inherit (default)))))
+ `(company-tooltip-common     ((t (:inherit (completions-common-part)))))
+ `(company-tooltip-selection  ((t (:inherit (highlight)))))
+ `(company-tooltip-annotation ((t (:inherit (shadow)))))
+ `(company-scrollbar-bg       ((t (:background ,theme-color-level-3))))
+ `(company-scrollbar-fg       ((t (:background ,theme-color-accent)))))
 
 ;;;; COMPILATION
 
@@ -440,6 +444,7 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-variables
  '(blink-cursor-mode nil)
+ '(cursor-type 'bar)
  '(cursor-in-non-selected-windows nil))
 
 ;;;; DIFF-HL
@@ -752,7 +757,8 @@ If prefix ARG is given, simply call `compile'."
 
 ;; make clearer the commit message overflow
 (custom-set-faces
- `(git-commit-overlong-summary ((t (:inherit (error) :inverse-video t)))))
+ `(git-commit-overlong-summary ((t (:inherit (error) :inverse-video t))))
+ `(magit-header-line ((t (:inherit (header-line))))))
 
 (global-set-key (kbd "C-c s") 'magit-status)
 
@@ -769,7 +775,7 @@ If prefix ARG is given, simply call `compile'."
  '(markdown-asymmetric-header t))
 
 (custom-set-faces
- `(markdown-code-face           ((t ())))
+ `(markdown-code-face           ((t (:background ,theme-color-low :extend t))))
  `(markdown-inline-code-face    ((t (:inherit (shadow)))))
  `(markdown-metadata-value-face ((t (:inherit (default)))))
  `(markdown-header-face-1       ((t (:inherit (outline-1)))))
