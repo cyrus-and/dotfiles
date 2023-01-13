@@ -821,11 +821,11 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(winum-mode-line-position 0)
  `(mode-line-format
-   '((:eval (when (projectile-project-p)
-              (propertize (format "%s " (projectile-project-name)) 'face `(:background ,theme-color-accent))))
-     "  "
+   '(" "
      "%Z%*%@"
      "  "
+     (:eval (when (projectile-project-p)
+              (format "|%s| " (propertize (projectile-project-name) 'face 'bold))))
      (:eval (when (buffer-file-name)
               (if (projectile-project-p)
                   ;; take the project-relative path and abbreviate it
