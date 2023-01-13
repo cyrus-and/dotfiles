@@ -710,9 +710,7 @@ If prefix ARG is given, simply call `compile'."
    '(mac-right-option-modifier 'none))
 
   ;; tune the window decorations and appearance
-  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-  (custom-set-variables
-   '(ns-use-proxy-icon nil))
+  (add-to-list 'default-frame-alist '(undecorated . t))
 
   ;; use the lightweight fullscreen mode (XXX for some reason this only works
   ;; the second time)
@@ -775,7 +773,7 @@ If prefix ARG is given, simply call `compile'."
  '(markdown-asymmetric-header t))
 
 (custom-set-faces
- `(markdown-code-face           ((t (:background ,theme-color-low :extend t))))
+ `(markdown-code-face           ((t (:background ,theme-color-level-2 :extend t))))
  `(markdown-inline-code-face    ((t (:inherit (shadow)))))
  `(markdown-metadata-value-face ((t (:inherit (default)))))
  `(markdown-header-face-1       ((t (:inherit (outline-1)))))
@@ -814,18 +812,16 @@ If prefix ARG is given, simply call `compile'."
  '(winum-mode-line-position 0)
  `(mode-line-format
    '(" "
-     (:propertize "%Z%*%@" face (:foreground ,theme-color-level-2))
+     "%Z%*%@"
      "  "
-     (:propertize
-      (:eval (when (buffer-file-name)
-               (let ((path (abbreviate-file-name default-directory)))
-                 (if (> (length path) (/ (window-total-width) 2))
-                     (replace-regexp-in-string "\\(/[^/]\\)[^/]*" "\\1" path)
-                   path))))
-      face (:foreground ,theme-color-level-2))
+     (:eval (when (buffer-file-name)
+              (let* ((path (abbreviate-file-name default-directory)))
+                (if (> (length path) (/ (window-total-width) 2))
+                    (replace-regexp-in-string "\\(/[^/]\\)[^/]*" "\\1" path)
+                  path))))
      (:propertize "%b" face bold)
      "  "
-     (:propertize "+%l:%c" face (:foreground ,theme-color-level-2))
+     "+%l:%c"
      "  "
      mode-line-modes
      " " ; XXX one extra space is already there
@@ -927,11 +923,6 @@ If prefix ARG is given, simply call `compile'."
   (define-key projectile-mode-map (kbd "s-s") 'projectile-run-vterm)
   (define-key projectile-mode-map (kbd "s-b") 'projectile-switch-to-buffer)
   (define-key projectile-mode-map (kbd "s-i") 'projectile-ibuffer))
-
-;; show the current project in the title bar
-(custom-set-variables
- '(frame-title-format '(:eval (let ((project (projectile-project-name)))
-                                (if (equal project "-") "" project)))))
 
 ;;;; PYTHON
 
