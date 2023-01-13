@@ -825,7 +825,7 @@ If prefix ARG is given, simply call `compile'."
      "%Z%*%@"
      "  "
      (:eval (when (projectile-project-p)
-              (format "|%s| " (propertize (projectile-project-name) 'face 'bold))))
+              (format "(%s)  " (projectile-project-name))))
      (:eval (when (buffer-file-name)
               (if (projectile-project-p)
                   ;; take the project-relative path and abbreviate it
