@@ -808,17 +808,32 @@ If prefix ARG is given, simply call `compile'."
 
 ;;;; MODE LINE
 
+(defun my/abbreviate-path (path)
+  (let* ((path (abbreviate-file-name path)))
+    (if (> (length path) (/ (window-total-width) 2))
+        (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path)
+      path)))
+
+
+                   ;; "%s : %s"
+                   ;; (propertize (projectile-project-name) 'face 'bold)
+
 (custom-set-variables
  '(winum-mode-line-position 0)
  `(mode-line-format
-   '(" "
+   '((:eval (when (projectile-project-p)
+              (propertize (format "%s " (projectile-project-name)) 'face `(:background ,theme-color-accent))))
+     "  "
      "%Z%*%@"
      "  "
      (:eval (when (buffer-file-name)
-              (let* ((path (abbreviate-file-name default-directory)))
-                (if (> (length path) (/ (window-total-width) 2))
-                    (replace-regexp-in-string "\\(/[^/]\\)[^/]*" "\\1" path)
-                  path))))
+              (if (projectile-project-p)
+                  ;; take the project-relative path and abbreviate it
+                  (my/abbreviate-path (file-relative-name
+                                       (file-truename default-directory)
+                                       (projectile-project-root)))
+                ;; abbreviate the current directory
+                (my/abbreviate-path default-directory))))
      (:propertize "%b" face bold)
      "  "
      "+%l:%c"
