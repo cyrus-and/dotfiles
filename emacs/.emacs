@@ -814,10 +814,6 @@ If prefix ARG is given, simply call `compile'."
         (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path)
       path)))
 
-
-                   ;; "%s : %s"
-                   ;; (propertize (projectile-project-name) 'face 'bold)
-
 (custom-set-variables
  '(winum-mode-line-position 0)
  `(mode-line-format
@@ -834,7 +830,7 @@ If prefix ARG is given, simply call `compile'."
                                        (projectile-project-root)))
                 ;; abbreviate the current directory
                 (my/abbreviate-path default-directory))))
-     (:propertize "%b" face bold)
+     (:eval (propertize (uniquify-buffer-base-name) 'face 'bold))
      "  "
      "+%l:%c"
      "  "
