@@ -268,8 +268,8 @@
  `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-high :extend t))))
  `(secondary-selection          ((t (:foreground ,theme-color-accent :background ,theme-color-high :extend t))))
  `(isearch-fail                 ((t (:inherit (error)))))
- `(completions-common-part      ((t (:foreground ,theme-color-accent))))
- `(completions-first-difference ((t (:inherit (completions-common-part) :))))
+ `(completions-common-part      ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
+ `(completions-first-difference ((t (:inherit (completions-common-part))))) ; TODO why this doesn't work?
  `(pulse-highlight-start-face   ((t (:background ,theme-color-accent))))
  `(show-paren-match             ((t (:inherit (bold) :foreground ,theme-color-accent))))
  `(show-paren-mismatch          ((t (:inherit (error) :inverse-video t)))))
