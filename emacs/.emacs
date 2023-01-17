@@ -831,7 +831,7 @@ If prefix ARG is given, simply call `compile'."
                                        (projectile-project-root)))
                 ;; abbreviate the current directory
                 (my/abbreviate-path default-directory))))
-     (:eval (propertize (uniquify-buffer-base-name) 'face 'bold))
+     (:eval (propertize (or (uniquify-buffer-base-name) (buffer-name)) 'face 'bold))
      "  "
      "+%l:%c"
      "  "
