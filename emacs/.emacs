@@ -262,15 +262,16 @@
 
 ;; others
 (custom-set-faces
- `(cursor                       ((t (:background ,theme-color-accent))))
- `(fringe                       ((t (:inherit (shadow)))))
- `(minibuffer-prompt            ((t (:inherit (bold) :foreground ,theme-color-accent))))
- `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-high :extend t))))
- `(secondary-selection          ((t (:foreground ,theme-color-accent :background ,theme-color-high :extend t))))
- `(isearch-fail                 ((t (:inherit (error)))))
  `(completions-common-part      ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
  `(completions-first-difference ((t (:inherit (completions-common-part))))) ; TODO why this doesn't work?
+ `(cursor                       ((t (:background ,theme-color-accent))))
+ `(diff-refine-changed          ((t (:extend t))))
+ `(fringe                       ((t (:inherit (shadow)))))
+ `(isearch-fail                 ((t (:inherit (error)))))
+ `(minibuffer-prompt            ((t (:inherit (bold) :foreground ,theme-color-accent))))
  `(pulse-highlight-start-face   ((t (:background ,theme-color-accent))))
+ `(region                       ((t (:foreground ,theme-color-level-1 :background ,theme-color-high :extend t))))
+ `(secondary-selection          ((t (:foreground ,theme-color-accent :background ,theme-color-high :extend t))))
  `(show-paren-match             ((t (:inherit (bold) :foreground ,theme-color-accent))))
  `(show-paren-mismatch          ((t (:inherit (error) :inverse-video t)))))
 
@@ -755,8 +756,8 @@ If prefix ARG is given, simply call `compile'."
 
 ;; make clearer the commit message overflow
 (custom-set-faces
- `(git-commit-overlong-summary ((t (:inherit (error) :inverse-video t))))
- `(magit-header-line ((t (:inherit (header-line))))))
+ `(git-commit-overlong-summary ((t (:inherit (error) :inverse-video t)))))
+ `(magit-header-line ((t (:inherit (header-line)))))
 
 (global-set-key (kbd "C-c s") 'magit-status)
 
