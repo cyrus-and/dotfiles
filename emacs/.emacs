@@ -263,7 +263,6 @@
 ;; others
 (custom-set-faces
  `(completions-common-part      ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent))))
- `(completions-first-difference ((t (:inherit (completions-common-part))))) ; TODO why this doesn't work?
  `(cursor                       ((t (:background ,theme-color-accent))))
  `(diff-refine-changed          ((t (:extend t))))
  `(fringe                       ((t (:inherit (shadow)))))
@@ -1043,7 +1042,8 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'orderless)
 
 (custom-set-variables
- '(completion-styles '(orderless basic))
+ '(completion-category-defaults nil)
+ '(completion-styles '(orderless))
  '(orderless-match-faces [completions-common-part])
  '(vertico-mode t))
 
