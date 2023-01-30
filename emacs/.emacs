@@ -251,14 +251,14 @@
 
 ;; outlines
 (custom-set-faces
- `(outline-1 ((t (:inherit (bold) :extend t :inverse-video t :foreground ,theme-color-blue))))
- `(outline-2 ((t (:inherit (bold) :extend t :inverse-video t :foreground ,theme-color-yellow))))
- `(outline-3 ((t (:inherit (bold) :extend t :inverse-video t :foreground ,theme-color-green))))
- `(outline-4 ((t (:inherit (bold) :extend t :inverse-video t :foreground ,theme-color-magenta))))
- `(outline-5 ((t (:inherit (bold) :extend t :inverse-video t :foreground ,theme-color-red))))
- `(outline-6 ((t (:inherit (bold) :extend t :inverse-video t :foreground ,theme-color-red))))
- `(outline-7 ((t (:inherit (bold) :extend t :inverse-video t :foreground ,theme-color-red))))
- `(outline-8 ((t (:inherit (bold) :extend t :inverse-video t :foreground ,theme-color-red)))))
+ `(outline-1 ((t (:inherit (bold) :height 2.6 :extend t :foreground ,theme-color-blue))))
+ `(outline-2 ((t (:inherit (bold) :height 2.2 :extend t :foreground ,theme-color-yellow))))
+ `(outline-3 ((t (:inherit (bold) :height 1.8 :extend t :foreground ,theme-color-green))))
+ `(outline-4 ((t (:inherit (bold) :height 1.4 :extend t :foreground ,theme-color-magenta))))
+ `(outline-5 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-red))))
+ `(outline-6 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-red))))
+ `(outline-7 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-red))))
+ `(outline-8 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-red)))))
 
 ;; others
 (custom-set-faces
