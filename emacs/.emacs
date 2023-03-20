@@ -956,6 +956,9 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'ripgrep)
 
+(custom-set-variables
+ '(ripgrep-arguments '("--glob !.git")))
+
 ;;;;; HIDE THE RIPGREP COMMAND
 
 ;; use a cleaner ripgrep output by hiding the command
