@@ -896,15 +896,14 @@ If prefix ARG is given, simply call `compile'."
 
 ;; save and restore the window configurations on switch
 
-(setq my/projectile-window-configurations nil)
+(setq my/projectile-window-configurations (make-hash-table :test 'equal))
 
 (defun my/projectile-save-window-configuration ()
   (when (projectile-project-p)
-    (add-to-list 'my/projectile-window-configurations
-                 (cons (projectile-project-root) (current-window-configuration)))))
+    (puthash (projectile-project-root) (current-window-configuration) my/projectile-window-configurations)))
 
 (defun my/projectile-restore-window-configuration ()
-  (let ((configuration (cdr (assoc (projectile-project-root) my/projectile-window-configurations))))
+  (let ((configuration (gethash (projectile-project-root) my/projectile-window-configurations)))
     (when configuration
       (set-window-configuration configuration))))
 
