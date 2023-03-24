@@ -905,7 +905,9 @@ If prefix ARG is given, simply call `compile'."
 (defun my/projectile-restore-window-configuration ()
   (let ((configuration (gethash (projectile-project-root) my/projectile-window-configurations)))
     (when configuration
-      (set-window-configuration configuration))))
+      (set-window-configuration configuration))
+    (let ((inhibit-message t))
+      (clean-buffer-list))))
 
 (defun my/projectile-open (filename)
   (interactive "fFind file: ")
