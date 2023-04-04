@@ -918,15 +918,20 @@ If prefix ARG is given, simply call `compile'."
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
 
+(defun my/projectile-switch-project-action ()
+  (if (projectile-project-buffers)
+      (projectile-project-buffers-other-buffer)
+    (projectile-dired)))
+
 (custom-set-variables
  '(projectile-mode t)
- '(projectile-switch-project-action 'projectile-project-buffers-other-buffer))
+ '(projectile-switch-project-action 'my/projectile-switch-project-action))
 
 ;; define the global entrypoint key and some shortcuts
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "s-o") 'my/projectile-open)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-switch-open-project)
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-switch-project)
   (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
