@@ -925,6 +925,7 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-variables
  '(projectile-mode t)
+ '(clean-buffer-list-delay-general 1)
  '(projectile-switch-project-action 'my/projectile-switch-project-action))
 
 ;; define the global entrypoint key and some shortcuts
