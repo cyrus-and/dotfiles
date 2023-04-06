@@ -899,29 +899,37 @@ If prefix ARG is given, simply call `compile'."
 (setq my/projectile-window-configurations (make-hash-table :test 'equal))
 
 (defun my/projectile-save-window-configuration ()
+  ;; save the current window configuration for this project before switching away
   (when (projectile-project-p)
     (puthash (projectile-project-root) (current-window-configuration) my/projectile-window-configurations)))
 
 (defun my/projectile-restore-window-configuration ()
+  ;; restore the window configuration for this project after switching to it
   (let ((configuration (gethash (projectile-project-root) my/projectile-window-configurations)))
-    (when configuration
-      (set-window-configuration configuration))
+    ;; restore the configuration or start anew (in that case the current buffer
+    ;; is the one created by the my/projectile-switch-project-action function)
+    (if configuration
+        (set-window-configuration configuration)
+      (delete-other-windows))
+    ;; trigger the buffer list cleanup
     (let ((inhibit-message t))
       (clean-buffer-list))))
 
 (defun my/projectile-open (filename)
+  ;; open a new project by selecting one of its files
   (interactive "fFind file: ")
   (my/projectile-save-window-configuration)
   (find-file filename)
   (delete-other-windows))
 
-(add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
-(add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
-
 (defun my/projectile-switch-project-action ()
-  (if (projectile-project-buffers)
+  ;; when switching to a project restore its buffers or browse its root
+  (if (projectile-project-buffers (projectile-project-name))
       (projectile-project-buffers-other-buffer)
     (projectile-dired)))
+
+(add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
+(add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
 
 (custom-set-variables
  '(projectile-mode t)
