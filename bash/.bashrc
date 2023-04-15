@@ -61,6 +61,13 @@ if [[ "$OSTYPE" =~ darwin* ]]; then
         true
     }
 
+    # append-only bash history
+    if [[ -f "$HISTFILE" ]]; then
+        chflags uappend "$HISTFILE"
+    else
+        touch "$HISTFILE"
+    fi
+
     # completion
     source /usr/local/etc/profile.d/bash_completion.sh
 fi
@@ -78,6 +85,13 @@ if [[ "$OSTYPE" = 'linux-gnu' ]]; then
         sudo updatedb              && \
         true
     }
+
+    # append-only bash history
+    if [[ -f "$HISTFILE" ]]; then
+        chattr +a "$HISTFILE"
+    else
+        touch "$HISTFILE"
+    fi
 
     # completions
     source /etc/bash_completion
