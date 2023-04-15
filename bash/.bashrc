@@ -47,7 +47,7 @@ alias playground='make -sC ~/dev/playground/'
 
 # OS-specific
 
-if [[ "$OSTYPE" =~ darwin* ]]; then
+if [[ "$OSTYPE" = darwin* ]]; then
     # brew PATH
     export PATH="/usr/local/sbin:$PATH"
 
