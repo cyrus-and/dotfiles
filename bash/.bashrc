@@ -38,61 +38,82 @@ else
     PS1='\w\n\$ '
 fi
 
-# aliases
+# print the PS1 as a placeholder, temporarily disabling Git PS1 that is part of
+# the completions
+alias __git_ps1=true
+printf "${PS1@P}"
+unalias __git_ps1
+
+# swap PS1 for an empty one temporarily
+TEMP_PS1="$PS1"
+PS1=$'\xe2\x80\x8e' # XXX cannot be empty otherwise the completions are not sourced (LEFT-TO-RIGHT MARK)
+
+# common aliases
 alias grep='grep --color=auto'
 alias l='ls -F'
 alias ll='ls -lartF'
 alias gdb='gdb -q'
 alias playground='make -sC ~/dev/playground/'
 
-# OS-specific
+# OS-specific configurations
+case "$OSTYPE" in
+    darwin*)
+        # brew PATH
+        export PATH="/usr/local/sbin:$PATH"
 
-if [[ "$OSTYPE" = darwin* ]]; then
-    # brew PATH
-    export PATH="/usr/local/sbin:$PATH"
+        # aliases
+        alias ls='ls -G'
 
-    # aliases
-    alias ls='ls -G'
+        up() {
+            (
+                set -e
+                brew update
+                brew upgrade
+                brew cleanup
+            )
+        }
 
-    up() {
-        brew update  && \
-        brew upgrade && \
-        brew cleanup && \
-        true
-    }
+        # append-only bash history
+        if [[ -f "$HISTFILE" ]]; then
+            chflags uappend "$HISTFILE"
+        else
+            touch "$HISTFILE"
+        fi
 
-    # append-only bash history
-    if [[ -f "$HISTFILE" ]]; then
-        chflags uappend "$HISTFILE"
-    else
-        touch "$HISTFILE"
-    fi
+        # completion
+        source /usr/local/etc/profile.d/bash_completion.sh
+        ;;
 
-    # completion
-    source /usr/local/etc/profile.d/bash_completion.sh
-fi
+    'linux-gnu')
+        # aliases
+        alias ls='ls --color=auto'
 
-if [[ "$OSTYPE" = 'linux-gnu' ]]; then
-    # aliases
-    alias ls='ls --color=auto'
+        up() {
+            (
+                set -e
+                sudo apt-get update
+                sudo apt-get upgrade -y
+                sudo apt-get autoremove -y
+                sudo apt-get autoclean
+                sudo apt-get clean
+                sudo updatedb
+            )
+        }
 
-    up() {
-        sudo apt-get update        && \
-        sudo apt-get upgrade -y    && \
-        sudo apt-get autoremove -y && \
-        sudo apt-get autoclean     && \
-        sudo apt-get clean         && \
-        sudo updatedb              && \
-        true
-    }
+        # append-only bash history
+        if [[ -f "$HISTFILE" ]]; then
+            chattr +a "$HISTFILE"
+        else
+            touch "$HISTFILE"
+        fi
 
-    # append-only bash history
-    if [[ -f "$HISTFILE" ]]; then
-        chattr +a "$HISTFILE"
-    else
-        touch "$HISTFILE"
-    fi
+        # completions
+        source /etc/bash_completion
+        ;;
+esac
 
-    # completions
-    source /etc/bash_completion
-fi
+# hides the cursor and reset the cursor position so that the real PS1 overrides
+# the placeholder automatically, then alter PS1 to show the cursor every time
+printf '\x1b[?25l\x1b[H'
+PS1="$TEMP_PS1"$'\x1b[?25h'
+unset TEMP_PS1
