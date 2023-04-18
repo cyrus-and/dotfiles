@@ -115,5 +115,5 @@ esac
 # hides the cursor and reset the cursor position so that the real PS1 overrides
 # the placeholder automatically, then alter PS1 to show the cursor every time
 printf '\x1b[?25l\x1b[H'
-PS1="$TEMP_PS1"$'\x1b[?25h'
+PS1="$TEMP_PS1"$'\\[\x1b[?25h\\]'
 unset TEMP_PS1
