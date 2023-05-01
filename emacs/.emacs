@@ -766,11 +766,12 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'edit-indirect)
 
 (custom-set-variables
+ '(markdown-asymmetric-header t)
  '(markdown-fontify-code-blocks-natively t)
  '(markdown-fontify-whole-heading-line t)
  '(markdown-hide-urls t)
- '(markdown-url-compose-char "…")
- '(markdown-asymmetric-header t))
+ '(markdown-nested-imenu-heading-index nil)
+ '(markdown-url-compose-char "…"))
 
 (custom-set-faces
  `(markdown-code-face           ((t (:background ,theme-color-level-2 :extend t))))
