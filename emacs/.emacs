@@ -842,11 +842,10 @@ If prefix ARG is given, simply call `compile'."
 ;;;; MOUSE
 
 (custom-set-variables
- '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-wheel-progressive-speed nil)
+ '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-yank-at-point t)
- '(pixel-scroll-precision-mode nil)
- '(pixel-scroll-mode t))
+ '(pixel-scroll-precision-mode t))
 
 ;;;; NATIVE COMP
 
