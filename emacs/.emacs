@@ -845,7 +845,8 @@ If prefix ARG is given, simply call `compile'."
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-wheel-progressive-speed nil)
  '(mouse-yank-at-point t)
- '(pixel-scroll-precision-mode t))
+ '(pixel-scroll-precision-mode nil)
+ '(pixel-scroll-mode t))
 
 ;;;; NATIVE COMP
 
@@ -897,6 +898,8 @@ If prefix ARG is given, simply call `compile'."
 
 ;; save and restore the window configurations on switch
 
+(require 'cl-lib)
+
 (setq my/projectile-window-configurations (make-hash-table :test 'equal))
 
 (defun my/projectile-save-window-configuration ()
@@ -911,10 +914,12 @@ If prefix ARG is given, simply call `compile'."
     ;; is the one created by the my/projectile-switch-project-action function)
     (if configuration
         (set-window-configuration configuration)
-      (delete-other-windows))
-    ;; trigger the buffer list cleanup
-    (let ((inhibit-message t))
-      (clean-buffer-list))))
+      (delete-other-windows)))
+  ;; kill all the open unused file-associated buffers
+  (mapc 'kill-buffer
+        (cl-set-difference
+         (seq-filter 'buffer-file-name (projectile-project-buffers))
+         (mapcar 'window-buffer (window-list)))))
 
 (defun my/projectile-open (filename)
   ;; open a new project by selecting one of its files
@@ -923,19 +928,12 @@ If prefix ARG is given, simply call `compile'."
   (find-file filename)
   (delete-other-windows))
 
-(defun my/projectile-switch-project-action ()
-  ;; when switching to a project restore its buffers or browse its root
-  (if (projectile-project-buffers (projectile-project-name))
-      (projectile-project-buffers-other-buffer)
-    (projectile-dired)))
-
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
 
 (custom-set-variables
  '(projectile-mode t)
- '(clean-buffer-list-delay-general 1)
- '(projectile-switch-project-action 'my/projectile-switch-project-action))
+ '(projectile-switch-project-action 'projectile-dired)) ; always do dired, windows configurations will be possibly restored after
 
 ;; define the global entrypoint key and some shortcuts
 (with-eval-after-load 'projectile
@@ -1006,6 +1004,21 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(async-shell-command-buffer 'new-buffer)
  '(async-shell-command-display-buffer nil))
+
+;;;; TAB BAR
+
+(custom-set-variables
+ '(tab-bar-tab-name-function (lambda () (format " %s " (or (projectile-project-name) (buffer-name)))))
+ '(tab-bar-auto-width-max nil)
+ '(tab-bar-close-button-show nil)
+ '(tab-bar-format '((lambda () "C-x t") tab-bar-format-tabs)) ; XXX to avoid trailing space...
+ '(tab-bar-mode t)
+ '(tab-bar-show 1))
+
+(custom-set-faces
+ `(tab-bar ((t (:background ,theme-color-level-3))))
+ `(tab-bar-tab ((t (:foreground ,theme-color-accent :background ,theme-color-level-1))))
+ `(tab-bar-tab-inactive ((t (:inherit (tab-bar-tab) :foreground ,theme-color-level-4)))))
 
 ;;;; TERM
 
