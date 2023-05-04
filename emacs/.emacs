@@ -1019,6 +1019,9 @@ If prefix ARG is given, simply call `compile'."
  `(tab-bar-tab ((t (:foreground ,theme-color-accent :background ,theme-color-level-1))))
  `(tab-bar-tab-inactive ((t (:inherit (tab-bar-tab) :foreground ,theme-color-level-4)))))
 
+(global-set-key (kbd "M-s-<left>") 'tab-bar-switch-to-prev-tab)
+(global-set-key (kbd "M-s-<right>") 'tab-bar-switch-to-next-tab)
+
 ;;;; TERM
 
 (custom-set-faces
