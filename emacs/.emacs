@@ -1008,12 +1008,13 @@ If prefix ARG is given, simply call `compile'."
 ;;;; TAB BAR
 
 (custom-set-variables
- '(tab-bar-tab-name-function (lambda () (format " %s " (or (projectile-project-name) (buffer-name)))))
  '(tab-bar-auto-width-max nil)
  '(tab-bar-close-button-show nil)
  '(tab-bar-format '((lambda () "C-x t") tab-bar-format-tabs)) ; XXX to avoid trailing space...
  '(tab-bar-mode t)
- '(tab-bar-show 1))
+ '(tab-bar-select-tab-modifiers '(super))
+ '(tab-bar-show 1)
+ '(tab-bar-tab-name-function (lambda () (format " %s " (or (projectile-project-name) (buffer-name))))))
 
 (custom-set-faces
  `(tab-bar ((t (:background ,theme-color-level-3))))
