@@ -288,7 +288,7 @@
 
 (my/install 'avy)
 
-(global-set-key (kbd "s-.") 'avy-goto-char-timer)
+(global-set-key (kbd "s-.") 'avy-goto-char-2)
 
 ;;;; BACKUPS
 
@@ -353,7 +353,8 @@
  '(company-show-numbers t)
  '(company-minimum-prefix-length 2)
  '(company-dabbrev-downcase nil)
- '(company-dabbrev-ignore-case nil))
+ '(company-dabbrev-ignore-case nil)
+ '(company-selection-wrap-around t))
 
 (custom-set-variables
  '(company-posframe-mode t)
