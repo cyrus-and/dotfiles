@@ -299,10 +299,8 @@
 ;;;; BASIC EDITING
 
 (custom-set-variables
- '(fill-column 80)
  '(c-backslash-column 79)
  '(c-backslash-max-column 79)
- '(indent-tabs-mode nil)
  '(c-basic-offset 4)
  '(c-offsets-alist
    '((substatement-open . 0)
@@ -311,7 +309,10 @@
      (arglist-close . 0)
      (cpp-macro . 0)
      (inlambda . 0)
-     (innamespace . 0))))
+     (innamespace . 0)))
+ '(fill-column 80)
+ '(indent-tabs-mode nil)
+ '(json-ts-mode-indent-offset 4))
 
 ;;;; CODE ANNOTATIONS
 
