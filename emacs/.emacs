@@ -312,7 +312,7 @@
      (innamespace . 0)))
  '(fill-column 80)
  '(indent-tabs-mode nil)
- '(json-ts-mode-indent-offset 4))
+ '(json-encoding-default-indentation "    "))
 
 ;;;; CODE ANNOTATIONS
 
@@ -1014,6 +1014,7 @@ If prefix ARG is given, simply call `compile'."
  '(tab-bar-format '((lambda () "C-x t") tab-bar-format-tabs)) ; XXX to avoid trailing space...
  '(tab-bar-mode t)
  '(tab-bar-select-tab-modifiers '(super))
+ '(tab-bar-separator "  ")
  '(tab-bar-show 1)
  '(tab-bar-tab-name-function (lambda () (format " %s " (or (projectile-project-name) (buffer-name))))))
 
