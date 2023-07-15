@@ -251,10 +251,10 @@
 
 ;; outlines
 (custom-set-faces
- `(outline-1 ((t (:inherit (bold) :height 2.6 :extend t :foreground ,theme-color-blue))))
- `(outline-2 ((t (:inherit (bold) :height 2.2 :extend t :foreground ,theme-color-yellow))))
- `(outline-3 ((t (:inherit (bold) :height 1.8 :extend t :foreground ,theme-color-green))))
- `(outline-4 ((t (:inherit (bold) :height 1.4 :extend t :foreground ,theme-color-magenta))))
+ `(outline-1 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-blue))))
+ `(outline-2 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-yellow))))
+ `(outline-3 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-green))))
+ `(outline-4 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-magenta))))
  `(outline-5 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-red))))
  `(outline-6 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-red))))
  `(outline-7 ((t (:inherit (bold) :height 1.0 :extend t :foreground ,theme-color-red))))
@@ -618,10 +618,10 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'imenu-list)
 
 (custom-set-faces
- `(imenu-list-entry-face-0 ((t (:inherit (outline-1) :height 0.75))))
- `(imenu-list-entry-face-1 ((t (:inherit (outline-2) :height 0.75))))
- `(imenu-list-entry-face-2 ((t (:inherit (outline-3) :height 0.75))))
- `(imenu-list-entry-face-3 ((t (:inherit (outline-4) :height 0.75)))))
+ `(imenu-list-entry-face-0 ((t (:inherit (outline-1) :height 0.35 :weight normal))))
+ `(imenu-list-entry-face-1 ((t (:inherit (outline-2) :height 0.35 :weight normal))))
+ `(imenu-list-entry-face-2 ((t (:inherit (outline-3) :height 0.35 :weight normal))))
+ `(imenu-list-entry-face-3 ((t (:inherit (outline-4) :height 0.35 :weight normal)))))
 
 (global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
 
