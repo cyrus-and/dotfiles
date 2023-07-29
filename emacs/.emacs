@@ -676,7 +676,7 @@ If prefix ARG is given, simply call `compile'."
  `(js2-object-property-access ((t (:inherit (default))))))
 
 ;; associate by file name and shebang
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 ;;;; LINUX SPECIFIC
