@@ -288,7 +288,7 @@
 
 (my/install 'avy)
 
-(global-set-key (kbd "s-.") 'avy-goto-char-2)
+(global-set-key (kbd "s-.") 'avy-goto-char-timer)
 
 ;;;; BACKUPS
 
