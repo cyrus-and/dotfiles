@@ -1008,6 +1008,14 @@ If prefix ARG is given, simply call `compile'."
 
 ;;;; TAB BAR
 
+(defun my/tab-bar-tab-name-format (tab i)
+  (propertize
+   (format " %d • %s " i (alist-get 'name tab))
+   'face (funcall tab-bar-tab-face-function tab)))
+
+(defun my/tab-bar-tab-name-function ()
+  (or (projectile-project-name) (buffer-name)))
+
 (custom-set-variables
  '(tab-bar-auto-width-max nil)
  '(tab-bar-close-button-show nil)
@@ -1016,7 +1024,8 @@ If prefix ARG is given, simply call `compile'."
  '(tab-bar-select-tab-modifiers '(super))
  '(tab-bar-separator "  ")
  '(tab-bar-show 1)
- '(tab-bar-tab-name-function (lambda () (format " %s " (or (projectile-project-name) (buffer-name))))))
+ '(tab-bar-tab-name-format-function 'my/tab-bar-tab-name-format)
+ '(tab-bar-tab-name-function 'my/tab-bar-tab-name-function))
 
 (custom-set-faces
  `(tab-bar ((t (:background ,theme-color-level-3))))
