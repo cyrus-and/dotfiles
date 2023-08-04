@@ -1051,6 +1051,16 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-variables
  '(tramp-verbose 1))
 
+;;;; TREESIT
+
+(my/install 'treesit-auto)
+
+(require 'treesit-auto)
+
+(custom-set-variables
+ '(global-treesit-auto-mode t)
+ '(treesit-auto-install t))
+
 ;;;; USER INTERFACE
 
 (windmove-default-keybindings)
