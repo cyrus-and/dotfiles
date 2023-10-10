@@ -38,16 +38,6 @@ else
     PS1='\w\n\$ '
 fi
 
-# print the PS1 as a placeholder, temporarily disabling Git PS1 that is part of
-# the completions
-alias __git_ps1=true
-printf "${PS1@P}"
-unalias __git_ps1
-
-# swap PS1 for an empty one temporarily
-TEMP_PS1="$PS1"
-PS1=$'\xe2\x80\x8e' # XXX cannot be empty otherwise the completions are not sourced (LEFT-TO-RIGHT MARK)
-
 # common aliases
 alias grep='grep --color=auto'
 alias l='ls -F'
@@ -63,6 +53,10 @@ case "$OSTYPE" in
 
         # aliases
         alias ls='ls -G'
+
+        # XXX macOS 12.3 or earlier
+        alias dropbox-ignore='xattr -w com.dropbox.ignored 1'
+        alias dropbox-unignore='xattr -d com.dropbox.ignored 1'
 
         up() {
             (
@@ -111,9 +105,3 @@ case "$OSTYPE" in
         source /etc/bash_completion
         ;;
 esac
-
-# hides the cursor and reset the cursor position so that the real PS1 overrides
-# the placeholder automatically, then alter PS1 to show the cursor every time
-printf '\x1b[?25l\x1b[H'
-PS1="$TEMP_PS1"$'\\[\x1b[?25h\\]'
-unset TEMP_PS1
