@@ -496,6 +496,10 @@ If prefix ARG is given, simply call `compile'."
 ;; allow to use dumb-jump with xref (e.g., M-.)
 (add-hook 'xref-backend-functions 'dumb-jump-xref-activate)
 
+;; TODO is this really needed?
+(custom-set-variables
+ '(dumb-jump-prefer-searcher 'rg))
+
 ;;;; EASY REVERT BUFFER
 
 ;; utility to abruptly discard changes in the current buffer
