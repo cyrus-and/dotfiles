@@ -618,10 +618,10 @@ If prefix ARG is given, simply call `compile'."
 (my/install 'imenu-list)
 
 (custom-set-faces
- `(imenu-list-entry-face-0 ((t (:inherit (outline-1) :height 0.35 :weight normal))))
- `(imenu-list-entry-face-1 ((t (:inherit (outline-2) :height 0.35 :weight normal))))
- `(imenu-list-entry-face-2 ((t (:inherit (outline-3) :height 0.35 :weight normal))))
- `(imenu-list-entry-face-3 ((t (:inherit (outline-4) :height 0.35 :weight normal)))))
+ `(imenu-list-entry-face-0 ((t (:inherit (outline-1) :weight normal))))
+ `(imenu-list-entry-face-1 ((t (:inherit (outline-2) :weight normal))))
+ `(imenu-list-entry-face-2 ((t (:inherit (outline-3) :weight normal))))
+ `(imenu-list-entry-face-3 ((t (:inherit (outline-4) :weight normal)))))
 
 (global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
 
