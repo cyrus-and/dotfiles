@@ -1061,6 +1061,10 @@ If prefix ARG is given, simply call `compile'."
  '(global-treesit-auto-mode t)
  '(treesit-auto-install t))
 
+;; adjustments for modes
+(custom-set-variables
+ '(c-ts-mode-indent-offset 4))
+
 ;;;; USER INTERFACE
 
 (windmove-default-keybindings)
