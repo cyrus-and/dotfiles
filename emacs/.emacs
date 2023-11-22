@@ -288,7 +288,8 @@
 
 (my/install 'avy)
 
-(global-set-key (kbd "s-.") 'avy-goto-char-timer)
+(global-set-key (kbd "s-j") 'avy-goto-char-timer)
+(global-set-key (kbd "s-l") 'avy-goto-line)
 
 ;;;; BACKUPS
 
@@ -441,6 +442,12 @@ If prefix ARG is given, simply call `compile'."
           (call-interactively 'compile))))))
 
 (global-set-key (kbd "C-c c") 'my/smart-compile)
+
+;;;; CONSULT
+
+(my/install 'consult)
+
+(global-set-key (kbd "M-g i") 'consult-imenu)
 
 ;;;; CURSOR
 
