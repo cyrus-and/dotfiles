@@ -354,7 +354,6 @@
  '(company-dabbrev-ignore-case nil)
  '(company-idle-delay 0.1)
  '(company-minimum-prefix-length 2)
- '(company-quick-access-keys '("q" "w" "e" "r" "t" "y" "u" "i" "o" "p"))
  '(company-selection-wrap-around t)
  '(company-show-numbers t)
  '(global-company-mode t))
