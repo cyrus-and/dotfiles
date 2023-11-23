@@ -350,13 +350,14 @@
 (my/install 'company-posframe)
 
 (custom-set-variables
- '(global-company-mode t)
- '(company-idle-delay 0.1)
- '(company-show-numbers t)
- '(company-minimum-prefix-length 2)
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil)
- '(company-selection-wrap-around t))
+ '(company-idle-delay 0.1)
+ '(company-minimum-prefix-length 2)
+ '(company-quick-access-keys '("q" "w" "e" "r" "t" "y" "u" "i" "o" "p"))
+ '(company-selection-wrap-around t)
+ '(company-show-numbers t)
+ '(global-company-mode t))
 
 (custom-set-variables
  '(company-posframe-mode t)
@@ -447,7 +448,11 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'consult)
 
-(global-set-key (kbd "M-g i") 'consult-imenu)
+(global-set-key (kbd "s-i") 'consult-imenu)
+(global-set-key (kbd "s-m") 'consult-outline)
+(global-set-key (kbd "s-b") 'consult-project-buffer)
+(global-set-key (kbd "s-.") 'consult-line)
+(global-set-key (kbd "M-y") 'consult-yank-pop)
 
 ;;;; CURSOR
 
@@ -570,11 +575,6 @@ If prefix ARG is given, simply call `compile'."
      :password password)))
 
 (global-set-key (kbd "C-c i") 'my/irc)
-
-;;;; ERROR NAVIGATION
-
-(global-set-key (kbd "<s-up>") 'previous-error)
-(global-set-key (kbd "<s-down>") 'next-error)
 
 ;;;; FIND
 
@@ -718,6 +718,10 @@ If prefix ARG is given, simply call `compile'."
 ;;;; MACOS SPECIFIC
 
 (when (eq system-type 'darwin)
+  ;; coherently remap macOS scrolling keys
+  (global-set-key (kbd "<s-up>") 'beginning-of-buffer)
+  (global-set-key (kbd "<s-down>") 'end-of-buffer)
+
   ;; use the right meta key natively so to allow typing fancy glyphs
   (custom-set-variables
    '(mac-right-option-modifier 'none))
@@ -956,9 +960,7 @@ If prefix ARG is given, simply call `compile'."
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
   (define-key projectile-mode-map (kbd "s-t") 'projectile-dired)
   (define-key projectile-mode-map (kbd "s-g") 'projectile-ripgrep)
-  (define-key projectile-mode-map (kbd "s-s") 'projectile-run-vterm)
-  (define-key projectile-mode-map (kbd "s-b") 'projectile-switch-to-buffer)
-  (define-key projectile-mode-map (kbd "s-i") 'projectile-ibuffer))
+  (define-key projectile-mode-map (kbd "s-s") 'projectile-run-vterm))
 
 ;;;; PYTHON
 
