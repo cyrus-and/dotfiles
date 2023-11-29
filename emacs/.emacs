@@ -1175,16 +1175,14 @@ If prefix ARG is given, simply call `compile'."
 (custom-set-faces
  `(winum-face ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent)))))
 
-(defun my/winum-switch (char)
-  (interactive "cSwitch to window number? (C-g to abort; any key toggle)")
-  (cond
-   ((<= (count-windows) 2)
-    (other-window))
-   ((<= ?0 char ?9)
-    (let ((n (- char ?0)))
-      (winum-select-window-by-number n)))
-   (t
-    (select-window (get-mru-window nil t t)))))
+(defun my/winum-switch ()
+  (interactive)
+  (if (<= (count-windows) 2)
+      (other-window 1)
+    (let ((char (read-key "Switch to window number? (C-g to abort; any key toggle)")))
+      (if (<= ?0 char ?9)
+          (winum-select-window-by-number (- char ?0))
+        (select-window (get-mru-window nil t t))))))
 
 (global-set-key (kbd "C-x o") 'my/winum-switch)
 
