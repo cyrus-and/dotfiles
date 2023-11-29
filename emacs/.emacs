@@ -623,29 +623,6 @@ If prefix ARG is given, simply call `compile'."
 ;; override `list-buffers'
 (defalias 'list-buffers 'ibuffer)
 
-;;;; IMENU-LIST
-
-(my/install 'imenu-list)
-
-(custom-set-faces
- `(imenu-list-entry-face-0 ((t (:inherit (outline-1) :weight normal))))
- `(imenu-list-entry-face-1 ((t (:inherit (outline-2) :weight normal))))
- `(imenu-list-entry-face-2 ((t (:inherit (outline-3) :weight normal))))
- `(imenu-list-entry-face-3 ((t (:inherit (outline-4) :weight normal)))))
-
-(global-set-key (kbd "C-c l") 'imenu-list-smart-toggle)
-
-;;;;; USE FIXED SIZE
-
-;; this helps with Zoom
-
-(defun my/fix-imenu-size ()
-  (with-selected-window (get-buffer-window "*Ilist*")
-    (setq window-size-fixed t)
-    (window-resize (selected-window) (- 30 (window-total-width)) t t)))
-
-(add-hook 'imenu-list-update-hook 'my/fix-imenu-size)
-
 ;;;; INITIALIZATION
 
 (custom-set-variables
@@ -1088,10 +1065,13 @@ If prefix ARG is given, simply call `compile'."
  '(help-window-select t)
  '(indicate-buffer-boundaries 'left)
  '(indicate-empty-lines t)
+ '(menu-bar-mode nil)
  '(ring-bell-function 'ignore)
+ '(scroll-bar-mode nil)
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tab-width 4)
+ '(tool-bar-mode nil)
  '(truncate-lines t)
  '(use-dialog-box nil)
  '(vc-follow-symlinks t)
@@ -1194,6 +1174,19 @@ If prefix ARG is given, simply call `compile'."
 
 (custom-set-faces
  `(winum-face ((t (:foreground ,theme-color-level-1 :background ,theme-color-accent)))))
+
+(defun my/winum-switch (char)
+  (interactive "cSwitch to window number? (C-g to abort; any key toggle)")
+  (cond
+   ((<= (count-windows) 2)
+    (other-window))
+   ((<= ?0 char ?9)
+    (let ((n (- char ?0)))
+      (winum-select-window-by-number n)))
+   (t
+    (select-window (get-mru-window nil t t)))))
+
+(global-set-key (kbd "C-x o") 'my/winum-switch)
 
 ;;;; WOMAN
 
