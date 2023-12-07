@@ -447,11 +447,12 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'consult)
 
+(global-set-key (kbd "C-x r j") 'consult-register)
+(global-set-key (kbd "M-y") 'consult-yank-pop)
+(global-set-key (kbd "s-.") 'consult-line)
+(global-set-key (kbd "s-b") 'consult-project-buffer)
 (global-set-key (kbd "s-i") 'consult-imenu)
 (global-set-key (kbd "s-m") 'consult-outline)
-(global-set-key (kbd "s-b") 'consult-project-buffer)
-(global-set-key (kbd "s-.") 'consult-line)
-(global-set-key (kbd "M-y") 'consult-yank-pop)
 
 ;;;; CURSOR
 
@@ -582,6 +583,11 @@ If prefix ARG is given, simply call `compile'."
  '(find-name-arg "-path"))
 
 (global-set-key (kbd "C-c f") 'find-name-dired)
+
+;;;; GO MODE
+
+(custom-set-variables
+ '(go-ts-mode-indent-offset 4))
 
 ;;;; GREP
 
@@ -1068,8 +1074,6 @@ If prefix ARG is given, simply call `compile'."
  '(menu-bar-mode nil)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
- '(scroll-bar-mode nil)
- '(show-paren-mode t)
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(truncate-lines t)
