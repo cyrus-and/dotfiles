@@ -576,6 +576,11 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "C-c i") 'my/irc)
 
+;;;; CONVENIENT ERROR NAVIGATION
+
+(global-set-key (kbd "s-[") 'previous-error)
+(global-set-key (kbd "s-]") 'next-error)
+
 ;;;; FIND
 
 ;; find in whole path
