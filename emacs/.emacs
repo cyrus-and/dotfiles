@@ -1188,12 +1188,16 @@ If prefix ARG is given, simply call `compile'."
   (interactive)
   (if (<= (count-windows) 2)
       (other-window 1)
-    (let ((char (read-key (propertize
-                           "Switch to window number? (C-g to abort; any key toggle)"
-                           'face 'minibuffer-prompt))))
-      (if (<= ?0 char ?9)
-          (winum-select-window-by-number (- char ?0))
-        (select-window (get-mru-window nil t t))))))
+    (let ((zoom-mode-enabled zoom-mode))
+      (zoom-mode -1)
+      (let ((char (read-key (propertize
+                             "Switch to window number? (C-g to abort; any key toggle)"
+                             'face 'minibuffer-prompt))))
+        (if (<= ?0 char ?9)
+            (winum-select-window-by-number (- char ?0))
+          (select-window (get-mru-window nil t t))))
+      (when zoom-mode-enabled
+        (zoom-mode +1)))))
 
 (global-set-key (kbd "C-x o") 'my/winum-switch)
 
