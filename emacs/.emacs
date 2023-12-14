@@ -447,6 +447,7 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'consult)
 
+(global-set-key (kbd "C-SPC") 'consult-mark)
 (global-set-key (kbd "C-x r j") 'consult-register)
 (global-set-key (kbd "M-y") 'consult-yank-pop)
 (global-set-key (kbd "s-.") 'consult-line)
