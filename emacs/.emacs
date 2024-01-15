@@ -447,7 +447,11 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'consult)
 
-(global-set-key (kbd "C-SPC") 'consult-mark)
+(defun my/set-mark-command (arg)
+  (interactive "P")
+  (call-interactively (if arg 'consult-mark 'set-mark-command)))
+
+(global-set-key (kbd "C-SPC") 'my/set-mark-command)
 (global-set-key (kbd "C-x r j") 'consult-register)
 (global-set-key (kbd "M-y") 'consult-yank-pop)
 (global-set-key (kbd "s-.") 'consult-line)
@@ -458,8 +462,8 @@ If prefix ARG is given, simply call `compile'."
 ;;;; CURSOR
 
 (custom-set-variables
- '(blink-cursor-mode nil)
- '(cursor-type 'bar)
+ '(blink-cursor-mode t)
+ '(cursor-type '(bar . 3))
  '(cursor-in-non-selected-windows nil))
 
 ;;;; DIFF-HL
@@ -1014,7 +1018,9 @@ If prefix ARG is given, simply call `compile'."
    'face (funcall tab-bar-tab-face-function tab)))
 
 (defun my/tab-bar-tab-name-function ()
-  (or (projectile-project-name) (buffer-name)))
+  (if (projectile-project-p)
+      (format "%s » %s" (projectile-project-name) (buffer-name))
+    (buffer-name)))
 
 (custom-set-variables
  '(tab-bar-auto-width-max nil)
@@ -1189,16 +1195,13 @@ If prefix ARG is given, simply call `compile'."
   (interactive)
   (if (<= (count-windows) 2)
       (other-window 1)
-    (let ((zoom-mode-enabled zoom-mode))
-      (zoom-mode -1)
-      (let ((char (read-key (propertize
-                             "Switch to window number? (C-g to abort; any key toggle)"
-                             'face 'minibuffer-prompt))))
+    (let ((char (read-key (propertize
+                           "Switch to window number? (C-g to abort; any key toggle)"
+                           'face 'minibuffer-prompt))))
+      (unless (= char ?\C-g)
         (if (<= ?0 char ?9)
             (winum-select-window-by-number (- char ?0))
-          (select-window (get-mru-window nil t t))))
-      (when zoom-mode-enabled
-        (zoom-mode +1)))))
+          (select-window (get-mru-window nil t t)))))))
 
 (global-set-key (kbd "C-x o") 'my/winum-switch)
 
