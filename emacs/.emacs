@@ -156,7 +156,7 @@
 (setq theme-font-linux      "Terminus")
 (setq theme-font-macos      "Iosevka SS04")
 (setq theme-font-size-linux 14)
-(setq theme-font-size-macos 15)
+(setq theme-font-size-macos 14)
 
 ;;;; THEME VARIABLES
 
@@ -681,6 +681,11 @@ If prefix ARG is given, simply call `compile'."
 ;; associate by file name and shebang
 (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+;;;; JSON
+
+(custom-set-variables
+ '(json-ts-mode-indent-offset 4))
 
 ;;;; LINUX SPECIFIC
 
