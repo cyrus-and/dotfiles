@@ -1091,6 +1091,7 @@ If prefix ARG is given, simply call `compile'."
  '(menu-bar-mode nil)
  '(ring-bell-function 'ignore)
  '(scroll-bar-mode nil)
+ '(scroll-preserve-screen-position 'always)
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(truncate-lines t)
