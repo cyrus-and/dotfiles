@@ -458,6 +458,7 @@ If prefix ARG is given, simply call `compile'."
 (global-set-key (kbd "s-b") 'consult-project-buffer)
 (global-set-key (kbd "s-i") 'consult-imenu)
 (global-set-key (kbd "s-m") 'consult-outline)
+(global-set-key (kbd "s-r") 'consult-ripgrep)
 
 ;;;; CURSOR
 
