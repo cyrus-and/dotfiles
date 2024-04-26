@@ -849,6 +849,7 @@ If prefix ARG is given, simply call `compile'."
      (:eval (propertize (or (uniquify-buffer-base-name) (buffer-name)) 'face 'bold))
      "  "
      "+%l:%c"
+     (:eval (format " (%.0f%%%%)" (* (/ (float (line-number-at-pos)) (line-number-at-pos (point-max))) 100)))
      "  "
      mode-line-modes
      " " ; XXX one extra space is already there
