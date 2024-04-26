@@ -288,7 +288,7 @@
 
 (my/install 'avy)
 
-(global-set-key (kbd "s-j") 'avy-goto-char-timer)
+(global-set-key (kbd "s-.") 'avy-goto-char-timer)
 (global-set-key (kbd "s-l") 'avy-goto-line)
 
 ;;;; BACKUPS
@@ -454,7 +454,7 @@ If prefix ARG is given, simply call `compile'."
 (global-set-key (kbd "C-SPC") 'my/set-mark-command)
 (global-set-key (kbd "C-x r j") 'consult-register)
 (global-set-key (kbd "M-y") 'consult-yank-pop)
-(global-set-key (kbd "s-.") 'consult-line)
+(global-set-key (kbd "s--") 'consult-line)
 (global-set-key (kbd "s-b") 'consult-project-buffer)
 (global-set-key (kbd "s-i") 'consult-imenu)
 (global-set-key (kbd "s-m") 'consult-outline)
