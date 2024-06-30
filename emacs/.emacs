@@ -458,7 +458,7 @@ If prefix ARG is given, simply call `compile'."
 (global-set-key (kbd "s-b") 'consult-project-buffer)
 (global-set-key (kbd "s-i") 'consult-imenu)
 (global-set-key (kbd "s-m") 'consult-outline)
-(global-set-key (kbd "s-r") 'consult-ripgrep)
+(global-set-key (kbd "s-g") 'consult-ripgrep)
 
 ;;;; CURSOR
 
@@ -958,7 +958,7 @@ If prefix ARG is given, simply call `compile'."
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
   (define-key projectile-mode-map (kbd "s-t") 'projectile-dired)
-  (define-key projectile-mode-map (kbd "s-g") 'projectile-ripgrep)
+  (define-key projectile-mode-map (kbd "s-S-g") 'projectile-ripgrep)
   (define-key projectile-mode-map (kbd "s-s") 'projectile-run-vterm))
 
 ;;;; PYTHON
