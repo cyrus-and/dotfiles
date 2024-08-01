@@ -447,11 +447,6 @@ If prefix ARG is given, simply call `compile'."
 
 (my/install 'consult)
 
-(defun my/set-mark-command (arg)
-  (interactive "P")
-  (call-interactively (if arg 'consult-mark 'set-mark-command)))
-
-(global-set-key (kbd "C-SPC") 'my/set-mark-command)
 (global-set-key (kbd "C-x r j") 'consult-register)
 (global-set-key (kbd "M-y") 'consult-yank-pop)
 (global-set-key (kbd "s--") 'consult-line)
@@ -586,6 +581,10 @@ If prefix ARG is given, simply call `compile'."
 
 (global-set-key (kbd "s-[") 'previous-error)
 (global-set-key (kbd "s-]") 'next-error)
+
+;;;; FFAP
+
+(global-set-key (kbd "s-F") 'ffap-menu)
 
 ;;;; FIND
 
