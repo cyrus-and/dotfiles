@@ -85,7 +85,7 @@
 ;;; PACKAGES
 
 ;; prevent the customization interface from altering this file
-(setq custom-file "/dev/null")
+(setq custom-file "/tmp/unused.el")
 
 ;; utility to install a package refreshing the packet list just once
 (defun my/install (package)
