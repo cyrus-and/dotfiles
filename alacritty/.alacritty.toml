@@ -8,7 +8,7 @@ option_as_alt = "OnlyLeft"
 history = 100000
 
 [font]
-size = 16
+size = 15
 
 [font.normal]
 family = "Iosevka SS04"
