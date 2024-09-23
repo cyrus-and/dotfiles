@@ -38,6 +38,7 @@ else
 fi
 
 # common aliases
+alias ls='ls --color=auto' # assuming GNU utils
 alias grep='grep --color=auto'
 alias ll='ls -lartF'
 
@@ -46,9 +47,6 @@ case "$OSTYPE" in
     darwin*)
         # brew PATH
         export PATH="/usr/local/sbin:$PATH"
-
-        # aliases
-        alias ls='ls -G'
 
         # XXX macOS 12.3 or earlier
         alias dropbox-ignore='xattr -w com.dropbox.ignored 1'
@@ -70,14 +68,11 @@ case "$OSTYPE" in
         fi
 
         # completion
-	source ~/.nix-profile/share/bash-completion/bash_completion
-	source ~/.nix-profile/share/bash-completion/completions/git-prompt.sh
+		source ~/.nix-profile/share/bash-completion/bash_completion
+		source ~/.nix-profile/share/bash-completion/completions/git-prompt.sh
         ;;
 
     'linux-gnu')
-        # aliases
-        alias ls='ls --color=auto'
-
         up() {
             (
                 set -e
