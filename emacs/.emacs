@@ -1,26 +1,9 @@
 ;; -*- lexical-binding: t -*- ;;
 
-;; TODO coherent key mapping
-;; TODO coherent documentation/comments
+;;; INTRO
 
-;;; PERFORMANCE
-
-;; TODO reorganize?
-
-;; call the garbage collector less often during the startup then restore the
-;; initial value to avoid longer pauses during the interactive usage (note that
-;; `custom-reevaluate-setting' only works as long as the value has not been
-;; customized)
+;; call the garbage collector less often during the startup
 (setq gc-cons-threshold most-positive-fixnum)
-(add-hook 'after-init-hook (lambda () (custom-reevaluate-setting 'gc-cons-threshold)))
-
-;; force the garbage collection to happen when the focus moves away from emacs
-(add-hook 'focus-out-hook 'garbage-collect)
-
-(defun display-startup-echo-area-message ()
-  (message "Emacs started in %.2f seconds triggering the GC %d times taking %.2f seconds"
-           (float-time (time-subtract after-init-time before-init-time))
-           gcs-done gc-elapsed))
 
 ;;; CONFIGURATION
 
@@ -103,6 +86,18 @@
  `(outline-7 ((t (:inherit (bold) :foreground ,my/color-red))))
  `(outline-8 ((t (:inherit (bold) :foreground ,my/color-red)))))
 
+;;;;; TERMINAL
+
+(custom-set-faces
+ `(term-color-black   ((t (:foreground ,my/color-level-0))))
+ `(term-color-white   ((t (:foreground ,my/color-level-5))))
+ `(term-color-red     ((t (:foreground ,my/color-red))))
+ `(term-color-green   ((t (:foreground ,my/color-green))))
+ `(term-color-yellow  ((t (:foreground ,my/color-yellow))))
+ `(term-color-blue    ((t (:foreground ,my/color-blue))))
+ `(term-color-magenta ((t (:foreground ,my/color-magenta))))
+ `(term-color-cyan    ((t (:foreground ,my/color-cyan)))))
+
 ;;;;; OTHERS
 
 (custom-set-faces
@@ -151,14 +146,38 @@
  '(ls-lisp-use-localized-time-format t)
  '(ls-lisp-verbosity '(uid gid)))
 
-;;;;; ENVIRONMENT VARIABLES
+;;;;; ERROR NAVIGATION
 
-;; add Nix executables to the path
-(setenv "PATH" (format "%s:%s" (getenv "PATH") (expand-file-name "~/.nix-profile/bin/")))
+(keymap-global-set "s-," 'previous-error)
+(keymap-global-set "s-." 'next-error)
+
+;;;;; EXECUTABLES PATH
+
+;; add user paths to `exec-path' and update PATH accordingly
+(add-to-list 'exec-path "~/.nix-profile/bin/")
+(add-to-list 'exec-path "~/.bin/")
+(setenv "PATH" (string-join exec-path ":"))
 
 ;;;;; FFAP
 
-(global-set-key (kbd "s-F") 'ffap-menu)
+(keymap-global-set "s-M" 'ffap-menu)
+
+;;;;; FIND TO DIRED
+
+(custom-set-variables
+ '(find-name-arg "-ipath")) ; use the whole path
+
+(global-set-key (kbd "s-F") 'find-name-dired)
+
+;;;;; FORCE REVERT BUFFER
+
+(defun my/force-revert-buffer ()
+  "Revert buffer without confirmation."
+  (interactive)
+  (lazy-highlight-cleanup t)
+  (revert-buffer t t))
+
+(global-set-key (kbd "s-<backspace>") 'my/force-revert-buffer)
 
 ;;;;; IBUFFER
 
@@ -196,8 +215,8 @@
   (custom-set-variables
    '(mac-right-option-modifier 'none))
 
-  (global-set-key (kbd "<s-up>") 'beginning-of-buffer)
-  (global-set-key (kbd "<s-down>") 'end-of-buffer))
+  (keymap-global-set "s-<up>" 'beginning-of-buffer)
+  (keymap-global-set "s-<down>" 'end-of-buffer))
 
 ;;;;; MINIBUFFER
 
@@ -206,8 +225,6 @@
  '(savehist-mode t))
 
 ;;;;; MODE LINE
-
-;; XXX this requires projectile
 
 (defun my/abbreviate-path (path)
   (let* ((path (abbreviate-file-name path)))
@@ -232,11 +249,11 @@
                 (my/abbreviate-path default-directory))))
      (:eval (propertize (or (uniquify-buffer-base-name) (buffer-name)) 'face 'bold))
      "  "
-     "+%l:%c"
-     (:eval (format " (%.0f%%%%)" (* (/ (float (line-number-at-pos)) (line-number-at-pos (point-max))) 100)))
+     mode-line-modes ; XXX one extra trailing space is already there
+     " "
+     (:eval (format "%.0f%%%%  " (* (/ (float (line-number-at-pos)) (line-number-at-pos (point-max))) 100)))
+     "%l:%c"
      "  "
-     mode-line-modes
-     " " ; XXX one extra space is already there
      global-mode-string)))
 
 ;;;;; MOUSE
@@ -245,6 +262,10 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-yank-at-point t))
+
+;;;;; PERFORMANCE
+
+(add-hook 'focus-out-hook 'garbage-collect)
 
 ;;;;; SERVER
 
@@ -258,11 +279,12 @@
  '(inhibit-startup-screen t)
  '(initial-scratch-message ""))
 
-;;;;; USER INTERFACE
+(defun display-startup-echo-area-message ()
+  (message "Emacs started in %.2f seconds triggering the GC %d times taking %.2f seconds"
+           (float-time (time-subtract after-init-time before-init-time))
+           gcs-done gc-elapsed))
 
-(add-hook 'text-mode-hook 'visual-line-mode)
-(add-to-list 'default-frame-alist '(undecorated . t))
-(windmove-default-keybindings)
+;;;;; USER INTERFACE
 
 (custom-set-variables
  '(confirm-kill-emacs 'y-or-n-p)
@@ -284,13 +306,22 @@
  '(visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
  '(winner-mode t))
 
+;; use nice ellipses for collapsed portions of text, e.g., in outlines
+(set-display-table-slot standard-display-table 'selective-display (string-to-vector "…"))
+
+(add-hook 'text-mode-hook 'visual-line-mode)
+
+(add-to-list 'default-frame-alist '(undecorated . t))
+
+(windmove-default-keybindings)
+
 ;;;;; WINDOW DIVIDERS
 
 (custom-set-variables
- '(window-divider-mode t)
- '(window-divider-default-places t)
  '(window-divider-default-bottom-width theme-divider-width)
- '(window-divider-default-right-width theme-divider-width))
+ '(window-divider-default-places t)
+ '(window-divider-default-right-width theme-divider-width)
+ '(window-divider-mode t))
 
 (custom-set-faces
  `(window-divider             ((t (:foreground ,my/color-level-3))))
@@ -298,9 +329,9 @@
  `(window-divider-last-pixel  ((t (:foreground ,my/color-level-3))))
  `(internal-border            ((t (:background ,my/color-level-3)))))
 
-;; TODO does not work in vanilla emacs for macOS...
-;; (my/eval-after-load
-;;   (add-to-list 'default-frame-alist `(internal-border-width . ,theme-divider-width)))
+;; XXX does not work in vanilla Emacs for macOS...
+(unless (eq system-type 'darwin)
+  (add-to-list 'default-frame-alist `(internal-border-width . ,theme-divider-width)))
 
 ;;;;; WHITESPACE MANAGEMENT
 
@@ -321,9 +352,7 @@
 
 (add-hook 'before-save-hook 'my/whitespace-cleanup--handler)
 
-;; TODO (global-set-key (kbd "C-c d") 'my/trim-whitespace-mode)
-
-;;;;; TRIM WHITESPACE MODE
+(keymap-global-set "s-w" 'my/whitespace-cleanup-mode)
 
 ;;;; PACKAGES
 
@@ -347,7 +376,8 @@
 
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-;; TODO (global-set-key (kbd "C-c u") 'my/upgrade-packages)
+
+(keymap-global-set "s-u" 'my/upgrade-packages)
 
 ;;;;; ADAPTIVE WRAP
 
@@ -359,8 +389,11 @@
 
 (my/install 'avy)
 
-(global-set-key (kbd "s-.") 'avy-goto-char-timer)
-(global-set-key (kbd "s-l") 'avy-goto-line)
+(custom-set-variables
+ '(avy-timeout-seconds 3))
+
+(keymap-global-set "s-<return>" 'avy-goto-char-timer)
+(keymap-global-set "s-l" 'avy-goto-line)
 
 ;;;;; COMPANY
 
@@ -398,14 +431,14 @@
 
 (my/install 'consult)
 
-(global-set-key (kbd "C-x r j") 'consult-register)
-(global-set-key (kbd "M-y") 'consult-yank-pop)
-(global-set-key (kbd "s--") 'consult-line)
-(global-set-key (kbd "s-b") 'consult-project-buffer)
-(global-set-key (kbd "s-i") 'consult-imenu)
-(global-set-key (kbd "s-m") 'consult-outline)
-(global-set-key (kbd "s-g") 'consult-ripgrep)
-(global-set-key (kbd "s-j") 'consult-global-mark)
+(keymap-global-set "C-x r j" 'consult-register)
+(keymap-global-set "M-y" 'consult-yank-pop)
+(keymap-global-set "s-a" 'consult-line)
+(keymap-global-set "s-b" 'consult-project-buffer)
+(keymap-global-set "s-g" 'consult-ripgrep)
+(keymap-global-set "s-i" 'consult-imenu)
+(keymap-global-set "s-j" 'consult-global-mark)
+(keymap-global-set "s-m" 'consult-outline)
 
 ;;;;; DIFF-HL
 
@@ -429,20 +462,33 @@
 ;; update the indicators also after a commit
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
+;;;;; DUMB-JUMP
+
+(my/install 'dumb-jump)
+
+(custom-set-variables
+ '(dumb-jump-force-searcher 'rg)) ; XXX this is apparently needed
+
+(add-hook 'xref-backend-functions 'dumb-jump-xref-activate)
+
+;; XXX disable js-mode native `jsfind-symbol'
+(with-eval-after-load 'js
+  (define-key js-mode-map (kbd "M-.") nil))
+
 ;;;;; MAGIT
 
 (my/install 'magit)
 
 (custom-set-variables
  '(magit-section-initial-visibility-alist '((stashes . hide) (unpushed . show)))
- '(with-editor-emacsclient-executable "emacsclient")) ; XXX fix warning with Nix
+ '(with-editor-emacsclient-executable "emacsclient")) ; XXX fix warning with Emacs from Nix
 
 (custom-set-faces
  `(git-commit-overlong-summary ((t (:inherit (error) :inverse-video t))))
  `(magit-header-line ((t (:inherit (header-line))))))
 
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
-(global-set-key (kbd "C-c s") 'magit-status)
+(keymap-global-set "s-z" 'magit-status)
 
 ;;;;; MARGINALIA
 
@@ -451,21 +497,45 @@
 (custom-set-variables
  '(marginalia-mode t))
 
+;;;;; MARKDOWN-MODE
+
+(my/install 'markdown-mode)
+
+(custom-set-variables
+ '(markdown-fontify-code-blocks-natively t)
+ '(markdown-hide-urls t)
+ '(markdown-url-compose-char "…"))
+
+(custom-set-faces
+ `(markdown-code-face           ((t (:background ,my/color-level-2 :extend t))))
+ `(markdown-header-face-1       ((t (:inherit (outline-1)))))
+ `(markdown-header-face-2       ((t (:inherit (outline-2)))))
+ `(markdown-header-face-3       ((t (:inherit (outline-3)))))
+ `(markdown-header-face-4       ((t (:inherit (outline-4)))))
+ `(markdown-header-face-5       ((t (:inherit (outline-5)))))
+ `(markdown-header-face-6       ((t (:inherit (outline-6)))))
+ `(markdown-inline-code-face    ((t (:inherit (shadow)))))
+ `(markdown-metadata-value-face ((t (:inherit (default))))))
+
+;;;;;; EDIT-INDIRECT
+
+;; allow to edit code blocks natively
+(my/install 'edit-indirect)
+
 ;;;;; MINIONS
 
 (my/install 'minions)
 
 (custom-set-variables
+ '(minions-direct '(overwrite-mode))
  '(minions-mode t)
- '(minions-mode-line-lighter "···")
- '(minions-direct '(overwrite-mode)))
+ '(minions-mode-line-lighter "···"))
 
 ;;;;; OUTSHINE
 
 (my/install 'outshine)
 
-(with-eval-after-load
-    'outshine
+(with-eval-after-load 'outshine
   (outshine-define-key outshine-mode-map (kbd "<backtab>") 'outshine-cycle-buffer t))
 
 ;;;;; PROJECTILE
@@ -553,20 +623,22 @@
 
 ;;;;; VTERM
 
+;; XXX the system command libtool to be named glibtool in order to compile on macOS
+
 (my/install 'vterm)
 
 (custom-set-variables
  '(vterm-kill-buffer-on-exit nil))
 
-;; TODO (global-set-key (kbd "C-c a") 'vterm)
+(keymap-global-set "s-!" 'vterm)
 
 ;;;;; WINUM
 
 (my/install 'winum)
 
 (custom-set-variables
- '(winum-mode t)
  '(winum-format (propertize " %s " 'face 'winum-face))
+ '(winum-mode t)
  '(winum-mode-line-position 0)
  '(winum-scope 'frame-local))
 
@@ -586,6 +658,7 @@
 (define-key winum-keymap (kbd "M-0") 'winum-select-window-0-or-10)
 
 (defun my/winum-switch ()
+  "More versatile `other-window'."
   (interactive)
   (if (<= (count-windows) 2)
       (other-window 1)
@@ -597,7 +670,7 @@
             (winum-select-window-by-number (- char ?0))
           (select-window (get-mru-window nil t t)))))))
 
-(global-set-key (kbd "C-x o") 'my/winum-switch)
+(keymap-global-set "C-x o" 'my/winum-switch)
 
 ;;;;; ZOOM
 
@@ -607,6 +680,17 @@
  '(zoom-mode t)
  '(zoom-size '(120 . 30))
  '(temp-buffer-resize-mode t))
+
+;;; ADDITIONAL INITIALIZATION
+
+(let ((local "~/.emacs.d/local.el"))
+  (when (file-exists-p local)
+    (load-file local)))
+
+;;; OUTRO
+
+;; restore the original garbage collector value
+(custom-reevaluate-setting 'gc-cons-threshold)
 
 ;;; FILE VARIABLES
 
