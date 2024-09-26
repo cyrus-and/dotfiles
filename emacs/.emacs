@@ -234,7 +234,7 @@
 
 (custom-set-variables
  `(mode-line-format
-   '(" "
+   '("  "
      "%Z%*%@"
      "  "
      (:eval (when (projectile-project-p)
@@ -251,8 +251,9 @@
      "  "
      mode-line-modes ; XXX one extra trailing space is already there
      " "
-     (:eval (format "%.0f%%%%  " (* (/ (float (line-number-at-pos)) (line-number-at-pos (point-max))) 100)))
-     "%l:%c"
+     "+%l"
+     (:eval (format "/%d" (line-number-at-pos (point-max))))
+     ":%c"
      "  "
      global-mode-string)))
 
@@ -636,6 +637,18 @@
 
 (my/install 'winum)
 
+(setq winum-keymap (make-sparse-keymap))
+(define-key winum-keymap (kbd "s-1") 'winum-select-window-1)
+(define-key winum-keymap (kbd "s-2") 'winum-select-window-2)
+(define-key winum-keymap (kbd "s-3") 'winum-select-window-3)
+(define-key winum-keymap (kbd "s-4") 'winum-select-window-4)
+(define-key winum-keymap (kbd "s-5") 'winum-select-window-5)
+(define-key winum-keymap (kbd "s-6") 'winum-select-window-6)
+(define-key winum-keymap (kbd "s-7") 'winum-select-window-7)
+(define-key winum-keymap (kbd "s-8") 'winum-select-window-8)
+(define-key winum-keymap (kbd "s-9") 'winum-select-window-9)
+(define-key winum-keymap (kbd "s-0") 'winum-select-window-0-or-10)
+
 (custom-set-variables
  '(winum-format (propertize " %s " 'face 'winum-face))
  '(winum-mode t)
@@ -644,18 +657,6 @@
 
 (custom-set-faces
  `(winum-face ((t (:foreground ,my/color-level-1 :background ,my/color-accent)))))
-
-(setq winum-keymap (make-sparse-keymap))
-(define-key winum-keymap (kbd "M-1") 'winum-select-window-1)
-(define-key winum-keymap (kbd "M-2") 'winum-select-window-2)
-(define-key winum-keymap (kbd "M-3") 'winum-select-window-3)
-(define-key winum-keymap (kbd "M-4") 'winum-select-window-4)
-(define-key winum-keymap (kbd "M-5") 'winum-select-window-5)
-(define-key winum-keymap (kbd "M-6") 'winum-select-window-6)
-(define-key winum-keymap (kbd "M-7") 'winum-select-window-7)
-(define-key winum-keymap (kbd "M-8") 'winum-select-window-8)
-(define-key winum-keymap (kbd "M-9") 'winum-select-window-9)
-(define-key winum-keymap (kbd "M-0") 'winum-select-window-0-or-10)
 
 (defun my/winum-switch ()
   "More versatile `other-window'."
