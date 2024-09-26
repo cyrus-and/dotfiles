@@ -101,3 +101,6 @@ esac
 
 # password store on dropbox
 export PASSWORD_STORE_DIR="$HOME/Dropbox/root/pass/"
+
+# ZFZ integration
+eval "$(fzf --bash)"
