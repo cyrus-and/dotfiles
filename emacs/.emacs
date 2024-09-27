@@ -209,6 +209,11 @@
  '(lazy-highlight-buffer t)
  '(lazy-highlight-cleanup nil))
 
+;;;;; ISPELL
+
+;; this is for hunspell if installed via Nix
+(setenv "DICPATH" (expand-file-name "~/.nix-profile/share/hunspell/"))
+
 ;;;;; MACOS SPECIFIC
 
 (when (eq system-type 'darwin)
