@@ -57,6 +57,7 @@ case "$OSTYPE" in
             (
                 set -e
                 nix-env --upgrade
+                nix-store --gc
             )
         }
 
@@ -68,8 +69,8 @@ case "$OSTYPE" in
         fi
 
         # completion
-		source ~/.nix-profile/share/bash-completion/bash_completion
-		source ~/.nix-profile/share/bash-completion/completions/git-prompt.sh
+        source ~/.nix-profile/share/bash-completion/bash_completion
+        source ~/.nix-profile/share/bash-completion/completions/git-prompt.sh
         ;;
 
     'linux-gnu')
