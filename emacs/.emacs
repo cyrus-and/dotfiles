@@ -121,6 +121,16 @@
  '(backup-by-copying t)
  '(backup-directory-alist '(("." . "~/.emacs.d/backups"))))
 
+;;;;; CODE ANNOTATIONS
+
+(defun my/code-annotations ()
+  (let ((regexp (rx bow (or "TODO" "XXX") eow))
+        (face 'font-lock-warning-face))
+    (font-lock-add-keywords nil `((,regexp 0 ,face prepend)))))
+
+(add-hook 'text-mode-hook 'my/code-annotations)
+(add-hook 'prog-mode-hook 'my/code-annotations)
+
 ;;;;; CURSOR
 
 (custom-set-variables
