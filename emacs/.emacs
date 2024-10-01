@@ -74,6 +74,13 @@
  `(font-lock-string-face        ((t (:foreground ,my/color-green))))
  `(font-lock-negation-char-face ((t (:inherit (default bold))))))
 
+;;;;; COMPILATION
+
+(custom-set-faces
+ '(compilation-mode-line-exit ((t (:inherit (success)))))
+ '(compilation-mode-line-run  ((t (:inherit (warning)))))
+ '(compilation-mode-line-fail ((t (:inherit (error))))))
+
 ;;;;; OUTLINES
 
 (custom-set-faces
