@@ -454,14 +454,31 @@
 
 (my/install 'consult)
 
+(defun my/consult-line ()
+  (interactive)
+  (consult-line (thing-at-point 'symbol)))
+
+(defun my/consult-ripgrep ()
+  (interactive)
+  (consult-ripgrep
+   (or (and (fboundp 'projectile-project-root) (projectile-project-root))
+       default-directory)
+   (thing-at-point 'symbol)))
+
 (keymap-global-set "C-x r j" 'consult-register)
 (keymap-global-set "M-y" 'consult-yank-pop)
-(keymap-global-set "s-a" 'consult-line)
+(keymap-global-set "s-a" 'my/consult-line)
 (keymap-global-set "s-b" 'consult-project-buffer)
-(keymap-global-set "s-g" 'consult-ripgrep)
+(keymap-global-set "s-g" 'my/consult-ripgrep)
 (keymap-global-set "s-i" 'consult-imenu)
 (keymap-global-set "s-j" 'consult-global-mark)
 (keymap-global-set "s-m" 'consult-outline)
+
+;; add ripgrep arguments (see RIPGREP)
+(with-eval-after-load 'consult
+  (let ((default (custom-reevaluate-setting 'consult-ripgrep-args)))
+    (custom-set-variables
+     `(consult-ripgrep-args '(,default "--hidden" "--binary" "--glob !.git/")))))
 
 ;;;;; DIFF-HL
 
@@ -624,7 +641,7 @@
       (kill-whole-line))))
 
 (custom-set-variables
- '(ripgrep-arguments '("--no-ignore" "--hidden" "--binary" "--glob !.git/")))
+ '(ripgrep-arguments '("--hidden" "--binary" "--glob !.git/")))
 
 (add-hook 'ripgrep-search-finished-hook 'my/ripgrep-fix)
 
