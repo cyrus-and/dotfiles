@@ -171,8 +171,9 @@
 ;;;;; EXECUTABLES PATH
 
 ;; add user paths to `exec-path' and update PATH accordingly
-(add-to-list 'exec-path "~/.nix-profile/bin/")
-(add-to-list 'exec-path "~/.bin/")
+(add-to-list 'exec-path "~/.nix-profile/bin")
+(add-to-list 'exec-path "~/.bin")
+(add-to-list 'exec-path "/usr/local/bin")
 (setenv "PATH" (string-join exec-path ":"))
 
 ;;;;; FFAP
@@ -501,6 +502,10 @@
 
 ;; update the indicators also after a commit
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+
+;;;;; DOCKERFILE-MODE
+
+(my/install 'dockerfile-mode)
 
 ;;;;; DUMB-JUMP
 
