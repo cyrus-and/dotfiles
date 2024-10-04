@@ -50,7 +50,7 @@ case "$OSTYPE" in
 
         # XXX macOS 12.3 or earlier
         alias dropbox-ignore='xattr -w com.dropbox.ignored 1'
-        alias dropbox-unignore='xattr -d com.dropbox.ignored 1'
+        alias dropbox-unignore='xattr -d com.dropbox.ignored'
         alias dropbox-check='xattr -p com.dropbox.ignored'
 
         up() {
