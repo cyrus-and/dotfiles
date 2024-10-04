@@ -1,4 +1,4 @@
-# common
+# shell options
 shopt -s extglob
 
 # history
@@ -38,16 +38,16 @@ else
 fi
 
 # common aliases
-alias ls='ls --color=auto' # assuming GNU utils
+alias ls='ls --color=auto' # XXX assuming GNU utils on macOS
 alias grep='grep --color=auto'
 alias ll='ls -lartF'
+
+# local executables
+export PATH="$HOME/.bin:$PATH"
 
 # OS-specific configurations
 case "$OSTYPE" in
     darwin*)
-        # brew PATH
-        export PATH="/usr/local/sbin:$PATH"
-
         # XXX macOS 12.3 or earlier
         alias dropbox-ignore='xattr -w com.dropbox.ignored 1'
         alias dropbox-unignore='xattr -d com.dropbox.ignored'
@@ -103,5 +103,5 @@ esac
 # password store on dropbox
 export PASSWORD_STORE_DIR="$HOME/Dropbox/root/pass/"
 
-# ZFZ integration
+# FZF integration
 eval "$(fzf --bash)"
