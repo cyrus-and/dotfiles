@@ -520,6 +520,10 @@
 (with-eval-after-load 'js
   (define-key js-mode-map (kbd "M-.") nil))
 
+;;;;; GO-MODE
+
+(my/install 'go-mode)
+
 ;;;;; MAGIT
 
 (my/install 'magit)
