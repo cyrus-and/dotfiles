@@ -377,6 +377,7 @@
 (add-hook 'before-save-hook 'my/whitespace-cleanup--handler)
 
 (keymap-global-set "s-w" 'my/whitespace-cleanup-mode)
+(keymap-global-set "s-W" 'whitespace-mode)
 
 ;;;; PACKAGES
 
