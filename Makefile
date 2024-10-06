@@ -1,7 +1,7 @@
-.PHONY: stow unstow
+MAKEFLAGS += --always-make
 
 stow:
-	stow -t ~ -R */
+	stow --no-folding --target ~/ --restow */
 
 unstow:
-	stow -t ~ -D */
+	stow --no-folding --target ~/ --delete */
