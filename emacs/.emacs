@@ -661,6 +661,12 @@
 (custom-set-variables
  '(vertico-mode t))
 
+;; vertico-repeat preliminary setup
+(add-to-list 'savehist-additional-variables 'vertico-repeat-history)
+(add-hook 'minibuffer-setup-hook 'vertico-repeat-save)
+
+(keymap-global-set "s--" 'vertico-repeat)
+
 ;;;;;; ORDERLESS
 
 (my/install 'orderless)
