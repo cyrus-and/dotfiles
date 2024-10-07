@@ -178,7 +178,7 @@
 
 ;;;;; FFAP
 
-(keymap-global-set "s-M" 'ffap-menu)
+(keymap-global-set "s-j" 'ffap-menu)
 
 ;;;;; FIND TO DIRED
 
@@ -470,14 +470,14 @@
 
 (keymap-global-set "C-x r j" 'consult-register)
 (keymap-global-set "M-y" 'consult-yank-pop)
-(keymap-global-set "s-A" 'my/consult-line)
+(keymap-global-set "s-&" 'consult-focus-lines)
 (keymap-global-set "s-G" 'my/consult-ripgrep)
-(keymap-global-set "s-a" 'consult-line)
+(keymap-global-set "s-S" 'my/consult-line)
 (keymap-global-set "s-b" 'consult-project-buffer)
 (keymap-global-set "s-g" 'consult-ripgrep)
 (keymap-global-set "s-i" 'consult-imenu)
-(keymap-global-set "s-j" 'consult-global-mark)
-(keymap-global-set "s-m" 'consult-outline)
+(keymap-global-set "s-I" 'consult-outline)
+(keymap-global-set "s-s" 'consult-line)
 
 ;; add ripgrep arguments (see RIPGREP)
 (with-eval-after-load 'consult
@@ -541,7 +541,7 @@
  `(magit-header-line ((t (:inherit (header-line))))))
 
 (add-hook 'git-commit-setup-hook 'git-commit-turn-on-flyspell)
-(keymap-global-set "s-z" 'magit-status)
+(keymap-global-set "s-m" 'magit-status)
 
 ;;;;; MARGINALIA
 
@@ -634,7 +634,7 @@
   (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
   (define-key projectile-mode-map (kbd "s-o") 'my/projectile-open)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-switch-project)
-  (define-key projectile-mode-map (kbd "s-s") 'projectile-run-vterm))
+  (define-key projectile-mode-map (kbd "s-t") 'projectile-run-vterm))
 
 ;;;;; RAINBOW-MODE
 
