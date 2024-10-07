@@ -457,11 +457,11 @@
 
 (my/install 'consult)
 
-(defun my/consult-line ()
+(defun my/consult-line-dwim ()
   (interactive)
   (consult-line (thing-at-point 'symbol)))
 
-(defun my/consult-ripgrep ()
+(defun my/consult-ripgrep-dwim ()
   (interactive)
   (consult-ripgrep
    (or (and (fboundp 'projectile-project-root) (projectile-project-root))
@@ -471,8 +471,8 @@
 (keymap-global-set "C-x r j" 'consult-register)
 (keymap-global-set "M-y" 'consult-yank-pop)
 (keymap-global-set "s--" 'consult-focus-lines)
-(keymap-global-set "s-G" 'my/consult-ripgrep)
-(keymap-global-set "s-S" 'my/consult-line)
+(keymap-global-set "s-G" 'my/consult-ripgrep-dwim)
+(keymap-global-set "s-S" 'my/consult-line-dwim)
 (keymap-global-set "s-b" 'consult-project-buffer)
 (keymap-global-set "s-g" 'consult-ripgrep)
 (keymap-global-set "s-i" 'consult-imenu)
