@@ -661,10 +661,9 @@
 (custom-set-variables
  '(vertico-mode t))
 
-;; vertico-repeat preliminary setup
+;; vertico-repeat
 (add-to-list 'savehist-additional-variables 'vertico-repeat-history)
 (add-hook 'minibuffer-setup-hook 'vertico-repeat-save)
-
 (keymap-global-set "s--" 'vertico-repeat)
 
 ;;;;;; ORDERLESS
@@ -691,17 +690,18 @@
 
 (my/install 'winum)
 
-(setq winum-keymap (make-sparse-keymap))
-(define-key winum-keymap (kbd "s-1") 'winum-select-window-1)
-(define-key winum-keymap (kbd "s-2") 'winum-select-window-2)
-(define-key winum-keymap (kbd "s-3") 'winum-select-window-3)
-(define-key winum-keymap (kbd "s-4") 'winum-select-window-4)
-(define-key winum-keymap (kbd "s-5") 'winum-select-window-5)
-(define-key winum-keymap (kbd "s-6") 'winum-select-window-6)
-(define-key winum-keymap (kbd "s-7") 'winum-select-window-7)
-(define-key winum-keymap (kbd "s-8") 'winum-select-window-8)
-(define-key winum-keymap (kbd "s-9") 'winum-select-window-9)
-(define-key winum-keymap (kbd "s-0") 'winum-select-window-0-or-10)
+(defun my/winum-select-window-by-number (n)
+  "Select a window by its number or switch back to the most recently used one."
+  (lambda ()
+    (interactive)
+    (if (= n (winum-get-number))
+        (my/select-mru-window)
+      (winum-select-window-by-number n))))
+
+(defun my/select-mru-window ()
+  "Select the most recently used window."
+  (interactive)
+  (select-window (get-mru-window nil t t)))
 
 (custom-set-variables
  '(winum-format (propertize " %s " 'face 'winum-face))
@@ -712,20 +712,19 @@
 (custom-set-faces
  `(winum-face ((t (:foreground ,my/color-level-1 :background ,my/color-accent)))))
 
-(defun my/winum-switch ()
-  "More versatile `other-window'."
-  (interactive)
-  (if (<= (count-windows) 2)
-      (other-window 1)
-    (let ((char (read-key (propertize
-                           "Switch to window number? (C-g to abort; any key toggle)"
-                           'face 'minibuffer-prompt))))
-      (unless (= char ?\C-g)
-        (if (<= ?0 char ?9)
-            (winum-select-window-by-number (- char ?0))
-          (select-window (get-mru-window nil t t)))))))
+(setq winum-keymap (make-sparse-keymap))
+(define-key winum-keymap (kbd "s-1") (my/winum-select-window-by-number 1))
+(define-key winum-keymap (kbd "s-2") (my/winum-select-window-by-number 2))
+(define-key winum-keymap (kbd "s-3") (my/winum-select-window-by-number 3))
+(define-key winum-keymap (kbd "s-4") (my/winum-select-window-by-number 4))
+(define-key winum-keymap (kbd "s-5") (my/winum-select-window-by-number 5))
+(define-key winum-keymap (kbd "s-6") (my/winum-select-window-by-number 6))
+(define-key winum-keymap (kbd "s-7") (my/winum-select-window-by-number 7))
+(define-key winum-keymap (kbd "s-8") (my/winum-select-window-by-number 8))
+(define-key winum-keymap (kbd "s-9") (my/winum-select-window-by-number 9))
+(define-key winum-keymap (kbd "s-0") (my/winum-select-window-by-number 10))
 
-(keymap-global-set "C-x o" 'my/winum-switch)
+(keymap-global-set "s-\\" 'my/select-mru-window)
 
 ;;;;; ZOOM
 
