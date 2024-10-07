@@ -469,9 +469,11 @@
 
 (keymap-global-set "C-x r j" 'consult-register)
 (keymap-global-set "M-y" 'consult-yank-pop)
-(keymap-global-set "s-a" 'my/consult-line)
+(keymap-global-set "s-A" 'my/consult-line)
+(keymap-global-set "s-G" 'my/consult-ripgrep)
+(keymap-global-set "s-a" 'consult-line)
 (keymap-global-set "s-b" 'consult-project-buffer)
-(keymap-global-set "s-g" 'my/consult-ripgrep)
+(keymap-global-set "s-g" 'consult-ripgrep)
 (keymap-global-set "s-i" 'consult-imenu)
 (keymap-global-set "s-j" 'consult-global-mark)
 (keymap-global-set "s-m" 'consult-outline)
@@ -624,7 +626,7 @@
 
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "s-D") 'projectile-dired)
-  (define-key projectile-mode-map (kbd "s-G") 'projectile-ripgrep)
+  (define-key projectile-mode-map (kbd "s--") 'projectile-ripgrep)
   (define-key projectile-mode-map (kbd "s-K") 'projectile-remove-known-project)
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
@@ -664,7 +666,7 @@
 ;; vertico-repeat
 (add-to-list 'savehist-additional-variables 'vertico-repeat-history)
 (add-hook 'minibuffer-setup-hook 'vertico-repeat-save)
-(keymap-global-set "s--" 'vertico-repeat)
+(keymap-global-set "s-r" 'vertico-repeat)
 
 ;;;;;; ORDERLESS
 
