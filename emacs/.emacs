@@ -690,6 +690,15 @@
 
 (my/install 'winum)
 
+(custom-set-variables
+ '(winum-format (propertize " %s " 'face 'winum-face))
+ '(winum-mode t)
+ '(winum-mode-line-position 0)
+ '(winum-scope 'frame-local))
+
+(custom-set-faces
+ `(winum-face ((t (:foreground ,my/color-level-1 :background ,my/color-accent)))))
+
 (defun my/winum-select-window-by-number (n)
   "Select a window by its number or switch back to the most recently used one."
   (lambda ()
@@ -703,28 +712,16 @@
   (interactive)
   (select-window (get-mru-window nil t t)))
 
-(custom-set-variables
- '(winum-format (propertize " %s " 'face 'winum-face))
- '(winum-mode t)
- '(winum-mode-line-position 0)
- '(winum-scope 'frame-local))
-
-(custom-set-faces
- `(winum-face ((t (:foreground ,my/color-level-1 :background ,my/color-accent)))))
-
-(with-eval-after-load 'winum
-  (setq winum-keymap (make-sparse-keymap))
-  (define-key winum-keymap (kbd "s-1") (my/winum-select-window-by-number 1))
-  (define-key winum-keymap (kbd "s-2") (my/winum-select-window-by-number 2))
-  (define-key winum-keymap (kbd "s-3") (my/winum-select-window-by-number 3))
-  (define-key winum-keymap (kbd "s-4") (my/winum-select-window-by-number 4))
-  (define-key winum-keymap (kbd "s-5") (my/winum-select-window-by-number 5))
-  (define-key winum-keymap (kbd "s-6") (my/winum-select-window-by-number 6))
-  (define-key winum-keymap (kbd "s-7") (my/winum-select-window-by-number 7))
-  (define-key winum-keymap (kbd "s-8") (my/winum-select-window-by-number 8))
-  (define-key winum-keymap (kbd "s-9") (my/winum-select-window-by-number 9))
-  (define-key winum-keymap (kbd "s-0") (my/winum-select-window-by-number 10)))
-
+(keymap-global-set "s-1" (my/winum-select-window-by-number 1))
+(keymap-global-set "s-2" (my/winum-select-window-by-number 2))
+(keymap-global-set "s-3" (my/winum-select-window-by-number 3))
+(keymap-global-set "s-4" (my/winum-select-window-by-number 4))
+(keymap-global-set "s-5" (my/winum-select-window-by-number 5))
+(keymap-global-set "s-6" (my/winum-select-window-by-number 6))
+(keymap-global-set "s-7" (my/winum-select-window-by-number 7))
+(keymap-global-set "s-8" (my/winum-select-window-by-number 8))
+(keymap-global-set "s-9" (my/winum-select-window-by-number 9))
+(keymap-global-set "s-0" (my/winum-select-window-by-number 10))
 (keymap-global-set "s-\\" 'my/select-mru-window)
 
 ;;;;; ZOOM
