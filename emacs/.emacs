@@ -470,7 +470,7 @@
 
 (keymap-global-set "C-x r j" 'consult-register)
 (keymap-global-set "M-y" 'consult-yank-pop)
-(keymap-global-set "s-&" 'consult-focus-lines)
+(keymap-global-set "s--" 'consult-focus-lines)
 (keymap-global-set "s-G" 'my/consult-ripgrep)
 (keymap-global-set "s-S" 'my/consult-line)
 (keymap-global-set "s-b" 'consult-project-buffer)
@@ -627,12 +627,12 @@
 
 (with-eval-after-load 'projectile
   (define-key projectile-mode-map (kbd "s-D") 'projectile-dired)
-  (define-key projectile-mode-map (kbd "s--") 'projectile-ripgrep)
+  (define-key projectile-mode-map (kbd "s-o") 'projectile-ripgrep)
   (define-key projectile-mode-map (kbd "s-K") 'projectile-remove-known-project)
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
-  (define-key projectile-mode-map (kbd "s-o") 'my/projectile-open)
+  (define-key projectile-mode-map (kbd "s-P") 'my/projectile-open)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-switch-project)
   (define-key projectile-mode-map (kbd "s-t") 'projectile-run-vterm))
 
