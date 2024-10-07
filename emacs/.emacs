@@ -712,17 +712,18 @@
 (custom-set-faces
  `(winum-face ((t (:foreground ,my/color-level-1 :background ,my/color-accent)))))
 
-(setq winum-keymap (make-sparse-keymap))
-(define-key winum-keymap (kbd "s-1") (my/winum-select-window-by-number 1))
-(define-key winum-keymap (kbd "s-2") (my/winum-select-window-by-number 2))
-(define-key winum-keymap (kbd "s-3") (my/winum-select-window-by-number 3))
-(define-key winum-keymap (kbd "s-4") (my/winum-select-window-by-number 4))
-(define-key winum-keymap (kbd "s-5") (my/winum-select-window-by-number 5))
-(define-key winum-keymap (kbd "s-6") (my/winum-select-window-by-number 6))
-(define-key winum-keymap (kbd "s-7") (my/winum-select-window-by-number 7))
-(define-key winum-keymap (kbd "s-8") (my/winum-select-window-by-number 8))
-(define-key winum-keymap (kbd "s-9") (my/winum-select-window-by-number 9))
-(define-key winum-keymap (kbd "s-0") (my/winum-select-window-by-number 10))
+(with-eval-after-load 'winum
+  (setq winum-keymap (make-sparse-keymap))
+  (define-key winum-keymap (kbd "s-1") (my/winum-select-window-by-number 1))
+  (define-key winum-keymap (kbd "s-2") (my/winum-select-window-by-number 2))
+  (define-key winum-keymap (kbd "s-3") (my/winum-select-window-by-number 3))
+  (define-key winum-keymap (kbd "s-4") (my/winum-select-window-by-number 4))
+  (define-key winum-keymap (kbd "s-5") (my/winum-select-window-by-number 5))
+  (define-key winum-keymap (kbd "s-6") (my/winum-select-window-by-number 6))
+  (define-key winum-keymap (kbd "s-7") (my/winum-select-window-by-number 7))
+  (define-key winum-keymap (kbd "s-8") (my/winum-select-window-by-number 8))
+  (define-key winum-keymap (kbd "s-9") (my/winum-select-window-by-number 9))
+  (define-key winum-keymap (kbd "s-0") (my/winum-select-window-by-number 10)))
 
 (keymap-global-set "s-\\" 'my/select-mru-window)
 
