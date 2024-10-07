@@ -425,6 +425,7 @@
 (my/install 'company)
 
 (custom-set-variables
+ '(company-backends '((company-capf company-files company-keywords company-dabbrev-code company-dabbrev)))
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case nil)
  '(company-idle-delay 0.1)
