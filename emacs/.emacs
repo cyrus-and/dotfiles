@@ -250,7 +250,7 @@
 ;;;;; MODE LINE
 
 (defun my/abbreviate-path (path)
-  (let* ((path (abbreviate-file-name path)))
+  (let ((path (abbreviate-file-name path)))
     (if (> (length path) (/ (window-total-width) 2))
         (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path)
       path)))
