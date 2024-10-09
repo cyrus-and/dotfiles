@@ -262,15 +262,18 @@
      "  "
      (:eval (when (projectile-project-p)
               (format "%s » " (propertize (projectile-project-name) 'face 'bold))))
-     (:eval (when (buffer-file-name)
-              (if (projectile-project-p)
-                  ;; take the project-relative path and abbreviate it
-                  (my/abbreviate-path (file-relative-name
-                                       (file-truename default-directory)
-                                       (projectile-project-root)))
-                ;; abbreviate the current directory
-                (my/abbreviate-path default-directory))))
-     (:eval (propertize (or (uniquify-buffer-base-name) (buffer-name)) 'face 'bold))
+     (:eval (when (or (buffer-file-name)
+                      (derived-mode-p 'dired-mode))
+              (let ((directory (file-truename default-directory)))
+                (when (projectile-project-p)
+                  (setq directory (file-relative-name directory (projectile-project-root))))
+                (when (derived-mode-p 'dired-mode)
+                  (setq directory (file-name-directory (directory-file-name directory))))
+                (when directory
+                  (my/abbreviate-path directory)))))
+     (:eval (let ((name (if (equal (buffer-name) (projectile-project-name))
+                            "." (or (uniquify-buffer-base-name) (buffer-name)))))
+              (propertize name 'face 'bold)))
      "  "
      mode-line-modes ; XXX one extra trailing space is already there
      " "
