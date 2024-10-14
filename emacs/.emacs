@@ -251,37 +251,55 @@
 
 (defun my/abbreviate-path (path)
   (let ((path (abbreviate-file-name path)))
-    (if (> (length path) (/ (window-total-width) 2))
+    (if (> (length path) (/ (window-total-width) 5))
         (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path)
       path)))
 
 (custom-set-variables
  `(mode-line-format
-   '("  "
-     "%Z%*%@"
-     "  "
-     (:eval (when (projectile-project-p)
-              (format "%s » " (propertize (projectile-project-name) 'face 'bold))))
-     (:eval (when (or (buffer-file-name)
-                      (derived-mode-p 'dired-mode))
-              (let ((directory (file-truename default-directory)))
-                (when (projectile-project-p)
-                  (setq directory (file-relative-name directory (projectile-project-root))))
-                (when (derived-mode-p 'dired-mode)
-                  (setq directory (file-name-directory (directory-file-name directory))))
-                (when directory
-                  (my/abbreviate-path directory)))))
-     (:eval (let ((name (if (equal (buffer-name) (projectile-project-name))
-                            "." (or (uniquify-buffer-base-name) (buffer-name)))))
-              (propertize name 'face 'bold)))
-     "  "
-     mode-line-modes ; XXX one extra trailing space is already there
+   '(;; winum number
+     (:eval (propertize (format " %s " (winum-get-number))
+                        'face '(:foreground ,my/color-level-1 :background ,my/color-accent)))
      " "
-     "+%l"
+     ;; directory (only for files and directories)
+     (:eval (when (or (buffer-file-name) (derived-mode-p 'dired-mode))
+              (let ((directory (file-truename default-directory)))
+              (when (projectile-project-p)
+                (setq directory (file-relative-name directory (projectile-project-root))))
+              (when (derived-mode-p 'dired-mode)
+                (setq directory (file-name-directory (directory-file-name directory))))
+              (when (equal directory "./")
+                (setq directory nil))
+              (when directory
+                (my/abbreviate-path directory)))))
+     ;; buffer name
+     (:eval (propertize
+             (if (and (derived-mode-p 'dired-mode)
+                      (projectile-project-p)
+                      (file-equal-p (projectile-project-root) default-directory))
+                 "." (or (uniquify-buffer-base-name) (buffer-name)))
+             'face 'bold))
+     ;; project name
+     (:eval (when (projectile-project-p)
+              (format " | %s" (projectile-project-name))))
+     ;; coding
+     (:eval (let* ((coding (coding-system-mnemonic buffer-file-coding-system))
+                   (eol (coding-system-eol-type-mnemonic buffer-file-coding-system))
+                   (flags (concat
+                           (unless (= coding ?-) (string coding))
+                           (unless (equal eol ":") eol))))
+              (unless (string-empty-p flags)
+                (format " | %s" flags))))
+     ;; recursive editing
+     (:eval (when (> (recursion-depth) 0)
+              (format " | %s" (make-string (recursion-depth) ?D))))
+     ;; line/column information
+     " | %l"
      (:eval (format "/%d" (line-number-at-pos (point-max))))
      ":%c"
-     "  "
-     global-mode-string)))
+     ;; modified flagssds
+     (:eval (when (buffer-modified-p) " | *"))
+)))
 
 ;;;;; MOUSE
 
@@ -536,6 +554,7 @@
 (my/install 'magit)
 
 (custom-set-variables
+ '(magit-buffer-name-format "*%M*")
  '(magit-section-initial-visibility-alist '((stashes . hide) (unpushed . show)))
  '(with-editor-emacsclient-executable "emacsclient")) ; XXX fix warning with Emacs from Nix
 
@@ -577,15 +596,6 @@
 
 ;; allow to edit code blocks natively
 (my/install 'edit-indirect)
-
-;;;;; MINIONS
-
-(my/install 'minions)
-
-(custom-set-variables
- '(minions-direct '(overwrite-mode))
- '(minions-mode t)
- '(minions-mode-line-lighter "···"))
 
 ;;;;; OUTSHINE
 
@@ -697,13 +707,10 @@
 (my/install 'winum)
 
 (custom-set-variables
- '(winum-format (propertize " %s " 'face 'winum-face))
+ '(winum-auto-setup-mode-line nil)
  '(winum-mode t)
  '(winum-mode-line-position 0)
  '(winum-scope 'frame-local))
-
-(custom-set-faces
- `(winum-face ((t (:foreground ,my/color-level-1 :background ,my/color-accent)))))
 
 (defun my/winum-select-window-by-number (n)
   "Select a window by its number or switch back to the most recently used one."
