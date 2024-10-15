@@ -656,18 +656,19 @@
 
 (my/install 'ripgrep)
 
-(defun my/ripgrep-fix ()
-  "Enforce a cleaner ripgrep output by hiding the command."
-  (save-excursion
-    (let ((inhibit-read-only t))
-      (goto-char (point-min))
-      (forward-line 3)
-      (kill-whole-line))))
-
 (custom-set-variables
  '(ripgrep-arguments '("--hidden" "--binary" "--glob !.git/")))
 
-(add-hook 'ripgrep-search-finished-hook 'my/ripgrep-fix)
+(defun my/ripgrep-start-fix (process)
+  "Enforce a cleaner ripgrep output by hiding the command."
+  (when (derived-mode-p 'ripgrep-search-mode)
+    (save-excursion
+      (let ((inhibit-read-only t))
+        (goto-char (point-min))
+        (forward-line 3)
+        (kill-whole-line)))))
+
+(add-hook 'compilation-start-hook 'my/ripgrep-start-fix)
 
 ;;;;; VERTICO
 
