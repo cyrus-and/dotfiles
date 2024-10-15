@@ -264,14 +264,14 @@
      ;; directory (only for files and directories)
      (:eval (when (or (buffer-file-name) (derived-mode-p 'dired-mode))
               (let ((directory (file-truename default-directory)))
-              (when (projectile-project-p)
-                (setq directory (file-relative-name directory (projectile-project-root))))
-              (when (derived-mode-p 'dired-mode)
-                (setq directory (file-name-directory (directory-file-name directory))))
-              (when (equal directory "./")
-                (setq directory nil))
-              (when directory
-                (my/abbreviate-path directory)))))
+                (when (projectile-project-p)
+                  (setq directory (file-relative-name directory (projectile-project-root))))
+                (when (derived-mode-p 'dired-mode)
+                  (setq directory (file-name-directory (directory-file-name directory))))
+                (when (equal directory "./")
+                  (setq directory nil))
+                (when directory
+                  (my/abbreviate-path directory)))))
      ;; buffer name
      (:eval (propertize
              (if (and (derived-mode-p 'dired-mode)
@@ -298,8 +298,7 @@
      (:eval (format "/%d" (line-number-at-pos (point-max))))
      ":%c"
      ;; modified flagssds
-     (:eval (when (buffer-modified-p) " | *"))
-)))
+     (:eval (when (buffer-modified-p) " | *")))))
 
 ;;;;; MOUSE
 
