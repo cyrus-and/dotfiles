@@ -289,21 +289,26 @@
 
 (custom-set-variables
  `(mode-line-format
-   '(" "
+   `(" "
      (:eval (when my/mode-line-directory
               (my/mode-line-abbreviate-path my/mode-line-directory)))
      (:propertize my/mode-line-buffer face bold)
      (:eval (when (projectile-project-p)
-              (format " | %s" (projectile-project-name))))
+              `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
+                ,(projectile-project-name))))
      (:eval (unless (string-empty-p my/mode-line-coding)
-              (format " | %s" my/mode-line-coding)))
-     " | %l"
+              `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
+                ,my/mode-line-coding)))
+     " " (:propertize "|" face (:foreground ,my/color-accent)) " "
+     "%l"
      (:eval (format "/%d" (line-number-at-pos (point-max))))
      ":%c"
      (:eval (when (> (recursion-depth) 0)
-              (format " | %s" (make-string (recursion-depth) ?D))))
+              `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
+                ,(make-string (recursion-depth) ?D))))
      (:eval (when (and (buffer-modified-p) (not buffer-read-only))
-              " | *")))))
+              `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
+                "***"))))))
 
 ;;;;; MOUSE
 
