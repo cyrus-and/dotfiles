@@ -198,6 +198,33 @@
 
 (global-set-key (kbd "s-<backspace>") 'my/force-revert-buffer)
 
+;;;;; FRIENDLIER SCRATCH BUFFER
+
+(defun my/scratch-buffer-save ()
+  "Show the scracth save override message."
+  (interactive)
+  (message (substitute-command-keys "Use \\[write-file] to save.")))
+
+(defun my/scratch-override-save (scratch)
+  "Override `save-buffer' key in scratch buffer to help muscle memory."
+  (with-current-buffer scratch
+    (keymap-local-set "C-x C-s" 'my/scratch-buffer-save)
+    scratch))
+
+(advice-add 'get-scratch-buffer-create :filter-return 'my/scratch-override-save)
+
+(defun my/scratch-toggle ()
+  "Toggle the scratch buffer."
+  (interactive)
+  (if (eq (current-buffer) (get-scratch-buffer-create))
+      (bury-buffer)
+    (let ((scratch-window (get-buffer-window (get-scratch-buffer-create))))
+      (if scratch-window
+          (select-window scratch-window)
+        (scratch-buffer)))))
+
+(keymap-global-set "s-'" 'my/scratch-toggle)
+
 ;;;;; IBUFFER
 
 (defalias 'list-buffers 'ibuffer)
@@ -268,7 +295,7 @@
        (when (equal directory "./")
          (setq directory nil))
        (when directory
-         (replace-regexp-in-string "%" "%%" directory)))))
+         (replace-regexp-in-string "%" "%%" (my/mode-line-abbreviate-path directory))))))
 
   (setq-local
    my/mode-line-buffer
@@ -278,26 +305,33 @@
        "." (replace-regexp-in-string "%" "%%" (or (uniquify-buffer-base-name) (buffer-name)))))
 
   (setq-local
+   my/mode-line-projectile-project-name
+   (and (projectile-project-p) (projectile-project-name)))
+
+  (setq-local
    my/mode-line-coding
    (let ((coding (coding-system-mnemonic buffer-file-coding-system))
          (eol (coding-system-eol-type-mnemonic buffer-file-coding-system)))
      (concat
       (unless (= coding ?-) (string coding))
-      (unless (equal eol ":") eol)))))
+      (unless (equal eol ":") eol))))
+
+  nil)
 
 (add-hook 'window-buffer-change-functions 'my/mode-line-update-variables)
 
 (custom-set-variables
  `(mode-line-format
-   `(" "
+   `((:eval (unless (bound-and-true-p my/mode-line-buffer)
+              (my/mode-line-update-variables)))
+     " "
      "%["
-     (:eval (when my/mode-line-directory
-              (my/mode-line-abbreviate-path my/mode-line-directory)))
+     my/mode-line-directory
      (:propertize my/mode-line-buffer face bold)
      "%]"
-     (:eval (when (projectile-project-p)
+     (:eval (when my/mode-line-projectile-project-name
               `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
-                ,(projectile-project-name))))
+                ,my/mode-line-projectile-project-name)))
      (:eval (unless (string-empty-p my/mode-line-coding)
               `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
                 ,my/mode-line-coding)))
@@ -307,7 +341,7 @@
      ":%c"
      (:eval (when (and (buffer-modified-p) (not buffer-read-only))
               `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
-                "***"))))))
+                (:propertize "***" face bold)))))))
 
 ;;;;; MOUSE
 
