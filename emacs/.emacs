@@ -290,11 +290,11 @@
 (custom-set-variables
  `(mode-line-format
    `(" "
-     "%[ "
+     "%["
      (:eval (when my/mode-line-directory
               (my/mode-line-abbreviate-path my/mode-line-directory)))
      (:propertize my/mode-line-buffer face bold)
-     " %]"
+     "%]"
      (:eval (when (projectile-project-p)
               `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
                 ,(projectile-project-name))))
