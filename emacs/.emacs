@@ -290,9 +290,11 @@
 (custom-set-variables
  `(mode-line-format
    `(" "
+     "%[ "
      (:eval (when my/mode-line-directory
               (my/mode-line-abbreviate-path my/mode-line-directory)))
      (:propertize my/mode-line-buffer face bold)
+     " %]"
      (:eval (when (projectile-project-p)
               `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
                 ,(projectile-project-name))))
@@ -303,9 +305,6 @@
      "%l"
      (:eval (format "/%d" (line-number-at-pos (point-max))))
      ":%c"
-     (:eval (when (> (recursion-depth) 0)
-              `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
-                ,(make-string (recursion-depth) ?D))))
      (:eval (when (and (buffer-modified-p) (not buffer-read-only))
               `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
                 "***"))))))
