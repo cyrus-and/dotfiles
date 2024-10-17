@@ -278,10 +278,7 @@
 ;;;;; MODE LINE
 
 (defun my/mode-line-abbreviate-path (path)
-  (let ((path (abbreviate-file-name path)))
-    (if (> (length path) (/ (window-total-width) 2))
-        (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path)
-      path)))
+  (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path))
 
 (defun my/mode-line-update-variables (&rest args)
   (setq-local
@@ -326,7 +323,7 @@
               (my/mode-line-update-variables)))
      " "
      "%["
-     my/mode-line-directory
+     (:propertize my/mode-line-directory face shadow)
      (:propertize my/mode-line-buffer face bold)
      "%]"
      (:eval (when my/mode-line-projectile-project-name
