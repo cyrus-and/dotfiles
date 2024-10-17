@@ -193,7 +193,8 @@
   "Revert buffer without confirmation."
   (interactive)
   (lazy-highlight-cleanup t)
-  (revert-buffer t t))
+  (revert-buffer t t)
+  (run-hooks 'window-buffer-change-functions)) ; XXX used to update the mode line
 
 (global-set-key (kbd "s-<backspace>") 'my/force-revert-buffer)
 
@@ -249,56 +250,60 @@
 
 ;;;;; MODE LINE
 
-(defun my/abbreviate-path (path)
+(defun my/mode-line-abbreviate-path (path)
   (let ((path (abbreviate-file-name path)))
-    (if (> (length path) (/ (window-total-width) 5))
+    (if (> (length path) (/ (window-total-width) 2))
         (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path)
       path)))
 
+(defun my/mode-line-update-variables (&rest args)
+  (setq-local
+   my/mode-line-directory
+   (when (or (buffer-file-name) (derived-mode-p 'dired-mode))
+     (let ((directory (file-truename default-directory)))
+       (when (projectile-project-p)
+         (setq directory (file-relative-name directory (projectile-project-root))))
+       (when (derived-mode-p 'dired-mode)
+         (setq directory (file-name-directory (directory-file-name directory))))
+       (when (equal directory "./")
+         (setq directory nil))
+       (when directory
+         (replace-regexp-in-string "%" "%%" directory)))))
+
+  (setq-local
+   my/mode-line-buffer
+   (if (and (derived-mode-p 'dired-mode)
+            (projectile-project-p)
+            (file-equal-p (projectile-project-root) default-directory))
+       "." (replace-regexp-in-string "%" "%%" (or (uniquify-buffer-base-name) (buffer-name)))))
+
+  (setq-local
+   my/mode-line-coding
+   (let ((coding (coding-system-mnemonic buffer-file-coding-system))
+         (eol (coding-system-eol-type-mnemonic buffer-file-coding-system)))
+     (concat
+      (unless (= coding ?-) (string coding))
+      (unless (equal eol ":") eol)))))
+
+(add-hook 'window-buffer-change-functions 'my/mode-line-update-variables)
+
 (custom-set-variables
  `(mode-line-format
-   '(;; winum number
-     (:eval (propertize (format " %s " (winum-get-number))
-                        'face '(:foreground ,my/color-level-1 :background ,my/color-accent)))
-     " "
-     ;; directory (only for files and directories)
-     (:eval (when (or (buffer-file-name) (derived-mode-p 'dired-mode))
-              (let ((directory (file-truename default-directory)))
-                (when (projectile-project-p)
-                  (setq directory (file-relative-name directory (projectile-project-root))))
-                (when (derived-mode-p 'dired-mode)
-                  (setq directory (file-name-directory (directory-file-name directory))))
-                (when (equal directory "./")
-                  (setq directory nil))
-                (when directory
-                  (my/abbreviate-path directory)))))
-     ;; buffer name
-     (:eval (propertize
-             (if (and (derived-mode-p 'dired-mode)
-                      (projectile-project-p)
-                      (file-equal-p (projectile-project-root) default-directory))
-                 "." (or (uniquify-buffer-base-name) (buffer-name)))
-             'face 'bold))
-     ;; project name
+   '(" "
+     (:eval (when my/mode-line-directory
+              (my/mode-line-abbreviate-path my/mode-line-directory)))
+     (:propertize my/mode-line-buffer face bold)
      (:eval (when (projectile-project-p)
               (format " | %s" (projectile-project-name))))
-     ;; coding
-     (:eval (let* ((coding (coding-system-mnemonic buffer-file-coding-system))
-                   (eol (coding-system-eol-type-mnemonic buffer-file-coding-system))
-                   (flags (concat
-                           (unless (= coding ?-) (string coding))
-                           (unless (equal eol ":") eol))))
-              (unless (string-empty-p flags)
-                (format " | %s" flags))))
-     ;; recursive editing
-     (:eval (when (> (recursion-depth) 0)
-              (format " | %s" (make-string (recursion-depth) ?D))))
-     ;; line/column information
+     (:eval (unless (string-empty-p my/mode-line-coding)
+              (format " | %s" my/mode-line-coding)))
      " | %l"
      (:eval (format "/%d" (line-number-at-pos (point-max))))
      ":%c"
-     ;; modified flagssds
-     (:eval (when (buffer-modified-p) " | *")))))
+     (:eval (when (> (recursion-depth) 0)
+              (format " | %s" (make-string (recursion-depth) ?D))))
+     (:eval (when (and (buffer-modified-p) (not buffer-read-only))
+              " | *")))))
 
 ;;;;; MOUSE
 
@@ -714,10 +719,13 @@
 (my/install 'winum)
 
 (custom-set-variables
- '(winum-auto-setup-mode-line nil)
+ '(winum-format (propertize " %s " 'face 'winum-face))
  '(winum-mode t)
  '(winum-mode-line-position 0)
  '(winum-scope 'frame-local))
+
+(custom-set-faces
+ `(winum-face ((t (:foreground ,my/color-level-1 :background ,my/color-accent)))))
 
 (defun my/winum-select-window-by-number (n)
   "Select a window by its number or switch back to the most recently used one."
