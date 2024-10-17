@@ -399,6 +399,13 @@
 (keymap-global-set "s-w" 'my/whitespace-cleanup-mode)
 (keymap-global-set "s-W" 'whitespace-mode)
 
+;;;;; XREF
+
+;; mostly used with dumb-jump
+(custom-set-variables
+ '(xref-show-definitions-function 'xref-show-definitions-completing-read)
+ '(xref-show-xrefs-function 'xref-show-definitions-completing-read))
+
 ;;;; PACKAGES
 
 (defun my/install (package)
