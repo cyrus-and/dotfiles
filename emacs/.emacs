@@ -307,11 +307,13 @@
 
   (setq-local
    my/mode-line-coding
-   (let ((coding (coding-system-mnemonic buffer-file-coding-system))
-         (eol (coding-system-eol-type-mnemonic buffer-file-coding-system)))
-     (concat
-      (unless (= coding ?-) (string coding))
-      (unless (equal eol ":") eol))))
+   (if (buffer-file-name)
+       (let ((coding (coding-system-mnemonic buffer-file-coding-system))
+             (eol (coding-system-eol-type-mnemonic buffer-file-coding-system)))
+         (concat
+          (unless (= coding ?-) (string coding))
+          (unless (equal eol ":") eol)))
+     ""))
 
   nil)
 
