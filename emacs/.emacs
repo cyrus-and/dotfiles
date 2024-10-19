@@ -321,7 +321,7 @@
 
 (custom-set-variables
  `(mode-line-format
-   `((:eval (unless (bound-and-true-p my/mode-line-buffer)
+   '((:eval (unless (bound-and-true-p my/mode-line-buffer)
               (my/mode-line-update-variables)))
      (:eval `(:propertize (" %[" ,(winum-get-number-string) "%] ")
                           face (:foreground ,my/color-level-1 :background ,my/color-accent)))
