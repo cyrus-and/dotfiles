@@ -323,11 +323,11 @@
  `(mode-line-format
    `((:eval (unless (bound-and-true-p my/mode-line-buffer)
               (my/mode-line-update-variables)))
+     (:eval `(:propertize (" %[" ,(winum-get-number-string) "%] ")
+                          face (:foreground ,my/color-level-1 :background ,my/color-accent)))
      " "
-     "%["
      (:propertize my/mode-line-directory face shadow)
      (:propertize my/mode-line-buffer face bold)
-     "%]"
      (:eval (when my/mode-line-projectile-project-name
               `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
                 ,my/mode-line-projectile-project-name)))
@@ -756,13 +756,9 @@
 (my/install 'winum)
 
 (custom-set-variables
- '(winum-format (propertize " %s " 'face 'winum-face))
+ '(winum-auto-setup-mode-line nil)
  '(winum-mode t)
- '(winum-mode-line-position 0)
  '(winum-scope 'frame-local))
-
-(custom-set-faces
- `(winum-face ((t (:foreground ,my/color-level-1 :background ,my/color-accent)))))
 
 (defun my/winum-select-window-by-number (n)
   "Select a window by its number or switch back to the most recently used one."
