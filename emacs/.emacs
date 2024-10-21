@@ -669,13 +669,17 @@
 (defun my/projectile-save-window-configuration ()
   "Save the current window configuration for the current project."
   (when (projectile-project-p)
-    (puthash (projectile-project-root) (current-window-configuration) my/projectile-window-configurations)))
+    (puthash (projectile-project-root)
+             (list (current-window-configuration) (point-marker))
+             my/projectile-window-configurations)))
 
 (defun my/projectile-restore-window-configuration ()
   "Restore the window configuration or start anew."
   (let ((configuration (gethash (projectile-project-root) my/projectile-window-configurations)))
     (if configuration
-        (set-window-configuration configuration)
+        (progn
+          (set-window-configuration (car configuration))
+          (goto-char (cadr configuration)))
       (delete-other-windows))))
 
 (defun my/projectile-open (filename)
