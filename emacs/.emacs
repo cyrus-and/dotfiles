@@ -438,8 +438,8 @@
 
 (add-hook 'before-save-hook 'my/whitespace-cleanup--handler)
 
-(keymap-global-set "s-w" 'my/whitespace-cleanup-mode)
-(keymap-global-set "s-W" 'whitespace-mode)
+(keymap-global-set "s-w" 'whitespace-mode)
+(keymap-global-set "s-W" 'my/whitespace-cleanup-mode)
 
 ;;;;; XREF
 
