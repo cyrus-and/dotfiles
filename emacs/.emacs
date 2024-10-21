@@ -292,7 +292,7 @@
        (when (equal directory "./")
          (setq directory nil))
        (when directory
-         (replace-regexp-in-string "%" "%%" (my/mode-line-abbreviate-path directory))))))
+         (replace-regexp-in-string "%" "%%" directory)))))
 
   (setq-local
    my/mode-line-buffer
@@ -326,21 +326,22 @@
      (:eval `(:propertize (" %[" ,(winum-get-number-string) "%] ")
                           face (:foreground ,my/color-level-1 :background ,my/color-accent)))
      " "
-     (:propertize my/mode-line-directory face shadow)
      (:propertize my/mode-line-buffer face bold)
      (:eval (when my/mode-line-projectile-project-name
-              `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
+              `(" " (:propertize "@" face (:foreground ,my/color-accent))
                 ,my/mode-line-projectile-project-name)))
+     (:eval (when my/mode-line-directory
+              `(" " (:propertize ":" face (:foreground ,my/color-accent))
+                ,my/mode-line-directory)))
      (:eval (unless (string-empty-p my/mode-line-coding)
-              `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
+              `(" " (:propertize "$" face (:foreground ,my/color-accent))
                 ,my/mode-line-coding)))
-     " " (:propertize "|" face (:foreground ,my/color-accent)) " "
+     " " (:propertize "+" face (:foreground ,my/color-accent))
      "%l"
      (:eval (format "/%d" (line-number-at-pos (point-max))))
      ":%c"
      (:eval (when (and (buffer-modified-p) (not buffer-read-only))
-              `(" " (:propertize "|" face (:foreground ,my/color-accent)) " "
-                (:propertize "***" face bold)))))))
+              `(" " (:propertize "***" face (:foreground ,my/color-accent))))))))
 
 ;;;;; MOUSE
 
