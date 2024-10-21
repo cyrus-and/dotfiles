@@ -593,6 +593,13 @@
 (with-eval-after-load 'js
   (define-key js-mode-map (kbd "M-.") nil))
 
+;;;;; EXPAND REGION
+
+(my/install 'expand-region)
+
+(keymap-global-set "S-s-<up>" 'er/expand-region)
+(keymap-global-set "S-s-<down>" 'er/contract-region)
+
 ;;;;; GO-MODE
 
 (my/install 'go-mode)
