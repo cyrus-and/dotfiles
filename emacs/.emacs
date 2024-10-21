@@ -784,7 +784,9 @@
 (defun my/select-mru-window ()
   "Select the most recently used window."
   (interactive)
-  (select-window (get-mru-window nil t t)))
+  (let ((mru-window (get-mru-window nil t t)))
+    (when mru-window
+      (select-window mru-window))))
 
 (keymap-global-set "s-1" (my/winum-select-window-by-number 1))
 (keymap-global-set "s-2" (my/winum-select-window-by-number 2))
