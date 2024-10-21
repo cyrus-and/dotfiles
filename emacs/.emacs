@@ -351,6 +351,23 @@
  '(mouse-wheel-scroll-amount '(1 ((shift) . 5)))
  '(mouse-yank-at-point t))
 
+;;;;; OUTLINE CYCLE BUFFER
+
+(defun my/outline-cycle-buffer ()
+  "Toggle TOC view in outlines."
+  (interactive)
+  (when outline-minor-mode
+    (if (and (equal (point) (point-min))
+             (eq last-command 'my/outline-cycle-buffer))
+        (progn (outline-show-all)
+               (goto-char (mark))
+               (pop-mark))
+      (push-mark)
+      (goto-char (point-min))
+      (outline-hide-body))))
+
+(keymap-global-set "s-<" 'my/outline-cycle-buffer)
+
 ;;;;; PERFORMANCE
 
 (add-hook 'focus-out-hook 'garbage-collect)
@@ -657,9 +674,6 @@
 ;;;;; OUTSHINE
 
 (my/install 'outshine)
-
-(with-eval-after-load 'outshine
-  (outshine-define-key outshine-mode-map (kbd "<backtab>") 'outshine-cycle-buffer t))
 
 ;;;;; PROJECTILE
 
