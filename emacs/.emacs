@@ -336,10 +336,11 @@
      (:eval (unless (string-empty-p my/mode-line-coding)
               `(" " (:propertize "$" face (:foreground ,my/color-accent))
                 ,my/mode-line-coding)))
-     " " (:propertize "+" face (:foreground ,my/color-accent))
-     "%l"
-     (:eval (format "/%d" (line-number-at-pos (point-max))))
-     ":%c"
+     (:eval (when (buffer-file-name)
+              '(" " (:propertize "+" face (:foreground ,my/color-accent))
+                "%l"
+                (:eval (format "/%d" (line-number-at-pos (point-max))))
+                ":%c")))
      (:eval (when (and (buffer-modified-p) (not buffer-read-only))
               `(" " (:propertize "***" face (:foreground ,my/color-accent))))))))
 
