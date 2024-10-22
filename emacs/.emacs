@@ -646,6 +646,17 @@
 ;; allow to edit code blocks natively
 (my/install 'edit-indirect)
 
+;;;;; ORDERLESS
+
+;; used by vertico and corfu
+
+(my/install 'orderless)
+
+(custom-set-variables
+ '(completion-category-defaults nil)
+ '(completion-styles '(orderless))
+ '(orderless-match-faces [completions-common-part]))
+
 ;;;;; OUTSHINE
 
 (my/install 'outshine)
@@ -732,15 +743,6 @@
 (add-to-list 'savehist-additional-variables 'vertico-repeat-history)
 (add-hook 'minibuffer-setup-hook 'vertico-repeat-save)
 (keymap-global-set "s-r" 'vertico-repeat)
-
-;;;;;; ORDERLESS
-
-(my/install 'orderless)
-
-(custom-set-variables
- '(completion-category-defaults nil)
- '(completion-styles '(orderless))
- '(orderless-match-faces [completions-common-part]))
 
 ;;;;; VTERM
 
