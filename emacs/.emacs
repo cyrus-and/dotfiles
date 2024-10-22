@@ -495,7 +495,6 @@
  '(avy-timeout-seconds 3))
 
 (keymap-global-set "s-<return>" 'avy-goto-char-timer)
-(keymap-global-set "s-l" 'avy-goto-line)
 
 ;;;;; COMPANY
 
@@ -549,11 +548,12 @@
 (keymap-global-set "M-y" 'consult-yank-pop)
 (keymap-global-set "s--" 'consult-focus-lines)
 (keymap-global-set "s-G" 'my/consult-ripgrep-dwim)
+(keymap-global-set "s-I" 'consult-outline)
 (keymap-global-set "s-S" 'my/consult-line-dwim)
 (keymap-global-set "s-b" 'consult-project-buffer)
 (keymap-global-set "s-g" 'consult-ripgrep)
 (keymap-global-set "s-i" 'consult-imenu)
-(keymap-global-set "s-I" 'consult-outline)
+(keymap-global-set "s-l" 'consult-goto-line)
 (keymap-global-set "s-s" 'consult-line)
 
 ;; add ripgrep arguments (see RIPGREP)
