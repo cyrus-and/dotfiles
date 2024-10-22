@@ -185,7 +185,7 @@
 (custom-set-variables
  '(find-name-arg "-ipath")) ; use the whole path
 
-(global-set-key (kbd "s-F") 'find-name-dired)
+(keymap-global-set "s-F" 'find-name-dired)
 
 ;;;;; FORCE REVERT BUFFER
 
@@ -196,7 +196,7 @@
   (revert-buffer t t)
   (run-hooks 'window-buffer-change-functions)) ; XXX used to update the mode line
 
-(global-set-key (kbd "s-<backspace>") 'my/force-revert-buffer)
+(keymap-global-set "s-<backspace>" 'my/force-revert-buffer)
 
 ;;;;; FRIENDLIER SCRATCH BUFFER
 
