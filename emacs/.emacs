@@ -326,6 +326,8 @@
      (:eval `(:propertize (" %[" ,(winum-get-number-string) "%] ")
                           face (:foreground ,my/color-level-1 :background ,my/color-accent)))
      " "
+     (:eval (unless buffer-read-only
+              `(:propertize ,(if (buffer-modified-p) "*" "-") face (:foreground ,my/color-accent))))
      (:propertize my/mode-line-buffer face bold)
      (:eval (when my/mode-line-projectile-project-name
               `(" " (:propertize "@" face (:foreground ,my/color-accent))
@@ -340,9 +342,7 @@
               '(" " (:propertize "+" face (:foreground ,my/color-accent))
                 "%l"
                 (:eval (format "/%d" (line-number-at-pos (point-max))))
-                ":%c")))
-     (:eval (when (and (buffer-modified-p) (not buffer-read-only))
-              `(" " (:propertize "***" face (:foreground ,my/color-accent))))))))
+                ":%c"))))))
 
 ;;;;; MOUSE
 
