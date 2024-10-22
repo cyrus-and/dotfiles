@@ -355,6 +355,11 @@
 
 (add-hook 'focus-out-hook 'garbage-collect)
 
+;;;;; PYTHON
+
+(custom-set-variables
+ '(python-indent-guess-indent-offset-verbose nil))
+
 ;;;;; SERVER
 
 (require 'server)
