@@ -496,39 +496,6 @@
 
 (keymap-global-set "s-<return>" 'avy-goto-char-timer)
 
-;;;;; COMPANY
-
-(my/install 'company)
-
-(custom-set-variables
- '(company-backends '((company-capf company-files company-keywords company-dabbrev-code company-dabbrev)))
- '(company-dabbrev-downcase nil)
- '(company-dabbrev-ignore-case nil)
- '(company-idle-delay 0.1)
- '(company-minimum-prefix-length 2)
- '(company-selection-wrap-around t)
- '(company-show-numbers t)
- '(global-company-mode t))
-
-(custom-set-faces
- `(company-scrollbar-bg       ((t (:background ,my/color-level-3))))
- `(company-scrollbar-fg       ((t (:background ,my/color-accent))))
- `(company-tooltip            ((t (:inherit (default)))))
- `(company-tooltip-annotation ((t (:inherit (shadow)))))
- `(company-tooltip-common     ((t (:inherit (completions-common-part)))))
- `(company-tooltip-selection  ((t (:inherit (highlight))))))
-
-;;;;;; COMPANY-POSFRAME
-
-(my/install 'company-posframe)
-
-(custom-set-variables
- '(company-posframe-mode t)
- '(company-posframe-quickhelp-delay nil)
- '(company-posframe-show-indicator nil)
- '(company-posframe-show-metadata nil)
- '(company-posframe-show-params `(:internal-border-color ,my/color-level-2 :internal-border-width 5)))
-
 ;;;;; CONSULT
 
 (my/install 'consult)
@@ -561,6 +528,25 @@
   (let ((default (custom-reevaluate-setting 'consult-ripgrep-args)))
     (custom-set-variables
      `(consult-ripgrep-args '(,default "--hidden" "--binary" "--glob !.git/")))))
+
+;;;;; CORFU
+
+(my/install 'corfu)
+
+(custom-set-variables
+ '(corfu-auto t)
+ '(corfu-auto-delay 0.1)
+ '(corfu-auto-prefix 2)
+ '(corfu-bar-width 5)
+ '(corfu-quit-at-boundary nil)
+ '(corfu-separator ?\s)
+ '(global-corfu-mode t)
+ '(corfu-popupinfo-mode t)
+ '(corfu-popupinfo-delay 0.5))
+
+(custom-set-faces
+ `(corfu-bar ((t (:background ,my/color-accent))))
+ `(corfu-current ((t (:inherit (highlight))))))
 
 ;;;;; DIFF-HL
 
