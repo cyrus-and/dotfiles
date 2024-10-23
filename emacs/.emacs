@@ -544,6 +544,13 @@
  `(corfu-bar ((t (:background ,my/color-accent))))
  `(corfu-current ((t (:inherit (highlight))))))
 
+;;;;;; CAPE
+
+(my/install 'cape)
+
+(add-to-list 'completion-at-point-functions 'cape-dabbrev)
+(add-to-list 'completion-at-point-functions 'cape-file)
+
 ;;;;; DIFF-HL
 
 (my/install 'diff-hl)
