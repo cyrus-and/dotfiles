@@ -305,16 +305,6 @@
    my/mode-line-projectile-project-name
    (and (projectile-project-p) (projectile-project-name)))
 
-  (setq-local
-   my/mode-line-coding
-   (if (buffer-file-name)
-       (let ((coding (coding-system-mnemonic buffer-file-coding-system))
-             (eol (coding-system-eol-type-mnemonic buffer-file-coding-system)))
-         (concat
-          (unless (= coding ?-) (string coding))
-          (unless (equal eol ":") eol)))
-     ""))
-
   nil)
 
 (add-hook 'window-buffer-change-functions 'my/mode-line-update-variables)
@@ -335,9 +325,15 @@
      (:eval (when my/mode-line-directory
               `(" " (:propertize ":" face (:foreground ,my/color-accent))
                 ,my/mode-line-directory)))
-     (:eval (unless (string-empty-p my/mode-line-coding)
-              `(" " (:propertize "$" face (:foreground ,my/color-accent))
-                ,my/mode-line-coding)))
+     (:eval (when (buffer-file-name)
+              (let* ((system buffer-file-coding-system)
+                     (coding (coding-system-mnemonic system))
+                     (eol (coding-system-eol-type-mnemonic system))
+                     (marker (concat (unless (= coding ?-) (string coding))
+                                     (unless (equal eol ":")))))
+                (unless (string-empty-p marker)
+                  `(" " (:propertize "$" face (:foreground ,my/color-accent))
+                    ,marker)))))
      (:eval (when (buffer-file-name)
               '(" " (:propertize "+" face (:foreground ,my/color-accent))
                 "%l"
