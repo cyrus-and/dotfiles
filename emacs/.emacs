@@ -676,7 +676,7 @@
   "Save the current window configuration for the current project."
   (when (projectile-project-p)
     (puthash (projectile-project-root)
-             (list (current-window-configuration) (point-marker))
+             (cons (current-window-configuration) (point-marker))
              my/projectile-window-configurations)))
 
 (defun my/projectile-restore-window-configuration ()
@@ -685,7 +685,7 @@
     (if configuration
         (progn
           (set-window-configuration (car configuration))
-          (goto-char (cadr configuration)))
+          (goto-char (cdr configuration)))
       (delete-other-windows))))
 
 (defun my/projectile-open (filename)
