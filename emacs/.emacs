@@ -539,9 +539,7 @@
  '(corfu-quit-at-boundary nil)
  '(corfu-quit-no-match t)
  '(corfu-separator ?\s)
- '(global-corfu-mode t)
- '(corfu-popupinfo-mode t)
- '(corfu-popupinfo-delay 0.5))
+ '(global-corfu-mode t))
 
 (custom-set-faces
  `(corfu-bar ((t (:background ,my/color-accent))))
