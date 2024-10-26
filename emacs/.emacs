@@ -281,6 +281,8 @@
   (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path))
 
 (defun my/mode-line-update-variables (&rest args)
+  (require 'projectile)
+
   (setq-local
    my/mode-line-directory
    (when (or (buffer-file-name) (derived-mode-p 'dired-mode))
