@@ -421,9 +421,7 @@
  `(window-divider-last-pixel  ((t (:foreground ,my/color-level-3))))
  `(internal-border            ((t (:background ,my/color-level-3)))))
 
-;; XXX does not work in vanilla Emacs for macOS...
-(unless (eq system-type 'darwin)
-  (add-to-list 'default-frame-alist `(internal-border-width . ,theme-divider-width)))
+(add-to-list 'default-frame-alist `(internal-border-width . ,theme-divider-width))
 
 ;;;;; WHITESPACE MANAGEMENT
 
@@ -608,8 +606,7 @@
 
 (custom-set-variables
  '(magit-buffer-name-format "*%M*")
- '(magit-section-initial-visibility-alist '((stashes . hide) (unpushed . show)))
- '(with-editor-emacsclient-executable "emacsclient")) ; XXX fix warning with Emacs from Nix
+ '(magit-section-initial-visibility-alist '((stashes . hide) (unpushed . show))))
 
 (custom-set-faces
  `(git-commit-overlong-summary ((t (:inherit (error) :inverse-video t))))
