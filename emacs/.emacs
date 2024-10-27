@@ -608,7 +608,7 @@
 
 (custom-set-variables
  '(magit-buffer-name-format "*%M*")
- '(magit-section-initial-visibility-alist '((stashes . hide) (unpushed . show))))
+ '(magit-section-initial-visibility-alist '((untracked . show) (stashes . hide) (unpushed . show))))
 
 (custom-set-faces
  `(git-commit-overlong-summary ((t (:inherit (error) :inverse-video t))))
