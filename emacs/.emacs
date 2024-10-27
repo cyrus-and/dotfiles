@@ -23,10 +23,10 @@
 ;; common colors
 (setq my/color-red     "#A54242")
 (setq my/color-green   "#8C9440")
-(setq my/color-yellow  "#DE935F")
 (setq my/color-blue    "#5F819D")
-(setq my/color-magenta "#85678F")
 (setq my/color-cyan    "#5E8D87")
+(setq my/color-yellow  "#DE935F")
+(setq my/color-magenta "#85678F")
 (setq my/color-gray    "#707880")
 
 ;; font parameters
@@ -224,6 +224,20 @@
         (scratch-buffer)))))
 
 (keymap-global-set "s-'" 'my/scratch-toggle)
+
+;;;;; HI LOCK
+
+(defface my/hi `((t (:box (:line-width (1 . 1) :color ,my/color-level-4 :style flat-button) :foreground ,my/color-level-1))) nil)
+(defface my/hi-red `((t (:inherit (my/hi) :background ,my/color-red))) nil)
+(defface my/hi-green `((t (:inherit (my/hi) :background ,my/color-green))) nil)
+(defface my/hi-blue `((t (:inherit (my/hi) :background ,my/color-blue))) nil)
+(defface my/hi-cyan `((t (:inherit (my/hi) :background ,my/color-cyan))) nil)
+(defface my/hi-yellow `((t (:inherit (my/hi) :background ,my/color-yellow))) nil)
+(defface my/hi-magenta `((t (:inherit (my/hi) :background ,my/color-magenta))) nil)
+
+(custom-set-variables
+ '(hi-lock-auto-select-face t)
+ '(hi-lock-face-defaults '("my/hi-red" "my/hi-green" "my/hi-blue" "my/hi-cyan" "my/hi-yellow" "my/hi-magenta")))
 
 ;;;;; IBUFFER
 
