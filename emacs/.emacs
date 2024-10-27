@@ -796,6 +796,10 @@
 (keymap-global-set "s-0" (my/winum-select-window-by-number 10))
 (keymap-global-set "s-\\" 'my/select-mru-window)
 
+;;;;; YAML-MODE
+
+(my/install 'yaml-mode)
+
 ;;;;; ZOOM
 
 (my/install 'zoom)
