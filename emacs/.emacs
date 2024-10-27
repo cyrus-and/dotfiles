@@ -673,6 +673,8 @@
 (defun my/projectile-save-window-configuration ()
   "Save the current window configuration for the current project."
   (when (projectile-project-p)
+    ;; XXX it's apparently needed to manually update the list...
+    (projectile-add-known-project (projectile-project-root))
     (puthash (projectile-project-root)
              (cons (current-window-configuration) (point-marker))
              my/projectile-window-configurations)))
