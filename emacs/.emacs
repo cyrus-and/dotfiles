@@ -325,23 +325,27 @@
 
 (add-hook 'window-buffer-change-functions 'my/mode-line-update-variables)
 
+(defface my/mode-line-number `((t (:foreground ,my/color-level-1 :background ,my/color-accent))) nil)
+(defface my/mode-line-marker `((t (:foreground ,my/color-accent :weight bold :box (:line-width (1 . 3) :color ,my/color-level-4)))) nil)
+(defface my/mode-line-buffer `((t (:weight bold))) nil)
+(defface my/mode-line-buffer-modified `((t (:foregrounds ,my/color-accent :weight bold))) nil)
+
 (custom-set-variables
  `(mode-line-format
    '((:eval (unless (bound-and-true-p my/mode-line-buffer)
               (my/mode-line-update-variables)))
-     (:eval `(:propertize (" %[" ,(winum-get-number-string) "%] ")
-                          face (:foreground ,my/color-level-1 :background ,my/color-accent)))
-     " "
-     (:eval (unless buffer-read-only
-              `(:propertize ,(if (buffer-modified-p) "=" " ") face (:foreground ,my/color-accent))))
-     (:propertize my/mode-line-buffer face bold)
-     (:eval (unless buffer-read-only
-              `(:propertize ,(if (buffer-modified-p) "=" " ") face (:foreground ,my/color-accent))))
+     (:eval `(:propertize (" " ,(winum-get-number-string) " ") face my/mode-line-number))
+     "  %["
+     (:eval (if (and (not buffer-read-only) (buffer-modified-p))
+                `(:propertize ,my/mode-line-buffer face my/mode-line-buffer-modified)
+              `(:propertize ,my/mode-line-buffer face my/mode-line-buffer)))
+
+     "%] "
      (:eval (when my/mode-line-projectile-project-name
-              `(" " (:propertize "@" face (:foreground ,my/color-accent))
+              `(" " (:propertize "@" face my/mode-line-marker)
                 ,my/mode-line-projectile-project-name)))
      (:eval (when my/mode-line-directory
-              `(" " (:propertize ":" face (:foreground ,my/color-accent))
+              `(" " (:propertize ":" face my/mode-line-marker)
                 ,my/mode-line-directory)))
      (:eval (when (buffer-file-name)
               (let* ((system buffer-file-coding-system)
@@ -350,13 +354,14 @@
                      (marker (concat (unless (= coding ?-) (string coding))
                                      (unless (equal eol ":")))))
                 (unless (string-empty-p marker)
-                  `(" " (:propertize "$" face (:foreground ,my/color-accent))
-                    ,marker)))))
+                  `(" " (:propertize "$" face my/mode-line-marker) ,marker)))))
      (:eval (when (buffer-file-name)
-              '(" " (:propertize "+" face (:foreground ,my/color-accent))
+              '(" " (:propertize "+" face my/mode-line-marker)
                 "%l"
-                (:eval (format "/%d" (line-number-at-pos (point-max))))
-                ":%c"))))))
+                (:propertize "/" face my/mode-line-marker)
+                (:eval (format "%d" (line-number-at-pos (point-max))))
+                (:propertize ":" face my/mode-line-marker)
+                "%c"))))))
 
 ;;;;; MOUSE
 
