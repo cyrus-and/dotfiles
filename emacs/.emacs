@@ -227,7 +227,7 @@
 
 ;;;;; HI LOCK
 
-(defface my/hi `((t (:box (:line-width (1 . 1) :color ,my/color-level-4 :style flat-button) :foreground ,my/color-level-1))) nil)
+(defface my/hi `((t (:box (:line-width 1 :color ,my/color-level-4 :style flat-button) :foreground ,my/color-level-1))) nil)
 (defface my/hi-red `((t (:inherit (my/hi) :background ,my/color-red))) nil)
 (defface my/hi-green `((t (:inherit (my/hi) :background ,my/color-green))) nil)
 (defface my/hi-blue `((t (:inherit (my/hi) :background ,my/color-blue))) nil)
