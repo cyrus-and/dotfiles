@@ -328,7 +328,7 @@
 (defface my/mode-line-number `((t (:foreground ,my/color-level-1 :background ,my/color-accent))) nil)
 (defface my/mode-line-marker `((t (:foreground ,my/color-accent :weight bold :box (:line-width (1 . 3) :color ,my/color-level-4)))) nil)
 (defface my/mode-line-buffer `((t (:weight bold))) nil)
-(defface my/mode-line-buffer-modified `((t (:foregrounds ,my/color-accent :weight bold))) nil)
+(defface my/mode-line-buffer-modified `((t (:foreground ,my/color-accent :weight bold))) nil)
 
 (custom-set-variables
  `(mode-line-format
@@ -339,7 +339,6 @@
      (:eval (if (and (not buffer-read-only) (buffer-modified-p))
                 `(:propertize ,my/mode-line-buffer face my/mode-line-buffer-modified)
               `(:propertize ,my/mode-line-buffer face my/mode-line-buffer)))
-
      "%] "
      (:eval (when my/mode-line-projectile-project-name
               `(" " (:propertize "@" face my/mode-line-marker)
