@@ -400,6 +400,7 @@
 
 (custom-set-variables
  '(confirm-kill-emacs 'y-or-n-p)
+ '(disabled-command-function nil)
  '(echo-keystrokes 0.001)
  '(frame-resize-pixelwise t)
  '(help-window-select t)
