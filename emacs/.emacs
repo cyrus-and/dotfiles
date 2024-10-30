@@ -326,9 +326,9 @@
 (add-hook 'window-buffer-change-functions 'my/mode-line-update-variables)
 
 (defface my/mode-line-number `((t (:foreground ,my/color-level-1 :background ,my/color-accent))) nil)
-(defface my/mode-line-marker `((t (:foreground ,my/color-accent :weight bold :box (:line-width (1 . 3) :color ,my/color-level-4)))) nil)
-(defface my/mode-line-buffer `((t (:weight bold))) nil)
-(defface my/mode-line-buffer-modified `((t (:foreground ,my/color-accent :weight bold))) nil)
+(defface my/mode-line-marker `((t (:foreground ,my/color-accent :weight bold))) nil)
+(defface my/mode-line-buffer `((t (:weight bold :box (:line-width (1 . 3) :color ,my/color-level-4)))) nil)
+(defface my/mode-line-buffer-modified `((t (:inherit (my/mode-line-buffer) :foreground ,my/color-accent))) nil)
 
 (custom-set-variables
  `(mode-line-format
