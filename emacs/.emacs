@@ -711,8 +711,10 @@
 (defun my/projectile-open (filename)
   "Switch to a project by selecting one of its files or open a new file using a new window configuration."
   (interactive "fFind file: ")
-  (if (projectile-project-p filename)
-      (projectile-switch-project-by-name filename)
+  (if (and (projectile-project-p filename)
+           (gethash (projectile-project-root filename) my/projectile-window-configurations))
+      (progn (projectile-switch-project-by-name filename)
+             (find-file filename))
     (my/projectile-save-window-configuration)
     (find-file filename)
     (delete-other-windows)))
