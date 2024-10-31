@@ -627,6 +627,7 @@
 
 (custom-set-variables
  '(magit-buffer-name-format "*%M*")
+ '(magit-display-buffer-function 'magit-display-buffer-same-window-except-diff-v1)
  '(magit-section-initial-visibility-alist '((untracked . show) (stashes . hide) (unpushed . show))))
 
 (custom-set-faces
