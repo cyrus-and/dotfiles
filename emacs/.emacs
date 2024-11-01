@@ -171,9 +171,9 @@
 ;;;;; EXECUTABLES PATH
 
 ;; add user paths to `exec-path' and update PATH accordingly
-(add-to-list 'exec-path (expand-file-name "~/.nix-profile/bin"))
-(add-to-list 'exec-path (expand-file-name "~/.bin"))
 (add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path (expand-file-name "~/.bin"))
+(add-to-list 'exec-path (expand-file-name "~/.nix-profile/bin"))
 (setenv "PATH" (string-join exec-path ":"))
 
 ;;;;; FFAP
