@@ -554,7 +554,7 @@
  '(corfu-auto t)
  '(corfu-auto-delay 0.1)
  '(corfu-auto-prefix 2)
- '(corfu-bar-width 5)
+ '(corfu-bar-width 0.5)
  '(corfu-quit-at-boundary nil)
  '(corfu-quit-no-match t)
  '(corfu-separator ?\s)
