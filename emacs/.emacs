@@ -564,6 +564,10 @@
  `(corfu-bar ((t (:background ,my/color-accent))))
  `(corfu-current ((t (:inherit (highlight))))))
 
+(define-key corfu-map (kbd "M-RET") 'corfu-quit)
+(define-key corfu-map (kbd "RET") 'corfu-complete)
+(define-key corfu-map (kbd "TAB") 'corfu-expand)
+
 ;;;;;; CAPE
 
 (my/install 'cape)
