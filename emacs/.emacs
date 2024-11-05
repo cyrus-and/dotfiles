@@ -530,7 +530,7 @@
 
 (keymap-global-set "C-x r j" 'consult-register)
 (keymap-global-set "M-y" 'consult-yank-pop)
-(keymap-global-set "s--" 'consult-focus-lines)
+(keymap-global-set "s--" 'consult-keep-lines)
 (keymap-global-set "s-G" 'my/consult-ripgrep-dwim)
 (keymap-global-set "s-I" 'consult-outline)
 (keymap-global-set "s-S" 'my/consult-line-dwim)
