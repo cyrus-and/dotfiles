@@ -335,11 +335,13 @@
    '((:eval (unless (bound-and-true-p my/mode-line-buffer)
               (my/mode-line-update-variables)))
      (:eval `(:propertize (" " ,(winum-get-number-string) " ") face my/mode-line-number))
-     "  %["
+     "  "
+     (:propertize "%[" face my/mode-line-marker)
      (:eval (if (and (not buffer-read-only) (buffer-modified-p))
                 `(:propertize ,my/mode-line-buffer face my/mode-line-buffer-modified)
               `(:propertize ,my/mode-line-buffer face my/mode-line-buffer)))
-     "%] "
+     (:propertize "%]" face my/mode-line-marker)
+     " "
      (:eval (when my/mode-line-projectile-project-name
               `(" " (:propertize "@" face my/mode-line-marker)
                 ,my/mode-line-projectile-project-name)))
