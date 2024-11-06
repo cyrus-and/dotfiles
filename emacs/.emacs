@@ -599,6 +599,34 @@
 ;; update the indicators also after a commit
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
+(defun my/consult-diff-hl-hunks ()
+  "Search VC changes."
+  (interactive)
+  (consult--read
+   (mapcar (lambda (item)
+             (let ((line (nth 0 item))
+                   (length (nth 1 item))
+                   (start)
+                   (end))
+               (save-excursion
+                 (goto-char (point-min))
+                 (forward-line (1- line))
+                 (setq start (point))
+                 (forward-line length)
+                 (setq end (point)))
+               (propertize (string-trim (buffer-substring start end))
+                           'consult-location (cons start line))))
+           (diff-hl-changes))
+   :sort nil
+   :require-match t
+   :prompt "Go to change: "
+   :annotate (consult--line-prefix)
+   :category 'consult-location ; TODO is this needed?
+   :state (consult--jump-state)
+   :lookup 'consult--lookup-location))
+
+(keymap-global-set "s-a" 'my/consult-diff-hl-hunks)
+
 ;;;;; DOCKERFILE-MODE
 
 (my/install 'dockerfile-mode)
