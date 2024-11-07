@@ -617,6 +617,7 @@
   "Search VC changes."
   (interactive)
   (let ((default-directory (my/git-root)))
+    (require 'consult)
     (consult--read
      (mapcan
       (lambda (file)
