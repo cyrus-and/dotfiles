@@ -623,27 +623,28 @@
       (consult--read
        (mapcan
         (lambda (file)
-          (mapcar (lambda (change)
-                    (let ((line (nth 0 change))
-                          (length (nth 1 change))
-                          (start)
-                          (end))
-                      (with-current-buffer (find-file-noselect file)
-                        (save-excursion
-                          (goto-char (point-min))
-                          (forward-line (1- line))
-                          (setq start (point))
-                          (forward-line length)
-                          (setq end (point)))
-                        (propertize
-                         (concat
-                          (propertize (format "%s:%d" file line) 'face 'shadow)
-                          " "
-                          (string-trim (buffer-substring start end)))
-                         'consult-location
-                         (cons (cons (current-buffer) start) line)))))
-                  (diff-hl-changes-from-buffer
-                   (diff-hl-changes-buffer file 'Git))))
+          (mapcar
+           (lambda (change)
+             (let ((line (nth 0 change))
+                   (length (nth 1 change))
+                   (start)
+                   (end))
+               (with-current-buffer (find-file-noselect file)
+                 (save-excursion
+                   (goto-char (point-min))
+                   (forward-line (1- line))
+                   (setq start (point))
+                   (forward-line length)
+                   (setq end (point)))
+                 (propertize
+                  (concat
+                   (propertize (format "%s:%d" file line) 'face 'shadow)
+                   " "
+                   (string-trim (buffer-substring start end)))
+                  'consult-location
+                  (cons (cons (current-buffer) start) line)))))
+           (diff-hl-changes-from-buffer
+            (diff-hl-changes-buffer file 'Git))))
         files)
        :sort nil
        :require-match t
