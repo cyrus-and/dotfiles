@@ -362,7 +362,9 @@
                 (:propertize "/" face my/mode-line-marker)
                 (:eval (format "%d" (line-number-at-pos (point-max))))
                 (:propertize ":" face my/mode-line-marker)
-                "%c"))))))
+                "%c")))
+     (:eval (when (buffer-narrowed-p)
+              '(" " (:propertize "><" face my/mode-line-marker)))))))
 
 ;;;;; MOUSE
 
