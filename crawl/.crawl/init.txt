@@ -22,3 +22,4 @@ interrupt_travel        -= sense_monster
 ##########
 
 macros += M \{32} o
+macros += M e zaf
