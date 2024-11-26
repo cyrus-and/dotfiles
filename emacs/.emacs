@@ -656,7 +656,7 @@
        :lookup 'consult--lookup-location)
       (message "No changes"))))
 
-(keymap-global-set "s-a" 'my/consult-diff-hl-hunks)
+(keymap-global-set "s-M" 'my/consult-diff-hl-hunks)
 
 ;;;;; DOCKERFILE-MODE
 
