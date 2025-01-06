@@ -138,6 +138,10 @@
 (add-hook 'text-mode-hook 'my/code-annotations)
 (add-hook 'prog-mode-hook 'my/code-annotations)
 
+;;;;; COMPILATION
+
+(keymap-global-set "s-c" 'recompile)
+
 ;;;;; CURSOR
 
 (custom-set-variables
@@ -782,7 +786,8 @@
              (find-file filename))
     (my/projectile-save-window-configuration)
     (find-file filename)
-    (delete-other-windows)))
+    (delete-other-windows))
+  (projectile-invalidate-cache))
 
 (add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
 (add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
@@ -795,6 +800,7 @@
   (define-key projectile-mode-map (kbd "s-D") 'projectile-dired)
   (define-key projectile-mode-map (kbd "s-K") 'projectile-remove-known-project)
   (define-key projectile-mode-map (kbd "s-P") 'my/projectile-open)
+  (define-key projectile-mode-map (kbd "s-C") 'projectile-compile-project)
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
