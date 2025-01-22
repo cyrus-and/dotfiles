@@ -550,7 +550,7 @@
 
 ;; add ripgrep arguments (see RIPGREP)
 (with-eval-after-load 'consult
-  (let ((default (custom-reevaluate-setting 'consult-ripgrep-args)))
+  (let ((default (eval (car (get 'consult-ripgrep-args 'standard-value)))))
     (custom-set-variables
      `(consult-ripgrep-args '(,default "--hidden" "--binary" "--glob !.git/")))))
 
