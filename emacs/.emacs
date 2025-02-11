@@ -357,7 +357,7 @@
                      (coding (coding-system-mnemonic system))
                      (eol (coding-system-eol-type-mnemonic system))
                      (marker (concat (unless (= coding ?-) (string coding))
-                                     (unless (equal eol ":")))))
+                                     (unless (equal eol ":") eol))))
                 (unless (string-empty-p marker)
                   `(" " (:propertize "$" face my/mode-line-marker) ,marker)))))
      (:eval (when (buffer-file-name)
@@ -682,8 +682,8 @@
 
 (my/install 'expand-region)
 
-(keymap-global-set "S-s-<up>" 'er/expand-region)
-(keymap-global-set "S-s-<down>" 'er/contract-region)
+(keymap-global-set "s-;" 'er/contract-region)
+(keymap-global-set "s-:" 'er/expand-region)
 
 ;;;;; GO-MODE
 
