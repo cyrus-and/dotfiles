@@ -140,6 +140,34 @@
 
 ;;;;; COMPILATION
 
+(defun my/compilation-auto-kill (buffer status)
+  "Run after compilation and kill the window if needed."
+  (let ((window (get-buffer-window buffer)))
+    (when (and (bound-and-true-p my/compile-should-kill)
+               ;; only for *compilation* buffers (do not kill grep and similar)
+               (equal (buffer-name buffer) "*compilation*")
+               ;; a window to kill must exist
+               window
+               ;; status must be success
+               (equal status "finished\n")
+               ;; there must not be any additional information
+               (with-current-buffer buffer
+                 (zerop (+ compilation-num-errors-found
+                           compilation-num-warnings-found
+                           compilation-num-infos-found))))
+      ;; quit after a grace time to review the output
+      (run-at-time 1 nil 'quit-window nil window))))
+
+(defun my/compile-before (&rest ignore)
+  "Determine if the next compilation should auto quit the compilation window."
+  (let* ((buffer (get-buffer "*compilation*"))
+         (window (get-buffer-window buffer)))
+    (setq my/compile-should-kill (not (and buffer window)))))
+
+(advice-add 'compile :before 'my/compile-before)
+(advice-add 'recompile :before 'my/compile-before)
+(add-hook 'compilation-finish-functions 'my/compilation-auto-kill)
+
 (keymap-global-set "s-c" 'recompile)
 
 ;;;;; CURSOR
