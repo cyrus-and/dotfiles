@@ -31,7 +31,7 @@
 
 ;; font parameters
 (setq my/font-family "Iosevka SS04")
-(setq my/font-size   150)
+(setq my/font-size   160)
 
 ;; other
 (setq theme-divider-width 14)
@@ -306,6 +306,16 @@
 ;; this is for hunspell if installed via Nix
 (setenv "DICPATH" (expand-file-name "~/.nix-profile/share/hunspell/"))
 
+;;;;; JS MODE
+
+(custom-set-variables
+ '(js-switch-indent-offset tab-width))
+
+;;;;; KEYBOARD SCROLLING
+
+(keymap-global-set "S-s-<up>" 'scroll-down-line)
+(keymap-global-set "S-s-<down>" 'scroll-up-line)
+
 ;;;;; MACOS SPECIFIC
 
 (when (eq system-type 'darwin)
@@ -463,6 +473,24 @@
 (add-to-list 'default-frame-alist '(undecorated . t))
 
 (windmove-default-keybindings)
+
+;;;;; WINDOW CONFIGUTARION
+
+(setq my/saved-window-configuration nil)
+
+(defun my/save-window-configuration ()
+  "Save the current window configuration."
+  (interactive)
+  (setq my/saved-window-configuration (current-window-configuration)))
+
+(defun my/restore-window-configuration ()
+  "Restore the saved window configuration."
+  (interactive)
+  (when my/saved-window-configuration
+    (set-window-configuration my/saved-window-configuration)))
+
+(keymap-global-set "s-*" 'my/save-window-configuration)
+(keymap-global-set "s-+" 'my/restore-window-configuration)
 
 ;;;;; WINDOW DIVIDERS
 
@@ -716,6 +744,12 @@
 ;;;;; GO-MODE
 
 (my/install 'go-mode)
+
+;;;;; JS2-MODE
+
+(my/install 'js2-mode)
+
+(add-to-list 'major-mode-remap-alist '(javascript-mode . js2-mode))
 
 ;;;;; MAGIT
 
