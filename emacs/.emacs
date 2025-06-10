@@ -751,6 +751,10 @@
 
 (add-to-list 'major-mode-remap-alist '(javascript-mode . js2-mode))
 
+(custom-set-variables
+ '(js2-indent-switch-body t)
+ '(js2-strict-inconsistent-return-warning nil))
+
 ;;;;; MAGIT
 
 (my/install 'magit)
