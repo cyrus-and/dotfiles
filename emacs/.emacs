@@ -750,6 +750,9 @@
 (my/install 'js2-mode)
 
 (add-to-list 'major-mode-remap-alist '(javascript-mode . js2-mode))
+(add-to-list 'major-mode-remap-alist '(js-mode . js2-mode))
+
+(add-to-list 'auto-mode-alist `(,(rx ".mjs" string-end) . js2-mode))
 
 (custom-set-variables
  '(js2-indent-switch-body t)
