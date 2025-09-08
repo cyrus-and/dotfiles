@@ -1,7 +1,7 @@
 [window]
 decorations = "none"
 dynamic_padding = true
-startup_mode = "SimpleFullscreen"
+startup_mode = "Maximized" # "SimpleFullscreen" won't work with AltTab
 option_as_alt = "OnlyLeft"
 
 [scrolling]
