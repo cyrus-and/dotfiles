@@ -670,9 +670,9 @@
    "\x00" t "\x00"))
 
 (defun my/git-root ()
-   (with-temp-buffer
-     (vc-git-command (current-buffer) 1 nil "rev-parse" "--show-toplevel")
-     (string-trim (buffer-string) nil)))
+  (with-temp-buffer
+    (vc-git-command (current-buffer) 1 nil "rev-parse" "--show-toplevel")
+    (string-trim (buffer-string) nil)))
 
 (defun my/consult-diff-hl-hunks ()
   "Search VC changes."
@@ -681,38 +681,38 @@
   (let* ((default-directory (my/git-root))
          (files (my/git-modified-files)))
     (if files
-      (consult--read
-       (mapcan
-        (lambda (file)
-          (mapcar
-           (lambda (change)
-             (let ((line (nth 0 change))
-                   (length (nth 1 change))
-                   (start)
-                   (end))
-               (with-current-buffer (find-file-noselect file)
-                 (save-excursion
-                   (goto-char (point-min))
-                   (forward-line (1- line))
-                   (setq start (point))
-                   (forward-line length)
-                   (setq end (point)))
-                 (propertize
-                  (concat
-                   (propertize (format "%s:%d" file line) 'face 'shadow)
-                   " "
-                   (string-trim (buffer-substring start end)))
-                  'consult-location
-                  (cons (cons (current-buffer) start) line)))))
-           (diff-hl-changes-from-buffer
-            (diff-hl-changes-buffer file 'Git))))
-        files)
-       :sort nil
-       :require-match t
-       :prompt "Go to change: "
-       :category 'consult-location ; TODO is this needed?
-       :state (consult--jump-state)
-       :lookup 'consult--lookup-location)
+        (consult--read
+         (mapcan
+          (lambda (file)
+            (mapcar
+             (lambda (change)
+               (let ((line (nth 0 change))
+                     (length (nth 1 change))
+                     (start)
+                     (end))
+                 (with-current-buffer (find-file-noselect file)
+                   (save-excursion
+                     (goto-char (point-min))
+                     (forward-line (1- line))
+                     (setq start (point))
+                     (forward-line length)
+                     (setq end (point)))
+                   (propertize
+                    (concat
+                     (propertize (format "%s:%d" file line) 'face 'shadow)
+                     " "
+                     (string-trim (buffer-substring start end)))
+                    'consult-location
+                    (cons (cons (current-buffer) start) line)))))
+             (diff-hl-changes-from-buffer
+              (diff-hl-changes-buffer file 'Git))))
+          files)
+         :sort nil
+         :require-match t
+         :prompt "Go to change: "
+         :category 'consult-location ; TODO is this needed?
+         :state (consult--jump-state)
+         :lookup 'consult--lookup-location)
       (message "No changes"))))
 
 (keymap-global-set "s-M" 'my/consult-diff-hl-hunks)
