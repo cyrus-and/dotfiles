@@ -869,6 +869,7 @@
   (define-key projectile-mode-map (kbd "s-K") 'projectile-remove-known-project)
   (define-key projectile-mode-map (kbd "s-P") 'my/projectile-open)
   (define-key projectile-mode-map (kbd "s-C") 'projectile-compile-project)
+  (define-key projectile-mode-map (kbd "s-R") 'projectile-replace)
   (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
   (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
   (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
