@@ -415,7 +415,10 @@
 
 ;;;;; PERFORMANCE
 
-(add-hook 'focus-out-hook 'garbage-collect)
+;; XXX this is broken on Linux?
+;; TODO use after-focus-change-function
+(when (eq system-type 'darwin)
+  (add-hook 'focus-out-hook 'garbage-collect))
 
 ;;;;; PYTHON
 
