@@ -903,7 +903,8 @@
 (my/install 'vertico)
 
 (custom-set-variables
- '(vertico-mode t))
+ '(vertico-mode t)
+ '(vertico-sort-history-decay 0))
 
 ;; vertico-repeat
 (add-to-list 'savehist-additional-variables 'vertico-repeat-history)
