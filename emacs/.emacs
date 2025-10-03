@@ -337,14 +337,12 @@
   (replace-regexp-in-string (rx (and (group (not "/")) (* (not "/")))) "\\1" path))
 
 (defun my/mode-line-update-variables (&rest args)
-  (require 'projectile)
-
   (setq-local
    my/mode-line-directory
    (when (or (buffer-file-name) (derived-mode-p 'dired-mode))
      (let ((directory (file-truename default-directory)))
-       (when (projectile-project-p)
-         (setq directory (file-relative-name directory (projectile-project-root))))
+       (when (project-current)
+         (setq directory (file-relative-name directory (project-root (project-current)))))
        (when (derived-mode-p 'dired-mode)
          (setq directory (file-name-directory (directory-file-name directory))))
        (when (equal directory "./")
@@ -355,13 +353,13 @@
   (setq-local
    my/mode-line-buffer
    (if (and (derived-mode-p 'dired-mode)
-            (projectile-project-p)
-            (file-equal-p (projectile-project-root) default-directory))
+            (project-current)
+            (file-equal-p (project-root (project-current)) default-directory))
        "." (replace-regexp-in-string "%" "%%" (or (uniquify-buffer-base-name) (buffer-name)))))
 
   (setq-local
-   my/mode-line-projectile-project-name
-   (and (projectile-project-p) (projectile-project-name)))
+   my/mode-line-project-project-name
+   (and (project-current) (project-name (project-current))))
 
   nil)
 
@@ -384,9 +382,9 @@
               `(:propertize ,my/mode-line-buffer face my/mode-line-buffer)))
      (:propertize "%]" face my/mode-line-marker)
      " "
-     (:eval (when my/mode-line-projectile-project-name
+     (:eval (when my/mode-line-project-project-name
               `(" " (:propertize "@" face my/mode-line-marker)
-                ,my/mode-line-projectile-project-name)))
+                ,my/mode-line-project-project-name)))
      (:eval (when my/mode-line-directory
               `(" " (:propertize ":" face my/mode-line-marker)
                 ,my/mode-line-directory)))
@@ -588,8 +586,7 @@
 (defun my/consult-ripgrep-dwim ()
   (interactive)
   (consult-ripgrep
-   (or (and (fboundp 'projectile-project-root) (projectile-project-root))
-       default-directory)
+   (or (project-root (project-current)) default-directory)
    (thing-at-point 'symbol)))
 
 (keymap-global-set "C-x r j" 'consult-register)
@@ -821,61 +818,63 @@
 
 (my/install 'outshine)
 
-;;;;; PROJECTILE
+;;;;; PROJECT
 
-(my/install 'projectile)
+(setq my/project-window-configurations (make-hash-table :test 'equal))
 
-(setq my/projectile-window-configurations (make-hash-table :test 'equal))
-
-(defun my/projectile-save-window-configuration ()
+(defun my/project-save-window-configuration (&rest args)
   "Save the current window configuration for the current project."
-  (when (projectile-project-p)
-    ;; XXX it's apparently needed to manually update the list...
-    (projectile-add-known-project (projectile-project-root))
-    (puthash (projectile-project-root)
-             (cons (current-window-configuration) (point-marker))
-             my/projectile-window-configurations)))
+  (when (project-current)
+    (let* ((key (project-root (project-current)))
+           (configuration (cons (current-window-configuration) (point-marker))))
+      (puthash key configuration my/project-window-configurations))))
 
-(defun my/projectile-restore-window-configuration ()
+(defun my/project-restore-window-configuration ()
   "Restore the window configuration or start anew."
-  (let ((configuration (gethash (projectile-project-root) my/projectile-window-configurations)))
+  (interactive)
+  (let* ((key (project-root (project-current)))
+         (configuration (gethash key my/project-window-configurations)))
     (if configuration
         (progn
           (set-window-configuration (car configuration))
           (goto-char (cdr configuration)))
+      (project-dired)
       (delete-other-windows))))
 
-(defun my/projectile-open (filename)
-  "Switch to a project by selecting one of its files or open a new file using a new window configuration."
-  (interactive "fFind file: ")
-  (if (and (projectile-project-p filename)
-           (gethash (projectile-project-root filename) my/projectile-window-configurations))
-      (progn (projectile-switch-project-by-name filename)
-             (find-file filename))
-    (my/projectile-save-window-configuration)
-    (find-file filename)
-    (delete-other-windows))
-  (projectile-invalidate-cache))
-
-(add-hook 'projectile-before-switch-project-hook 'my/projectile-save-window-configuration)
-(add-hook 'projectile-after-switch-project-hook 'my/projectile-restore-window-configuration)
+(advice-add 'project-switch-project :before 'my/project-save-window-configuration)
 
 (custom-set-variables
- '(projectile-mode t)
- '(projectile-switch-project-action 'projectile-dired))
+ '(project-switch-commands 'my/project-restore-window-configuration))
 
-(with-eval-after-load 'projectile
-  (define-key projectile-mode-map (kbd "s-D") 'projectile-dired)
-  (define-key projectile-mode-map (kbd "s-K") 'projectile-remove-known-project)
-  (define-key projectile-mode-map (kbd "s-P") 'my/projectile-open)
-  (define-key projectile-mode-map (kbd "s-C") 'projectile-compile-project)
-  (define-key projectile-mode-map (kbd "s-R") 'projectile-replace)
-  (define-key projectile-mode-map (kbd "s-d") 'projectile-find-dir)
-  (define-key projectile-mode-map (kbd "s-f") 'projectile-find-file)
-  (define-key projectile-mode-map (kbd "s-k") 'projectile-kill-buffers)
-  (define-key projectile-mode-map (kbd "s-o") 'projectile-ripgrep)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-switch-project)
-  (define-key projectile-mode-map (kbd "s-t") 'projectile-run-vterm))
+(defun my/project-prompt-project-dir (original)
+  "Prompt for a project removing the current one from the list."
+  (let ((project--list (if (and (project-current) (not (eq project--list 'unset)))
+                           (remove (list (project-root (project-current))) project--list)
+                         project--list)))
+    (apply original nil)))
+
+(advice-add 'project-prompt-project-dir :around 'my/project-prompt-project-dir)
+
+(defun my/project-vterm ()
+  "`project-shell' adaption for Vterm."
+  (interactive)
+  (let* ((default-directory (project-root (project-current t)))
+         (name (project-prefixed-buffer-name "vterm"))
+         (buffer (get-buffer name)))
+    (if (and buffer (not current-prefix-arg))
+        (pop-to-buffer buffer (bound-and-true-p display-comint-buffer-action))
+      (vterm t))))
+
+(keymap-global-set "s-C" 'project-compile)
+(keymap-global-set "s-D" 'project-dired)
+(keymap-global-set "s-K" 'project-forget-project)
+(keymap-global-set "s-R" 'project-query-replace-regexp)
+(keymap-global-set "s-b" 'project-switch-to-buffer)
+(keymap-global-set "s-d" 'project-find-dir)
+(keymap-global-set "s-f" 'project-find-file)
+(keymap-global-set "s-k" 'project-kill-buffers)
+(keymap-global-set "s-p" 'project-switch-project)
+(keymap-global-set "s-t" 'my/project-vterm)
 
 ;;;;; RAINBOW-MODE
 
@@ -916,9 +915,6 @@
 ;; XXX the system command libtool to be named glibtool in order to compile on macOS
 
 (my/install 'vterm)
-
-(custom-set-variables
- '(vterm-kill-buffer-on-exit nil))
 
 (keymap-global-set "s-!" 'vterm)
 
