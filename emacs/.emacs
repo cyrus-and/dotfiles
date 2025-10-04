@@ -866,7 +866,7 @@
          (buffer (get-buffer name)))
     (if (and buffer (not current-prefix-arg))
         (pop-to-buffer buffer (bound-and-true-p display-comint-buffer-action))
-      (vterm t))))
+      (vterm name))))
 
 (keymap-global-set "s-C" 'project-compile)
 (keymap-global-set "s-D" 'project-dired)
