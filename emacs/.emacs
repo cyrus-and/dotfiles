@@ -868,6 +868,12 @@
         (pop-to-buffer buffer (bound-and-true-p display-comint-buffer-action))
       (vterm name))))
 
+(defun my/project-ripgrep (regexp)
+  "Ripgrep for Emacs projects."
+  (interactive (list (read-from-minibuffer "Regexp: " (thing-at-point 'symbol))))
+  (let ((directory (project-root (project-current t))))
+    (ripgrep-regexp regexp directory)))
+
 (keymap-global-set "s-C" 'project-compile)
 (keymap-global-set "s-D" 'project-dired)
 (keymap-global-set "s-K" 'project-forget-project)
@@ -876,6 +882,7 @@
 (keymap-global-set "s-d" 'project-find-dir)
 (keymap-global-set "s-f" 'project-find-file)
 (keymap-global-set "s-k" 'project-kill-buffers)
+(keymap-global-set "s-o" 'my/project-ripgrep)
 (keymap-global-set "s-p" 'project-switch-project)
 (keymap-global-set "s-t" 'my/project-vterm)
 
