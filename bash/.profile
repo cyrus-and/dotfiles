@@ -71,6 +71,10 @@ case "$OSTYPE" in
         # completion
         source ~/.nix-profile/share/bash-completion/bash_completion
         source ~/.nix-profile/share/bash-completion/completions/git-prompt.sh
+
+        # always install npm packages locally
+        export NPM_CONFIG_PREFIX="$HOME/.npm"
+        export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
         ;;
 
     'linux-gnu')
