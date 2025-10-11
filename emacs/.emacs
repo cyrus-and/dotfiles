@@ -608,7 +608,7 @@
 (with-eval-after-load 'consult
   (let ((default (eval (car (get 'consult-ripgrep-args 'standard-value)))))
     (custom-set-variables
-     `(consult-ripgrep-args '(,default "--hidden" "--binary" "--glob !.git/")))))
+     `(consult-ripgrep-args '(,default "--hidden" "--binary" "--glob=!.git/")))))
 
 ;;;;; CORFU
 
@@ -895,7 +895,7 @@
 (my/install 'ripgrep)
 
 (custom-set-variables
- '(ripgrep-arguments '("--hidden" "--binary" "--glob !.git/")))
+ '(ripgrep-arguments '("--hidden" "--binary" "--glob=!.git/" "--sort=path")))
 
 (defun my/ripgrep-start-fix (process)
   "Enforce a cleaner ripgrep output by hiding the command."
