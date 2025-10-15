@@ -750,10 +750,11 @@
 (my/install 'idle-highlight-mode)
 
 (custom-set-variables
- '(idle-highlight-global-mode t))
+ '(idle-highlight-global-mode t)
+ '(idle-highlight-ignore-modes '(Custom-mode)))
 
 (custom-set-faces
- `(idle-highlight-face ((t (:underline (:color foreground-color :style wave :position nil) :foreground ,my/color-accent)))))
+ `(idle-highlight ((t (:underline (:color foreground-color :style double-line :position nil) :foreground ,my/color-accent)))))
 
 ;;;;; JS2-MODE
 
