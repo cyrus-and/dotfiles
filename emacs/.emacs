@@ -745,6 +745,16 @@
 
 (my/install 'go-mode)
 
+;;;;; IDLE-HIGHLIGHT-MODE
+
+(my/install 'idle-highlight-mode)
+
+(custom-set-variables
+ '(idle-highlight-global-mode t))
+
+(custom-set-faces
+ `(idle-highlight-face ((t (:underline (:color foreground-color :style wave :position nil) :foreground ,my/color-accent)))))
+
 ;;;;; JS2-MODE
 
 (my/install 'js2-mode)
