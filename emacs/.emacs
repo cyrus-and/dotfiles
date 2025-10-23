@@ -751,7 +751,7 @@
 
 (custom-set-variables
  '(idle-highlight-global-mode t)
- '(idle-highlight-ignore-modes '(Custom-mode)))
+ '(idle-highlight-ignore-modes '(Custom-mode dired-mode)))
 
 (custom-set-faces
  `(idle-highlight ((t (:underline (:color foreground-color :style double-line :position nil) :foreground ,my/color-accent)))))
