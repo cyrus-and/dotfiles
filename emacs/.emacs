@@ -885,6 +885,14 @@
   (let ((directory (project-root (project-current t))))
     (ripgrep-regexp regexp directory)))
 
+(defun my/project-bullseye ()
+  "Jump to a specific location."
+  (interactive)
+  (call-interactively 'project-switch-project)
+  (call-interactively 'project-find-file)
+  (call-interactively 'consult-line)
+  (call-interactively 'avy-goto-char-timer))
+
 (keymap-global-set "s-C" 'project-compile)
 (keymap-global-set "s-D" 'project-dired)
 (keymap-global-set "s-K" 'project-forget-project)
@@ -896,6 +904,7 @@
 (keymap-global-set "s-o" 'my/project-ripgrep)
 (keymap-global-set "s-p" 'project-switch-project)
 (keymap-global-set "s-t" 'my/project-vterm)
+(keymap-global-set "s-z" 'my/project-bullseye)
 
 ;;;;; RAINBOW-MODE
 
