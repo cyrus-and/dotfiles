@@ -140,6 +140,9 @@
 
 ;;;;; COMPILATION
 
+(custom-set-variables
+ '(compilation-always-kill t))
+
 (defun my/compilation-auto-kill (buffer status)
   "Run after compilation and kill the window if needed."
   (let ((window (get-buffer-window buffer)))
