@@ -760,19 +760,6 @@
 (custom-set-faces
  `(idle-highlight ((t (:underline (:color ,my/color-accent :style double-line :position nil))))))
 
-;;;;; JS2-MODE
-
-(my/install 'js2-mode)
-
-(add-to-list 'major-mode-remap-alist '(javascript-mode . js2-mode))
-(add-to-list 'major-mode-remap-alist '(js-mode . js2-mode))
-
-(add-to-list 'auto-mode-alist `(,(rx ".mjs" string-end) . js2-mode))
-
-(custom-set-variables
- '(js2-indent-switch-body t)
- '(js2-strict-inconsistent-return-warning nil))
-
 ;;;;; MAGIT
 
 (my/install 'magit)
