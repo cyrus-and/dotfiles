@@ -754,7 +754,7 @@
 
 (custom-set-variables
  '(idle-highlight-idle-time 0.0)
- '(idle-highlight-ignore-modes '(Custom-mode dired-mode))
+ '(idle-highlight-ignore-modes '(Custom-mode dired-mode image-mode))
  '(idle-highlight-global-mode t))
 
 (custom-set-faces
