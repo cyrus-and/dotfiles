@@ -105,6 +105,16 @@
  `(term-color-magenta ((t (:foreground ,my/color-magenta))))
  `(term-color-cyan    ((t (:foreground ,my/color-cyan)))))
 
+(custom-set-faces
+ `(ansi-color-black   ((t (:foreground ,my/color-level-0))))
+ `(ansi-color-white   ((t (:foreground ,my/color-level-5))))
+ `(ansi-color-red     ((t (:foreground ,my/color-red))))
+ `(ansi-color-green   ((t (:foreground ,my/color-green))))
+ `(ansi-color-yellow  ((t (:foreground ,my/color-yellow))))
+ `(ansi-color-blue    ((t (:foreground ,my/color-blue))))
+ `(ansi-color-magenta ((t (:foreground ,my/color-magenta))))
+ `(ansi-color-cyan    ((t (:foreground ,my/color-cyan)))))
+
 ;;;;; OTHERS
 
 (custom-set-faces
