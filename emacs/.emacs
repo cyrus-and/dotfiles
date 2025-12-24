@@ -153,6 +153,8 @@
 (custom-set-variables
  '(compilation-always-kill t))
 
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+
 (defun my/compilation-auto-kill (buffer status)
   "Run after compilation and kill the window if needed."
   (let ((window (get-buffer-window buffer)))
