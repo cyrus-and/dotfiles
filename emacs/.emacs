@@ -343,8 +343,7 @@
 ;;;;; MINIBUFFER
 
 (custom-set-variables
- '(history-length t)
- '(savehist-mode t))
+ '(history-length t))
 
 ;;;;; MODE LINE
 
@@ -439,6 +438,13 @@
 
 (custom-set-variables
  '(python-indent-guess-indent-offset-verbose nil))
+
+;;;;; SAVEHIST
+
+(custom-set-variables
+ '(savehist-mode t))
+
+(add-to-list 'savehist-additional-variables 'register-alist)
 
 ;;;;; SERVER
 
