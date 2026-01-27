@@ -151,7 +151,8 @@
 ;;;;; COMPILATION
 
 (custom-set-variables
- '(compilation-always-kill t))
+ '(compilation-always-kill t)
+ '(project-compilation-buffer-name-function 'project-prefixed-buffer-name))
 
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
@@ -160,7 +161,7 @@
   (let ((window (get-buffer-window buffer)))
     (when (and (bound-and-true-p my/compile-should-kill)
                ;; only for *compilation* buffers (do not kill grep and similar)
-               (equal (buffer-name buffer) "*compilation*")
+               (string-match-p (rx "-compilation*" string-end) (buffer-name buffer))
                ;; a window to kill must exist
                window
                ;; status must be success
@@ -173,17 +174,23 @@
       ;; quit after a grace time to review the output
       (run-at-time 1 nil 'quit-window nil window))))
 
-(defun my/compile-before (&rest ignore)
-  "Determine if the next compilation should auto quit the compilation window."
-  (let* ((buffer (get-buffer "*compilation*"))
-         (window (get-buffer-window buffer)))
-    (setq my/compile-should-kill (not (and buffer window)))))
-
-(advice-add 'compile :before 'my/compile-before)
-(advice-add 'recompile :before 'my/compile-before)
 (add-hook 'compilation-finish-functions 'my/compilation-auto-kill)
 
-(keymap-global-set "s-c" 'recompile)
+(defun my/compile-dwim (arg)
+  "Compile or recompile according to what happened before and the curren project."
+  (interactive "P")
+  (let* ((project (and (project-current) (project-name (project-current))))
+         (buffer (get-buffer (if project (project-prefixed-buffer-name "compilation") "*compilation*")))
+         (window (get-buffer-window buffer)))
+    ;; set auto kill flag
+    (setq my/compile-should-kill (not (and buffer window)))
+    ;; compile or recompile according to existing buffers and project
+    (if (or arg (not buffer))
+        (call-interactively (if project 'project-compile 'compile))
+      (with-current-buffer buffer
+        (call-interactively 'recompile)))))
+
+(keymap-global-set "s-c" 'my/compile-dwim)
 
 ;;;;; CURSOR
 
@@ -902,7 +909,6 @@
   (call-interactively 'consult-line)
   (call-interactively 'avy-goto-char-timer))
 
-(keymap-global-set "s-C" 'project-compile)
 (keymap-global-set "s-D" 'project-dired)
 (keymap-global-set "s-K" 'project-forget-project)
 (keymap-global-set "s-R" 'project-query-replace-regexp)
