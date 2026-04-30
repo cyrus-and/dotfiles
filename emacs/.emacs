@@ -602,9 +602,21 @@
 (my/install 'avy)
 
 (custom-set-variables
- '(avy-timeout-seconds 3))
+ '(avy-background t)
+ '(avy-escape-chars '(7 13))
+ '(avy-lead-faces '(avy-lead-face avy-lead-face-0 avy-lead-face-0 avy-lead-face-0 avy-lead-face-0 avy-lead-face-0))
+ '(avy-single-candidate-jump nil)
+ '(avy-timeout-seconds nil))
+
+(custom-set-faces
+ `(avy-background-face ((t (:foreground ,my/color-level-3 :background ,my/color-level-1))))
+ `(avy-goto-char-timer-face ((t (:foreground ,my/color-accent))))
+ `(avy-lead-face   ((t (:foreground ,my/color-accent))))
+ `(avy-lead-face-0 ((t (:foreground ,my/color-level-4)))))
 
 (keymap-global-set "s-<return>" 'avy-goto-char-timer)
+(keymap-global-set "S-s-<return>" 'avy-resume)
+(keymap-global-set "s-l" 'avy-goto-line)
 
 ;;;;; CONSULT
 
@@ -629,7 +641,7 @@
 (keymap-global-set "s-b" 'consult-project-buffer)
 (keymap-global-set "s-g" 'consult-ripgrep)
 (keymap-global-set "s-i" 'consult-imenu)
-(keymap-global-set "s-l" 'consult-goto-line)
+(keymap-global-set "s-L" 'consult-goto-line)
 (keymap-global-set "s-s" 'consult-line)
 
 ;; add ripgrep arguments (see RIPGREP)
@@ -833,6 +845,13 @@
 ;; allow to edit code blocks natively
 (my/install 'edit-indirect)
 
+;;;;;; MARKDOWN-INDENT-MODE
+
+(my/install 'markdown-indent-mode)
+
+(custom-set-faces
+ `(markdown-indent-mode-hide-hash ((t (:foreground ,my/color-level-1)))))
+
 ;;;;; ORDERLESS
 
 ;; used by vertico and corfu
@@ -907,7 +926,8 @@
   (call-interactively 'project-switch-project)
   (call-interactively 'project-find-file)
   (call-interactively 'consult-line)
-  (call-interactively 'avy-goto-char-timer))
+  (call-interactively 'avy-goto-char-timer)
+  (call-interactively 'recenter-top-bottom))
 
 (keymap-global-set "s-D" 'project-dired)
 (keymap-global-set "s-K" 'project-forget-project)
