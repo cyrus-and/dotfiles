@@ -604,6 +604,7 @@
 (custom-set-variables
  '(avy-background t)
  '(avy-escape-chars '(7 13))
+ '(avy-indent-line-overlay t)
  '(avy-lead-faces '(avy-lead-face avy-lead-face-0 avy-lead-face-0 avy-lead-face-0 avy-lead-face-0 avy-lead-face-0))
  '(avy-single-candidate-jump nil)
  '(avy-timeout-seconds nil))
