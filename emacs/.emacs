@@ -505,21 +505,26 @@
 
 ;;;;; WINDOW CONFIGUTARION
 
-(setq my/saved-window-configuration nil)
+(setq my/window-configuration-stack nil)
 
-(defun my/save-window-configuration ()
+(defun my/push-window-configuration ()
   "Save the current window configuration."
   (interactive)
-  (setq my/saved-window-configuration (current-window-configuration)))
+  (push (cons (current-window-configuration) (point-marker)) my/window-configuration-stack)
+  (message (format "Configuration #%s pushed" (length my/window-configuration-stack))))
 
-(defun my/restore-window-configuration ()
-  "Restore the saved window configuration."
+(defun my/pop-window-configuration ()
+  "Restore the most recently saved window configuration."
   (interactive)
-  (when my/saved-window-configuration
-    (set-window-configuration my/saved-window-configuration)))
+  (if-let ((configuration (pop my/window-configuration-stack)))
+      (progn
+        (set-window-configuration (car configuration))
+        (goto-char (cdr configuration))
+        (message (format "Configuration #%s popped" (1+ (length my/window-configuration-stack)))))
+    (message "No configuration saved!")))
 
-(keymap-global-set "s-*" 'my/save-window-configuration)
-(keymap-global-set "s-+" 'my/restore-window-configuration)
+(keymap-global-set "s-+" 'my/push-window-configuration)
+(keymap-global-set "s-*" 'my/pop-window-configuration)
 
 ;;;;; WINDOW DIVIDERS
 
