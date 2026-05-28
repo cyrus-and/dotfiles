@@ -503,7 +503,7 @@
 
 (windmove-default-keybindings)
 
-;;;;; WINDOW CONFIGUTARION
+;;;;; WINDOW CONFIGURATION
 
 (setq my/window-configuration-stack nil)
 
