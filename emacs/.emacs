@@ -523,8 +523,8 @@
         (message (format "Configuration #%s popped" (1+ (length my/window-configuration-stack)))))
     (message "No configuration saved!")))
 
-(keymap-global-set "s-+" 'my/push-window-configuration)
-(keymap-global-set "s-*" 'my/pop-window-configuration)
+(keymap-global-set "s-x" 'my/push-window-configuration)
+(keymap-global-set "s-X" 'my/pop-window-configuration)
 
 ;;;;; WINDOW DIVIDERS
 
