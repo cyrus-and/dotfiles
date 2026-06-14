@@ -71,10 +71,6 @@ case "$OSTYPE" in
         # completion
         source ~/.nix-profile/share/bash-completion/bash_completion
         source ~/.nix-profile/share/bash-completion/completions/git-prompt.sh
-
-        # always install npm packages locally
-        export NPM_CONFIG_PREFIX="$HOME/.npm"
-        export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
         ;;
 
     'linux-gnu')
@@ -108,4 +104,9 @@ esac
 export PASSWORD_STORE_DIR="$HOME/Dropbox/root/pass/"
 
 # FZF integration
-eval "$(fzf --bash)"
+[ "$TERM" != 'dumb' ] && eval "$(fzf --bash)"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
