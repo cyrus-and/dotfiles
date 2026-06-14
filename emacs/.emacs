@@ -460,6 +460,12 @@
 (unless (server-running-p)
   (server-start))
 
+;;;;; SHELL
+
+;; read shell dotfiles by forcing interactive mode
+(custom-set-variables
+ '(shell-command-switch "-ic"))
+
 ;;;;; STARTUP
 
 (custom-set-variables
