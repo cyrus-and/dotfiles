@@ -95,25 +95,43 @@
 
 ;;;;; TERMINAL
 
-(custom-set-faces
- `(term-color-black   ((t (:foreground ,my/color-level-0))))
- `(term-color-white   ((t (:foreground ,my/color-level-5))))
- `(term-color-red     ((t (:foreground ,my/color-red))))
- `(term-color-green   ((t (:foreground ,my/color-green))))
- `(term-color-yellow  ((t (:foreground ,my/color-yellow))))
- `(term-color-blue    ((t (:foreground ,my/color-blue))))
- `(term-color-magenta ((t (:foreground ,my/color-magenta))))
- `(term-color-cyan    ((t (:foreground ,my/color-cyan)))))
+;; from .alacritty.toml
 
 (custom-set-faces
- `(ansi-color-black   ((t (:foreground ,my/color-level-0))))
- `(ansi-color-white   ((t (:foreground ,my/color-level-5))))
- `(ansi-color-red     ((t (:foreground ,my/color-red))))
- `(ansi-color-green   ((t (:foreground ,my/color-green))))
- `(ansi-color-yellow  ((t (:foreground ,my/color-yellow))))
- `(ansi-color-blue    ((t (:foreground ,my/color-blue))))
- `(ansi-color-magenta ((t (:foreground ,my/color-magenta))))
- `(ansi-color-cyan    ((t (:foreground ,my/color-cyan)))))
+ `(term-color-black   ((t (:foreground "#282A2E"))))
+ `(term-color-blue   ((t (:foreground "#5F819D"))))
+ `(term-color-cyan   ((t (:foreground "#5E8D87"))))
+ `(term-color-green   ((t (:foreground "#8C9440"))))
+ `(term-color-magenta   ((t (:foreground "#85678F"))))
+ `(term-color-red   ((t (:foreground "#A54242"))))
+ `(term-color-white   ((t (:foreground "#707880"))))
+ `(term-color-yellow   ((t (:foreground "#DE935F"))))
+ `(term-color-bright-black   ((t (:foreground "#373B41"))))
+ `(term-color-bright-blue   ((t (:foreground "#81A2BE"))))
+ `(term-color-bright-cyan   ((t (:foreground "#8ABEB7"))))
+ `(term-color-bright-green   ((t (:foreground "#B5BD68"))))
+ `(term-color-bright-magenta   ((t (:foreground "#B294BB"))))
+ `(term-color-bright-red   ((t (:foreground "#CC6666"))))
+ `(term-color-bright-white   ((t (:foreground "#C5C8C6"))))
+ `(term-color-bright-yellow   ((t (:foreground "#F0C674")))))
+
+(custom-set-faces
+ `(ansi-color-black   ((t (:inherit (term-color-black)))))
+ `(ansi-color-blue   ((t (:inherit (term-color-blue)))))
+ `(ansi-color-cyan   ((t (:inherit (term-color-cyan)))))
+ `(ansi-color-green   ((t (:inherit (term-color-green)))))
+ `(ansi-color-magenta   ((t (:inherit (term-color-magenta)))))
+ `(ansi-color-red   ((t (:inherit (term-color-red)))))
+ `(ansi-color-white   ((t (:inherit (term-color-white)))))
+ `(ansi-color-yellow   ((t (:inherit (term-color-yellow)))))
+ `(ansi-color-bright-black   ((t (:inherit (term-color-bright-black)))))
+ `(ansi-color-bright-blue   ((t (:inherit (term-color-bright-blue)))))
+ `(ansi-color-bright-cyan   ((t (:inherit (term-color-bright-cyan)))))
+ `(ansi-color-bright-green   ((t (:inherit (term-color-bright-green)))))
+ `(ansi-color-bright-magenta   ((t (:inherit (term-color-bright-magenta)))))
+ `(ansi-color-bright-red   ((t (:inherit (term-color-bright-red)))))
+ `(ansi-color-bright-white   ((t (:inherit (term-color-bright-white)))))
+ `(ansi-color-bright-yellow   ((t (:inherit (term-color-bright-yellow))))))
 
 ;;;;; OTHERS
 
