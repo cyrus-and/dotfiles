@@ -97,6 +97,8 @@
 
 ;; from .alacritty.toml
 
+(require 'term)
+
 (custom-set-faces
  `(term-color-black          ((t (:foreground "#282A2E"))))
  `(term-color-blue           ((t (:foreground "#5F819D"))))
