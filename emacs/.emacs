@@ -702,6 +702,7 @@
 
 (define-key corfu-map (kbd "<return>") 'corfu-insert)
 (define-key corfu-map (kbd "<tab>") 'corfu-expand)
+(define-key corfu-map (kbd "C-c") 'corfu-quit)
 
 ;;;;;; CAPE
 
