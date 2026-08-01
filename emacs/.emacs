@@ -689,6 +689,7 @@
  '(corfu-auto-delay 0.1)
  '(corfu-auto-prefix 2)
  '(corfu-bar-width 0.5)
+ '(corfu-preview-current nil)
  '(corfu-quit-at-boundary nil)
  '(corfu-quit-no-match t)
  '(corfu-separator ?\s)
@@ -696,9 +697,10 @@
 
 (custom-set-faces
  `(corfu-bar ((t (:background ,my/color-accent))))
+ `(corfu-border ((t (:background ,my/color-level-4))))
  `(corfu-current ((t (:inherit (highlight))))))
 
-(define-key corfu-map (kbd "<return>") 'corfu-quit)
+(define-key corfu-map (kbd "<return>") 'corfu-insert)
 (define-key corfu-map (kbd "<tab>") 'corfu-expand)
 
 ;;;;;; CAPE
