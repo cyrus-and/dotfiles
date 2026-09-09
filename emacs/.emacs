@@ -179,9 +179,9 @@
 (defun my/compilation-auto-kill (buffer status)
   "Run after compilation and kill the window if needed."
   (let ((window (get-buffer-window buffer)))
-    (when (and (bound-and-true-p my/compile-should-kill)
+    (when (and t
                ;; only for *compilation* buffers (do not kill grep and similar)
-               (string-match-p (rx "-compilation*" string-end) (buffer-name buffer))
+               (string-match-p (rx "compilation*" string-end) (buffer-name buffer))
                ;; a window to kill must exist
                window
                ;; status must be success
@@ -192,9 +192,9 @@
                            compilation-num-warnings-found
                            compilation-num-infos-found))))
       ;; quit after a grace time to review the output
-      (run-at-time 1 nil 'quit-window nil window))))
-
-(add-hook 'compilation-finish-functions 'my/compilation-auto-kill)
+      (run-at-time 0.5 nil 'quit-window nil window)
+      ;; avoid rearm
+      (remove-hook 'compilation-finish-functions 'my/compilation-auto-kill))))
 
 (defun my/compile-dwim (arg)
   "Compile or recompile according to what happened before and the curren project."
@@ -202,13 +202,15 @@
   (let* ((project (and (project-current) (project-name (project-current))))
          (buffer (get-buffer (if project (project-prefixed-buffer-name "compilation") "*compilation*")))
          (window (get-buffer-window buffer)))
-    ;; set auto kill flag
-    (setq my/compile-should-kill (not (and buffer window)))
+    ;; set up auto kill
+    (when (not (and buffer window))
+      (add-hook 'compilation-finish-functions 'my/compilation-auto-kill))
     ;; compile or recompile according to existing buffers and project
-    (if (or arg (not buffer))
-        (call-interactively (if project 'project-compile 'compile))
-      (with-current-buffer buffer
-        (call-interactively 'recompile)))))
+    (let ((current-prefix-arg nil))
+      (if (or arg (not buffer))
+          (call-interactively (if project 'project-compile 'compile))
+        (with-current-buffer buffer
+          (call-interactively 'recompile))))))
 
 (keymap-global-set "s-c" 'my/compile-dwim)
 
@@ -704,7 +706,7 @@
 
 (define-key corfu-map (kbd "<return>") 'corfu-insert)
 (define-key corfu-map (kbd "<tab>") 'corfu-expand)
-(define-key corfu-map (kbd "C-c") 'corfu-quit)
+(define-key corfu-map (kbd "C-<return>") 'corfu-quit)
 
 ;;;;;; CAPE
 
