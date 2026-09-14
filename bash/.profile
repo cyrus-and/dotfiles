@@ -53,14 +53,6 @@ case "$OSTYPE" in
         alias dropbox-unignore='xattr -d com.dropbox.ignored'
         alias dropbox-check='xattr -p com.dropbox.ignored'
 
-        up() {
-            (
-                set -e
-                nix-env --upgrade
-                nix-store --gc
-            )
-        }
-
         # append-only bash history
         if [[ -f "$HISTFILE" ]]; then
             chflags uappend "$HISTFILE"
@@ -68,9 +60,11 @@ case "$OSTYPE" in
             touch "$HISTFILE"
         fi
 
-        # completion
-        source ~/.nix-profile/share/bash-completion/bash_completion
-        source ~/.nix-profile/share/bash-completion/completions/git-prompt.sh
+        # MacPorts
+        export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+
+        # Git prompt
+        source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
         ;;
 
     'linux-gnu')
