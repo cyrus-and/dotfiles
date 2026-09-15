@@ -11,6 +11,8 @@
     "files.simpleDialog.enable": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
     "scm.repositories.selectionMode": "single",
     "terminal.integrated.initialHint": false,
     "window.density.layout": "compact",
@@ -18,6 +20,5 @@
     "workbench.editor.empty.hint": "hidden",
     "workbench.iconTheme": "file-icons-colourless",
     "workbench.productIconTheme": "fluent-icons",
-    "workbench.startupEditor": "none",
-    "git.enableSmartCommit": true
+    "workbench.startupEditor": "none"
 }
