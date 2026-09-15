@@ -1,0 +1,23 @@
+{
+    "chat.disableAIFeatures": true,
+    "chat.titleBar.openInAgentsWindow.enabled": false,
+    "chat.titleBar.signIn.enabled": false,
+    "debug.toolBarLocation": "commandCenter",
+    "editor.fontFamily": "Iosevka SS04",
+    "editor.fontSize": 14,
+    "editor.minimap.size": "fill",
+    "editor.scrollBeyondLastLine": false,
+    "files.insertFinalNewline": true,
+    "files.simpleDialog.enable": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "scm.repositories.selectionMode": "single",
+    "terminal.integrated.initialHint": false,
+    "window.density.layout": "compact",
+    "workbench.colorTheme": "paddy-black",
+    "workbench.editor.empty.hint": "hidden",
+    "workbench.iconTheme": "file-icons-colourless",
+    "workbench.productIconTheme": "fluent-icons",
+    "workbench.startupEditor": "none",
+    "git.enableSmartCommit": true
+}
