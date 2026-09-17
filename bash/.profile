@@ -88,7 +88,7 @@ case "$OSTYPE" in
         fi
 
         # completions
-        source /etc/bash_completion
+        source /opt/local/etc/profile.d/bash_completion.sh
         ;;
 esac
 
