@@ -43,7 +43,7 @@ alias grep='grep --color=auto'
 alias ll='ls -lartF'
 
 # local executables
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # OS-specific configurations
 case "$OSTYPE" in
