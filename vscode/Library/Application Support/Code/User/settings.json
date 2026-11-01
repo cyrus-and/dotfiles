@@ -40,5 +40,12 @@
     "workbench.editor.empty.hint": "hidden",
     "workbench.iconTheme": "file-icons-colourless",
     "workbench.productIconTheme": "fluent-icons",
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "editor.lineNumbers": "off",
+    "zenMode.showTabs": "none",
+    "zenMode.fullScreen": false,
+    "zenMode.centerLayout": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "update.showReleaseNotes": false
 }
