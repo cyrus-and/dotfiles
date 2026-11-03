@@ -27,6 +27,11 @@ bindings = [
   { action = 'ClearHistory', key = 'K', mods = 'Super' },
 ]
 
+[[hints.enabled]]
+regex = '(https?://|[~.]*/)\S+'
+command = { program = '/bin/zsh', args = ['-c', 'open ${~0}'] }
+mouse = { enabled = true, mods = 'Shift' }
+
 # adapted from https://terminal.sexy/
 
 [colors.primary]
