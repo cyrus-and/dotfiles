@@ -3,8 +3,11 @@
     "chat.titleBar.openInAgentsWindow.enabled": false,
     "chat.titleBar.signIn.enabled": false,
     "debug.toolBarLocation": "commandCenter",
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": true,
     "editor.fontFamily": "Iosevka SS04",
     "editor.fontSize": 14,
+    "editor.lineNumbers": "off",
     "editor.minimap.size": "fill",
     "editor.scrollBeyondLastLine": false,
     "files.insertFinalNewline": true,
@@ -13,8 +16,10 @@
     "files.trimTrailingWhitespace": true,
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
+    "git.openDiffOnClick": false,
     "scm.repositories.selectionMode": "single",
     "terminal.integrated.initialHint": false,
+    "update.showReleaseNotes": false,
     "window.density.layout": "compact",
     "workbench.colorCustomizations": {
         "terminal.ansiBlack": "#282a2e",
@@ -41,11 +46,7 @@
     "workbench.iconTheme": "file-icons-colourless",
     "workbench.productIconTheme": "fluent-icons",
     "workbench.startupEditor": "none",
-    "editor.lineNumbers": "off",
-    "zenMode.showTabs": "none",
-    "zenMode.fullScreen": false,
     "zenMode.centerLayout": false,
-    "diffEditor.ignoreTrimWhitespace": true,
-    "diffEditor.hideUnchangedRegions.enabled": true,
-    "update.showReleaseNotes": false
+    "zenMode.fullScreen": false,
+    "zenMode.showTabs": "none"
 }
